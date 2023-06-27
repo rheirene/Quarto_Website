@@ -1,0 +1,364 @@
+---
+title: "About"
+format:
+  html:
+    page-layout: full
+    toc: true
+---
+
+### About me
+
+I'm a Lecturer in Psychology at the University of Plymouth, UK.
+
+I've worked in academic posts in the UK and Australia since finishing my PhD in Psychology (topic: alcohol-related neurocognitive impairment) in 2019.
+
+I'm interested in the science of **addiction** with a passion for **data science and visualisation**.
+
+```{r echo = FALSE, warning = FALSE, results = FALSE, include = FALSE}
+library(tidyverse)
+library(gt)
+library(gtExtras)
+library(reactable)
+
+
+table_images<- c(".files/one.png",
+            ".files/two.png",
+            ".files/three.png",
+            ".files/four.png")
+
+
+career_data<- data.frame(Map_position = c(1,2,3,4),
+                Position = c("PhD Scholarship", 
+            "Postdoctoral Researcher",
+            "Psychology Lecturer",
+            "Psychology Lecturer"),
+            Employer = c("University of South-Wales",
+               "University of Sydney",
+               "Charles Darwin University",
+               "University of Plymouth"),
+            Dates = c("Apr 2016 → Jun 2019",
+            "Jul 2019 → Jan 2022",
+            "Feb 2022 → Feb 2023",
+            "Mar 2023 → ongoing")) %>%
+  as_tibble()
+
+career_data_table<-bind_cols(table_images, 
+          career_data) %>% 
+  select(- Map_position) %>% 
+  rename(Map = 1)
+
+gttable1 <- career_data_table %>%
+  gt() %>%
+  gt_img_rows(columns = Map,
+              img_source = "local",
+              height = 25) %>%
+     tab_options(table.font.color = "#289998") %>% 
+  tab_options(table.background.color = "#002B36")  %>% 
+    tab_style(
+    style = cell_borders(
+      sides = c("t", "b"),
+      color = "#289998",
+      weight = px(2)
+    ),
+    locations = list(cells_column_labels(), cells_stubhead())
+  ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#289998",
+                weight = "bold")
+      ),
+   locations = list(cells_column_labels())
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = Employer)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = Position)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = Map)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = Dates)
+    )  %>% 
+  tab_style(
+    style = cell_borders(
+      sides = c("top", "bottom"),
+      color = "#002B36",
+      weight = px(1.5),
+      style = "solid"
+    ),
+    locations = cells_body()
+  ) %>% 
+   cols_align(
+  align = "center",
+  columns = Dates) %>%
+  tab_options(table.border.bottom.color = "#289998",
+              table_body.border.bottom.color = "#289998") %>%
+    tab_style(style = cell_borders(sides = c("t"),
+                              color = "#289998",
+                              weight = px(2)), 
+                         locations = list(cells_footnotes(), cells_source_notes()))
+```
+
+```{r echo = FALSE, warning = FALSE}
+gttable1 %>%
+  cols_merge(
+    columns = vars(Position, Employer)
+  ) %>% 
+  text_transform(
+    locations = cells_body(
+      columns = vars(Position)
+    ),
+    fn = function(x){
+      Position <- word(x, 1, 2)
+      Employer <- word(x, 3, 5)
+      glue::glue(
+        "<div style='line-height:14px'><span style='font-weight:bold;font-variant:small-caps;font-size:14
+        px'>{Position}</div>
+        <div style='line-height:12px'><span style ='font-weight:bold;color:grey;font-size:12px'>{Employer}</span></div>"
+      )
+    }
+  ) %>% 
+  tab_options(
+    data_row.padding = px(7),
+  )
+```
+
+
+![](.files/map%20of%20career.png){fig-align="left"}
+
+### About my work
+
+My career aim is to conduct research that can help prevent and reduce the harms associated with activities like **gambling** and **substance use**.
+
+I'm also an advocate for increasing **transparency and openness** in research and so some of my work focuses on scientific reform within the addiction field.
+
+Here's a visual summary of my **peer-reviewed publications** by year and topic area:
+
+```{r echo = FALSE, warning = FALSE}
+Publication_record <- data.frame(Year = c("2016",
+                                            "2017",
+                                            "2018",
+                                            "2019",
+                                            "2020",
+                                            "2021",
+                                            "2022",
+                                            "2023"),
+                                   Extreme_sport = c(2,
+                                                        0,
+                                                        1,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0),
+                                 Alcohol = c(1,
+                                                        0,
+                                                        1,
+                                                        1,
+                                                        1,
+                                                        2,
+                                                        2,
+                                                        0),
+                                 Gambling = c(0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        3,
+                                                        1,
+                                                        0),
+                                 Science_reform = c(0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        1,
+                                                        0,
+                                                        1,
+                                                        0),
+                                 Other= c(0,
+                                                        0,
+                                                        0,
+                                                        0,
+                                                        1,
+                                                        0,
+                                                        0,
+                                                        0))
+
+Publication_record_table<- Publication_record  %>%
+    rowwise() %>%
+  mutate(row_sum = sum(c(Extreme_sport,
+                        Alcohol,
+                        Gambling,
+                        Science_reform,
+                        Other))) %>%
+  ungroup() 
+
+
+Publication_record_table %>%
+    select(-row_sum) %>% 
+  gt() %>% 
+    tab_style(
+    style = cell_borders(
+      sides = c("t", "b"),
+      color = "#289998",
+      weight = px(2)
+    ),
+    locations = list(cells_column_labels(), cells_stubhead())
+  ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#289998",
+                weight = "bold")
+      ),
+   locations = cells_column_labels()
+    )  %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#9BA7B0",
+                weight = "bold")
+      ),
+    locations = cells_body(
+      columns = Year)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0",
+                weight = "bold")
+      ),
+    locations = cells_body(
+      columns = Extreme_sport)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0",
+                weight = "bold")
+      ),
+    locations = cells_body(
+      columns = Alcohol)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0",
+                weight = "bold")
+      ),
+    locations = cells_body(
+      columns = Gambling)
+    )  %>% 
+     tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0",
+                weight = "bold")
+      ),
+    locations = cells_body(
+      columns = Science_reform)
+    )  %>% 
+     tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0",
+                weight = "bold")
+      ),
+    locations = cells_body(
+      columns = Other)
+    )  %>% 
+  tab_style(
+    style = cell_borders(
+      sides = c("top", "bottom"),
+      color = "#002B36",
+      weight = px(1.5),
+      style = "solid"
+    ),
+    locations = cells_body()
+  ) %>% 
+   cols_align(
+  align = "center",
+  columns = Year
+) %>% 
+   cols_align(
+  align = "center",
+  columns = Extreme_sport
+) %>% 
+   cols_align(
+  align = "center",
+  columns = Alcohol
+) %>% 
+   cols_align(
+  align = "center",
+  columns = Gambling
+) %>% 
+   cols_align(
+  align = "center",
+  columns = Science_reform
+) %>% 
+   cols_align(
+  align = "center",
+  columns = Other
+) %>% 
+  tab_options(
+    data_row.padding = px(10),
+  ) %>%
+  tab_footnote(
+    footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patters in my publishing history only.") %>%
+   tab_style(
+    style = list(cell_fill(color = "#002B36"), 
+                 cell_text(color = "#9BA7B0", style = "italic"), 
+                 cell_borders(sides = c("b"),
+                              color = "#002B36",
+                              weight = px(2))),
+    locations = list(cells_footnotes(), cells_source_notes())) %>%
+  tab_style(
+    style = cell_borders(sides = c("t"),
+                              color = "#289998",
+                              weight = px(2)), 
+                         locations = list(cells_footnotes(), cells_source_notes())) %>%
+  gt_color_rows(Extreme_sport, palette = c("#002B36", "#289998")) %>% 
+  gt_color_rows(Alcohol, palette = c("#002B36", "#289998")) %>% 
+  gt_color_rows(Gambling, palette = c("#002B36", "#289998")) %>% 
+  gt_color_rows(Science_reform, palette = c("#002B36", "#289998")) %>% 
+  gt_color_rows(Other, palette = c("#002B36", "#289998")) %>%
+    cols_label(
+    Extreme_sport = "Extreme sports",
+    Science_reform = "Scientific reform"
+  ) %>%
+  cols_width(everything() ~ px(80)) %>%
+    cols_width(Year ~ px(100))
+  
+
+```
+
+### About this site
+
+I made this site and all the visualisations in it from scratch with [Quarto](https://quarto.org/), using mostly R and CSS code.
+
+I store the full texts for all of my **scientific publications here**.
+
+I recently started a little side project called **Sci-Software**--writing about all the great software and tools available to help students and academics with their careers.

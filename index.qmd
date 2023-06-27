@@ -1,0 +1,20 @@
+---
+title: ""
+engine: knitr
+format:
+  html:
+    page-layout: full
+    toc: true
+---
+
+![](.files/headshot.png){.profile-pic fig-align="center" width="250"}
+
+::: {.text .padding}
+Hi 👋
+
+I'm Rob Heirene. I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
+:::
+
+### Latest posts
+
+### Get in touch
