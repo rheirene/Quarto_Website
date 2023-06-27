@@ -1,20 +1,35 @@
 ---
-title: ""
+title: "Rob Heirene"
 engine: knitr
 format:
   html:
     page-layout: full
-    toc: true
+    toc: true 
+    
+about:
+  id: rheirene_about
+  template: jolla
+  links:
+    - icon: twitter
+      href: https://twitter.com/Rheirene
+    - icon: github
+      href: https://github.com/rheirene
+    - icon: mortarboard-fill
+      href: https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&hl=en
+    - icon: envelope-fill
+      href: mailto:robheirene@gmail.com
+    - icon: bookmarks-fill
+      href: https://twitter.com/Rheirene
+      
+      # https://icons.getbootstrap.com/
 ---
 
 ![](.files/headshot.png){.profile-pic fig-align="center" width="250"}
 
+::: {#rheirene_about}
 ::: {.text .padding}
-Hi 👋
-
-I'm Rob Heirene. I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
+Hi 👋 I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
 :::
-
-### Latest posts
+:::
 
 ### Get in touch

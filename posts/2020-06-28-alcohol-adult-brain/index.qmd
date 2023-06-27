@@ -25,7 +25,7 @@ In the last 12 years (from 2020), six large-scale systematic reviews and meta-an
 
 ![What evidence tells us about the typical relationship between consumption and brain health. Note: this is a simplification!](graph.png){fig-align="center" width="350"}
 
-To clarify, light to moderate alcohol consumption (≤2 standard drinks a day for men; ≤1 for women[^1]) has positive effects on brain health and heavier consumption (defined varyingly as either ≥3 or ≥4 drinks per day) has negative effects. More specifically, low-moderate drinkers have a significantly reduced risk of dementia and cognitive decline compared to non-drinkers, while heavy drinkers have an increased risk of these outcomes.
+To clarify, light to moderate alcohol consumption (≤2 standard drinks a day for men; ≤1 for women[^1]) seems to have positive effects on brain health and heavier consumption (defined varyingly as either ≥3 or ≥4 drinks per day) has negative effects. More specifically, low-moderate drinkers have a significantly reduced risk of dementia and cognitive decline compared to non-drinkers, while heavy drinkers have an increased risk of these outcomes.
 
 [^1]: A standard drink refers to 12oz (355 ml) of 5% beer/ale, 5oz (150 ml) of 12% wine, or 1.5oz (45 ml) of spirits such as whiskey or vodka. For more information click [here](https://www.niaaa.nih.gov/what-standard-drink).
 
@@ -43,7 +43,7 @@ No, unfortunately not. While the inverted J shape relationship is useful for des
 
 -   **Sex**: women may be more likely to experience cognitive impairment at lower levels of consumption (Nolen-Hoeksema, 2004).
 
--   **Genetic variants**: individuals who possess the apolipoprotein E (APOE) ɛ4 allele (associated with an increased risk of Alzheimer\'s dementia) don't appear to experience the potential cognitive benefits associated with low-moderate alcohol consumption (Neafsey & Collins, 2011; Panza et al., 2012)[ \^2].
+-   **Genetic variants**: individuals who possess the apolipoprotein E (APOE) ɛ4 allele (associated with an increased risk of Alzheimer\'s dementia) don't appear to experience the potential cognitive benefits associated with low-moderate alcohol consumption (Neafsey & Collins, 2011; Panza et al., 2012)[^2].
 
 [^2]: It\'s not all bad news for those with this genetic variant---a [recent study](https://doi.org/10.1016/j.ebiom.2020.102954) of 337,484(!) participants supported the variant\'s connection with Alzheimer\'s, but also concluded that \"ε4-associated disease protection was seen against obesity, chronic airway obstruction, type 2 diabetes, gallbladder disease, and liver disease\".
 
