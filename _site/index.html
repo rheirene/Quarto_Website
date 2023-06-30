@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -115,7 +149,7 @@ ul.task-list li input[type="checkbox"] {
 
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src=".files/headshot.png" class="profile-pic img-fluid figure-img" width="250"></p>
+<p><img src=".files/headshot.png" class="img-fluid figure-img" width="225"></p>
 </figure>
 </div>
 <div class="quarto-about-jolla column-page-left">
@@ -126,37 +160,38 @@ ul.task-list li input[type="checkbox"] {
 <div class="quarto-title-meta">
   </div>
 </header><div id="rheirene_about">
-<div class="text padding">
+<div class="text padding sansserif">
 <p>Hi 👋 I’m a Lecturer in Psychology and Addiction Researcher at the <a href="https://www.plymouth.ac.uk/staff/rob-heirene">University of Plymouth</a>, UK.</p>
 </div>
 </div> 
   <hr class="about-sep">
    <div class="about-links">
-  <a href="https://twitter.com/Rheirene" class="about-link" rel="" target="">
-    <i class="bi bi-twitter"></i>
-     <span class="about-link-text"></span>
-  </a>
   <a href="https://github.com/rheirene" class="about-link" rel="" target="">
     <i class="bi bi-github"></i>
-     <span class="about-link-text"></span>
+     <span class="about-link-text">Github</span>
   </a>
   <a href="https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en" class="about-link" rel="" target="">
     <i class="bi bi-mortarboard-fill"></i>
-     <span class="about-link-text"></span>
+     <span class="about-link-text">Scholar</span>
   </a>
-  <a href="mailto:robheirene@gmail.com" class="about-link" rel="" target="">
-    <i class="bi bi-envelope-fill"></i>
-     <span class="about-link-text"></span>
+  <a href="https://osf.io/atwg5/" class="about-link" rel="" target="">
+    <i class="bi bi-door-open"></i>
+     <span class="about-link-text">OSF</span>
   </a>
   <a href="https://twitter.com/Rheirene" class="about-link" rel="" target="">
-    <i class="bi bi-bookmarks-fill"></i>
-     <span class="about-link-text"></span>
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">Twitter</span>
   </a>
 </div>
 </div>
 
 <section id="get-in-touch" class="level3">
 <h3 data-anchor-id="get-in-touch">Get in touch</h3>
+<div class="sourceCode" id="cb1"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"systemfonts"</span>) </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>systemfonts<span class="sc">::</span><span class="fu">system_fonts</span>() </span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 
 
 

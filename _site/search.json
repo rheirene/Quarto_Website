@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Rob Heirene",
     "section": "",
-    "text": "Hi 👋 I’m a Lecturer in Psychology and Addiction Researcher at the University of Plymouth, UK.\n\n \n  \n   \n  \n    \n     \n  \n  \n    \n     \n  \n  \n    \n     \n  \n  \n    \n     \n  \n  \n    \n     \n  \n\n\n\n\nGet in touch"
+    "text": "Hi 👋 I’m a Lecturer in Psychology and Addiction Researcher at the University of Plymouth, UK.\n\n \n  \n   \n  \n    \n     Github\n  \n  \n    \n     Scholar\n  \n  \n    \n     OSF\n  \n  \n    \n     Twitter\n  \n\n\n\n\nGet in touch\n```{r}\n\ninstall.packages(\"systemfonts\") \nsystemfonts::system_fonts() \n```"
   },
   {
     "objectID": "posts/2020-06-28-alcohol-adult-brain/index.html",

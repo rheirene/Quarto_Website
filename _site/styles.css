@@ -12,13 +12,13 @@ text-align: center;
 .padding {
   padding 70px;
 }
+
 h3 {
-  color: #289998; /* Set your desired color for h2 headers */
+  color: #289998; /* Set  desired color for h3 headers */
   text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
 }
 
   /*   double column format that collapses into one on smaller screens/mobiles */
-
 
 container {
   display: flex;
@@ -35,3 +35,7 @@ container {
     width: 100%;
   }
 } 
+
+.sansserif {
+  font-family: "Plus jakarta sans", sans-serif;
+}
