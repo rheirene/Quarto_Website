@@ -146,7 +146,7 @@ gttable1 %>%
   )
 ```
 
-
+![](map_of_career.png){fig-align="center"}
 
 ### About my work
 
