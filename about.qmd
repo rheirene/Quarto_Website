@@ -147,7 +147,6 @@ gttable1 %>%
 ```
 
 
-![](.files/map_of_career.png){fig-align="left"}
 
 ### About my work
 

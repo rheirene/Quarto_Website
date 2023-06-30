@@ -26,7 +26,6 @@ about:
       # https://icons.getbootstrap.com/
 ---
 
-![](.files/headshot.png){fig-align="center" width="225"}
 
 
 ::: {#rheirene_about}
