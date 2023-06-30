@@ -5,24 +5,7 @@ format:
   html:
     page-layout: full
     toc: true #
-    
-about:
-  id: rheirene_about
-  template: jolla
-  links:
-    - icon: github
-      text: Github
-      href: https://github.com/rheirene
-    - icon: mortarboard-fill
-      text: Scholar
-      href: https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&hl=en
-    - icon: door-open
-      text: osf.io
-      href: https://osf.io/atwg5/
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/Rheirene
-      
+
       # https://icons.getbootstrap.com/
 ---
 
