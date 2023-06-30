@@ -17,7 +17,7 @@ about:
       text: Scholar
       href: https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&hl=en
     - icon: door-open
-      text: OSF
+      text: osf.io
       href: https://osf.io/atwg5/
     - icon: twitter
       text: Twitter
