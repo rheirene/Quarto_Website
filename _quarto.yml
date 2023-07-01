@@ -10,15 +10,14 @@ website:
         text: Home
       - about.qmd # About page
       - posts.qmd # Blog
+      - publication.qmd # Pub list
     tools:
       - icon: twitter
         href: https://twitter.com/RHeirene
-
 format:
   html:
     theme: solar
     css: styles.css
     toc: true
-
 
 editor: visual

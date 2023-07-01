@@ -1,0 +1,6 @@
+# file.create("_metadata.yml")
+
+freeze: true # see https://quarto.org/docs/projects/code-execution.html#freeze
+
+
+title-block-banner: true #  banner title blocks 

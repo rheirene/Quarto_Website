@@ -47,9 +47,8 @@ No, unfortunately not. While the inverted J shape relationship is useful for des
 
 [^2]: It's not all bad news for those with this genetic variant---a [recent study](https://doi.org/10.1016/j.ebiom.2020.102954) of 337,484(!) participants supported the variant's connection with Alzheimer's, but also concluded that "ε4-associated disease protection was seen against obesity, chronic airway obstruction, type 2 diabetes, gallbladder disease, and liver disease".
 
-```{=html}
 <!-- -->
-```
+
 -   **Socio-economic status**: low socioeconomic status is associated with increased alcohol harm (Johnco & Draper, 2015), including poorer cognitive outcomes than those with higher socioeconomic status who consume the same amounts of alcohol (Sabia et al., 2011) [^3].
 
 [^3]: This effect extends beyond neurological harm to other physical and mental health consequences of alcohol consumption, and is referred to as the "*alcohol harm paradox*". There's no definitive explanation for why it occurs, but it could be due to differences in drinking patterns and other lifestyle behaviours (sleep, diet, exercise etc.) between the most and least disadvantaged (see [here](https://doi.org/10.1111/add.15567) for a review of this topic).
