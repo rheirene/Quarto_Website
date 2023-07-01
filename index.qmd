@@ -13,15 +13,12 @@ about:
     - icon: github
       text: Github
       href: https://github.com/rheirene
-    - icon: mortarboard-fill
-      text: Scholar
-      href: https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&hl=en
     - icon: door-open
       text: osf.io
       href: https://osf.io/atwg5/
-    - icon: twitter
-      text: Twitter
-      href: https://twitter.com/Rheirene
+    - icon: mortarboard-fill
+      text: Scholar
+      href: https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&hl=en
       
       # https://icons.getbootstrap.com/
 ---
@@ -33,5 +30,3 @@ about:
 Hi 👋 I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
 :::
 :::
-
-### Get in touch

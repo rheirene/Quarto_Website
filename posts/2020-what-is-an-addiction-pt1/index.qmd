@@ -1,0 +1,266 @@
+---
+title: "What does it mean to be \"addicted?\" (Part 1)"
+description: "A delve into the various ways in which we define addiction"
+author:
+  - name: Rob Heirene
+categories: [Addiction] 
+date: 2020-04-14
+citation: 
+  url:  https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt1
+image: cover.jpg
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
+
+### Tanning, Instagram, flying: Where do we draw the line?
+
+An increasing number of new (and often bizarre) forms of addiction have been proposed in recent years, including addictions to video [gaming](https://doi.org/10.1007/s40429-019-00259-x), [dancing](https://doi.org/10.1371/journal.pone.0125988),  [tanning](https://doi.org/10.1016/j.jid.2018.05.002),  [exercise](https://doi.org/10.1080/1612197X.2019.1674902),  [extreme sports](https://robheirene.netlify.com/publication/heireneextremesportsaddiction) (based largely on work by myself and colleagues), [shopping](https://doi.org/10.1080/02791072.2012.660110),  [Instagram](https://doi.org/10.1556/2006.7.2018.15),  [Tinder](https://doi.org/10.1556/2006.5.2016.016),  [flying](https://doi.org/10.1016/j.annals.2011.01.013) (yes, travelling in a plane), [fortune telling](https://doi.org/10.1556/JBA.4.2015.1.7), and even [*yourself*](https://blog.derby.ac.uk/2019/03/understanding-ontological-addiction/).
+
+Naturally, this has led to fears that we may be "over pathologizing" everyday behaviours and that the term *addiction* may lose meaning if it continues to be applied so liberally (Billieux et al., 2015). However, what the defining features of an addiction actually *are* is a surprisingly contentious subject. Both addiction experts and those with lived experience of addiction disagree within and between their groups about what it means to be "addicted" (Walters & Gilbert, 2000).
+
+In this two-part post, I summarise some of the key ways in which addiction has been defined and try to provide some clarity on what it means to be *addicted* and how it differs from simply doing a lot of something.
+
+### **Defining addiction: Diagnostic manuals**
+
+An obvious starting point is the manuals used by clinicians to diagnose psychological disorders, including addictions. These include the World Health Organisation's [International Classification of Diseases](https://www.who.int/classifications/icd/en/) (ICD-11) and the American Psychiatric Association's [Diagnostic Statistical Manual](https://documentcloud.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3A907fa51f-b6cb-494c-95b1-5cacf626fc55) (DSM-5). The DSM and ICD outline key criteria or symptoms that, when present simultaneously in sufficient numbers, characterise an addictive disorder. To illustrate this approach, I have included the core signs and symptoms for two addictive disorders according to these manuals in the below table. Alcohol dependence and gambling disorder were selected as the archetypal substance and behavioural (i.e., non-drug) addictions, respectively, though there are some minor differences in the criteria presented for other addictive disorders.
+
+```{r, echo=FALSE, message=FALSE, warning=FALSE}
+library(dplyr)
+library(gt)
+library(glue)
+library(purrr)
+
+
+# create data
+data <- tibble(
+  Symptom = c("Social/ occupational problems", "Impaired control", "Tolerance", 
+              "Physical/ psychological problems", "Cravings/ urges", 
+              "Prioritising the activity over others", "Withdrawal", 
+              "Self-medication: Used when distressed", "Chasing losses", 
+              "Conceals the (extent of) behaviour", "Used more than planned", 
+              "Substantial time spent obtaining & using", "Hazardous use", 
+              "Neglect of major roles", "Preoccupation", "Financial problems"),
+  DSM_Alcohol = c("✔", "✔", "✔", "✔", "✔", "✔","✔","","","","✔","✔","✔","✔","",""),
+  DSM_Gambling = c("✔","✔","✔","","","","✔","✔","✔","✔","✔","","","","✔","✔"),
+  ICD_Alcohol = c("✔","✔","✔","✔","✔","✔","✔","","","","","","","","",""),
+  ICD_Gambling = c("✔","✔","✔","✔","✔","✔","","✔","✔","✔","","","","","",""),
+  N = c(4,4,4,2,2,2,2,2,2,2,2,1,1,1,1,1)
+)
+
+data_table <- data %>% mutate(
+  "percent" = N/max(N) * 100) %>%
+  select(-"N")
+
+bar_chart <- function(value, color = "red") {
+  glue::glue("<span style=\"display: inline-block; direction: ltr
+             ; border-radius: 4px; padding-right: 0px;background-color: {color}; color: {color}; width: {value}%\">&nbsp;</span>") %>%
+    as.character() %>%
+    gt::html()
+}
+
+data_table %>% 
+  mutate(
+    "Percent" = map(percent, ~bar_chart(value = .x, color = "#289998"))) %>%
+  select(-percent) %>%
+  gt() %>%
+      tab_style(
+    style = cell_borders(
+      sides = c("t", "b"),
+      color = "#289998",
+      weight = px(2)
+    ),
+    locations = list(cells_column_labels(), cells_stubhead())
+  ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#289998",
+                weight = "bold")
+      ),
+   locations = cells_column_labels()
+    )  %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#9BA7B0")
+      ),
+    locations = cells_body(
+      columns = Symptom)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = DSM_Alcohol)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = DSM_Gambling)
+    ) %>% 
+   tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = ICD_Alcohol)
+    )  %>% 
+     tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = ICD_Gambling)
+    )  %>% 
+       tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#F5F7F0")
+      ),
+    locations = cells_body(
+      columns = Percent)
+    )  %>% 
+  tab_style(
+    style = cell_borders(
+      sides = c("top", "bottom"),
+      color = "#002B36",
+      weight = px(1.5),
+      style = "solid"
+    ),
+    locations = cells_body()
+  ) %>% 
+     cols_align(
+  align = "right",
+  columns = Symptom
+) %>% 
+   cols_align(
+  align = "center",
+  columns = DSM_Alcohol
+) %>% 
+   cols_align(
+  align = "center",
+  columns = DSM_Gambling
+) %>% 
+   cols_align(
+  align = "center",
+  columns = ICD_Alcohol
+) %>% 
+   cols_align(
+  align = "center",
+  columns = ICD_Gambling
+) %>% 
+     cols_align(
+  align = "left",
+  columns = Percent
+) %>% 
+  tab_options(
+    data_row.padding = px(10),
+  ) %>%
+  tab_footnote(
+    footnote = "") %>%
+   tab_style(
+    style = list(cell_fill(color = "#002B36"), 
+                 cell_text(color = "#9BA7B0", style = "italic"), 
+                 cell_borders(sides = c("b"),
+                              color = "#002B36",
+                              weight = px(2))),
+    locations = list(cells_footnotes(), cells_source_notes())) %>%
+  tab_style(
+    style = cell_borders(sides = c("t"),
+                              color = "#289998",
+                              weight = px(2)), 
+                         locations = list(cells_footnotes(), cells_source_notes())) %>%
+    cols_width(everything() ~ px(90)) %>%
+    cols_width(Symptom ~ px(250)) %>%
+      cols_width(Percent ~ px(120)) %>%
+  cols_label(
+    DSM_Alcohol = "DSM Alcohol",
+    DSM_Gambling = "DSM Gambling",
+    ICD_Alcohol = "ICD Alcohol",
+    ICD_Gambling = "ICD Gambling",
+    Percent = "")
+
+
+```
+
+From the table above, it's clear that there are both overlapping criteria (across addictions & manuals) and some that are unique to the addiction specified.
+
+Two criteria stand out: \[1\] continuation despite social and/or occupational problems associated with the activity (e.g., relationship breakdown/ absenteeism), and \[2\] impaired control, or repeated but unsuccessful attempts to control or quit the behaviour (i.e., difficulty stopping). A strong case could be made that these two are the defining symptoms of addiction, and I doubt too many would disagree with this proposition.
+
+Tolerance is also seen across both disorders and diagnostic manuals, but I think it's less central as its absence would not preclude diagnosis. An individual who gambles with less money or less frequently now, but experiences equally or greater harms than when they first started gambling should not be excluded from diagnosis on this basis. Perhaps for this reason, tolerance is not an essential criteria for the diagnosis of gambling disorder in the ICD-11 and is listed among the "additional clinical features".
+
+### **Defining addiction: The Components Model ([Griffiths, 2005](https://doi.org/10.1080/14659890500114359))**
+
+Closely aligned with the ICD/DSM approach is [Professor Mark Griffiths'](https://drmarkgriffiths.wordpress.com/) Components Model of addiction (Griffiths, 2005). Griffiths is a [prolific publisher](https://scholar.google.com/citations?user=Ptx0xPkAAAAJ&hl=en) in the behavioural addictions field, (co-)authoring many studies of the aforementioned bizarre addictions. According to his Components Model, a person is addicted only if they meet six core signs or "components" of addiction:
+
+-   **Salience**: The increasing importance and dominance of the activity (e.g., drug use, gambling) in thought (preoccupation), feelings (cravings), and behaviour (declining socialisation). Based on Griffith's operational definition of salience, I would say this covers several of the symptoms proposed by the diagnostic manuals in the table: *preoccupation*, *cravings*, *neglect of major roles*, *substantial time spent using/ doing & obtaining*, and *social/ occupational problems*.
+
+-   **Mood modification**: The emotional and subjective experiences associated with engaging with the activity (e.g., a high or euphoria) which can be defined in terms of a change from pre-engagement state (e.g., a reduction in anxiety, as in "self-medicating"). Similar to the symptom *engages in behaviour when distressed* in the table.
+
+-   **Tolerance**: The need for increasingly more of the substance or more frequent or intense engagement with the behaviour (e.g., increasing bet size) to achieve the same subjective experiences formerly achieved at lower levels (also termed "habituation" in the addictions literature).
+
+-   **Withdrawal**: The unpleasant physical and psychological states experienced when not engaging with the activity (i.e., during abstinence), including sweating, insomnia, restlessness, anxiety, and irritability.
+
+-   **Conflict**: Internal and interpersonal conflict arising from excessive engagement with the behaviour, such as deteriorating relationships, work performance and participation with social activities. Covers *(continuation despite) social/ occupational problems* and perhaps *reliance on others to solve financial problems* from the table.
+
+-   **Relapse**: Re-using the substance or re-engaging with the behaviour after a period of abstinence. I would lump this under *impaired control*.
+
+With this model, Griffiths emphasises the commonalities between addictions and argues that if there are no core criteria for addictive disorders then there is little use in the term *addiction*  (Griffiths, 2019). That is, what value is there in saying that excessive tanning or video gaming is a form of behavioural addiction if *addiction* does not refer to some commonly understood phenomenon? If tanning or video gaming "addictions" are distinct from established addictions (alcohol, gambling, opioids etc.), then new terms should be used.
+
+I see the value in a confirmatory approach (with some caveats[^1]) towards conceptualising addiction---that is, seeing whether people excessively engaging in an activity (those at the heart of the "are they addicted?" question) display the core features of recognised addictions. However, this could increase the chances of falsely claiming something resembles an addiction without giving full consideration to the unique features of the behaviour. This is the subject of much debate within the behavioural addictions field and not all agree that a confirmatory method is best, which leads us nicely onto considering the next approach to defining addiction.
+
+[^1]: I find the components model to be a useful blueprint when considering the core principles of addiction, but I would argue that all six components do not need to be present for someone to be classified as having an addiction (relapse and conflict and/or salience are key). Similar to the argument made by Kardefelt-Winther et al. (2017), some of these symptoms (especially, tolerance and withdrawal) may be less relevant to some behavioural addictions and may therefore not be necessary for classification, though I would diverge from Kardefelt-Winther and colleagues by arguing that the greater the number of "components" an individual displays (including tolerance & withdrawal) the stronger the case for declaring that they are addicted. On the removal of tolerance and withdrawal from the core criteria of addiction, Griffiths (2017) remarked: "Ironically, removing these from core addiction criteria may actually increase the prevalence of everyday leisure activities being labelled as an addiction."
+
+### **Defining addiction: The operational definition of behavioural addictions ([Kardefelt-Winther et al., 2017](http://www.uclep.be/wp-content/uploads/pdf/Pub/Kardefelt_Addiction_2017.pdf))**
+
+Kardefelt-Winther et al. (2017) have claimed that:
+
+> "*considerable resources are being diverted to conduct research on excessive behaviours that lack indications of functional impairment, psychological distress or a clear separation from normative behaviour in context... \[and\] if this expansion does not end, both the relevance and credibility of this field might be questioned*."
+
+This, they argue, is the consequence of using a confirmatory approach to determine whether a pattern of behaviour---say, excessive tanning---represents a behavioural addiction based on the features of the Components Model (which they say are substance addiction symptoms). In their paper, the authors contend that certain features of the Components Model, namely tolerance and withdrawal, are difficult to apply and measure in relation to behaviours other than substances.
+
+![](not_equal_to.png){fig-align="center"}
+
+Kardefelt-Winther et al. also point out that preoccupations or cravings may be relatively innocuous in the context of behaviours like video gaming, but can be severely problematic in relation to substance misuse. Finally, they warn that by simply seeing whether someone who engages excessively in a behaviour displays the symptoms of substance addictions (i.e. the six components), researchers are failing to explore the potentially unique features and boundaries of the behavioural pattern[^2]. Griffiths has hit back at this argument, asserting that the Components Model does not deny the idiosyncrasies of each addictive disorder (e.g., chasing losses in Gambling disorder) or proscribe the types of exploratory research required to uncover them (Griffiths, 2019).
+
+[^2]: Kardefelt-Winther et al. (2017) make several more criticisms of the Components Model and the confirmatory approach to studying behavioural addictions, but the three I cover here are (I believe) the core arguments. See their article for more detail.
+
+Kardefelt-Winther and colleagues' concerns with the Components Model of Addiction and the allied confirmatory approach led them to develop a new, operational definition of a behavioural addiction:
+
+> "*A repeated behaviour leading to significant harm or distress. The behaviour is not reduced by the person and persists over a significant period of time. The harm or distress is of a functional nature*"
+
+This definition differs considerably from the previous two, most notably by omitting any explicit mention of impaired control[^3]. The "significant harm or distress" referred to, however, is easily compared with the features of addiction as outlined in the previous two approaches (i.e., the diagnostic manual symptom: "continuation despite negative consequences" & the component: "conflict").
+
+[^3]: That said, their exclusion criteria listed below this point (i.e., "The functional impairment results from an activity that, although potentially harmful, is the consequence of a wilful choice") could be said to introduce impaired control into their operational definition
+
+As well as their operational definition, the authors provide **exclusion criteria** for behavioural addictions. That is, features that, if present, indicate that a pattern of behaviour is not a behavioural addiction:
+
+-   *The behaviour is better explained by an underlying disorder (e.g., a depressive disorder or impulse control disorder).*
+
+-   *The functional impairment results from an activity that, although potentially harmful, is the consequence of a wilful choice (e.g., high level sports).*
+
+-   *The behaviour can be characterised as a period of prolonged intensive involvement that detracts time and focus from other aspects of life, but does not lead to significant functional impairment or distress for the individual.*
+
+-   *The behaviour is the result of a coping strategy.*
+
+These exclusion criteria are useful for differentiating high involvement with an activity, say sports or hobbies, from a behavioural addiction. Yet, as Griffiths (2017, 2019) has argued, these criteria could exclude many (if not all) cases of behavioural and substance addiction! The first and fourth exclusion criteria may be problematic as addictions, including to [substances](https://doi.org/10.1093/alcalc/agx061) and [gambling](https://doi.org/10.1111/j.1360-0443.2010.03300.x), typically co-occur with other psychological disorders such as depression and/or anxiety (Lorains et al., 2011; Zambon et al., 2017), and thus the substance use or gambling can often be viewed as a form of coping strategy and yet still meet the criteria for addiction. Moreover, when individuals begin to engage with a behaviour, be it alcohol use or gambling, this is invariably of wilful choice (Griffiths, 2017), questioning the value of exclusion criterion 2. I would argue only the third criterion should be retained if we think behavioural addictions actually exist and are worth recognising.
+
+### **Defining addiction: Sussman and Sussman's (2011) [Five Common Elements](https://doi.org/10.3390/ijerph8104025)**
+
+Many other academic articles contain discussions on the definition of addiction and Sussman and Sussman have attempted to systematically summarise these views (up to April 2011). Although it's not quite clear how or what they extracted from the 52 studies identified in their review (*their methodology section is pretty lacking in detail*), they arrived at the conclusion that all forms of addiction share five common elements: **\[1\]** appetitive effects (the behaviour is engaged in so as to achieve some form of appetitive effect \[e.g., reduction in pain, enjoyment, arousal, fantasy\]) **\[2\]** preoccupation with the behaviour, including cravings and (strangely) tolerance and withdrawal symptoms, **\[3\]** temporary satiation (the sense of gratification, relief or balance achieved from engaging in the behaviour that follows a period of subjective discomfort \[withdrawal\], resulting in a temporary state of satiation or reduction in appetite for the behaviour), **\[4\]** loss of control, and **\[5\]** negative consequences associated with the behaviour. Interestingly, these features are similar (with some minor discrepancies) to Griffiths' Components Model.
+
+### **Thoughts so far...**
+
+The definitions discussed so far *mostly* highlight the importance of a few distinguishing features of addiction. Most notably, impaired control and negative consequences associated with the behaviour pattern.
+
+Kardefelt-Winther et al.'s definition of behavioural addictions noticeably diverges from the others by stressing the uniqueness of addictive disorders and differentiating drug and non-drug addictions. Their exclusion criteria are too strict, but they do raise some important concerns with the current zeitgeist of the field wherein someone is said to have a behavioural addiction if they display features roughly comparable to those of the Components Model. Clearly, there is a fine line to be tread between recognising "new" behavioural addictions from which people are genuinely suffering (thereby stimulating research on the topic and promoting proper allocation of resources and services to those in need) and pathologizing and stigmatising normal behaviours (low-level gaming, mobile phone use etc.) and unduly wasting time and resources[^4].
+
+[^4]: Some may accuse me of "over pathologizing" normal behaviour, given my research on the parallels between extreme sports athletes and those with drug and behavioural addictions. However, I don't think we ever argued that extreme sports athletes are addicted in the exact same way as those who suffer drug or non-drug addictions (and we certainly didn't aim to pathologize extreme sports athletes); rather, we pointed out that there are qualitative similarities in the experiences between these groups. That said, I would perhaps be slightly more circumspect when making such comparisons and using addiction terminology if I were writing those papers today
+
+In [Part 2](https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt2) of this post, I cover Shaffer et al.'s (2004) Syndrome Model of Addiction, how addiction might be defined according to Network theory, and how people who actually experience addiction define it. I also chime in on the debate as to where we draw the line between high involvement with an activity and addiction, before coming to an eclectic definition of addiction that incorporates features from all of the different approaches covered.

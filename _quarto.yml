@@ -13,8 +13,7 @@ website:
     tools:
       - icon: twitter
         href: hhttps://twitter.com/RHeirene
-      - icon: github
-        href: https://github.com/rheirene
+
 format:
   html:
     theme: solar
