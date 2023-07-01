@@ -17,7 +17,7 @@ An increasing number of new (and often bizarre) forms of addiction have been pro
 
 Naturally, this has led to fears that we may be "over pathologizing" everyday behaviours and that the term *addiction* may lose meaning if it continues to be applied so liberally (Billieux et al., 2015). However, what the defining features of an addiction actually *are* is a surprisingly contentious subject. Both addiction experts and those with lived experience of addiction disagree within and between their groups about what it means to be "addicted" (Walters & Gilbert, 2000).
 
-In this two-part post, I summarise some of the key ways in which addiction has been defined and try to provide some clarity on what it means to be *addicted* and how it differs from simply doing a lot of something.
+In this two-part post, I summarise some of the key ways in which addiction has been defined. I try to provide some clarity on what it means to be *addicted* and how it differs from simply doing a lot of something.
 
 ### **Diagnostic manuals**
 
@@ -288,3 +288,5 @@ Clearly, there is a fine line to be tread between recognising "new" behavioural 
 [^4]: Some may accuse me of "over pathologizing" normal behaviour, given my research on the parallels between extreme sports athletes and those with drug and behavioural addictions. However, I don't think we ever argued that extreme sports athletes are addicted in the exact same way as those who suffer drug or non-drug addictions (and we certainly didn't aim to pathologize extreme sports athletes); rather, we pointed out that there are qualitative similarities in the experiences between these groups. That said, I would perhaps be slightly more circumspect when making such comparisons and using addiction terminology if I were writing those papers today
 
 In [Part 2](https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt2) of this post, I cover Shaffer et al.'s (2004) Syndrome Model of Addiction, how addiction might be defined according to Network theory, and how people who actually experience addiction define it. I also chime in on the debate as to where we draw the line between high involvement with an activity and addiction, before coming to an eclectic definition of addiction based on the many different approaches covered.
+
+**Last updated:** 01/07/2023
