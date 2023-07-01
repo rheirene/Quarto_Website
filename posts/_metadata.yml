@@ -1,7 +1,6 @@
 # file.create("_metadata.yml")
 
-# prevents posts from re-rendering unless explicitly told to do so (for more, see https://quarto.org/docs/projects/code-execution.html#freeze)
-freeze: true
+freeze: true # see https://quarto.org/docs/projects/code-execution.html#freeze
 
-# enable banner style title blocks (see https://quarto.org/docs/authoring/title-blocks.html)
-title-block-banner: true
+
+title-block-banner: true #  banner title blocks 

@@ -12,7 +12,7 @@ website:
       - posts.qmd # Blog
     tools:
       - icon: twitter
-        href: hhttps://twitter.com/RHeirene
+        href: https://twitter.com/RHeirene
 
 format:
   html:

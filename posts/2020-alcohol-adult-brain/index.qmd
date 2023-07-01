@@ -13,9 +13,9 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 ## Alcohol & the adult brain: How much is too much?
 
-When I was a teenager the received wisdom was that, for every alcoholic drink imbibed, 100 brain cells died. In 2016 when I started my PhD looking at the assessment and treatment of alcohol-related brain damage, I searched eagerly for the origin of this factoid and, unsurprisingly, had no luck finding it.
+When I was a teenager the received wisdom was that, for every alcoholic drink imbibed, 100 brain cells died. In 2016 when I started my PhD looking at the assessment and treatment of alcohol-related brain damage, I searched eagerly for the origin of this factoid and had no luck finding it.
 
-The relationship between alcohol consumption and brain damage, it turns out, is far more complex than the agreeably simple "1 drink = 100 brain cells killed" formula.
+Unsurprisingly, the relationship between alcohol consumption and brain damage is far more complex than the agreeably simple "1 drink = 100 brain cells killed" formula.
 
 Here I provide a brief overview of the evidence in this area as a starting point for those interested in how alcohol use---from the occasional glass of wine to twenty or more drinks a week---affects our brain health.
 
@@ -56,18 +56,14 @@ No, unfortunately not. While the inverted J shape relationship is useful for des
 
 **Some factors known to *mediate* the relationship**
 
-It also helps to know the ways through alcohol damages the brain (the mediating factors):
+It also helps to know the ways through which alcohol damages the brain (the mediating factors):
 
 -   **Nutritional deficiencies**: perhaps the most important mediating factor. A deficiency in thiamine (vitamin B1) causes [Wernicke-Korsakoff's Syndrome](https://www.healthline.com/health/wernicke-korsakoff-syndrome) (colloquially known as "alcoholic wet brain"), a severe, life-long disorder characterised by crippling amnesia. Alcohol impairs the body's ability to absorb and utilise thiamine, which is required for several neurological processes[^4]. Insufficient thiamine is perhaps the most worrying deficiency associated with alcohol misuse (being both common and severe in consequence), but deficiencies in several other vitamins and minerals (e.g., vitamins B2, B3, B6, & B9, zinc, magnesium) are common and each has their own set of negative neurological consequences[^5].
+-   **Liver dysfunction**: we all know that alcohol is bad news for the liver, but few know that a dysfunctional liver is bad news for the brain. When damaged by excessive alcohol use, the liver becomes unable to properly process neurotoxic compounds, allowing them to enter the bloodstream and eventually to migrate past the blood-brain barrier. Granted access to the brain, toxins like ammonia have pernicious effects on our neurophysiology and are linked to the disorder [Hepatic Encephalopathy](https://www.healthline.com/health/hepatic-encephalopathy-2#types).
 
 [^4]: After it's internally converted to Thiamine pyrophosphate.
 
 [^5]: Some supporting citations for (mostly older) studies investigating nutritional deficiencies in those with alcohol use disorders: (Bogden & Troiano, 1978; Carrilho, Santos, Piasecki, & Jorge, 2013; Cook et al., 1991; Flink, 1986; Shane & Flink, 1991; Spiegel & Jim, 2011; Thomson, 2000; Thomson, Jeyasingham, Pratt, & Shaw, 1987).
-
-```{=html}
-<!-- -->
-```
--   **Liver dysfunction**: we all know that alcohol is bad news for the liver, but few know that a dysfunctional liver is bad news for the brain. When damaged by excessive alcohol use, the liver becomes unable to properly process neurotoxic compounds, allowing them to enter the bloodstream and eventually to migrate past the blood-brain barrier. Granted access to the brain, toxins like ammonia have pernicious effects on our neurophysiology and are linked to the disorder [Hepatic Encephalopathy](https://www.healthline.com/health/hepatic-encephalopathy-2#types).
 
 ### Are low levels really good for our brains?
 
