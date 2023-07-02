@@ -1,0 +1,39 @@
+---
+title: "Addiction in Extreme Sports: An Exploration of Withdrawal States in Rock Climbers"
+description: "The aim of this study was to explore the parallels between extreme sports exponents & those with drug & behavioural addictions"
+author:
+- name: Rob Heirene
+- name: David Shearer
+- name: Gareth Roderique-Davies
+- name: Stephen Mellalieu
+categories: [Extreme sport]
+date: 2016-06-01
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+**Background and aims:** Extreme sports athletes are often labeled "adrenaline junkies" by the media, implying they are addicted to their sport. Research suggests during abstinence these athletes may experience withdrawal states characteristic of individuals with an addiction (Celsi, Rose, & Leigh, 1993; Franken, Zijlstra, & Muris, 2006; Willig, 2008). Despite this notion, no research has directly explored withdrawal experiences of extreme sports athletes.
+
+**Methods:** Using semi-structured interviews, we explored withdrawal experiences of high (*n* = 4) and average-ability (*n* = 4) male rock climbers during periods of abstinence. We investigated the psychological and behavioral aspects of withdrawal, including craving, anhedonia, and negative affect; and differences in the frequency and intensity of these states between groups.
+
+**Results:** Deductive content analysis indicated support for each of the three categories of anhedonia, craving, and negative affect. Consistent with existing substance addiction literature, high-ability climbers recalled more frequent and intense craving states and negative affect during abstinence compared with average-ability climbers. No differences in anhedonic symptoms between high and average-ability participants were found.
+
+**Conclusions:** Rock climbing athletes appear to experience withdrawal symptoms when abstinent from their sport comparable to individuals with substance and behavioral addictions. The implications of these findings and suggestions for future research are discussed.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](HeireneExtremeSportsAddiction.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., Shearer, D., Roderique-Davies, G., & Mellalieu, S. D. (2016). Addiction in Extreme Sports: An Exploration of Withdrawal States in Rock Climbers. *Journal of behavioral addictions*, 5 (2), 332--341. https://doi.org/10.1556/2006.5.2016.039
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       ✘        |       ✘        |    NA     |     ✘     |

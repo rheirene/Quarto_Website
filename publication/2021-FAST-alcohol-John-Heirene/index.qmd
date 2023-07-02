@@ -1,0 +1,40 @@
+---
+title: "Does the Fast Alcohol Screening Test Accurately Distinguish Between Harmful and Severely Dependent Tiers of Alcohol Misuse?"
+description: ""
+authors:
+- name: Bev John
+- name: Simon Newstead
+- name: Rob Heirene
+- name: Roy Hodgson
+- name: Gareth Roderique-Davies
+categories: [Alcohol]
+date: 2021-03-23
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+**Aims:** Primary aim: to determine the efficacy of FAST (the Fast Alcohol Screening Test) for detecting harmful and dependent levels of alcohol use. Secondary aim: to compare the performance of the FAST to two short forms of the Alcohol Use Disorder Identification Test (AUDIT): the AUDIT-C and AUDIT-3.
+
+**Methods:** Data from 3336 individuals in South Wales, compiled from full AUDIT datasets, were examined. AUROC analysis, alongside measures of sensitivity and specificity of the FAST, AUDIT-C and AUDIT-3 were utilized for the identification of harmful and dependent alcohol use.
+
+**Results:** The FAST demonstrated efficacy in the identification of harmful and dependent levels of alcohol use, with superior performance to both the AUDIT-C and AUDIT-3.
+
+**Conclusion:** The present paper demonstrates the potential of the FAST as a cost- and time-effective method for appropriate screening and signposting in the stepped care model utilized by many health care and treatment services. Further studies are needed to ensure validity, both within the general population and for specific services and populations.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](John_et_al_(2021)_FAST_alcohol_dependence.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   John, B., Newstead, S., Heirene, R., Hodgson, R. & Roderique-Davies, G. (2021). Does the Fast Alcohol Screening Test Accurately Distinguish Between Harmful and Severely Dependent Tiers of Alcohol Misuse? *Alcohol and Alcoholism*, 56 (6), 737--745. https://doi.org/10.1093/alcalc/agab015
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       ✘        |       ✘        |     ✘     |     ✘     |

@@ -1,0 +1,44 @@
+---
+title: "Patterns and Correlates of Consumer Protection Tool Use by Australian Online Gambling Customers"
+description: ""
+author:
+- name: Rob Heirene
+- name: Daraya Vanichkina
+- name: Sally Gainsbury
+categories: [Gambling]
+date: 2021-06-21
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+**Objective:** Consumer Protection Tools (CPTs; e.g., deposit limits, timeouts) are provided by gambling sites to assist customers to gamble without harms. We aimed to understand how CPTs are used, and by which customers, which is essential to determine their effectiveness.
+
+**Method:** We examined the account data of 39,853 customers (median age = 33 years; 84% male) across six Australian wagering sites over 1 year (2018/07/01--2019/06/30).
+
+**Results:** Most (83%) customers did not use any CPTs, with low rates of use for deposit limits (15.8%), timeouts (0.55%--1.57%), and self-exclusion tools (0.16%--0.57%) observed. Requiring customers to set a deposit limit or opt-out of setting one led to substantial increases in limit setting. Many customers who used limits later changed them, typically by increasing or removing them. Non-CPT users and deposit limit users were similar in their demographic and gambling characteristics, while comparatively, timeout and/or self-exclusion users were younger and displayed more risky gambling behaviors (e.g., higher net loss and betting frequency).
+
+**Conclusions:** Our findings suggest that voluntary deposit limits have inherent limitations in addressing harmful behaviors if consumers can easily increase or remove limits. The study suggests that greater efforts are needed to encourage CPT use among a broad customer base, including default limits requiring opt-out, greater restrictions on increasing or remove limits, and more persuasive communication of the benefits of timeouts.
+
+**Public Health Significance Statement**
+
+This study of nearly 40,000 online gambling customers in Australia found that most (83%) customers do not use the consumer protection tools (CPTs) available to them. The findings highlight the need for gambling sites and policy makers to implement strategies that encourage the volitional uptake of CPTs. This study identified that a key limitation of current deposit limit tools is the ability to easily increase limits multiple times or remove them altogether, which supports the introduction of greater friction and delays to increase limits and messaging to assist customers to determine, set, and adhere to appropriate limits.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](Heirene_et_al_CPT_use.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., Vanichkina, D. P. & Gainsbury, S. M. (2021). Patterns and Correlates of Consumer Protection Tool Use by Australian Online Gambling Customers. *Psychology of Addictive Behaviors,* 35(8), 974--984. https://doi.org/10.1037/adb0000761
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       ✘        |       NA       |     ✓     |     ✘     |
+
+-   [Analysis code](https://osf.io/23ejv/)

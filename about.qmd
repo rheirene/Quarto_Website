@@ -358,6 +358,6 @@ Publication_record_table %>%
 
 I made this site and all the visualisations in it from scratch with [Quarto](https://quarto.org/), using mostly R and CSS code.
 
-I store the full texts for all of my **scientific publications here**.
+I store the full texts for all of my **scientific publications [here](https://robheirene.netlify.app/publication.html)**.
 
 I recently started a little side project called **Sci-Software**--writing about all the great software and tools available to help students and academics with their careers.

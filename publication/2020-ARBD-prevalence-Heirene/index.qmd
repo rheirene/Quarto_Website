@@ -1,0 +1,41 @@
+---
+title: "Alcohol-Related Neurocognitive Disorders:A Naturalistic
+Study of Nosology and Estimation of Prevalence in South
+Wales, United Kingdom"
+description: ""
+author:
+- name: Rob Heirene
+- name: Gareth Roderique-Davies
+- name: Ioannis Angelakis
+- name: Bev John
+categories: [Alcohol]
+date: 2020-10-09
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+**Objective:** Existing studies relating to the prevalence of alcohol-related neurocognitive disorders (ARNDs; e.g., Korsakoff's Syndrome, alcohol-related dementia) are now outdated and few have been undertaken in the United Kingdom. The aim of this study was to estimate the prevalence of ARNDs in South Wales, U.K., and determine the specific diagnostic terms and criteria used in clinical practice.
+
+**Method:** A naturalistic, survey-based prevalence study was undertaken wherein data were collected retrospectively for all individuals with ARNDs attending services during all of 2015 and 2016. A diverse sample of health and social care services (N = 60) in South Wales took part in the study.
+
+**Results:** A total of 490 individuals with ARNDs were identified by participating services, equating to an age-specific rate of 34 individuals per 100,000 inhabitants. Variability was observed across age ranges and genders, with most identified in the 45-64 year age range and a male:female ratio of 2.6:1. Twenty-three individuals younger than age 35 were identified, demonstrating an increase in younger cases compared with previous studies. Various diagnostic terms were used, with "alcohol-related brain damage" being most common. Only 6.3% of cases were diagnosed according to specific criteria and 44.3% were reported as having a "probable" ARND, meaning no official diagnosis had been designated but initial assessments indicated that they likely had an ARND.
+
+**Conclusions:** Findings provide a novel understanding of ARND prevalence in a previously understudied area, although the prevalence estimate is conservative and should be interpreted cautiously for reasons discussed. Findings also highlight an inconsistency between diagnoses presented in nosological systems (e.g., International Classification of Diseases-10th Revision) and those used in practice and therefore a need to evaluate novel diagnostic conceptualizations of alcohol-related neurocognitive impairment.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](HeireneEtal(2020)ARBDprevalence.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., Roderique-Davies, G., Angelakis, I. & John, B. (2020). Alcohol-Related Neurocognitive Disorders: A Naturalistic Study of Nosology and Estimation of Prevalence in South Wales, United Kingdom. *Journal of Studies on Alcohol and Drugs.* https://pubmed.ncbi.nlm.nih.gov/33028471/
+
+**Transparency**
+
+| **Pre-registered** | **Open materials** | **Open code** | **Open data** |
+|:------------------:|:------------------:|:-------------:|:-------------:|
+|         ✘          |         ✘          |       ✘       |       ✘       |

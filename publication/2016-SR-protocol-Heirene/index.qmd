@@ -1,0 +1,35 @@
+---
+title: "Identification and evaluation of neuropsychological tools used in the assessment of alcohol-related brain damage: A systematic review protocol"
+description: ""
+author:
+- name: Rob Heirene
+- name: Gareth Roderique-Davies
+- name: Pamela Roberts
+- name: Bev John
+categories: [Alcohol]
+date: 2016-09-14
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+Neuropsychological assessment forms an essential part of the screening, diagnosis and general assessment of Alcohol-Related Brain Damage (ARBD). A number of studies have evaluated the applicability of various neuropsychological tests within the context of ARBD assessment, yet little attempt has been made to collate this evidence and discuss its clinical application. The aim of this protocol is to outline the methodology for a systematic review that aims to identify the neuropsychological tools being used to assess cognitive impairments in individuals with ARBD and evaluate their efficacy within this context. We will search a number of online databases and other sources to identify studies using a neuropsychological tool in the screening, diagnosis or neuropsychological assessment of individuals with ARBD. Primary outcome measures of interest will be construct validity, convergent validity, reliability (retest and inter-rater), sensitivity, specificity, positive predictive value and practical considerations. Results from the review will assist clinicians and researchers involved in the assessment and diagnosis of ARBD by providing a synthesis and critical analysis of the evidence base for each tool, allowing them to make efficient and well-informed test selections. Review findings could also be used to inform the development of guidelines for ARBD diagnosis and assessment.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](HeireneEtal(2016)SRProtocol.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R., Roderique-Davies, G., Roberts, P. & John, B. (2016). Identification and evaluation of neuropsychological tools used in the assessment of alcohol-related brain damage: A systematic review protocol. *Cogent Psychology*, 3(1). https://doi.org/10.1080/23311908.2016.1229841
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       NA       |       ✓        |    NA     |    NA     |
+
+-   Materials available in [article](https://www.tandfonline.com/doi/full/10.1080/23311908.2016.1229841){style="color: #289998"}

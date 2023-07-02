@@ -1,0 +1,42 @@
+---
+title: "Applicability of the ACE-III and RBANS cognitive tests for the detection of Alcohol-Related Brain Damage"
+description: ""
+author:
+  - name: Pamela Brown
+  - name: Rob Heirene
+  - name: Gareth Roderique-Davies
+  - name: Bev John
+  - name: Jon Evans
+categories: [Alcohol] 
+date: 2019-11-29
+image: featured.jpg
+draft: false 
+---
+
+**Abstract**
+
+**Background and aims:** Recent investigations have highlighted the value of neuropsychological testing for the assessment and screening of Alcohol-Related Brain Damage (ARBD). The aim of the present study was to evaluate the suitability of the Addenbrooke's Cognitive Examination (ACE-III) and the Repeatable Battery for the Assessment of Neuropsychological Status (RBANS) for this purpose.
+
+**Methods:** Comparing 28 participants with ARBD (11 with Korsakoff's Syndrome and 17 with the umbrella "ARBD" diagnosis) and 30 alcohol-dependent participants without ARBD (ALs) we calculated Area Under the Curve (*AUC*) statistics, sensitivity and specificity values, base-rate adjusted predictive valueblogs, and likelihood ratios for both tests.
+
+**Results:** High levels of screening accuracy were found for the total scores of both the ACE-III (*AUC* = .823, 95% CIs \[.714, .932\], *SE* = .056; optimal cut-off ≤86: sensitivity = 82%, specificity = 73%) and RBANS (*AUC* = .846, 95% CIs \[.746, .947\], *SE* = .052; optimal cut-off ≤83: sensitivity = 89%, specificity = 67%) at multiple cut-off points. Removing participants with a history of polysubstance from the samples (10 ALs and 1 ARBD) improved the diagnostic capabilities of the RBANS substantially (*AUC* = .915, 95% CIs \[.831, .999\], *SE* = .043; optimal cut-off ≤85: sensitivity = 98%, specificity = 80%), while only minor improvements to the ACE-III's accuracy were observed (*AUC* = .854, 95% CIs \[.744, .963\], *SE* = .056; optimal cut-off ≤88: sensitivity = 85%, specificity = 75%).
+
+**Conclusions:** Overall, both the ACE-III and RBANS are suitable tools for ARBD screening within an alcohol-dependent population, though the RBANS is the superior of the two. Clinicians using these tools for ARBD screening should be cautious of false-positive outcomes and should therefore combine them with other assessment methods (e.g., neuroimaging, clinical observations) and more detailed neuropsychological testing before reaching diagnostic decisions."
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](BrownEtAl(2019)ARBDassessment.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Brown, P., Heirene, R. M., Gareth-Roderique-Davies, John, B. & Evans, J. J. (2019). Applicability of the ACE-III and RBANS Cognitive Tests for the Detection of Alcohol-Related Brain Damage. *Frontiers in Psychology*, 10, 2636. https://doi.org/10.3389/fpsyg.2019.02636
+
+**Transparency**
+
+| **Pre-registered** | **Open materials** | **Open code** | **Open data** |
+|:------------------:|:------------------:|:-------------:|:-------------:|
+|         ✘          |         NA         |       ✓       |       ✘       |
+
+-   [Analysis code](https://osf.io/m69nj/)

@@ -1,0 +1,34 @@
+---
+title: "Professional Perspectives on Supporting Those with Alcohol-Related Neurocognitive Disorders: Challenges & Effective Treatment"
+description: ""
+author:
+- name: Rob Heirene
+- name: Bev John
+- name: Marie O'Hanrahan
+- name: Ioannis Angelakis
+- name: Gareth Roderique-Davies
+categories: [Alcohol]
+date: 2021-03-17
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+We interviewed health and social care professionals (*n* = 17) supporting those with Alcohol-Related Neurocognitive Disorders (ARNDs) to better understand the challenges they face and garner recommendations for effective treatment. Thematic qualitative content analysis was used to systematically analyze interview transcripts. Key challenges associated with treating ARNDs included the challenging behaviors of those with the disorders, their significant physical and mental health needs, stigmatization from others, and a general lack of understanding and awareness of ARNDs. Multiple recommendations for effective treatment were proposed, including first ensuring a comprehensive assessment and diagnostic process is undertaken that informs treatment, multidisciplinary input, and person-specific interventions.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](Heirene_et_al_(2021)_Perspectives_on_ARBD_treatment.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., John, B., O'Hanrahan, M., Angelakis, I. & Roderique-Davies, G. (2021). Professional Perspectives on Supporting Those with Alcohol-Related Neurocognitive Disorders: Challenges & Effective Treatment. *Alcoholism Treatment Quarterly*, 39 (3), 1--27. https://doi.org/10.1080/07347324.2021.1898294
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       ✘        |       ✘        |     ✘     |     ✘     |

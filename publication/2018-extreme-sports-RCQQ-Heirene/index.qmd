@@ -1,0 +1,31 @@
+---
+title: "Development and Initial Validation of a Rock Climbing Craving Questionnaire (RCCQ)"
+description: ""
+author:
+- name: Gareth Roderique-Davies
+- name: Rob Heirene
+- name: Stephen Mellalieu
+- name: David Shearer
+categories: [Extreme sport]
+date: 2018-02-22
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+Conceptual similarities have been identified between experiences of extreme sports athletes and those with drug and behavioral addictions. Evidence suggests rock climbers experience craving and other withdrawal-like states when abstinent from their sport. However, no studies have attempted to quantitatively measure the craving experienced by participants of any extreme sports. Such a measure could allow a greater understanding of the craving experienced by extreme sports athletes and a comparison of these across sports (e.g., surfing) and activities (e.g., drug-use). Therefore, using validated craving measures as a template, the aim of the two studies outlined here was to design and preliminarily validate a subjective multidimensional inventory that could be used to measure craving in the sports of rock-climbing and mountaineering ("RCCQ"). The aim of the first study was to investigate the factor structure of a preliminary measure of craving. Climbers (*n* = 407) completed the RCCQ. A 3-factor model explained 53.65% of the total variance in item scores. All three factors comprised five items each, which were conceptually labeled as "urge to climb" "negative reinforcement" and "positive reinforcement." The aim of the second study was to validate the 15-item 3-factor RCCQ resulting from Study 1 using confirmatory factor analysis (CFA). Climbers (*n* = 254) completed the questionnaire under a climbing-related cue condition or a cue-neutral condition. CFA revealed a good model fit and that all individual parameter estimates were significant and standard errors were within reasonable limits once item 13 was removed from Factor 1. Study 1 supports the multi-dimensional nature of rock climbing craving and shows parallels with substance-related craving in reflecting intention and positive (desire) and negative (withdrawal) reinforcement. Study 2 confirms this factor structure and gives initial validation to the measure with evidence that these factors are sensitive to cue exposure. Given the preliminary nature of the data, any practical implications are tentative. However, if as shown here, craving for climbing (and potentially other extreme sports) is similar to that experienced by drug-users and addicts, there is the potential that climbing and other extreme sports could be used as a replacement therapy for drug users.
+
+**Full text**
+
+-   Access a pdf copy of the article [here](HeireneExtremeSportsRCCQ.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Roderique-Davies, G., Heirene, R. M., Mellalieu, S. & Shearer, D. A. (2018). Development and Initial Validation of a Rock Climbing Craving Questionnaire (RCCQ). *Frontiers in Psychology*, 9, 204. https://doi.org/10.3389/fpsyg.2018.00204
+
+**Transparency**
+
+| **Pre-registered** | **Open materials** | **Open code** | **Open data** |
+|:------------------:|:------------------:|:-------------:|:-------------:|
+|         ✘          |         NA         |       ✘       |       ✘       |

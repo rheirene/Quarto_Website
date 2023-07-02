@@ -1,0 +1,33 @@
+---
+title: "Response to “Nature fix: Addiction to outdoor activities"
+description: "A response to a commentary on our study of withdrwawal experiences in extreme sports exponents"
+author:
+- name: Rob Heirene
+- name: David Shearer
+- name: Gareth Roderique-Davies
+- name: Stephen Mellalieu
+categories: [Extreme sport]
+date: 2016-12-01
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+Buckley's commentary on our study of rock climber's withdrawal experiences raises a number of important questions surrounding the concept of extreme or adventure sports addiction. Drawing on the few available investigations of this topic, we respond to Buckley's questions here, though emphasize the need for further studies of extreme sports addiction in order to provide more empirically informed answers.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](HeireneExtremeSportsAddicResponse.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., Shearer, D., Mellalieu, S. D. & Roderique-Davies, G. (2016). Response to "Nature fix: Addiction to outdoor activities"R. C. Buckley's commentary on Heirene, R. M., Shearer, D., Roderique-Davies, G., & Mellalieu, S. D. (2016). Addiction in extreme sports: An exploration of withdrawal states in rock climbers. Journal of Behavioral Addictions, 5, 332-341. *Journal of Behavioral Addictions,* 5 (4), 559--561. https://doi.org/10.1556/2006.5.2016.087
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       NA       |       NA       |    NA     |    NA     |

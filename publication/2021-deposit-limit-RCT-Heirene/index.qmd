@@ -1,0 +1,49 @@
+---
+title: "Encouraging and evaluating limit-setting among on-line gamblers: a naturalistic randomized controlled trial"
+description: ""
+author:
+- name: Rob Heirene
+- name: Sally Gainsbury
+categories: [Gambling]
+date: 2021-03-21
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+**Aims:** We tested the effectiveness of three different messages designed to increase limit-setting on gambling sites and sent these via e-mail or in-account notification to compare delivery modes. As a secondary aim, we examined the effects of limit-setting on gambling behaviour.
+
+**Design:** A pre-registered, naturalistic randomized control trial using a 3 × 2 plus control design.
+
+**Setting:** Four on-line Australian sports and racing wagering websites.
+
+**Participants:** A total of 31 989 wagering customers (reduced to 26,560 after eligibility screening) who had placed bets on at least 5 days in the past 30 \[mean age = 41.4, standard deviation (SD) = 14.3; 79% male\].
+
+**Interventions and comparators:** Messages were sent via e-mail or in-account notification by on-line gambling operators and were designed to either: (1) be informative, describing the availability and purpose of the tool (informative messages), (2) highlight the benefits other people receive from using the tool (social messages) or (3) promote the benefit individuals could receive from using the tool (personal messages). A control group who did not receive messages was monitored for comparison.
+
+**Measurements:** Our primary outcome was the number of customers who set a deposit limit within 5 days of receiving messages and secondary outcomes included pre- and post-message betting behaviour (e.g. average daily wager).
+
+**Findings:** One hundred and sixty-one (0.71%) customers sent messages set limits compared to three (0.08%) controls \[adjusted odds ratio (aOR) = 8.17, 95% confidence interval (CI) = 2.99, 33.76)\]. Social and personal messages were no more effective than informative messages (aOR = 0.98, 95% CI = 0.65, 1.48; aOR = 0.93, 95% CI = 0.60, 1.44) and in-account messages were no more effective than e-mails (aOR = 1.02, 95% CI = 0.71, 1.49). Customers who set limits significantly decreased their average daily wager, the SD of daily wager, net loss and betting intensity compared with non-limit-setters.
+
+**Conclusions:** Messages to on-line gambling website customers are inexpensive, and may lead to small but impactful increases in setting deposit limits. Limit-setting may be an effective strategy for reducing gambling expenditure and intensity.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](HeireneAndGainsburyDepositLimitRCT.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M. & Gainsbury, S. M. (2021). Encouraging and evaluating limit-setting among on-line gamblers: a naturalistic randomized controlled trial. *Addiction*. https://doi.org/10.1111/add.15471
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       ✓        |       ✓        |     ✓     |     ✘     |
+
+-   [Preregistration & materials](https://osf.io/6dpkw/)
+
+-   [Analysis code](https://github.com/rheirene/Anlaysis-RCT-of-Messages-to-Promote-Deposit-Limits/tree/master)
