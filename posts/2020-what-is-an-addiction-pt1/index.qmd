@@ -201,6 +201,111 @@ A strong case could be made that these two are the defining symptoms of addictio
 
 Tolerance is also seen across both disorders and diagnostic manuals, but I think it's less central. Its absence would not preclude diagnosis---an individual who gambles with less money or less frequently now, but experiences equally or greater harms than when they first started gambling should not be excluded from diagnosis on this basis. Perhaps for this reason, tolerance is not an essential criteria for the diagnosis of gambling disorder in the ICD-11 and is listed among the "additional clinical features".
 
+::: {.callout-tip collapse="true" appearance="simple"}
+## Expand for more on diagnostic manuals
+
+**Specific diagnostic terms used**
+
+**Alcohol:** The DSM-5 uses the label "Alcohol use disorder" and the ICD-11 uses "Alcohol dependence"
+
+**Gambling:** Both the DSM-5 and the ICD-11 use the term "Gambling disorder".
+
+**Presentation & number of symptoms required for diagnosis**
+
+The **ICD-11** doesn't list symptoms in the same way as the DSM-5, but rather provides a descriptive definition of disorders, some "essential features". For Alcohol Dependence, essential features include:
+
+-   Recurrent or episodic use
+
+-   Impaired control over use
+
+-   Increasing prioritisation of use
+
+-   Continued use despite harms
+
+-   Physiological indicators of adaptions to use, including tolerance and/or withdrawal.
+
+For Gambling Disorder, the ICD's essential features include:
+
+-   Persistent gambling behaviour
+
+-   Impaired control over the behaviour
+
+-   Increasing prioritisation of gambling
+
+-   Continued gambling despite harms, including significant distress or impairment in important areas of function (family, social, educational etc.)
+
+The **DSM-5** requires a certain number of symptoms to be present to diagnose an individual with alcohol use disorder for gambling disorder and, depending on the number of symptoms, somebody can be classified as having a "mild", "moderate", or "severe" disorder (see the table below for more details).
+
+|                                             |                                                |                                                                                                              |                                                |                                                                                                                |
+|---------------|---------------|---------------|---------------|---------------|
+|                                             | **DSM-5 Alcohol use disorder**                 | **ICD-11 Alcohol dependence**                                                                                | **DSM-5 Gambling disorder**                    | **ICD-11 Gambling disorder**                                                                                   |
+| **No. of criteria required for diagnosis:** | Mild: 2-3 criteria. Moderate: 4-5. Severe: ≥6. | Essential criteria must be displayed for at least 12-months (or daily or almost daily for at least 3 months) | Mild: 4-5 criteria. Moderate: 6-7. Severe: 8-9 | Essential criteria must be displayed for at least 12-months (shorter duration possible if symptoms are severe) |
+
+If you really want to know more about these manuals and how I coded each symptom, I've taken the liberty (thank me later!) of including the exact wording used for all the addiction symptoms they include for each diagnosis. Expand the section below to see the details:
+
+::: {.callout-tip collapse="true" appearance="simple" icon="false"}
+## Exact wording of each symptom used in manuals
+
+## **Social/ occupational problems**
+
+This would be better phrased as "continuation despite social and/or occupational problems/ harms"
+
+Exact wording of symptom in the DSM-5:
+
+-   **ALCOHOL: "***Alcohol use is continued despite knowledge of having a persistent or recurrent physical or psychological problem that is likely to have been caused or exacerbated by alcohol"*
+
+-   **GAMBLING: "***Has jeopardized or lost a significant relationship, job, or educational or career opportunity because of gambling"*
+
+Exact wording of symptom in the ICD-11:
+
+-   **ALCOHOL: "***Increasing precedence of alcohol use over other aspects of life, including maintenance of health, and daily activities and responsibilities, such that alcohol use continues or escalates despite the occurrence of harm or negative consequences (e.g., repeated relationship disruption, occupational or scholastic consequences, negative impact on health)"*
+
+-   **GAMBLING: "***Continuation or escalation of gambling behaviour despite negative consequences (e.g., marital conflict due to gambling behaviour, repeated and substantial financial losses, negative impact on health)"*
+
+    -   *"The pattern of gambling behaviour results in significant distress or impairment in personal, family, social, educational, occupational, or other important areas of functioning"*
+
+## **Impaired control**
+
+Exact wording of symptom in the DSM-5:
+
+-   **ALCOHOL: "***There is a persistent desire or unsuccessful efforts to cut down or control alcohol use"*
+
+-   **GAMBLING: "***Has made repeated unsuccessful efforts to control, cut back, or stop gambling"*
+
+Exact wording of symptom in the ICD-11:
+
+-   **ALCOHOL: "***Impaired control over alcohol use (i.e., onset, frequency, intensity, duration, termination, context)*"
+
+-   **GAMBLING: "***Impaired control over gambling behaviour (e.g., onset, frequency, intensity, duration, termination, context)*"
+
+## **Tolerance**
+
+Exact wording of symptom in the DSM-5:
+
+-   **ALCOHOL: "***Tolerance, as defined by either of the following:*
+
+-   ***a.** A need for markedly increased amounts of alcohol to achieve intoxication or desired effect. **b.** A markedly diminished effect with continued use of the same amount of alcohol"*
+
+-   **GAMBLING: "***Needs to gamble with increasing amounts of money in order to achieve the desired excitement"*
+
+Exact wording of symptom in the ICD-11:
+
+-   **ALCOHOL:** "*Physiological features indicative of neuroadaptation to the substance, including: 1) tolerance to the effects of alcohol or a need to use increasing amounts of alcohol to achieve the same effect*"
+
+-   **GAMBLING:** "*Individuals with Gambling Disorder may increase the amount of money gambled over time to maintain or exceed previous levels of excitement or to avoid boredom. They may also engage in a pattern of increasing intensity of gambling behaviour, increasing the amount of their wagers, or otherwise altering their gambling strategies in order to try to compensate for significant monetary loses (i.e., 'chasing' their loses)*" \[non-essential feature for diagnosis\]
+:::
+
+**Sources**
+
+The information found in the table and this expandable section was sourced from:
+
+-   [DSM-5 Alcohol & Gambling](https://acrobat.adobe.com/link/track?uri=urn%3Aaaid%3Ascds%3AUS%3A907fa51f-b6cb-494c-95b1-5cacf626fc55&viewer!megaVerb=group-discover)
+
+-   [ICD-11 Alcohol Dependence](https://icd.who.int/browse11/l-m/en#/http://id.who.int/icd/entity/1580466198)
+
+-   [ICD-11 Gambling Disorder](https://icd.who.int/browse11/l-m/en#/http://id.who.int/icd/entity/1041487064)
+:::
+
 ### **The Components Model ([Griffiths, 2005](https://doi.org/10.1080/14659890500114359))**
 
 Closely aligned with the ICD/DSM approach is [Professor Mark Griffiths'](https://drmarkgriffiths.wordpress.com/) Components Model of addiction (Griffiths, 2005). Griffiths is a [prolific publisher](https://scholar.google.com/citations?user=Ptx0xPkAAAAJ&hl=en) in the behavioural addictions field, (co-)authoring many studies of the aforementioned bizarre addictions. According to his Components Model, a person is addicted only if they meet six core signs or "components" of addiction:
