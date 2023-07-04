@@ -2,8 +2,11 @@ project:
   type: website
 
 website:
-  title: ""  
+  title: "Rob Heirene" 
+  open-graph: true
+  twitter-card: true
   navbar:
+    pinned: true
     background: dark
     left:
       - href: index.qmd
@@ -12,12 +15,35 @@ website:
       - posts.qmd # Blog
       - publication.qmd # Pub list
     tools:
+      - icon: envelope
+        aria-label: email
+        href: "mailto:robheirene@gmail.com"
+      - icon: github
+        href: https://github.com/rheirene
+      - icon: mortarboard-fill
+        aria-label: Scholar
+        href: https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&hl=en
+      - icon: door-open
+        aria-label: osf.io
+        href: https://osf.io/atwg5/
       - icon: twitter
+        aria-label: twitter
         href: https://twitter.com/RHeirene
+      - icon: linkedin
+        aria-label: linkedin
+        href: https://www.linkedin.com/in/robert-heirene/
+      
+  page-footer:
+    center: "Copyright 2023, Rob Heirene ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))"
+    right: "View source code on [Github](https://github.com/rheirene/Quarto_Website)"
+    border: true
+    
 format:
   html:
     theme: solar
     css: styles.css
-    toc: true
-
+    toc: true #
 editor: visual
+
+# quarto add quarto-ext/fontawesome (run in terminal first)
+  

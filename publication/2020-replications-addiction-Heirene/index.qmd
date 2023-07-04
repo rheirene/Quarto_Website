@@ -4,7 +4,7 @@ description: ""
 author:
 - name: Rob Heirene
 categories: [Scientific reform]
-date: 2022-06-01
+date: 2020-05-01
 image: featured.jpg
 draft: false
 ---
@@ -26,5 +26,5 @@ Heirene, R. M. (2020). A call for replications of addiction research: which stud
 **Transparency**
 
 | **Pre-registered** |     **Open materials**     |       **Open code**        | **Open data** |
-|:------------------:|:--------------------------:|:--------------------------:|:-------------:|
+|:--------------:|:------------------:|:------------------:|:--------------:|
 |        *NA*        | [✓](https://osf.io/5r7a9/) | [✓](https://osf.io/5r7a9/) |     *NA*      |
