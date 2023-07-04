@@ -34,13 +34,14 @@ website:
         href: https://www.linkedin.com/in/robert-heirene/
       
   page-footer:
-    center: "Copyright 2023, Rob Heirene ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))"
+    left: "Copyright 2023, Rob Heirene ([CC BY-SA 4.0](https://creativecommons.org/licenses/by-sa/4.0/))"
     right: "View source code on [Github](https://github.com/rheirene/Quarto_Website)"
     border: true
     
 format:
   html:
     theme: solar
+    # fontcolor: "#F5F7F0"
     css: styles.css
     toc: true #
 editor: visual
