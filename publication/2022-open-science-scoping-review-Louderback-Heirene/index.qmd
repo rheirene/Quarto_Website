@@ -1,15 +1,36 @@
 ---
-title: ""
+title: "Open Science Practices in Gambling Research Publications (2016–2019): A Scoping Review"
 description: ""
 author:
+- name: Eric Louderback
+- name: Sally Gainsbury
 - name: Rob Heirene
-- name: Gareth Roderique-Davies
-- name: Bev John
-categories: [Alcohol]
-date: 2019-11-01
+- name: Karen Amichia
+- name: Alessandra Grossman
+- name: Bo Berhnard
+- name: Debi Laplante
+categories: [Gambling, Scientific reform]
+date: 2022-06-09
 image: featured.jpg
 draft: false
-
 ---
 
-### Abstract
+**Abstract**
+
+The replication crisis has stimulated researchers around the world to adopt open science research practices intended to reduce publication bias and improve research quality. Open science practices include study pre-registration, open data, open access, and avoiding methods that can lead to publication bias and low replication rates. Although gambling studies uses similar research methods as behavioral research fields that have struggled with replication, we know little about the uptake of open science research practices in gambling-focused research. We conducted a scoping review of 500 recent (1/1/2016--12/1/2019) studies focused on gambling and problem gambling to examine the use of open science and transparent research practices. Our results showed that a small percentage of studies used most practices: whereas 54.6% (95% CI: \[50.2, 58.9\]) of studies used at least one of nine open science practices, each practice's prevalence was: 1.6% for pre-registration (95% CI: \[0.8, 3.1\]), 3.2% for open data (95% CI: \[2.0, 5.1\]), 0% for open notebook, 35.2% for open access (95% CI: \[31.1, 39.5\]), 7.8% for open materials (95% CI: \[5.8, 10.5\]), 1.4% for open code (95% CI: \[0.7, 2.9\]), and 15.0% for preprint posting (95% CI: \[12.1, 18.4\]). In all, 6.4% (95% CI: \[4.6, 8.9\]) of the studies included a power analysis and 2.4% (95% CI: \[1.4, 4.2\]) were replication studies. Exploratory analyses showed that studies that used any open science practice, and open access in particular, had higher citation counts. We suggest several practical ways to enhance the uptake of open science principles and practices both within gambling studies and in science more generally.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2022-open-science-scoping-review-Louderback-Heirene.pdf.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Louderback, E.R., Gainsbury, S.M., Heirene, R.M. *et al.* Open Science Practices in Gambling Research Publications (2016--2019): A Scoping Review. *Journal of Gambling Studies,* **39**, 987--1011 (2023). https://doi.org/10.1007/s10899-022-10120-y
+
+**Transparency**
+
+|    **Pre-registered**     |    **Open materials**     | **Open code** |             **Open data**             |
+|:----------------:|:----------------:|:----------------:|:----------------:|
+| [✓](https://osf.io/d5wgn) | [✓](https://osf.io/ke3jg) |     *NA*      | [✓](https://osf.io/xw7gf/?view_only=) |

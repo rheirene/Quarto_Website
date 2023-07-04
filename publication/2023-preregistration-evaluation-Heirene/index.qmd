@@ -9,15 +9,17 @@ author:
 - name: Marjan Bakker
 - name: Anastasia Serafimovska
 - name: Sally Gainsbury
-categories: [Scientifc reform, Gambling]
-date: 2019-11-01
+categories: [Gambling, Scientific reform]
+date: 2023-06-01
 image: featured.jpg
 draft: false
 ---
 
+**Note:** This study is due to be published in *Meta Psychology in 2023*, pending a reproducibility check.
+
 **Abstract**
 
-Study preregistration is one of several \"open science\" practices (e.g., open data, preprints) that researchers use to improve the transparency and rigour of their research. As more researchers adopt preregistration as a regular research practice, examining the nature and content of preregistrations can help identify strengths and weaknesses of current practices. The value of preregistration, in part, relates to the specificity of the study plan and the extent to which investigators adhere to this plan. We identified 53 preregistrations from the gambling studies field meeting our predefined eligibility criteria and scored their level of specificity using a 23-item protocol developed to measure the extent to which a clear and exhaustive preregistration plan restricts various researcher degrees of freedom (RDoF; i.e., the many methodological choices available to researchers when collecting and analysing data, and when reporting their findings). We also scored studies on a 32-item protocol that measured adherence to the preregistered plan in the study manuscript. We found that gambling preregistrations had low specificity levels on most RDoF. However, a comparison with a sample of cross-disciplinary preregistrations (N = 52; Bakker et al., 2020) indicated that gambling preregistrations scored higher on 12 (of 29) items. Thirteen (65%) of the 20 associated published articles or preprints deviated from the protocol without declaring as much (the mean number of undeclared deviations per article was 2.25, SD = 2.34). Overall, while we found improvements in specificity and adherence over time (2017-2020), our findings suggest the purported benefits of preregistration---including increasing transparency and reducing RDoF---are not fully achieved by current practices. Using our findings, we provide 10 practical recommendations that can be used to support and refine preregistration practices.
+Study preregistration is one of several "open science" practices (e.g., open data, preprints) that researchers use to improve the transparency and rigour of their research. As more researchers adopt preregistration as a regular research practice, examining the nature and content of preregistrations can help identify strengths and weaknesses of current practices. The value of preregistration, in part, relates to the specificity of the study plan and the extent to which investigators adhere to this plan. We identified 53 preregistrations from the gambling studies field meeting our predefined eligibility criteria and scored their level of specificity using a 23-item protocol developed to measure the extent to which a clear and exhaustive preregistration plan restricts various researcher degrees of freedom (RDoF; i.e., the many methodological choices available to researchers when collecting and analysing data, and when reporting their findings). We also scored studies on a 32-item protocol that measured adherence to the preregistered plan in the study manuscript. We found that gambling preregistrations had low specificity levels on most RDoF. However, a comparison with a sample of cross-disciplinary preregistrations (N = 52; Bakker et al., 2020) indicated that gambling preregistrations scored higher on 12 (of 29) items. Thirteen (65%) of the 20 associated published articles or preprints deviated from the protocol without declaring as much (the mean number of undeclared deviations per article was 2.25, SD = 2.34). Overall, while we found improvements in specificity and adherence over time (2017-2020), our findings suggest the purported benefits of preregistration---including increasing transparency and reducing RDoF---are not fully achieved by current practices. Using our findings, we provide 10 practical recommendations that can be used to support and refine preregistration practices.
 
 **Note:** *This study is under review at Meta-Psychology and is due to be published soon, pending a successful reproducibility check.*
 
@@ -25,18 +27,14 @@ Study preregistration is one of several \"open science\" practices (e.g., open d
 
 **Full text**
 
--   Access the article [here](https://doi.org/10.31234/osf.io/nj4es){style="color: #289998"}
+-   Access the pre-printed article [here](https://doi.org/10.31234/osf.io/nj4es){style="color: #289998"}
 
 **APA citation**
 
--   Heirene, R., LaPlante, D., Louderback, E. R., Keen, B., Bakker, M., Serafimovska, A., & Gainsbury, S. M. (2021). Preregistration specificity & adherence: A review of preregistered gambling studies & cross-disciplinary comparison. https://doi.org/10.31234/osf.io/nj4es
+-   Heirene, R., LaPlante, D., Louderback, E. R., Keen, B., Bakker, M., Serafimovska, A., & Gainsbury, S. M. (2021). Preregistration specificity & adherence: A review of preregistered gambling studies & cross-disciplinary comparison. *PsyArXiv/Meta-Psychology.* https://doi.org/10.31234/osf.io/nj4es
 
 **Transparency**
 
-| Pre-registered | Open materials | Open code | Open data |
-|:--------------:|:--------------:|:---------:|:---------:|
-|       ✓        |       ✓        |     ✓     |     ✓     |
-
--   [Preregistration, data, & materials](https://osf.io/n8rw3/?view_only=)
-
--   [Analysis code](https://github.com/rheirene/Evaluating-gambling-research-preregistrations-Specificity-adherence-)
+|            Pre-registered             |            Open materials             |                                               Open code                                               |               Open data               |
+|:-------------:|:-------------:|:---------------------------:|:-------------:|
+| [✓](https://osf.io/n8rw3/?view_only=) | [✓](https://osf.io/n8rw3/?view_only=) | [✓](https://github.com/rheirene/Evaluating-gambling-research-preregistrations-Specificity-adherence-) | [✓](https://osf.io/n8rw3/?view_only=) |

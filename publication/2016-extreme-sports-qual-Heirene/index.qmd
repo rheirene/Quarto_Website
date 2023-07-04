@@ -36,4 +36,4 @@ draft: false
 
 | Pre-registered | Open materials | Open code | Open data |
 |:--------------:|:--------------:|:---------:|:---------:|
-|       ✘        |       ✘        |    NA     |     ✘     |
+|       ✘        |       ✘        |   *NA*    |     ✘     |

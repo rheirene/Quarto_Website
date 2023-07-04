@@ -1,15 +1,33 @@
 ---
-title: ""
+title: "The Paradox of the Frontal Lobe Paradox: A Scoping Review"
 description: ""
 author:
-- name: Rob Heirene
+- name: Simon Newstead
 - name: Gareth Roderique-Davies
+- name: Rob Heirene
 - name: Bev John
 categories: [Alcohol]
-date: 2019-11-01
+date: 2022-07-22
 image: featured.jpg
 draft: false
-
 ---
 
-### Abstract
+**Abstract**
+
+The "frontal lobe paradox" highlights a phenomenon in which a subset of patients who possess frontal lobe damage and exhibit marked impairments in everyday life are still able to able to verbally describe a logical course of action relating to a task and perform well in interview and test settings. Such cases pose a challenge with regard to the assessment of mental capacity within clinical settings. Recent position articles state that the frontal lobe paradox is a well-known phenomenon within the field of neuropsychology, anecdotal reports from clinicians in the UK suggest this is not the case. Consequently, we conducted a scoping review to examine the breadth and depth of literature relating to the frontal lobe paradox. Searches were conducted using electronic databases and search engines, which were supplemented with a snowball search of the references used within relevant literature. We identified and reviewed 28 documents specifically related to the frontal lobe paradox. Nearly 50% of all identified academic texts published since 2000 were position articles that cited a handful of case studies published between 1936 and 1986 as evidence for the phenomenon. We also observed instances of articles citing position articles as evidence of the frontal lobe paradox. Overall, our findings indicate a lack of readily accessible research specific to the frontal lobe paradox. In particular, there is a lack of contemporary research specific to the subject and an absence of clarification as to which syndromes and disorders are included within the term.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2022-frontal-lobe-paradox-Newstead-Heirene.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Newstead, S., Lewis, J., Roderique-Davies, G., Heirene, R. M. & John, B. (2022). The Paradox of the Frontal Lobe Paradox. A Scoping Review. *Frontiers in Psychiatry*, 13, 913230. https://doi.org/10.3389/fpsyt.2022.913230
+
+**Transparency**
+
+| **Pre-registered** | **Open materials** | **Open code** |                             **Open data**                             |
+|:------------------:|:------------------:|:-------------:|:---------------------------------------------------------------------:|
+|         ✘          |        *NA*        |     *NA*      | [✓](https://osf.io/djzut/?view_only=eeafa9f5ec3b4cbcb5efb1676613f72a) |

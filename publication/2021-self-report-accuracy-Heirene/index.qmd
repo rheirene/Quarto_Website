@@ -1,15 +1,38 @@
 ---
-title: ""
+title: "Accuracy of self-reported gambling frequency and outcomes: Comparisons with account data"
 description: ""
 author:
 - name: Rob Heirene
-- name: Gareth Roderique-Davies
-- name: Bev John
-categories: [Alcohol]
+- name: Amy Wang
+- name: Sally Gainsbury
+categories: [Gambling]
 date: 2019-11-01
 image: featured.jpg
 draft: false
-
 ---
 
-### Abstract
+**Abstract**
+
+***Objectives:*** The ability to accurately recall past gambling behavior and outcomes is essential for making informed decisions about future gambling. We aimed to determine whether online gambling customers can accurately recall their recent gambling outcomes and betting frequency. 
+
+***Method:*** An online survey was distributed to 40,000 customers of an Australian sports and race wagering website which asked participants to recall their past 30-day net outcome (i.e., total amount won or lost) and number of bets. We compared responses to these questions with participants' actual outcomes as provided by the online site. 
+
+***Results:*** Among the 514 participants who reported their net outcome, only 21 (4.09%) were accurate within a 10% margin of their actual outcome. Participants were most likely to underestimate their losses (*N* = 333, 64.79%). Lower actual net losses were associated with greater underestimation and overestimation of losses. Of the 652 participants who reported their gambling frequency, 48 (7.36%) were accurate within a 10% margin of their actual frequency. Most participants underestimated their number of bets (*N* = 454, 69.63%). Higher actual betting frequencies were associated with underestimating betting and lower actual frequencies with overestimating betting. 
+
+***Conclusions:*** The poor recall accuracy we observed suggests public health approaches to gambling harm minimization that assume people make informed decisions about their future bets based on past outcomes and available funds should be reconsidered. Findings also question the reliability of research outcomes predicated on self-reported gambling behavior. Research is needed to determine the best methods of increasing people's awareness of their actual expenditure and outcomes.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2021-replications-addiction-Heirene.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., Wang, A., & Gainsbury, S. M. (2022). Accuracy of self-reported gambling frequency and outcomes: Comparisons with account data. *Psychology of Addictive Behaviors,* 36 (4), 333--346. https://doi.org/10.1037/adb0000792
+
+**Transparency**
+
+| **Pre-registered** |    **Open materials**     |            **Open code**             |       **Open data**       |
+|:------------------:|:-------------------------:|:------------------------------------:|:-------------------------:|
+|        *NA*        | [✓](https://osf.io/m8rbd) | [✓](https://osf.io/8vjeh/wiki/home/) | [✓](https://osf.io/46uer) |

@@ -1,0 +1,30 @@
+---
+title: "A call for replications of addiction research: which studies should we replicate and what constitutes a ‘successful’ replication?"
+description: ""
+author:
+- name: Rob Heirene
+categories: [Scientific reform]
+date: 2022-06-01
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+Several prominent researchers in the problem gambling field have recently called for high-quality replications of existing gambling studies. This call should be extended to the entire field of addiction research: there is a need to focus on ensuring that the understanding of addiction and related phenomena gained through the extant literature is robust and replicable. This article discusses two important questions addictions researchers should consider before proceeding with replication studies: \[1\] which studies should we attempt to replicate? And: \[2\] how should we interpret the findings of a replication study in relation to the original study? In answering these questions, a focus is placed on experimental research, though the discussion may still serve as a useful introduction to the topic of replications for addictions researchers using any methodology.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2020-self-report-accuracy-Heirene.pdf){style="color: #289998"}
+
+**APA citation**
+
+Heirene, R. M. (2020). A call for replications of addiction research: which studies should we replicate and what constitutes a 'successful' replication? *Addiction Research & Theory*, 1--9. https://doi.org/10.1080/16066359.2020.1751130
+
+**Transparency**
+
+| **Pre-registered** |     **Open materials**     |       **Open code**        | **Open data** |
+|:------------------:|:--------------------------:|:--------------------------:|:-------------:|
+|        *NA*        | [✓](https://osf.io/5r7a9/) | [✓](https://osf.io/5r7a9/) |     *NA*      |

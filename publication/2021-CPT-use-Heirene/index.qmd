@@ -19,7 +19,7 @@ draft: false
 
 **Results:** Most (83%) customers did not use any CPTs, with low rates of use for deposit limits (15.8%), timeouts (0.55%--1.57%), and self-exclusion tools (0.16%--0.57%) observed. Requiring customers to set a deposit limit or opt-out of setting one led to substantial increases in limit setting. Many customers who used limits later changed them, typically by increasing or removing them. Non-CPT users and deposit limit users were similar in their demographic and gambling characteristics, while comparatively, timeout and/or self-exclusion users were younger and displayed more risky gambling behaviors (e.g., higher net loss and betting frequency).
 
-**Conclusions:** Our findings suggest that voluntary deposit limits have inherent limitations in addressing harmful behaviors if consumers can easily increase or remove limits. The study suggests that greater efforts are needed to encourage CPT use among a broad customer base, including default limits requiring opt-out, greater restrictions on increasing or remove limits, and more persuasive communication of the benefits of timeouts.
+**Conclusions:** Our findings suggest that voluntary deposit limits have inherent limitations in addressing harmful behaviors if consumers can easily increase or remove limits. The study suggests that greater efforts are needed to encourage CPT use among a broad customer base, including default limits requiring opt-out, greater restrictions on increasing or removing limits, and more persuasive communication of the benefits of timeouts.
 
 **Public Health Significance Statement**
 
@@ -37,8 +37,6 @@ This study of nearly 40,000 online gambling customers in Australia found that mo
 
 **Transparency**
 
-| Pre-registered | Open materials | Open code | Open data |
-|:--------------:|:--------------:|:---------:|:---------:|
-|       ✘        |       NA       |     ✓     |     ✘     |
-
--   [Analysis code](https://osf.io/23ejv/)
+| Pre-registered | Open materials |         Open code          | Open data |
+|:--------------:|:--------------:|:--------------------------:|:---------:|
+|       ✘        |       NA       | [✓](https://osf.io/23ejv/) |     ✘     |

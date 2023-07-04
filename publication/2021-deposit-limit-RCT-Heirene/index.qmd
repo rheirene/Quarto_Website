@@ -40,10 +40,6 @@ draft: false
 
 **Transparency**
 
-| Pre-registered | Open materials | Open code | Open data |
-|:--------------:|:--------------:|:---------:|:---------:|
-|       ✓        |       ✓        |     ✓     |     ✘     |
-
--   [Preregistration & materials](https://osf.io/6dpkw/)
-
--   [Analysis code](https://github.com/rheirene/Anlaysis-RCT-of-Messages-to-Promote-Deposit-Limits/tree/master)
+|       Pre-registered       |       Open materials       |                                            Open code                                            | Open data |
+|:---------------:|:--------------:|:---------------:|:----------------:|
+| [✓](https://osf.io/6dpkw/) | [✓](https://osf.io/6dpkw/) | [✓](https://github.com/rheirene/Anlaysis-RCT-of-Messages-to-Promote-Deposit-Limits/tree/master) |     ✘     |

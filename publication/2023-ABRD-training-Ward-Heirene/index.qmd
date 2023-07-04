@@ -1,15 +1,49 @@
 ---
-title: ""
+title: "Alcohol-related brain damage: A mixed method evaluation of an online awareness raising programmes for frontline care and support practitioners"
 description: ""
 author:
-- name: Rob Heirene
+- name: Rebecca Ward
 - name: Gareth Roderique-Davies
+- name: Harriet Hughes
+- name: Rob Heirene
+- name: Simon Newstead
 - name: Bev John
 categories: [Alcohol]
-date: 2019-11-01
+date: 2023-01-01
 image: featured.jpg
 draft: false
-
 ---
 
-### Abstract
+**Abstract**
+
+**Introduction**
+
+Alcohol‐related brain damage (ARBD) is an umbrella term referring to the neurocognitive impairments caused by excessive and prolonged alcohol use and the associated nutritional deficiencies. This study evaluated the outcomes of an online research‐informed training program for ARBD which aimed to improve client outcomes by promoting support staff's awareness and confidence in working with clients who may have (or who are at risk of developing) the condition.
+
+**Methods**
+
+Staff working within a large non‐governmental non‐profit housing organisation (*n* = 883) enrolled in the training program. Questionnaires were used pre‐ and post‐training to collect self‐reported awareness of ARBD and confidence in supporting individuals with the condition. Semi‐structured interviews were conducted with 27 staff members approximately 10 weeks post‐completion of the program. Interviews were audio‐recorded, transcribed verbatim and analysed by employing qualitative content analysis.
+
+**Results**
+
+Findings from the questionnaires indicated a significant increase in all measures after completing the training program. Three main themes were developed based on the interview data: changes to awareness and understanding; professional practice; and training‐specific characteristics. Participants reported changes in their ability to identify potential service users with ARBD and confidence in doing so.
+
+**Discussion and Conclusion**
+
+Our findings demonstrate that online training programs can be effective in improving support staff's ability to identify ARBD, potentially leading an increase in signposting service users to relevant services. The research‐informed nature of the training demonstrates that translating research findings directly to frontline workers can have a substantial impact and may improve outcomes for this client group.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2023-ARBD-training-Ward-Heirene.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Ward, R., Roderique-Davies, G., Hughes, H., Heirene, R. M., Newstead, S., & John, B. (2022). Alcohol-related brain damage: A mixed method evaluation of an online awareness raising programmes for frontline care and support practitioners. *Drug and Alcohol Review*. https://doi.org/10.1111/dar.13545
+
+**Transparency**
+
+| Pre-registered |       Open materials       | Open code |         Open data         |
+|:------------------------:|:-------------------:|:-----------------:|:---------------------:|
+|       ✘        | [✓](https://osf.io/h96kd/) |     ✘     | [✓](https://osf.io/umdrw) |

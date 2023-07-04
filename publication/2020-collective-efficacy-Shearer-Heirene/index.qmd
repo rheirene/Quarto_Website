@@ -3,8 +3,13 @@ title: "There is an “eye” in team: exploring the interplay between emotion, 
 description: ""
 author:
 - name: David Shearer
-- name: ...
+- name: Shona Leeworthy
+- name: Sarah Jones
+- name: Emma Rickards
+- name: Mason Blake
 - name: Rob Heirene
+- name: Mike Gross
+- name: Adam Bruton
 categories: [Other]
 date: 2020-03-06
 image: featured.jpg
@@ -13,7 +18,7 @@ draft: false
 
 **Abstract**
 
-Little is understood about the attentional mechanisms that lead to perceptions of collective efficacy. This paper presents two studies that address this lack of understanding. Study one examined participant's (*N* = 59) attentional processes relating to positive, neutral, or negative emotional facial photographs, when instructed to select their \"most confident\" or \"least confident\" team. Eye gaze metrics of first fixation duration (FFD), fixation duration (FD), and fixation count (FC) were measured alongside individual perceptions of collective efficacy and emotional valence of the teams selected. Participants had shorter FFD, longer FD, and more FC on positive faces when instructed to select their most confident team (*p* \< 0.05). Collective efficacy and emotional valence were significantly greater when participants selected their most confident team (*p* \< 0.05). Study two explored the influence of video content familiarity of team-based observation interventions on attentional processes and collective efficacy in interdependent team-sport athletes (*N* = 34). When participants were exposed to familiar (own team/sport) and unfamiliar (unknown team/sport) team-based performance video, eye tracking data revealed similar gaze behaviors for the two conditions in terms of areas of interest. However, collective efficacy increased most for the familiar condition. Study one results indicate that the emotional expressions of team members influence both where and for how long we look at potential team members, and that conspecifics' emotional expression impacts on our perceptions of collective efficacy. For Study two, given the apparent greater increase in collective efficacy for the familiar condition, the similar attentional processes evident for familiar and unfamiliar team footage suggests that differences in meaning of the observed content dictates collective efficacy perceptions. Across both studies, the findings indicate the importance of positive emotional vicarious experiences when using team-based observation interventions to improve collective efficacy in teams.
+Little is understood about the attentional mechanisms that lead to perceptions of collective efficacy. This paper presents two studies that address this lack of understanding. Study one examined participant's (*N* = 59) attentional processes relating to positive, neutral, or negative emotional facial photographs, when instructed to select their "most confident" or "least confident" team. Eye gaze metrics of first fixation duration (FFD), fixation duration (FD), and fixation count (FC) were measured alongside individual perceptions of collective efficacy and emotional valence of the teams selected. Participants had shorter FFD, longer FD, and more FC on positive faces when instructed to select their most confident team (*p* \< 0.05). Collective efficacy and emotional valence were significantly greater when participants selected their most confident team (*p* \< 0.05). Study two explored the influence of video content familiarity of team-based observation interventions on attentional processes and collective efficacy in interdependent team-sport athletes (*N* = 34). When participants were exposed to familiar (own team/sport) and unfamiliar (unknown team/sport) team-based performance video, eye tracking data revealed similar gaze behaviors for the two conditions in terms of areas of interest. However, collective efficacy increased most for the familiar condition. Study one results indicate that the emotional expressions of team members influence both where and for how long we look at potential team members, and that conspecifics' emotional expression impacts on our perceptions of collective efficacy. For Study two, given the apparent greater increase in collective efficacy for the familiar condition, the similar attentional processes evident for familiar and unfamiliar team footage suggests that differences in meaning of the observed content dictates collective efficacy perceptions. Across both studies, the findings indicate the importance of positive emotional vicarious experiences when using team-based observation interventions to improve collective efficacy in teams.
 
 ------------------------------------------------------------------------
 

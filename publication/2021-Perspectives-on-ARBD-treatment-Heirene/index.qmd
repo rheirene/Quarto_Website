@@ -31,4 +31,4 @@ We interviewed health and social care professionals (*n* = 17) supporting those 
 
 | Pre-registered | Open materials | Open code | Open data |
 |:--------------:|:--------------:|:---------:|:---------:|
-|       ✘        |       ✘        |     ✘     |     ✘     |
+|       ✘        |       ✘        |   *NA*    |     ✘     |

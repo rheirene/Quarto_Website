@@ -1,7 +1,7 @@
 ---
 title: "Does the Fast Alcohol Screening Test Accurately Distinguish Between Harmful and Severely Dependent Tiers of Alcohol Misuse?"
 description: ""
-authors:
+author:
 - name: Bev John
 - name: Simon Newstead
 - name: Rob Heirene
@@ -11,6 +11,7 @@ categories: [Alcohol]
 date: 2021-03-23
 image: featured.jpg
 draft: false
+year: 2022
 ---
 
 **Abstract**
@@ -29,7 +30,7 @@ draft: false
 
 -   Access a pdf copy of the article [here](John_et_al_(2021)_FAST_alcohol_dependence.pdf){style="color: #289998"}
 
-**APA citation**
+**APA citationA**
 
 -   John, B., Newstead, S., Heirene, R., Hodgson, R. & Roderique-Davies, G. (2021). Does the Fast Alcohol Screening Test Accurately Distinguish Between Harmful and Severely Dependent Tiers of Alcohol Misuse? *Alcohol and Alcoholism*, 56 (6), 737--745. https://doi.org/10.1093/alcalc/agab015
 

@@ -1,15 +1,44 @@
 ---
-title: ""
+title: "PRE-PRINT: The landscape of open science in behavioral addiction research: Current practices and future directions."
 description: ""
 author:
+- name: Charlotte Eben
+- name: Beáta Bőthe
+- name: Damien Brevers
+- name: Luke Clark
+- name: Joshua B. Grubbs
 - name: Rob Heirene
-- name: Gareth Roderique-Davies
-- name: Bev John
-categories: [Alcohol]
-date: 2019-11-01
+- name: Anja Kräplin
+- name: Karol Lewczuk
+- name: Lucas Palmer
+- name: José C. Perales
+- name: Jan Peters
+- name: Ruth van Holst
+- name: Joël Billieux
+categories: [Scientific reform]
+date: 2023-04-25
 image: featured.jpg
 draft: false
-
 ---
 
-### Abstract
+**Note:** This paper is under review at the *Journal of Behavioural Addictions*
+
+**Abstract**
+
+Open science refers to a set of practices that aim to make scientific research more transparent, accessible, and reproducible, including pre-registration of study protocols, sharing of data and materials, the use of transparent research methods, and open access publishing. In this opinion piece, we describe and evaluate the current state of open science practices in behavioral addiction research. We highlight the specific value of open science practices for the field; discuss recent field-specific meta-scientific reviews that show the adoption of such practices remains in its infancy; address the challenges to engaging with open science; and make recommendations for how researchers, journals, and scientific institutions can work to overcome these challenges and promote high-quality, transparently reported behavioral addiction research. By collaboratively promoting open science practices, the field can create a more sustainable and productive research environment that benefits both the scientific community and society as a whole.
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2023-open-science-landscape-Eben-Heirene.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Eben, C., Bőthe, B., Brevers, D., Clark, L., Grubbs, J. B., Heirene, R., ... Billieux, J. (2023, April 25). The landscape of open science in behavioral addiction research: Current practices and future directions. *PsyArXiv*. https://doi.org/10.31234/osf.io/xc7hr
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|      *NA*      |      *NA*      |   *NA*    |   *NA*    |

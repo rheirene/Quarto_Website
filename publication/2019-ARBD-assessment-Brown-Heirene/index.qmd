@@ -21,7 +21,7 @@ draft: false
 
 **Results:** High levels of screening accuracy were found for the total scores of both the ACE-III (*AUC* = .823, 95% CIs \[.714, .932\], *SE* = .056; optimal cut-off ≤86: sensitivity = 82%, specificity = 73%) and RBANS (*AUC* = .846, 95% CIs \[.746, .947\], *SE* = .052; optimal cut-off ≤83: sensitivity = 89%, specificity = 67%) at multiple cut-off points. Removing participants with a history of polysubstance from the samples (10 ALs and 1 ARBD) improved the diagnostic capabilities of the RBANS substantially (*AUC* = .915, 95% CIs \[.831, .999\], *SE* = .043; optimal cut-off ≤85: sensitivity = 98%, specificity = 80%), while only minor improvements to the ACE-III's accuracy were observed (*AUC* = .854, 95% CIs \[.744, .963\], *SE* = .056; optimal cut-off ≤88: sensitivity = 85%, specificity = 75%).
 
-**Conclusions:** Overall, both the ACE-III and RBANS are suitable tools for ARBD screening within an alcohol-dependent population, though the RBANS is the superior of the two. Clinicians using these tools for ARBD screening should be cautious of false-positive outcomes and should therefore combine them with other assessment methods (e.g., neuroimaging, clinical observations) and more detailed neuropsychological testing before reaching diagnostic decisions."
+**Conclusions:** Overall, both the ACE-III and RBANS are suitable tools for ARBD screening within an alcohol-dependent population, though the RBANS is the superior of the two. Clinicians using these tools for ARBD screening should be cautious of false-positive outcomes and should therefore combine them with other assessment methods (e.g., neuroimaging, clinical observations) and more detailed neuropsychological testing before reaching diagnostic decisions.
 
 ------------------------------------------------------------------------
 
@@ -35,8 +35,6 @@ draft: false
 
 **Transparency**
 
-| **Pre-registered** | **Open materials** | **Open code** | **Open data** |
-|:------------------:|:------------------:|:-------------:|:-------------:|
-|         ✘          |         NA         |       ✓       |       ✘       |
-
--   [Analysis code](https://osf.io/m69nj/)
+| **Pre-registered** | **Open materials** |       **Open code**       | **Open data** |
+|:------------------:|:------------------:|:-------------------------:|:-------------:|
+|         ✘          |        *NA*        | [✓](https://osf.io/gyjfa) |       ✘       |
