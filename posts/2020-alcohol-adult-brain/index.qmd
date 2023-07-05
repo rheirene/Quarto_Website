@@ -84,7 +84,13 @@ In contrast to low-moderate alcohol consumption, little-to-no controversy surrou
 
 Multiple studies have observed impaired cognitive performance and reduced brain region volumes in those with AUDs compared with demographically matched (i.e., same age, gender etc.) healthy individuals (Fama et al., 2017; Moritz et al., 2018; Pitel et al., 2007; Pitel et al., 2008; Rolland et al., 2019). Most of these studies are poor at reporting the levels of alcohol use in their participants, though one reports an average daily consumption of 20 standard drinks per day (range = 7-48) for an average of 20 years (range = 5-35; Pitel et al., 2007).
 
-There is evience that with abstinence, improvements are seen in cognition (Crowe et al., 2019; Stavro et al., 2013) and brain structure (Bartsch et al., 2007; Gazdzinski et al., 2010), implicating alcohol misuse as the *cause* of these impairments.
+There is evidence that with abstinence, improvements are seen in cognition (Crowe et al., 2019; Stavro et al., 2013) and brain structure (Bartsch et al., 2007; Gazdzinski et al., 2010), implicating alcohol misuse as the *cause* of these impairments.
+
+::: {.callout-tip appearance="minimal"}
+## Side note
+
+In writing this post I learnt of a new, ridiculous term for heavy drinking: "crapulence" (adjective form: crapulent). I'm sure it will come in useful...
+:::
 
 ### What about binge drinking?
 
@@ -168,10 +174,6 @@ Please get in touch on [Twitter](https://twitter.com/RHeirene) or email (link in
 -   Welch, K. A. (2017). Alcohol consumption and brain health. BMJ, 357.
 -   Wilson, K. (2013). Alcohol-related brain damage in the 21st century. Neuropsychiatry News: Royal College of Psychiatrists. Retrieved from [http://www.rcpsych.ac.uk/PDF/SoN_Summer_2013 Final Version.pdf](http://www.rcpsych.ac.uk/PDF/SoN_Summer_2013%20Final%20Version.pdf)
 :::
-
-### Side note
-
-In writing this post I learnt of a new, ridiculous term for heavy drinking: "crapulence" (adjective form: crapulent). I'm sure it will come in useful...
 
 ### Disclaimer
 
