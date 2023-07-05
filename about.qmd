@@ -360,4 +360,4 @@ I made this site and all the visualisations in it from scratch with [Quarto](htt
 
 I store the full texts for all of my **scientific publications [here](https://robheirene.netlify.app/publication.html)**.
 
-I recently started a little side project called **Sci-Software**--writing about all the great software and tools available to help students and academics with their careers.
+I recently started a little side project called **Sci-Software**--writing about all the great software and tools available to help students and academics with their careers \[*I'm currently migrating this from my old website -- check back soon!*\].
