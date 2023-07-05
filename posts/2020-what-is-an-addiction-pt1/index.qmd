@@ -395,3 +395,56 @@ Clearly, there is a fine line to be tread between recognising "new" behavioural 
 In [Part 2](https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt2) of this post, I cover Shaffer et al.'s (2004) Syndrome Model of Addiction, how addiction might be defined according to Network theory, and how people who actually experience addiction define it. I also chime in on the debate as to where we draw the line between high involvement with an activity and addiction, before coming to an eclectic definition of addiction based on the many different approaches covered.
 
 **Last updated:** 01/07/2023
+
+### References
+
+::: {.callout-tip collapse="true" appearance="simple" icon="false"}
+## Expand to see the full reference list for part 1 & 2
+
+-   Aarseth, E., Bean, A. M., Boonen, H., Colder Carras, M., Coulson, M., Das, D., Deleuze, J., Dunkels, E., Edman, J., Ferguson, C. J., Haagsma, M. C., Helmersson Bergmark, K., Hussain, Z., Jansz, J., Kardefelt-Winther, D., Kutner, L., Markey, P., Nielsen, R. K. L., Prause, N., ... Van Rooij, A. J. (2017). Scholars\' open debate paper on the World Health Organization ICD-11 Gaming Disorder proposal. *Journal of Behavioral Addictions*, *6*(3), 267--270. PubMed. <https://doi.org/10.1556/2006.5.2016.088>
+
+-   Bean, A. M., Nielsen, R. K. L., Van Rooij, A. J., & Ferguson, C. J. (2017). Video game addiction: The push to pathologize video games. *Professional Psychology: Research and Practice*, *48*(5), 378--389. <https://doi.org/10.1037/pro0000150>
+
+-   Billieux, J., Flayelle, M., Rumpf, H.-J., & Stein, D. J. (2019). High involvement versus pathological involvement in video games: A crucial distinction for ensuring the validity and utility of Gaming Disorder. *Current Addiction Reports*, *6*(3), 323--330. <https://doi.org/10.1007/s40429-019-00259-x>
+
+-   Billieux, J., Schimmenti, A., Khazaal, Y., Maurage, P., & Heeren, A. (2015). Are we overpathologizing everyday life? A tenable blueprint for behavioral addiction research. *Journal of Behavioral Addictions*, *4*(3), 119--123. <https://doi.org/10.1556/2006.4.2015.009>
+
+-   Borsboom, D. (2017). A network theory of mental disorders. *World Psychiatry*, *16*(1), 5--13. <https://doi.org/10.1002/wps.20375>
+
+-   Brand, M., Rumpf, H., Demetrovics, Z., Müller, A., Stark, R., King, D. L., Goudriaan, A. E., Mann, K., Trotzke, P., Fineberg, N. A., Chamberlain, S. R., Kraus, S. W., Wegmann, E., Billieux, J., & Potenza, M. N. (2022). Which conditions should be considered as disorders in the International Classification of Diseases (ICD-11) designation of \"other specified disorders due to addictive behaviors\"?, *Journal of Behavioral Addictions*, *11*(2), 150-159. doi: <https://doi.org/10.1556/2006.2020.00035>
+
+-   Fried, E. I., van Borkulo, C. D., Cramer, A. O. J., Boschloo, L., Schoevers, R. A., & Borsboom, D. (2017). Mental disorders as networks of problems: A review of recent insights. *Social Psychiatry and Psychiatric Epidemiology*, *52*(1), 1--10. PubMed. <https://doi.org/10.1007/s00127-016-1319-z>
+
+-   Grant, J. E., Potenza, M. N., Weinstein, A., & Gorelick, D. A. (2010). Introduction to Behavioral Addictions. *The American Journal of Drug and Alcohol Abuse*, *36*(5), 233--241. <https://doi.org/10.3109/00952990.2010.491884>
+
+-   Griffiths, M. (2005). A \'components\' model of addiction within a biopsychosocial framework. *Journal of Substance Use*, *10*(4), 191--197. <https://doi.org/10.1080/14659890500114359>
+
+-   Griffiths, M. D. (2017). Behavioural addiction and substance addiction should be defined by their similarities not their dissimilarities. *Addiction*, *112*(10), 1718--1720. <https://doi.org/10.1111/add.13828>
+
+-   Griffiths, M. D. (2019). The evolution of the \'components model of addiction\' and the need for a confirmatory approach in conceptualizing behavioral addictions. *Dusunen Adam The Journal of Psychiatry and Neurological Sciences*, *32*, 179--184. <https://doi.org/10.14744/DAJPNS.2019.00027>
+
+-   Hammer, R. R., Dingel, M. J., Ostergren, J. E., Nowakowski, K. E., & Koenig, B. A. (2012). The experience of addiction as told by the addicted: incorporating biological understandings into self-story. *Culture, medicine and psychiatry*, *36*(4), 712--734. <https://doi.org/10.1007/s11013-012-9283-x>
+
+-   Leeman, R. F., & Potenza, M. N. (2013). A Targeted Review of the Neurobiology and Genetics of Behavioural Addictions: An Emerging Area of Research. *The Canadian Journal of Psychiatry*, *58*(5), 260--273. <https://doi.org/10.1177/070674371305800503>
+
+-   Lorains, F. K., Cowlishaw, S., & Thomas, S. A. (2011). Prevalence of comorbid disorders in problem and pathological gambling: Systematic review and meta-analysis of population surveys. *Addiction*, *106*(3), 490--498. <https://doi.org/10.1111/j.1360-0443.2010.03300.x>
+
+-   Perales, J. C., King, D. L., Navas, J. F., Schimmenti, A., Sescousse, G., Starcevic, V., van Holst, R. J., & Billieux, J. (2020). Learning to lose control: A process-based account of behavioral addiction. *Neuroscience & Biobehavioral Reviews*, *108*, 771--780. <https://doi.org/10.1016/j.neubiorev.2019.12.025>
+
+-   Rhemtulla, M., Fried, E. I., Aggen, S. H., Tuerlinckx, F., Kendler, K. S., & Borsboom, D. (2016). Network analysis of substance abuse and dependence symptoms. *Drug and Alcohol Dependence*, *161*, 230--237. PubMed. <https://doi.org/10.1016/j.drugalcdep.2016.02.005>
+
+-   Shaffer, H. J., LaPlante, D. A., LaBrie, R. A., Kidman, R. C., Donato, A. N., & Stanton, M. V. (2004). Toward a syndrome model of addiction: Multiple expressions, common etiology. *Harvard Review of Psychiatry*, *12*(6), 367--374. <https://doi.org/10.1080/10673220490905705>
+
+-   Sussman, S., & Sussman, A. N. (2011). Considering the definition of addiction. *International Journal of Environmental Research and Public Health*, *8*(10), 4025--4038. PubMed. <https://doi.org/10.3390/ijerph8104025>
+
+-   Van Bockstaele, E. J. (2012). The neurobiology of addiction-like behaviors. *ILAR Journal*, *53*(1), 1--3. PubMed. <https://doi.org/10.1093/ilar.53.1.1a>
+
+-   van Rooij, A. J., Ferguson, C. J., Colder Carras, M., Kardefelt-Winther, D., Shi, J., Aarseth, E., Bean, A. M., Bergmark, K. H., Brus, A., Coulson, M., Deleuze, J., Dullur, P., Dunkels, E., Edman, J., Elson, M., Etchells, P. J., Fiskaali, A., Granic, I., Jansz, J., ... Przybylski, A. K. (2018). A weak scientific basis for gaming disorder: Let us err on the side of caution. *Journal of Behavioral Addictions*, *7*(1), 1--9. <https://doi.org/10.1556/2006.7.2018.19>
+
+-   Walters, G. D., & Gilbert, A. A. (2000). Defining Addiction: Contrasting Views of Clients and Experts. *Addiction Research*, *8*(3), 211--220. <https://doi.org/10.3109/16066350009004421>
+
+-   Yücel, M., Oldenhof, E., Ahmed, S. H., Belin, D., Billieux, J., Bowden-Jones, H., Carter, A., Chamberlain, S. R., Clark, L., Connor, J., Daglish, M., Dom, G., Dannon, P., Duka, T., Fernandez-Serrano, M. J., Field, M., Franken, I., Goldstein, R. Z., Gonzalez, R., ... Verdejo-Garcia, A. (2019). A transdiagnostic dimensional approach towards a neuropsychological assessment for addiction: An international Delphi consensus study. *Addiction (Abingdon, England)*, *114*(6), 1095--1109. PubMed. <https://doi.org/10.1111/add.14424>
+
+-   Zambon, A., Airoldi, C., Corrao, G., Cibin, M., Agostini, D., Aliotta, F., Movalli, M., Biondini, F., Bizzi, P., Zucchi, G., Cerizza, G., Dattola, A., Marmora, A., Vittadini, G., Girardi, F., Liberto, L., Hinnenthal, I. M., Sodano, A. J., Vizzuso, P., ... Giorgi, I. (2017). Prevalence of Polysubstance Abuse and Dual Diagnosis in Patients Admitted to Alcohol Rehabilitation Units for Alcohol-Related Problems in Italy: Changes in 15 Years. *Alcohol and Alcoholism*, *52*(6), 699--705. <https://doi.org/10.1093/alcalc/agx061>
+:::
+
