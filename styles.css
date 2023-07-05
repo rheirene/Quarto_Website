@@ -84,6 +84,14 @@ Nav bar title customisation
   color: #9BA7B0;
 }
 
+.navbar-title{
+  transition: color 0.3s ease;
+}
+
+.navbar-title:hover {
+  color: #289998;
+}
+
 
 /* 
 Nav bar menu item customisation
@@ -111,6 +119,11 @@ Nav bar menu item customisation
   width: 100%;
 }
 
+.menu-text:hover {
+  color: #289998;
+}
+
+
 /* 
 Set font for any element
 */  
@@ -125,3 +138,128 @@ Set font for any element
   font-family: 'Poppins', sans-serif;
 }
 */  
+/* 
+Hover customisation for icons
+*/  
+.bi.bi-twitter{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-twitter:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bi.bi-linkedin{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-linkedin:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bi.bi-github{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-github:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.bi.bi-envelope{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-envelope:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.bi.bi-mortarboard-fill{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-mortarboard-fill:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.bi.bi-door-open{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-door-open:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+/*
+ANIMATE SOME TEXT ON HOVER
+.menu-text:hover {
+  color: #289998;
+  animation: wriggle 0.5s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(0.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+*/
