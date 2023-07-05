@@ -21,7 +21,7 @@ Here I provide a brief overview of the evidence in this area as a starting point
 
 ### Low to moderate alcohol consumption
 
-In the last 12 years (from 2020), six large-scale systematic reviews and meta-analyses (Anstey, et al., 2009; Brennan et al., 2020; Neafsey & Collins, 2011; Panza et al., 2012; Peters et al., 2008; Rehm, et al., 2019) have combined the findings of studies investigating the association between alcohol consumption and adverse neurocognitive outcomes (e.g., neurodegenerative disorders like dementia) while accounting for other variables associated with drinking level (e.g., educational attainment). While each review used slightly different study inclusion criteria and key outcomes of interest, the overall message returned by all six is clear: **the relationship between consumption and brain health appears to resemble an inverted J shape** (see figure below.
+In the last 12 years (from 2020), six large-scale systematic reviews and meta-analyses (Anstey, et al., 2009; Brennan et al., 2020; Neafsey & Collins, 2011; Panza et al., 2012; Peters et al., 2008; Rehm, et al., 2019) have combined the findings of studies investigating the association between alcohol consumption and adverse neurocognitive outcomes (e.g., neurodegenerative disorders like dementia) while accounting for other variables associated with drinking level (e.g., educational attainment). While each review used slightly different study inclusion criteria and key outcomes of interest, the overall message returned by all six is clear: **the relationship between consumption and brain health appears to resemble an inverted J shape** (see figure below).
 
 ![What evidence tells us about the typical relationship between consumption and brain health. Note: this is a simplification!](graph.png){fig-align="center" width="350"}
 
@@ -72,7 +72,9 @@ It's also important to consider that the studies reviewed imply only an *associa
 
 [^6]: Welch argued in 2017 that no single convincing neuroprotective mechanism underlying moderate alcohol consumption has been elucidated (Welch, 2017). Although, it has been hypothesised that the positive effects on cardiovascular health may be one way through which moderate consumption may reduce the risk of cognitive decline (Anstey et al., 2009). More recently, a study **of mice** found that low levels of alcohol consumption improved function of the glymphatic system, which is responsible for clearing waste products (including potentially toxic proteins that have been implicated in the aetiology of neurodegenerative disorders) from intercellular space in the central nervous system (Lundgaard et al., 2018). The authors found a clear inverted J relationship between consumption and glymphatic system function.
 
-What's more, not all studies find positive associations between low levels of drinking and brain health. A recent investigation that accounted for multiple confounding variables (e.g., intelligence, socioeconomic status) found a dose-dependent relationship between low-moderate consumption and neuroimaging evidence of brain damage (Topiwala et al., 2017; see also: Hassing, 2018). A recent review also found increased levels of iron deposits in the brains of people who drink just seven or more units of alcohol a week (high levels of iron in the brain are linked to neurodegeneration, as well as Alzheimer's and Parkinson's disease; Topiwala et al., 2022).
+What's more, not all studies find positive associations between low levels of drinking and brain health. A 2017 study that accounted for multiple confounding variables (e.g., intelligence, socioeconomic status) found a dose-dependent relationship between low-moderate consumption and neuroimaging evidence of brain damage (Topiwala et al., 2017; see also: Hassing, 2018).
+
+\[2022 update\]: A recent review also found increased levels of iron deposits in the brains of people who drink just seven or more units of alcohol a week (high levels of iron in the brain are linked to neurodegeneration, as well as Alzheimer's and Parkinson's disease; Topiwala et al., 2022).
 
 While the functional implications of the observed brain changes in both studies are not fully known (i.e., we don't know what they actually mean for our memory, attention etc.), the findings question the purported 'neuroprotective' effect of moderate alcohol consumption proposed by some (Neafsey & Collins, 2011).
 
@@ -114,7 +116,7 @@ A boring, trite conclusion, I know, but it's the truth. Sorry.
 
 Please get in touch on [Twitter](https://twitter.com/RHeirene) or email (link in top menu) with any comments or questions regarding this post. This is a controversial topic and I welcome any feedback.
 
-**Last updated:** 04/07/2023
+**Last updated:** 05/07/2023
 
 ### References
 
