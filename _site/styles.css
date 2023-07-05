@@ -35,3 +35,93 @@ container {
     width: 100%;
   }
 } 
+
+/* 
+Fade in text. Example:
+::: fade-in
+testy
+:::
+*/  
+
+.fade-in {
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* 
+Nav bar title customisation
+*/  
+
+.navbar-title {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.navbar-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #289998;
+  transition: all 0.5s;
+  transform: translateX(-50%);
+}
+
+.navbar-title:hover::after {
+  width: 100%;
+}
+
+.navbar-title {
+  font-weight: bold;
+  color: #9BA7B0;
+}
+
+
+/* 
+Nav bar menu item customisation
+*/  
+
+.menu-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.menu-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #289998;
+  transition: all 0.5s;
+  transform: translateX(-50%);
+}
+
+.menu-text:hover::after {
+  width: 100%;
+}
+
+/* 
+Set font for any element
+*/  
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-regular.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+/* EXAMPLE:
+.menu-text {
+  font-family: 'Poppins', sans-serif;
+}
+*/  

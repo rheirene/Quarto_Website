@@ -9,8 +9,6 @@ website:
     pinned: true
     background: dark
     left:
-      - href: index.qmd
-        text: Home
       - about.qmd # About page
       - posts.qmd # Blog
       - publication.qmd # Pub list

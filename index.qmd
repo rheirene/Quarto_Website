@@ -5,18 +5,14 @@ format:
   html:
     page-layout: full
     toc: true #
-
 ---
 
 ![](headshot.png){fig-align="center"}
 
-
-::: {.text .padding}
+::: {.text .padding .fade-in}
 Hi 👋 I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
 
 You can find out more about me [here](https://robheirene.netlify.app/about.html).
 :::
------------
 
-
-
+------
