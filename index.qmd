@@ -61,7 +61,7 @@ showtext_auto()
 ```{r echo =FALSE,warning=FALSE, message=FALSE}
 # Load manually input data:
 gam_prevention_data<- read.csv("files/gamb_prevention_data.csv") %>%
-  select(Layer:colours)
+  select(Layer:Description)
 
 # Make sunburst chart:
 gam_prevention_sunburst <- plot_ly(gam_prevention_data,
