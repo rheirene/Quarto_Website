@@ -2,7 +2,6 @@
 title: ""
 format:
   html:
-    page-layout: full
     toc: false
 ---
 
@@ -22,8 +21,8 @@ You can find out more about me [here](https://robheirene.netlify.app/about.html)
 
 [The state of the open science in the behavioural addictions field]{style="color: #289998; font-weight: bold;"}
 
-I recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research led by [Dr Charlotte Eben](https://twitter.com/CharlotteEben) who is doing some great work in this space! Find out more [here](https://robheirene.netlify.app/publication/2023-open-science-landscape-eben-heirene/).
-
+I recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research—find out more [here](https://robheirene.netlify.app/publication/2023-open-science-landscape-eben-heirene/). The paper was
+led by [Dr Charlotte Eben](https://twitter.com/CharlotteEben), who is doing some great work in this space! 
 
 ## What I'm working on
 
@@ -61,7 +60,7 @@ showtext_auto()
 
 ```{r echo =FALSE,warning=FALSE, message=FALSE}
 # Load manually input data:
-gam_prevention_data<- read.csv("_files/gamb_prevention_data.csv") %>%
+gam_prevention_data<- read.csv("files/gamb_prevention_data.csv") %>%
   select(Layer:colours)
 
 # Make sunburst chart:
