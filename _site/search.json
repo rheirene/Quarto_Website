@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Rob Heirene",
     "section": "",
-    "text": "Hi 👋 I’m a Lecturer in Psychology and Addiction Researcher at the University of Plymouth, UK.\nYou can find out more about me here."
+    "text": "Hi 👋 I’m a Lecturer in Psychology and Addiction Researcher at the University of Plymouth, UK.\nYou can find out more about me here.\n\n\n\nA### Latest research findings\n\nThe state of the open science in the behavioural addictions field\nI recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research led by Dr Charlotte Eben who is doing some great work in this space!\nFind out more here.\n\n\nWhat I’m working on\nI’m currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the plotly R package. I’m marrying these interests by making the below chart of prevention strategies for problem gambling.\nClick on any of the bars to see more:\n\nIt’s very much a work in progress (I still need to add many strategies and labels for those I have), but you can find out more about my plans for this here."
   },
   {
     "objectID": "posts/2020-alcohol-adult-brain/index.html",
@@ -229,5 +229,19 @@
     "title": "Publications",
     "section": "",
     "text": "Order By\n       Default\n         \n          Date - Oldest\n        \n         \n          Date - Newest\n        \n         \n          Title\n        \n     \n  \n    \n      \n      \n    \n\n\n\n\n\n\nDate\n\n\nTitle\n\n\n\n\n\n\nJun 1, 2023\n\n\nPreregistration specificity & adherence: A review of preregistered gambling studies & cross-disciplinary comparison\n\n\n\n\nApr 25, 2023\n\n\nPRE-PRINT: The landscape of open science in behavioral addiction research: Current practices and future directions.\n\n\n\n\nJan 1, 2023\n\n\nAlcohol-related brain damage: A mixed method evaluation of an online awareness raising programmes for frontline care and support practitioners\n\n\n\n\nJul 22, 2022\n\n\nThe Paradox of the Frontal Lobe Paradox: A Scoping Review\n\n\n\n\nJun 9, 2022\n\n\nOpen Science Practices in Gambling Research Publications (2016–2019): A Scoping Review\n\n\n\n\nJun 21, 2021\n\n\nPatterns and Correlates of Consumer Protection Tool Use by Australian Online Gambling Customers\n\n\n\n\nMar 23, 2021\n\n\nDoes the Fast Alcohol Screening Test Accurately Distinguish Between Harmful and Severely Dependent Tiers of Alcohol Misuse?\n\n\n\n\nMar 21, 2021\n\n\nEncouraging and evaluating limit-setting among on-line gamblers: a naturalistic randomized controlled trial\n\n\n\n\nMar 17, 2021\n\n\nProfessional Perspectives on Supporting Those with Alcohol-Related Neurocognitive Disorders: Challenges & Effective Treatment\n\n\n\n\nOct 9, 2020\n\n\nAlcohol-Related Neurocognitive Disorders:A Naturalistic Study of Nosology and Estimation of Prevalence in South Wales, United Kingdom\n\n\n\n\nMay 1, 2020\n\n\nA call for replications of addiction research: which studies should we replicate and what constitutes a ‘successful’ replication?\n\n\n\n\nMar 6, 2020\n\n\nThere is an “eye” in team: exploring the interplay between emotion, gaze behavior, and collective efficacy in team sport settings\n\n\n\n\nNov 29, 2019\n\n\nApplicability of the ACE-III and RBANS cognitive tests for the detection of Alcohol-Related Brain Damage\n\n\n\n\nNov 1, 2019\n\n\nAccuracy of self-reported gambling frequency and outcomes: Comparisons with account data\n\n\n\n\nDec 18, 2018\n\n\nIdentification and evaluation of neuropsychological tools used in the assessment of alcohol-related cognitive impairment: A systematic review\n\n\n\n\nFeb 22, 2018\n\n\nDevelopment and Initial Validation of a Rock Climbing Craving Questionnaire (RCCQ)\n\n\n\n\nDec 1, 2016\n\n\nResponse to “Nature fix: Addiction to outdoor activities\n\n\n\n\nSep 14, 2016\n\n\nIdentification and evaluation of neuropsychological tools used in the assessment of alcohol-related brain damage: A systematic review protocol\n\n\n\n\nJun 1, 2016\n\n\nAddiction in Extreme Sports: An Exploration of Withdrawal States in Rock Climbers\n\n\n\n\n\n\nNo matching items"
+  },
+  {
+    "objectID": "index.html#latest-research-findings",
+    "href": "index.html#latest-research-findings",
+    "title": "Rob Heirene",
+    "section": "Latest research findings",
+    "text": "Latest research findings\nThe state of the open science in the behavioural addictions field\nI recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research led by Dr Charlotte Eben who is doing some great work in this space! Find out more here."
+  },
+  {
+    "objectID": "index.html#what-im-working-on",
+    "href": "index.html#what-im-working-on",
+    "title": "Rob Heirene",
+    "section": "What I’m working on",
+    "text": "What I’m working on\nPondering + plotting\nI’m currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the plotly R package. I’m marrying these interests by making the below chart of prevention strategies for problem gambling.\nClick on any of the bars to see more (best viewed when not on mobile):\n\nIt’s very much a work in progress (I still need to add many strategies and labels for those I have), but you can find out more about my plans for this here."
   }
 ]

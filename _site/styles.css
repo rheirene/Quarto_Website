@@ -18,6 +18,10 @@ h3 {
   text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
 }
 
+h4 {
+  color: #289998; /* Set color for h3 headers */
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+}
   /*   double column format that collapses into one on smaller screens/mobiles */
 
 container {
@@ -37,6 +41,13 @@ container {
 } 
 
 /* 
+Indent text
+*/  
+.indent {
+  text-indent: 10px;
+}
+
+/* 
 Fade in text. Example:
 ::: fade-in
 testy
@@ -52,6 +63,25 @@ testy
   100% { opacity: 1; }
 }
 
+/* 
+Fade in html. Example:
+<div id="myObject" class="fade-inhtml">
+  <iframe src="fig.html" width="100%" height="800" style="border:none;"></iframe>
+</div>
+*/  
+.fade-inhtml {
+  opacity: 0;
+  animation: fadeInAnimation 1s ease-in forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
 
 /* 
 Nav bar title customisation
@@ -80,7 +110,6 @@ Nav bar title customisation
 }
 
 .navbar-title {
-  font-weight: bold;
   color: #9BA7B0;
 }
 
@@ -93,10 +122,23 @@ Nav bar title customisation
 }
 
 
+@font-face {
+  font-family: 'intro-rust';
+  src: url('fonts/IntroRustG-Base2Line.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+
+.navbar-title {
+  font-family: 'intro-rust', sans-serif;
+}
+
+
+
 /* 
 Nav bar menu item customisation
 */  
-
+/*
 .menu-text {
   position: relative;
   display: inline-block;
@@ -118,12 +160,15 @@ Nav bar menu item customisation
 .menu-text:hover::after {
   width: 100%;
 }
-
+*/
 .menu-text:hover {
   color: #289998;
 }
 
-
+.menu-text {
+  font-weight: bold;
+  color: #9BA7B0;
+}
 /* 
 Set font for any element
 */  
@@ -138,6 +183,7 @@ Set font for any element
   font-family: 'Poppins', sans-serif;
 }
 */  
+
 /* 
 Hover customisation for icons
 */  
@@ -197,7 +243,7 @@ Hover customisation for icons
   transition: color 0.3s ease;
 }
 
-.bi.bi-envelope:hover {
+.bi.bi-envelope-fill:hover {
   color: #289998;
   animation: wriggle 1s ease-in-out infinite;
 }

@@ -7,13 +7,13 @@ website:
   twitter-card: true
   navbar:
     pinned: true
-    background: dark
+    # background: dark
     left:
       - about.qmd # About page
       - posts.qmd # Blog
       - publication.qmd # Pub list
     tools:
-      - icon: envelope
+      - icon: envelope-fill
         aria-label: email
         href: "mailto:robheirene@gmail.com"
       - icon: github

@@ -21,10 +21,10 @@ library(gtExtras)
 library(reactable)
 
 
-table_images<- c(".files/one.png",
-            ".files/two.png",
-            ".files/three.png",
-            ".files/four.png")
+table_images<- c("_files/one.png",
+            "_files/two.png",
+            "_files/three.png",
+            "_files/four.png")
 
 
 career_data<- data.frame(Map_position = c(1,2,3,4),
