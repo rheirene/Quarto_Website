@@ -21,6 +21,7 @@ Layer,IDs,Label,Parents,Explanation,2nd layer,Description,,I,J,K,L,M,N,O,P,Q,R,S
 4,Time-outs,Time-outs,Account deactivation,Map 4th layer to 3rd,CPTs,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 4,Self-exclusion,Self-exclusion,Account deactivation,Map 4th layer to 3rd,CPTs,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 4,Problem gambling self-assessment,Problem<br>gambling self-<br>assessment,Self-assessments,Map 4th layer to 3rd,CPTs,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
+4,Global deposit limit,Global<br>deposit<br>limit,Financial restrictions,Map 4th layer to 3rd,Restrictions,"A site-level restriction on<br>how much money a consumer<br>can deposit into their account<br>over a specified period of<br>time (e.g., a month)",,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 4,Limiting max stake,Maximum bet<br>amounts,Financial restrictions,Map 4th layer to 3rd,Restrictions,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 4,Banning use of credit cards,Banning<br>credit card<br>payments,Financial restrictions,Map 4th layer to 3rd,Restrictions,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
 4,Affordability checks,Affordability<br>checks,Financial restrictions,Map 4th layer to 3rd,Restrictions,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,,
