@@ -16,7 +16,7 @@ You can find out more about me [here](https://robheirene.netlify.app/about.html)
 ------------------------------------------------------------------------
 
 <br>
-
+::: .fade-in
 ## Latest research findings
 
 [The state of the open science in the behavioural addictions field]{style="color: #289998; font-weight: bold;"}
@@ -31,7 +31,7 @@ led by [Dr Charlotte Eben](https://twitter.com/CharlotteEben), who is doing some
 I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below [chart of prevention strategies for problem gambling]{style="color:#289998;"}.
 
 Click on any of the bars to see more (best viewed when **not** on mobile):
-
+:::
 ```{r echo =FALSE, results=FALSE, warning=FALSE, message=FALSE}
 # Install and load the groundhog package to ensure consistency of the package versions used here:
 # install.packages("groundhog") # Install
@@ -89,6 +89,8 @@ saveWidget(gam_prevention_sunburst, 'fig.html')
 ```
 
 ```{=html}
-<iframe src="fig.html" class="fade-inhtmlAll" width="100%" height="750" style="border:none;"></iframe>
+<iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
 ```
+::: .fade-in
 It's very much a work in progress (*I still need to add many strategies and labels for those I have*), but you can find out more about my plans for this here.
+:::

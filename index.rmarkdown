@@ -1,0 +1,99 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+---
+
+
+![](headshot.svg){fig-align="center" width="225"}
+
+::: {.text .padding .fade-in}
+Hi 👋 I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
+
+You can find out more about me [here](https://robheirene.netlify.app/about.html).
+:::
+
+------------------------------------------------------------------------
+
+<br>
+::: .fade-in
+## Latest research findings
+
+[The state of the open science in the behavioural addictions field]{style="color: #289998; font-weight: bold;"}
+
+I recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research—find out more [here](https://robheirene.netlify.app/publication/2023-open-science-landscape-eben-heirene/). The paper was
+led by [Dr Charlotte Eben](https://twitter.com/CharlotteEben), who is doing some great work in this space! 
+
+## What I'm working on
+
+[Pondering + plotting]{style="color: #289998; font-weight: bold;"}
+
+I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below [chart of prevention strategies for problem gambling]{style="color:#289998;"}.
+
+Click on any of the bars to see more (best viewed when **not** on mobile):
+:::
+
+```{r echo =FALSE, results=FALSE, warning=FALSE, message=FALSE}
+# Install and load the groundhog package to ensure consistency of the package versions used here:
+# install.packages("groundhog") # Install
+
+library(groundhog) # Load
+
+# List desired packages:
+packages <- c('tidyverse', # Clean, organise, and visualise data
+              'formattable', #  Add visualisations to tables
+              'gt', # Alternative table options
+              'gtExtras', # Add colours to gt tables
+              'gtsummary', # Create summary tables
+              'plotly', # Add interactive elements to figures
+              'sysfonts', # Special fonts for figures
+              'showtext', # Special fonts for figures
+              'htmlwidgets' # Make plotly plots HTML format for rendering in Quarto
+              )
+
+# Load desired package with versions specific to project start date:
+groundhog.library(packages, "2023-06-05") # Set Slightly earlier than start date as some of the plotly dependency packages wouldn't load properly with date as 07/07/2023
+
+# Load new font for figures/graphs
+font_add_google("Poppins")
+showtext_auto()
+```
+
+```{r echo =FALSE,warning=FALSE, message=FALSE}
+# Load manually input data:
+gam_prevention_data<- read.csv("files/gamb_prevention_data.csv") %>%
+  select(Layer:Description)
+
+# Make sunburst chart:
+gam_prevention_sunburst <- plot_ly(gam_prevention_data,
+                                   ids = ~IDs,
+                                   labels = ~Label,
+                                   parents = ~Parents,
+                                   hoverinfo = "text",  # Needed for below argument to work
+                                   hovertext = ~Description,
+                                   type = 'sunburst',
+                                   maxdepth = 3,
+                                   insidetextorientation = 'radial',
+                                   marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color
+                                   sort = FALSE) %>%
+   plotly::layout(colorway = c("#289998", "#287699", "#A87998", "#A6A6A6", "#FFF7E7", "#998F28", "#62A899", "#986289", "#289970"),
+         font = list(
+           # family = "Poppins",
+                     color = "#FFF7E7"), # Set main font so the central layer text can be seen
+         paper_bgcolor = '#002B36', # background consistent with site
+         plot_bgcolor = '#002B36',
+        hoverlabel = list(font = list(size = 12)))  # Increase the font size for hover text)
+
+# Save plot as a HTML file (it doesn't render well with quarto otherwise):
+saveWidget(gam_prevention_sunburst, 'fig.html')
+
+```
+
+```{=html}
+<iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
+```
+
+::: .fade-in
+It's very much a work in progress (*I still need to add many strategies and labels for those I have*), but you can find out more about my plans for this here.
+:::

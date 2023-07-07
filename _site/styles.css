@@ -63,6 +63,7 @@ testy
   100% { opacity: 1; }
 }
 
+
 /* 
 Fade in html. Example:
 <div id="myObject" class="fade-inhtml">
@@ -71,7 +72,7 @@ Fade in html. Example:
 */  
 .fade-inhtml {
   opacity: 0;
-  animation: fadeInAnimation 1s ease-in forwards;
+  animation: fadeInAnimation 3s ease-in forwards;
 }
 
 @keyframes fadeInAnimation {

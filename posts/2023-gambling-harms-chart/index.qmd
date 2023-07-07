@@ -1,0 +1,12 @@
+---
+title: "How can we prevent gambling harms? "
+description: "An interactive chart of strategies to prevent gambling harms"
+author:
+  - name: Rob Heirene
+categories: [Gambling] 
+date: 2023-07-07
+citation: 
+  url: https://robheirene.netlify.app/posts/2023-gambling-harms-chart
+
+draft: false # setting this to `true` will prevent your post from appearing on your listing page until you're ready!
+---
