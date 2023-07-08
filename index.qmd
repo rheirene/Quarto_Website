@@ -58,10 +58,10 @@ showtext_auto()
 ```{r echo =FALSE,warning=FALSE, message=FALSE}
 # Load manually input data:
 gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>%
-  select(Layer:Description)
+  select(Layer:Description) # Warning, something as simple as a' and this dataset can cause it to not play nice
 
 # Make sunburst chart:
-gam_prevention_sunburst <- plot_ly(gam_prevention_data,
+gam_prevention_sunburst<- plot_ly(gam_prevention_data,
                                    ids = ~IDs,
                                    labels = ~Label,
                                    parents = ~Parents,
@@ -72,7 +72,7 @@ gam_prevention_sunburst <- plot_ly(gam_prevention_data,
                                    insidetextorientation = 'radial',
                                    marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color
                                    sort = TRUE) %>%
-   plotly::layout(colorway = c("#289998", "#287699", "#A87998", "#A6A6A6", "#FFF7E7", "#998F28", "#62A899", "#986289", "#289970"),
+   plotly::layout(colorway = c("#289998", "#287699", "#A87998", "#A6A6A6", "#FFF7E7", "#65BBA3", "#62A899", "#998F28",  "#986289", "#289970"),
          font = list(
            # family = "Poppins", # I can't get this to work so let me know if you can!
                      color = "#FFF7E7"), # Set main font so the central layer text can be seen

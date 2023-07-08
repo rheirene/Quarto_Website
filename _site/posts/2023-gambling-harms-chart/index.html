@@ -197,7 +197,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul>
   <li><a href="#planning-ahead" id="toc-planning-ahead" class="nav-link active" data-scroll-target="#planning-ahead">Planning ahead</a></li>
   <li><a href="#prevention-strategies-visualised" id="toc-prevention-strategies-visualised" class="nav-link" data-scroll-target="#prevention-strategies-visualised">Prevention strategies visualised</a></li>
-  <li><a href="#section" id="toc-section" class="nav-link" data-scroll-target="#section">###</a></li>
+  <li><a href="#the-evidence" id="toc-the-evidence" class="nav-link" data-scroll-target="#the-evidence">The evidence</a></li>
   </ul>
 </nav>
     </div>
@@ -274,10 +274,10 @@ Recreating the chart
 <summary>Show code used to create chart</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load manually input data:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gam_prevention_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gamb_prevention_data.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Layer<span class="sc">:</span>Description)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as a' and this dataset can cause it to not play nice</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sunburst chart:</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst <span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst<span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ids =</span> <span class="sc">~</span>IDs,</span>
 <span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">labels =</span> <span class="sc">~</span>Label,</span>
 <span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parents =</span> <span class="sc">~</span>Parents,</span>
@@ -288,7 +288,7 @@ Recreating the chart
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">insidetextorientation =</span> <span class="st">'radial'</span>,</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">'#002B36'</span>)),  <span class="co"># Adjust border size + color</span></span>
 <span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>   plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">colorway =</span> <span class="fu">c</span>(<span class="st">"#289998"</span>, <span class="st">"#287699"</span>, <span class="st">"#A87998"</span>, <span class="st">"#A6A6A6"</span>, <span class="st">"#FFF7E7"</span>, <span class="st">"#998F28"</span>, <span class="st">"#62A899"</span>, <span class="st">"#986289"</span>, <span class="st">"#289970"</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>   plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">colorway =</span> <span class="fu">c</span>(<span class="st">"#289998"</span>, <span class="st">"#287699"</span>, <span class="st">"#A87998"</span>, <span class="st">"#A6A6A6"</span>, <span class="st">"#FFF7E7"</span>, <span class="st">"#65BBA3"</span>, <span class="st">"#62A899"</span>, <span class="st">"#998F28"</span>,  <span class="st">"#986289"</span>, <span class="st">"#289970"</span>),</span>
 <span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>         <span class="at">font =</span> <span class="fu">list</span>(</span>
 <span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>           <span class="co"># family = "Poppins", # I can't get this to work so let me know if you can!</span></span>
 <span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> <span class="st">"#FFF7E7"</span>), <span class="co"># Set main font so the central layer text can be seen</span></span>
@@ -302,12 +302,70 @@ Recreating the chart
 </div>
 <iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
 </section>
-<section id="section" class="level2">
-<h2 class="anchored" data-anchor-id="section">###</h2>
+<section id="the-evidence" class="level3">
+<h3 class="anchored" data-anchor-id="the-evidence">The evidence</h3>
+<p>As I (re-)read the literature on this topic, I’ll also create a record of relevant studies and sources relating to each prevention strategy. This section is even more undeveloped than the chart, so the same call for suggestions applies.</p>
+<p>There will eventually be a lot of information presented here, so I’ve hidden the text for each prevention strategy inside expandable boxes for easier navigation.</p>
+<section id="consumer-protection-tools" class="level4">
+<h4 class="anchored" data-anchor-id="consumer-protection-tools">Consumer protection tools</h4>
+</section>
+<section id="restrictions" class="level4">
+<h4 class="anchored" data-anchor-id="restrictions">Restrictions</h4>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Global loss limits
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li>A survey (n = 2352) of Norsk Tipping (a Norwegian Government-owned gambling operator) customers’ perspectives on the recently implemented global loss limit of NOK 20,000 per month (<a href="https://doi.org/10.1007/s11469-018-9892-x">Auer et al., 2018</a>)</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Max bet amounts
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-4" class="callout-4-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>This <a href="https://www.gamblingcommission.gov.uk/about-us/guide/consumer-voice-2020-exploring-online-staking">UK Gambling Commission report</a> discusses consumer perspectives on stake limits (n=32). Qual/quant survey with PGSI scores.</p></li>
+<li><p>It seems that a lot of online gambling sites indirectly impose stake limits by having maximum payout amounts (e.g., £100,000). Payout limits vary from site to to site and across activities, but these operator-protecting restrictions (which are sometimes reduced for big winners…) can limit customer stakes . Read more <a href="https://bettingsites.org.uk/guides/betting-limits-maximum-payouts/">here</a>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="operator-communications" class="level4">
+<h4 class="anchored" data-anchor-id="operator-communications">Operator communications</h4>
+</section>
+<section id="risk-assessment" class="level4">
+<h4 class="anchored" data-anchor-id="risk-assessment">Risk assessment</h4>
+</section>
+<section id="public-health-campaigns" class="level4">
+<h4 class="anchored" data-anchor-id="public-health-campaigns">Public health campaigns</h4>
+</section>
+<section id="product-design" class="level4">
+<h4 class="anchored" data-anchor-id="product-design">Product design</h4>
+<hr>
 <script src="https://giscus.app/client.js" data-repo="rheirene/Quarto_Website" data-repo-id="R_kgDOJ0d4fA" data-category-id="DIC_kwDOJ0d4fM4CXv7I" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark_dimmed" data-lang="en" crossorigin="anonymous" async="">
 </script>
 
 
+</section>
 </section>
 
 <div id="quarto-appendix" class="default"><section class="quarto-appendix-contents"><h2 class="anchored quarto-appendix-heading">Citation</h2><div><div class="quarto-appendix-secondary-label">BibTeX citation:</div><pre class="sourceCode code-with-copy quarto-appendix-bibtex"><code class="sourceCode bibtex">@online{heirene2023,

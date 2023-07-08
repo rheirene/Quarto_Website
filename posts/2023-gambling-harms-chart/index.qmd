@@ -71,8 +71,8 @@ showtext_auto()
 #| code-summary: "Show code used to create chart"
 
 # Load manually input data:
-gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>%
-  select(Layer:Description)
+gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>%
+  select(Layer:Description) # Warning, something as simple as a' and this dataset can cause it to not play nice
 
 # Make sunburst chart:
 gam_prevention_sunburst<- plot_ly(gam_prevention_data,
@@ -104,7 +104,9 @@ saveWidget(gam_prevention_sunburst, 'fig.html')
 ```
 ### The evidence
 
-As I (re-)read the literature on this topic, I'll also create a record of relevant studies and sources relating to each prevention strategy. This section is even more undeveloped than the chart, so the same call for suggestions applies.
+As I (re-)read the literature on this topic, I'll also create a record of relevant studies and sources relating to each prevention strategy. **This section is even more undeveloped than the chart, so the same call for suggestions applies.**
+
+There will eventually be a lot of information presented here, so I've hidden the text for each prevention strategy inside expandable boxes for easier navigation.
 
 #### Consumer protection tools
 
@@ -125,6 +127,8 @@ As I (re-)read the literature on this topic, I'll also create a record of releva
 :::
 
 #### Operator communications
+
+#### Risk assessment
 
 #### Public health campaigns
 
