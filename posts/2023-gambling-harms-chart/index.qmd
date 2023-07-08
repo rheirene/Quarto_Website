@@ -17,7 +17,9 @@ I (hopefully) have a long career ahead of me in gambling research, and I don't w
 
 With this in mind, I'm thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I've started mapping all the existing harm prevention strategies used in practice or proposed in the gambling literature.
 
-To make the process a little more interesting for me and anyone who reads this, I've been playing around with the `plotly` R package to present my catalogue of prevention strategies in a visual and interactive way.
+### Prevention strategies visualised
+
+To make this process a little more interesting for me and anyone who reads this, I've been playing around with the `plotly` R package to present my catalogue of prevention strategies in a visual and interactive way.
 
 ::: {.callout-tip appearance="minimal" icon="false"}
 ## Work in progress
@@ -27,17 +29,7 @@ Please note that I've only just started making the interactive chart and I'm con
 That said, please feel free to suggest some strategies or edits using the comments section at the end (or you can [send me an email](mailto:robheirene@gmail.com)).
 :::
 
-### Prevention strategies visualised
-
-Below is the catalogue of prevention strategies I have so far, visualised as a sunburst chart. Again, it's just a start, and I'm building it publicly so feel free to get in touch with ideas.
-
-::: {.callout-tip appearance="simple" icon="false"}
-## Recreating the chart
-
-I've included the `R code` used to create the chart in the drop-down sections below. Feel free to recreate it (the data are on the [Github repo](https://github.com/rheirene/Quarto_Website) for this site), but please credit me if you do :)
-:::
-
-Hover over each category or strategy to read my preliminary descriptions, and [**click on the bars to see more**]{style="color:#289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, **not** on mobile.
+Below is what I have so far, visualised as a sunburst chart. Hover over each category or strategy to reveal descriptions of each, and [**click on the bars to see more**]{style="color:#289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, **not** on mobile.
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -102,6 +94,12 @@ saveWidget(gam_prevention_sunburst, 'fig.html')
 ```{=html}
 <iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
 ```
+::: {.callout-tip appearance="simple" icon="false"}
+## Recreating the chart
+
+I've included the `R code` used to create the chart in the drop-down sections just above it. Feel free to recreate it (the data are on the [Github repo](https://github.com/rheirene/Quarto_Website) for this site) or adapt the code to your own chart, but please credit me if you do :)
+:::
+
 ### The evidence
 
 As I (re-)read the literature on this topic, I'm also creating a record of relevant studies and resources relating to each prevention strategy. **This section is even less developed than the chart, so the same call for suggestions applies.**
