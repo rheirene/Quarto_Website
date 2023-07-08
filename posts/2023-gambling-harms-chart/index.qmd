@@ -19,7 +19,7 @@ With this in mind, I'm thinking about problem gambling prevention a lot at the m
 
 To make the process a little more interesting for me and anyone who reads this, I've been playing around with the `plotly` R package to present my catalogue of prevention strategies in a visual and interactive way.
 
-::: {.callout-tip icon="false"}
+::: {.callout-tip appearance="minimal" icon="false"}
 ## Work in progress
 
 Please note that I've only just started making the interactive chart and I'm conscious that it currently provides a **very incomplete picture** of the strategies available. I will be reading around and adding more strategies and information over the next few months (starting July 2023).
