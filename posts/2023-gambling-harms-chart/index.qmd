@@ -19,7 +19,7 @@ With this in mind, I'm thinking about problem gambling prevention a lot at the m
 
 To make the process a little more interesting for me and anyone who reads this, I've been playing around with the `plotly` R package to present my catalogue of prevention strategies in a visual and interactive way.
 
-::: {.callout-tip appearance="minimal" icon="false"}
+::: {.callout-tip icon="false"}
 ## Work in progress
 
 Please note that I've only just started making the interactive chart and I'm conscious that it currently provides a **very incomplete picture** of the strategies available. I will be reading around and adding more strategies and information over the next few months (starting July 2023).
@@ -72,6 +72,8 @@ showtext_auto()
 gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>%
   select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
 
+# gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description)
+
 # Make sunburst chart:
 gam_prevention_sunburst<- plot_ly(gam_prevention_data,
                                    ids = ~IDs,
@@ -102,7 +104,7 @@ saveWidget(gam_prevention_sunburst, 'fig.html')
 ```
 ### The evidence
 
-As I (re-)read the literature on this topic, I'll also create a record of relevant studies and sources relating to each prevention strategy. **This section is even less developed than the chart, so the same call for suggestions applies.**
+As I (re-)read the literature on this topic, I'm also creating a record of relevant studies and resources relating to each prevention strategy. **This section is even less developed than the chart, so the same call for suggestions applies.**
 
 There will eventually be a lot of information presented here, so I've hidden the text for each prevention strategy inside expandable boxes for easier navigation.
 
@@ -119,7 +121,7 @@ There will eventually be a lot of information presented here, so I've hidden the
 ::: {.callout-tip collapse="true" appearance="simple" icon="false"}
 ##### Global stake limits
 
--   This [UK Gambling Commission report](https://www.gamblingcommission.gov.uk/about-us/guide/consumer-voice-2020-exploring-online-staking) discusses consumer perspectives on stake limits (n=32). Qual/quant survey with PGSI scores.
+-   This [UK Gambling Commission report](https://www.gamblingcommission.gov.uk/about-us/guide/consumer-voice-2020-exploring-online-staking) from 2020 discusses consumer perspectives on stake limits (n=32). Qual/quant survey with PGSI scores.
 
 -   It seems that a lot of online gambling sites indirectly impose stake limits by having maximum payout amounts (e.g., £100,000). Payout limits vary from site to to site and across activities, but these operator-protecting restrictions (which are sometimes reduced for big winners...) can limit customer stakes . Read more [here](https://bettingsites.org.uk/guides/betting-limits-maximum-payouts/).
 :::
@@ -131,6 +133,12 @@ There will eventually be a lot of information presented here, so I've hidden the
 #### Public health campaigns
 
 #### Product design
+
+::: {.callout-tip collapse="true" appearance="simple" icon="false"}
+##### Deposit limit anchors
+
+-   This [2021 report](https://www.bi.team/publications/applying-behavioural-insights-to-design-safer-gambling-tools/) by the UK Behavioural Insights Team involved a trial of different deposit limit anchors (i.e., potential limit values presented in a dropdown menu to consumers when first setting their limit) with three arms: \[1\] a business as usual condition (with anchors ranging from £5 to £100,000), \[2\] anchors only as high as £250, and \[3\] a free text box to enter a desired limit with no visible anchors. Existing bet 365 customers about deposit limits were randomly selected to be sent prompts encouraging them to set limits between January--April 2020. 1,731 participants split roughly evenly across the 3 arms set limits. Customers in the control (arm 1) group set the highest limits (Mdn = £14.3, M = £1601), followed by those in the reduced anchor group (arm 2; Mdn = £8.3, M = £230.8), and the free-text box group (arm 3; Mdn = £7.1, M = £308.78). Customers in the 2nd and 3rd arm were slightly more likely to remove their limit in the trial period, but the difference was not statistically significant.
+:::
 
 ------------------------------------------------------------------------
 
