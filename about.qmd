@@ -148,7 +148,7 @@ gttable1 %>%
 
 <div>
 
-![](map_of_career.png){fig-align="center"}
+![](files/map_of_career.png){fig-align="center"}
 
 </div>
 

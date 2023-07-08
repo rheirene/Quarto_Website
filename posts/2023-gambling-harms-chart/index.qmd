@@ -13,20 +13,18 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 ### Planning ahead
 
-I (hopefully) still have a long career ahead of me in gambling research and so it's probably a good idea to make the most of it.
+I (hopefully) have a long career ahead of me in gambling research, and I don't want it to be guided solely by the tide of publishing pressure. I want to do research that adds real value to the world.
 
-I want to do research that adds real value to the world. So, rather than drifting with the tide of publishing pressure, I want to steer in a direction that helps me towards this goal.
+With this in mind, I'm thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I've started mapping all the existing harm prevention strategies used in practice or proposed in the gambling literature.
 
-With this in mind, I'm thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I've started mapping all the existing harm prevention strategies used in practice or proposed in the literature.
-
-To make this process a little more interesting for me and anyone who reads this, I've been playing around with the `plotly` R package to present my catalogue of prevention strategies in a visual and interactive way.
+To make the process a little more interesting for me and anyone who reads this, I've been playing around with the `plotly` R package to present my catalogue of prevention strategies in a visual and interactive way.
 
 ::: {.callout-tip appearance="minimal" icon="false"}
 ## Work in progress
 
 Please note that I've only just started making the interactive chart and I'm conscious that it currently provides a **very incomplete picture** of the strategies available. I will be reading around and adding more strategies and information over the next few months (starting July 2023).
 
-That said, if you know a prevention strategy I've missed, please feel free to let me know using the comments section at the end or [send me an email](mailto:robheirene@gmail.com) :)
+That said, please feel free to suggest some strategies or edits using the comments section at the end (or you can [send me an email](mailto:robheirene@gmail.com)).
 :::
 
 ### Prevention strategies visualised
@@ -36,10 +34,10 @@ Below is the catalogue of prevention strategies I have so far, visualised as a s
 ::: {.callout-tip appearance="simple" icon="false"}
 ## Recreating the chart
 
-I've included the `R code` used to create the chart in the drop-down sections below. Feel free to recreate it (the data are on the [Github repo](https://github.com/rheirene/Quarto_Website) for this site), but please credit me if you do.
+I've included the `R code` used to create the chart in the drop-down sections below. Feel free to recreate it (the data are on the [Github repo](https://github.com/rheirene/Quarto_Website) for this site), but please credit me if you do :)
 :::
 
-Hover over each category or strategy to read my preliminary descriptions, and [click on the bars to see more]{style="color:#289998; font-weight: bold;"}. It's best viewed when **not** on mobile.
+Hover over each category or strategy to read my preliminary descriptions, and [**click on the bars to see more**]{style="color:#289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, **not** on mobile.
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -71,7 +69,7 @@ showtext_auto()
 #| code-summary: "Show code used to create chart"
 
 # Load manually input data:
-gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>%
+gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>%
   select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
 
 # Make sunburst chart:
@@ -119,7 +117,7 @@ There will eventually be a lot of information presented here, so I've hidden the
 :::
 
 ::: {.callout-tip collapse="true" appearance="simple" icon="false"}
-##### Max bet amounts
+##### Global stake limits
 
 -   This [UK Gambling Commission report](https://www.gamblingcommission.gov.uk/about-us/guide/consumer-voice-2020-exploring-online-staking) discusses consumer perspectives on stake limits (n=32). Qual/quant survey with PGSI scores.
 

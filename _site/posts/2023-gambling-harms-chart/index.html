@@ -8,7 +8,7 @@
 
 <meta name="author" content="Rob Heirene">
 <meta name="dcterms.date" content="2023-07-07">
-<meta name="description" content="An interactive chart and list of strategies to prevent gambling harms">
+<meta name="description" content="An interactive chart of strategies to prevent gambling harms">
 
 <title>Rob Heirene - How can we prevent gambling harms?</title>
 <style>
@@ -157,7 +157,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <h1 class="title">How can we prevent gambling harms?</h1>
                   <div>
         <div class="description">
-          An interactive chart and list of strategies to prevent gambling harms
+          An interactive chart of strategies to prevent gambling harms
         </div>
       </div>
                           <div class="quarto-categories">
@@ -209,10 +209,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="planning-ahead" class="level3">
 <h3 class="anchored" data-anchor-id="planning-ahead">Planning ahead</h3>
-<p>I (hopefully) still have a long career ahead of me in gambling research and so it’s probably a good idea to make the most of it.</p>
-<p>I want to do research that adds real value to the world. So, rather than drifting with the tide of publishing pressure, I want to steer in a direction that helps me towards this goal.</p>
-<p>With this in mind, I’m thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I’ve started mapping all the existing harm prevention strategies used in practice or proposed in the literature.</p>
-<p>To make this process a little more interesting for me and anyone who reads this, I’ve been playing around with the <code>plotly</code> R package to present my catalogue of prevention strategies in a visual and interactive way.</p>
+<p>I (hopefully) have a long career ahead of me in gambling research, and I don’t want it to be guided solely by the tide of publishing pressure. I want to do research that adds real value to the world.</p>
+<p>With this in mind, I’m thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I’ve started mapping all the existing harm prevention strategies used in practice or proposed in the gambling literature.</p>
+<p>To make the process a little more interesting for me and anyone who reads this, I’ve been playing around with the <code>plotly</code> R package to present my catalogue of prevention strategies in a visual and interactive way.</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -224,7 +223,7 @@ Work in progress
 </div>
 <div class="callout-body-container callout-body">
 <p>Please note that I’ve only just started making the interactive chart and I’m conscious that it currently provides a <strong>very incomplete picture</strong> of the strategies available. I will be reading around and adding more strategies and information over the next few months (starting July 2023).</p>
-<p>That said, if you know a prevention strategy I’ve missed, please feel free to let me know using the comments section at the end or <a href="mailto:robheirene@gmail.com">send me an email</a> :)</p>
+<p>That said, please feel free to suggest some strategies or edits using the comments section at the end (or you can <a href="mailto:robheirene@gmail.com">send me an email</a>).</p>
 </div>
 </div>
 </section>
@@ -241,10 +240,10 @@ Recreating the chart
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>I’ve included the <code>R code</code> used to create the chart in the drop-down sections below. Feel free to recreate it (the data are on the <a href="https://github.com/rheirene/Quarto_Website">Github repo</a> for this site), but please credit me if you do.</p>
+<p>I’ve included the <code>R code</code> used to create the chart in the drop-down sections below. Feel free to recreate it (the data are on the <a href="https://github.com/rheirene/Quarto_Website">Github repo</a> for this site), but please credit me if you do :)</p>
 </div>
 </div>
-<p>Hover over each category or strategy to read my preliminary descriptions, and <span style="color:#289998; font-weight: bold;">click on the bars to see more</span>. It’s best viewed when <strong>not</strong> on mobile.</p>
+<p>Hover over each category or strategy to read my preliminary descriptions, and <span style="color:#289998; font-weight: bold;"><strong>click on the bars to see more</strong></span>. It’s best viewed on a pc/mac or tablet, <strong>not</strong> on mobile.</p>
 <div class="cell">
 <details>
 <summary>Show set-up code</summary>
@@ -274,7 +273,7 @@ Recreating the chart
 <summary>Show code used to create chart</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load manually input data:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gam_prevention_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gamb_prevention_data.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as a' and this dataset can cause it to not play nice</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as an apostrophe and this dataset can cause it to not play nice</span></span>
 <span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sunburst chart:</span></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst<span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
@@ -304,7 +303,7 @@ Recreating the chart
 </section>
 <section id="the-evidence" class="level3">
 <h3 class="anchored" data-anchor-id="the-evidence">The evidence</h3>
-<p>As I (re-)read the literature on this topic, I’ll also create a record of relevant studies and sources relating to each prevention strategy. This section is even more undeveloped than the chart, so the same call for suggestions applies.</p>
+<p>As I (re-)read the literature on this topic, I’ll also create a record of relevant studies and sources relating to each prevention strategy. <strong>This section is even less developed than the chart, so the same call for suggestions applies.</strong></p>
 <p>There will eventually be a lot of information presented here, so I’ve hidden the text for each prevention strategy inside expandable boxes for easier navigation.</p>
 <section id="consumer-protection-tools" class="level4">
 <h4 class="anchored" data-anchor-id="consumer-protection-tools">Consumer protection tools</h4>
@@ -335,7 +334,7 @@ Global loss limits
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Max bet amounts
+Global stake limits
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
