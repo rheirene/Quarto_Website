@@ -29,9 +29,9 @@ I recently contributed to a conceptual paper discussing the landscape of open sc
 
 [Pondering + plotting]{style="color: #289998; font-weight: bold;"}
 
-I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below [chart of prevention strategies for problem gambling]{style="color:#289998;"}.
+I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below chart of prevention strategies for problem gambling.
 
-Click on any of the bars to see more (best viewed when **not** on mobile):
+[Click on the bars to see more]{style="color: #289998; font-weight: bold;"}. It's best viewed when **not** on mobile.
 
 :::
 
