@@ -42,9 +42,10 @@ career_data<- data.frame(Map_position = c(1,2,3,4),
             "Mar 2023 → ongoing")) %>%
   as_tibble()
 
-career_data_table<-bind_cols(table_images, 
-          career_data) %>% 
-  select(- Map_position) %>% 
+
+career_data_table <- bind_cols(table_images,
+                               career_data) %>%
+  select(-Map_position) %>%
   rename(Map = 1)
 
 gttable1 <- career_data_table %>%
@@ -52,84 +53,61 @@ gttable1 <- career_data_table %>%
   gt_img_rows(columns = Map,
               img_source = "local",
               height = 25) %>%
-     tab_options(table.font.color = "#289998") %>% 
-  tab_options(table.background.color = "#002B36")  %>% 
-    tab_style(
-    style = cell_borders(
-      sides = c("t", "b"),
-      color = "#289998",
-      weight = px(2)
-    ),
-    locations = list(cells_column_labels(), cells_stubhead())
-  ) %>% 
-   tab_style(
-    style = list(
-      cell_fill(color = "#002B36"),
-      cell_text(color = "#289998",
-                weight = "bold")
-      ),
-   locations = list(cells_column_labels())
-    ) %>% 
-   tab_style(
-    style = list(
-      cell_fill(color = "#002B36"),
-      cell_text(color = "#F5F7F0")
-      ),
-    locations = cells_body(
-      columns = Employer)
-    ) %>% 
-   tab_style(
-    style = list(
-      cell_fill(color = "#002B36"),
-      cell_text(color = "#F5F7F0")
-      ),
-    locations = cells_body(
-      columns = Position)
-    ) %>% 
-   tab_style(
-    style = list(
-      cell_fill(color = "#002B36"),
-      cell_text(color = "#F5F7F0")
-      ),
-    locations = cells_body(
-      columns = Map)
-    ) %>% 
-   tab_style(
-    style = list(
-      cell_fill(color = "#002B36"),
-      cell_text(color = "#F5F7F0")
-      ),
-    locations = cells_body(
-      columns = Dates)
-    )  %>% 
-  tab_style(
-    style = cell_borders(
-      sides = c("top", "bottom"),
-      color = "#002B36",
-      weight = px(1.5),
-      style = "solid"
-    ),
-    locations = cells_body()
-  ) %>% 
-   cols_align(
-  align = "center",
-  columns = Dates) %>%
-  tab_options(table.border.bottom.color = "#289998",
+  tab_options(table.font.color = "#289998",
+              table.background.color = "#002B36",
+              table.border.bottom.color = "#289998",
               table_body.border.bottom.color = "#289998") %>%
-    tab_style(style = cell_borders(sides = c("t"),
-                              color = "#289998",
-                              weight = px(2)), 
-                         locations = list(cells_footnotes(), cells_source_notes()))
+  tab_style(
+    style = cell_borders(sides = c("t", "b"),
+                         color = "#289998",
+                         weight = px(2)),
+    locations = list(cells_column_labels(), cells_stubhead())
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#289998", weight = "bold")
+    ),
+    locations = list(cells_column_labels())
+  )
+
+body_columns <- c("Employer", "Position", "Map", "Dates")
+for (column in body_columns) {
+  gttable1 <- gttable1 %>%
+    tab_style(
+      style = list(
+        cell_fill(color = "#002B36"),
+        cell_text(color = "#F5F7F0")
+      ),
+      locations = cells_body(columns = column)
+    )
+}
+
+gttable1 <- gttable1 %>%
+  tab_style(
+    style = cell_borders(sides = c("top", "bottom"),
+                         color = "#002B36",
+                         weight = px(1.5),
+                         style = "solid"),
+    locations = cells_body()
+  ) %>%
+  cols_align(align = "center", columns = Dates) %>%
+  tab_style(
+    style = cell_borders(sides = c("t"),
+                         color = "#289998",
+                         weight = px(2)),
+    locations = list(cells_footnotes(), cells_source_notes())
+  )
 ```
 
 ```{r echo = FALSE, warning = FALSE}
 gttable1 %>%
   cols_merge(
-    columns = vars(Position, Employer)
+    columns = c(Position, Employer)
   ) %>% 
   text_transform(
     locations = cells_body(
-      columns = vars(Position)
+      columns = Position
     ),
     fn = function(x){
       Position <- word(x, 1, 2)
@@ -219,7 +197,7 @@ Publication_record_table<- Publication_record  %>%
                         Other))) %>%
   ungroup() 
 
-
+# This is so messy/ repetitive but I couldn't get it to select multiple columns very well!
 Publication_record_table %>%
     select(-row_sum) %>% 
   gt() %>% 
@@ -354,8 +332,6 @@ Publication_record_table %>%
   ) %>%
   cols_width(everything() ~ px(80)) %>%
     cols_width(Year ~ px(100))
-  
-
 ```
 
 ### About this site

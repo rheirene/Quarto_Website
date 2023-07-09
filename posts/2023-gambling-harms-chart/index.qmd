@@ -13,7 +13,7 @@ draft: false # setting this to `true` will prevent your post from appearing on y
 
 ### Planning ahead
 
-I (hopefully) have a long career ahead of me in gambling research, and I don't want it to be guided solely by the tide of publishing pressure. I want to do research that adds real value to the world.
+I (hopefully) have a long career ahead of me in addiction research, and I don't want it to be guided solely by the tide of publishing pressure. I want to do research that adds real value to the world.
 
 With this in mind, I'm thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I've started mapping all the existing harm prevention strategies used in practice or proposed in the gambling literature.
 
