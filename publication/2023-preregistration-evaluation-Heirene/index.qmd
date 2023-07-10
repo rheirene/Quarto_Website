@@ -32,5 +32,5 @@ Study preregistration is one of several "open science" practices (e.g., open dat
 **Transparency**
 
 |            Pre-registered             |            Open materials             |                                               Open code                                               |               Open data               |
-|:--------------:|:--------------:|:-----------------------:|:--------------:|
+|:-------------------------------------:|:-------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:-------------------------------------:|
 | [✓](https://osf.io/n8rw3/?view_only=) | [✓](https://osf.io/n8rw3/?view_only=) | [✓](https://github.com/rheirene/Evaluating-gambling-research-preregistrations-Specificity-adherence-) | [✓](https://osf.io/n8rw3/?view_only=) |
