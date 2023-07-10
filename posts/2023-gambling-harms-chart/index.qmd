@@ -29,7 +29,7 @@ Please note that I've only just started making the interactive chart and I'm con
 That said, please feel free to suggest some strategies or edits using the comments section at the end (or you can [send me an email](mailto:robheirene@gmail.com)).
 :::
 
-Below is what I have so far, visualised as a sunburst chart. Hover over each category or strategy to reveal descriptions of each, and [**click on the bars to see more**]{style="color:#289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, **not** on mobile.
+Below is what I have so far, visualised as a sunburst chart. Hover over each category or strategy to reveal descriptions of each, and [**click on the bars to see more**]{style="color:#289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, **not** on mobile (if you are on mobile, turn it to landscape mode).
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -61,10 +61,9 @@ showtext_auto()
 #| code-summary: "Show code used to create chart"
 
 # Load manually input data:
-gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>%
-  select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
+# gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>% select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
 
-# gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description)
+gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description)
 
 # Make sunburst chart:
 gam_prevention_sunburst<- plot_ly(gam_prevention_data,
@@ -84,7 +83,7 @@ gam_prevention_sunburst<- plot_ly(gam_prevention_data,
                      color = "#FFF7E7"), # Set main font so the central layer text can be seen
          paper_bgcolor = '#002B36', # background consistent with site
          plot_bgcolor = '#002B36',
-        hoverlabel = list(font = list(size = 12)))  # Increase the font size for hover text)
+        hoverlabel = list(font = list(size = 12))) # Increase the font size for hover text)
 
 # Save plot as a HTML file (it doesn't render well with quarto otherwise):
 saveWidget(gam_prevention_sunburst, 'fig.html')
