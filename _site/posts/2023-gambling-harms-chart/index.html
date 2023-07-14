@@ -229,7 +229,7 @@ Work in progress
 <p>That said, please feel free to suggest some strategies or edits using the comments section at the end (or you can <a href="mailto:robheirene@gmail.com">send me an email</a>).</p>
 </div>
 </div>
-<p>Below is what I have so far, visualised as a sunburst chart. Hover over each category or strategy to reveal descriptions of each, and <span style="color:#289998; font-weight: bold;"><strong>click on the bars to see more</strong></span>. It’s best viewed on a pc/mac or tablet, <strong>not</strong> on mobile.</p>
+<p>Below is what I have so far, visualised as a sunburst chart. Hover over each category or strategy to reveal descriptions of each, and <span style="color:#289998; font-weight: bold;"><strong>click on the bars to see more</strong></span>. It’s best viewed on a PC/mac or tablet, <strong>not</strong> on mobile (if you are on mobile, turn it to landscape mode).</p>
 <div class="cell">
 <details>
 <summary>Show set-up code</summary>
@@ -258,40 +258,32 @@ Work in progress
 <details>
 <summary>Show code used to create chart</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load manually input data:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gam_prevention_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gamb_prevention_data.csv"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as an apostrophe and this dataset can cause it to not play nice</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_data&lt;- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %&gt;% select(Layer:Description)</span></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sunburst chart:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst<span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ids =</span> <span class="sc">~</span>IDs,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">labels =</span> <span class="sc">~</span>Label,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parents =</span> <span class="sc">~</span>Parents,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hoverinfo =</span> <span class="st">"text"</span>,  <span class="co"># Needed for below argument to work</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hovertext =</span> <span class="sc">~</span>Description,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">type =</span> <span class="st">'sunburst'</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">maxdepth =</span> <span class="dv">3</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">insidetextorientation =</span> <span class="st">'radial'</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">'#002B36'</span>)),  <span class="co"># Adjust border size + color</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>   plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">colorway =</span> <span class="fu">c</span>(<span class="st">"#289998"</span>, <span class="st">"#287699"</span>, <span class="st">"#A87998"</span>, <span class="st">"#A6A6A6"</span>, <span class="st">"#FFF7E7"</span>, <span class="st">"#65BBA3"</span>, <span class="st">"#62A899"</span>, <span class="st">"#998F28"</span>,  <span class="st">"#986289"</span>, <span class="st">"#289970"</span>),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">font =</span> <span class="fu">list</span>(</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>           <span class="co"># family = "Poppins", # I can't get this to work so let me know if you can!</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> <span class="st">"#FFF7E7"</span>), <span class="co"># Set main font so the central layer text can be seen</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">paper_bgcolor =</span> <span class="st">'#002B36'</span>, <span class="co"># background consistent with site</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">plot_bgcolor =</span> <span class="st">'#002B36'</span>,</span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">hoverlabel =</span> <span class="fu">list</span>(<span class="at">font =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">12</span>))) <span class="sc">%&gt;%</span>  <span class="co"># Increase the font size for hover text)</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">layout</span>(<span class="at">annotations =</span> </span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>           <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">1</span>, <span class="at">y =</span> <span class="sc">-</span><span class="fl">0.1</span>, </span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>                <span class="at">text =</span> <span class="st">"Best viewed on a PC/Mac or tablet. If you're on mobile, turn your phone to landscape mode."</span>, </span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>                <span class="at">showarrow =</span> F, </span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>                <span class="at">xref=</span><span class="st">'paper'</span>, </span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>                <span class="at">yref=</span><span class="st">'paper'</span>)</span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot as a HTML file (it doesn't render well with quarto otherwise):</span></span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWidget</span>(gam_prevention_sunburst, <span class="st">'fig.html'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gam_prevention_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gamb_prevention_data.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as an apostrophe and this dataset can cause it to not play nice</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_data&lt;- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %&gt;% select(Layer:Description)</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sunburst chart:</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst<span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ids =</span> <span class="sc">~</span>IDs,</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">labels =</span> <span class="sc">~</span>Label,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parents =</span> <span class="sc">~</span>Parents,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hoverinfo =</span> <span class="st">"text"</span>,  <span class="co"># Needed for below argument to work</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hovertext =</span> <span class="sc">~</span>Description,</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">type =</span> <span class="st">'sunburst'</span>,</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">maxdepth =</span> <span class="dv">3</span>,</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">insidetextorientation =</span> <span class="st">'radial'</span>,</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">'#002B36'</span>)),  <span class="co"># Adjust border size + color</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>   plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">colorway =</span> <span class="fu">c</span>(<span class="st">"#289998"</span>, <span class="st">"#288D98"</span>, <span class="st">"#287699"</span>, <span class="st">"#7E6F98"</span>, <span class="st">"#BFB3C0"</span>, <span class="st">"#FFF7E7"</span>, <span class="st">"#E6C97F"</span>, <span class="st">"#8C8033"</span>, <span class="st">"#7E9F6E"</span>, <span class="st">"#65BBA3"</span>, <span class="st">"#94C8C0"</span>, <span class="st">"#998F28"</span>, <span class="st">"#62A899"</span>, <span class="st">"#986289"</span>, <span class="st">"#289970"</span>),</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>         <span class="at">font =</span> <span class="fu">list</span>(</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>           <span class="co"># family = "Poppins", # I can't get this to work so let me know if you can!</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> <span class="st">"#FFF7E7"</span>), <span class="co"># Set main font so the central layer text can be seen</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>         <span class="at">paper_bgcolor =</span> <span class="st">'#002B36'</span>, <span class="co"># background consistent with site</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>         <span class="at">plot_bgcolor =</span> <span class="st">'#002B36'</span>,</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">hoverlabel =</span> <span class="fu">list</span>(<span class="at">font =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">12</span>)))  <span class="co"># Increase the font size for hover text)</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot as a HTML file (it doesn't render well with quarto otherwise):</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWidget</span>(gam_prevention_sunburst, <span class="st">'fig.html'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
@@ -318,7 +310,7 @@ Recreating the chart
 </section>
 <section id="restrictions" class="level4">
 <h4 class="anchored" data-anchor-id="restrictions">Restrictions</h4>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -336,7 +328,7 @@ Global loss limits
 </div>
 </div>
 </div>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-4-contents" aria-controls="callout-4" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -358,7 +350,7 @@ Global stake limits
 </section>
 <section id="operator-communications" class="level4">
 <h4 class="anchored" data-anchor-id="operator-communications">Operator communications</h4>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-5-contents" aria-controls="callout-5" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
@@ -371,7 +363,8 @@ Messaging
 <div id="callout-5" class="callout-5-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
-<li>This <a href="https://www.gamblingcommission.gov.uk/about-us/guide/consumer-voice-2020-exploring-online-staking">UK Gambling Commission report</a> from 2020 discusses consumer perspectives on safer gambling communications (n = 32, weekly gamblers). Low-risk participants (i.e., PGSI score 0-2) were likely to say that safer gambling messaging was effective, but saw it as not relevant for them and therefore they opted out of such messaging. Moderate risk gamblers (i.e., PGSI score 3-7) opted out of messaging also as they didn’t feel it was for them and didn’t like to be reminded to “gamble responsibly” because they felt in control of their gambling. High risk gamblers (i.e., PGSI score ≥8) stated that highlighting losses could push people to spend more money and that such communications may need to be replaced by limits to be effective. In general, safer gambling messages were viewed as being easy to opt out of and easy to ignore, warranting actual barriers to risky play (i.e., limits).</li>
+<li><p>This <a href="https://www.gamblingcommission.gov.uk/about-us/guide/consumer-voice-2020-exploring-online-staking">UK Gambling Commission report</a> from 2020 discusses consumer perspectives on safer gambling communications (n = 32, weekly gamblers). Low-risk participants (i.e., PGSI score 0-2) were likely to say that safer gambling messaging was effective, but saw it as not relevant for them and therefore they opted out of such messaging. Moderate risk gamblers (i.e., PGSI score 3-7) opted out of messaging also as they didn’t feel it was for them and didn’t like to be reminded to “gamble responsibly” because they felt in control of their gambling. High risk gamblers (i.e., PGSI score ≥8) stated that highlighting losses could push people to spend more money and that such communications may need to be replaced by limits to be effective. In general, safer gambling messages were viewed as being easy to opt out of and easy to ignore, warranting actual barriers to risky play (i.e., limits).</p></li>
+<li><p>This <a href="https://doi.org/10.1016/S2468-2667(21)00279-6">2022 study</a> including 3 pre-registered randomized exmperiments (n ≈ 500 per study) found no evidence for a protective effect (on spending behaviour) of the “When the fun stops, stop” warning message commonly used by UK gambling companies. Participants were UK adults who had previously gambled. They were given a monetary endowment with which they were allowed to bet on either an online roulette game (Study 2) or real soccer events (Study 1 &amp; 3). The presence and presentation of the warning message varied between participants in each study.</p></li>
 </ul>
 </div>
 </div>
@@ -383,10 +376,35 @@ Messaging
 <section id="public-health-campaigns" class="level4">
 <h4 class="anchored" data-anchor-id="public-health-campaigns">Public health campaigns</h4>
 </section>
+<section id="blocking-tools" class="level4">
+<h4 class="anchored" data-anchor-id="blocking-tools">Blocking tools</h4>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Bank gambling blocks
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<p>This <a href="https://d1ygf46rsya1tb.cloudfront.net/prod/uploads/2023/06/GRFH_Bank_Gambling_Blocks_Workshop_Summary.pdf">2023 report</a> from GamCare summarises the outcomes and recommendations from a virtual workshop on bank gambling block involving researchers, representatives from the financial and gambling industries, gambling support services, debt and money advice services, and individuals with lived experience. They make a number of recommendations for how banks can improve their blocking tools not discussed here. Key findings:</p>
+<ul>
+<li><p>Many UK banks now offer gambling blocks, but awareness of these tools is low.</p></li>
+<li><p>The ease of accessing and using the blocks varies across banks.</p></li>
+<li><p>Most banks allow the customers to self deactivate the blocks using their mobile app, although there is to be gay 48 or 72 hour cooling off period before this takes effect. Some banks require customers to speak to their customer support team before turning off the block, increasing friction.</p></li>
+<li><p>There are many loopholes which allow customers with a bank gambling block to continue gambling (e.g., e-wallets; overseas gambling).</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 <section id="product-design" class="level4">
 <h4 class="anchored" data-anchor-id="product-design">Product design</h4>
-<div class="callout callout-style-simple callout-warning no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-6-contents" aria-controls="callout-6" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-7-contents" aria-controls="callout-7" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -395,7 +413,7 @@ Deposit limit anchors
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-6" class="callout-6-contents callout-collapse collapse">
+<div id="callout-7" class="callout-7-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>This <a href="https://www.bi.team/publications/applying-behavioural-insights-to-design-safer-gambling-tools/">2021 report</a> by the UK Behavioural Insights Team involved a trial of different deposit limit anchors (i.e., potential limit values presented in a dropdown menu to consumers when first setting their limit) with three arms: [1] a business as usual condition (with anchors ranging from £5 to £100,000), [2] anchors only as high as £250, and [3] a free text box to enter a desired limit with no visible anchors. Existing bet 365 customers about deposit limits were randomly selected to be sent prompts encouraging them to set limits between January–April 2020. 1,731 participants split roughly evenly across the 3 arms set limits. Customers in the control (arm 1) group set the highest limits (Mdn = £14.3, M = £1601), followed by those in the reduced anchor group (arm 2; Mdn = £8.3, M = £230.8), and the free-text box group (arm 3; Mdn = £7.1, M = £308.78). Customers in the 2nd and 3rd arm were slightly more likely to remove their limit in the trial period, but the difference was not statistically significant.</li>

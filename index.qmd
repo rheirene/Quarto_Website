@@ -72,7 +72,7 @@ gam_prevention_sunburst<- plot_ly(gam_prevention_data,
                                    insidetextorientation = 'radial',
                                    marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color
                                    sort = TRUE) %>%
-   plotly::layout(colorway = c("#289998", "#287699", "#A87998", "#A6A6A6", "#FFF7E7", "#65BBA3", "#62A899", "#998F28",  "#986289", "#289970"),
+   plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),
          font = list(
            # family = "Poppins", # I can't get this to work so let me know if you can!
                      color = "#FFF7E7"), # Set main font so the central layer text can be seen
