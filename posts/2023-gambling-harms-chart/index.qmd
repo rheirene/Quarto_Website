@@ -61,9 +61,9 @@ showtext_auto()
 #| code-summary: "Show code used to create chart"
 
 # Load manually input data:
-gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>% select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
+# gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>% select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
 
-# gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description)
+gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description)
 
 # Make sunburst chart:
 gam_prevention_sunburst<- plot_ly(gam_prevention_data,

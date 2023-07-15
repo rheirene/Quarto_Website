@@ -1,0 +1,312 @@
+/* css styles */
+
+ /* align text in centre. Use this format:
+::: text
+TEXT HERE
+:::
+*/
+.text {
+text-align: center;
+}
+
+.padding {
+  padding 70px;
+}
+
+h3 {
+  color: #289998; /* Set color for h3 headers */
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+}
+
+h4 {
+  color: #289998; /* Set color for h3 headers */
+  text-shadow: -1px -1px 0 rgba(0, 0, 0, .3);
+}
+  /*   double column format that collapses into one on smaller screens/mobiles */
+
+container {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.column {
+  flex: 1;
+  width: 40%;
+}
+
+@media (max-width: 767px) {
+  .column {
+    width: 100%;
+  }
+} 
+
+/* 
+Indent text
+*/  
+.indent {
+  text-indent: 10px;
+}
+
+/* 
+Fade in text. Example:
+::: fade-in
+testy
+:::
+*/  
+
+.fade-in {
+  animation: fadeIn 2s;
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+/* 
+Fade in html. Example:
+<div id="myObject" class="fade-inhtml">
+  <iframe src="fig.html" width="100%" height="800" style="border:none;"></iframe>
+</div>
+*/  
+.fade-inhtml {
+  opacity: 0;
+  animation: fadeInAnimation 3s ease-in forwards;
+}
+
+@keyframes fadeInAnimation {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 
+Nav bar title customisation
+*/  
+
+.navbar-title {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.navbar-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 3px;
+  background-color: #289998;
+  transition: all 0.5s;
+  transform: translateX(-50%);
+}
+
+.navbar-title:hover::after {
+  width: 100%;
+}
+
+.navbar-title {
+  color: #9BA7B0;
+}
+
+.navbar-title{
+  transition: color 0.3s ease;
+}
+
+.navbar-title:hover {
+  color: #289998;
+}
+
+
+@font-face {
+  font-family: 'intro-rust';
+  src: url('fonts/IntroRustG-Base2Line.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+
+.navbar-title {
+  font-family: 'intro-rust', sans-serif;
+}
+
+
+
+/* 
+Nav bar menu item customisation
+*/  
+/*
+.menu-text {
+  position: relative;
+  display: inline-block;
+  overflow: hidden;
+}
+
+.menu-text::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background-color: #289998;
+  transition: all 0.5s;
+  transform: translateX(-50%);
+}
+
+.menu-text:hover::after {
+  width: 100%;
+}
+*/
+.menu-text:hover {
+  color: #289998;
+}
+
+.menu-text {
+  font-weight: bold;
+  color: #9BA7B0;
+}
+/* 
+Set font for any element
+*/  
+@font-face {
+  font-family: 'Poppins';
+  src: url('fonts/Poppins-regular.otf');
+  font-style: normal;
+  font-weight: 400;
+}
+/* EXAMPLE:
+.menu-text {
+  font-family: 'Poppins', sans-serif;
+}
+*/  
+
+/* 
+Hover customisation for icons
+*/  
+.bi.bi-twitter{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-twitter:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bi.bi-linkedin{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-linkedin:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bi.bi-github{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-github:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.bi.bi-envelope{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-envelope-fill:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.bi.bi-mortarboard-fill{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-mortarboard-fill:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+.bi.bi-door-open{
+  transition: color 0.3s ease;
+}
+
+.bi.bi-door-open:hover {
+  color: #289998;
+  animation: wriggle 1s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-10deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+
+/*
+ANIMATE SOME TEXT ON HOVER
+.menu-text:hover {
+  color: #289998;
+  animation: wriggle 0.5s ease-in-out infinite;
+}
+
+@keyframes wriggle {
+  0% { transform: rotate(0deg); }
+  25% { transform: rotate(-0.5deg); }
+  50% { transform: rotate(0deg); }
+  75% { transform: rotate(0.5deg); }
+  100% { transform: rotate(0deg); }
+}
+
+*/
