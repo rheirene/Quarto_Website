@@ -310,7 +310,7 @@ Publication_record_table %>%
     data_row.padding = px(10),
   ) %>%
   tab_footnote(
-    footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only. There is some overlap between the gamblng and scientific reform categories where one paper is counted in both.") %>%
+    footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only. There is overlap between the gamblng & scientific reform categories in 2022 & 23 where one paper is counted in both.") %>%
    tab_style(
     style = list(cell_fill(color = "#002B36"), 
                  cell_text(color = "#9BA7B0", style = "italic"), 
