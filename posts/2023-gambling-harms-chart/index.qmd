@@ -52,7 +52,7 @@ packages <- c('tidyverse', # Clean, organise, and visualise data
 groundhog.library(packages, "2023-06-05") # Set Slightly earlier than start date as some of the plotly dependency packages wouldn't load properly with date as 07/07/2023
 
 # Load new font for figures/graphs
-font_add_google("Poppins")
+font_add_google("Poppins", "Poppins")
 showtext_auto()
 ```
 
