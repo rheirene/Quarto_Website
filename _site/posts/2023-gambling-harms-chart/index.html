@@ -250,7 +250,7 @@ Work in progress
 <span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="fu">groundhog.library</span>(packages, <span class="st">"2023-06-05"</span>) <span class="co"># Set Slightly earlier than start date as some of the plotly dependency packages wouldn't load properly with date as 07/07/2023</span></span>
 <span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Load new font for figures/graphs</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poppins"</span>)</span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poppins"</span>, <span class="st">"Poppins"</span>)</span>
 <span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -260,7 +260,7 @@ Work in progress
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load manually input data:</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gam_prevention_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gamb_prevention_data.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as an apostrophe and this dataset can cause it to not play nice</span></span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_data&lt;- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %&gt;% select(Layer:Description)</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_data&lt;- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %&gt;% select(Layer:Description) # Load in session</span></span>
 <span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sunburst chart:</span></span>
 <span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst<span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
