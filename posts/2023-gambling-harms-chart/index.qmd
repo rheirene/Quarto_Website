@@ -4,7 +4,7 @@ description: "An interactive chart of strategies to prevent gambling harms"
 author:
   - name: Rob Heirene
 categories: [Gambling] 
-date: 2023-07-07
+date: 2023-08-21
 citation: 
   url: https://robheirene.netlify.app/posts/2023-gambling-harms-chart
 image: sunburst.png
