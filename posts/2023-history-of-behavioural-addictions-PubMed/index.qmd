@@ -5,8 +5,6 @@ author:
   - name: Rob Heirene
 categories: [Gambling] 
 date: 2023-08-25
-citation: 
-  url: 
 draft: true 
 ---
 
@@ -21,6 +19,7 @@ library(groundhog) # Load
 
 # List desired packages:
 packages <- c('readr', # Load dataset from GitHib
+              'RCurl', # Load dataset from GitHib
               'tidyverse', # Clean, organise, and visualise data
               'plotly', # Add interactive elements to figures
               'gganimate', # Make animated plots
@@ -41,11 +40,13 @@ font_add_google("Reem Kufi", "Reem Kufi")
 showtext_auto(enable = TRUE) 
 ```
 
-```{r results=FALSE, warning=FALSE, message=FALSE, results=FALSE}
+```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
 #| code-summary: "Code: load dataset"
 
-raw_data <- read_csv(url("https://raw.githubusercontent.com/rheirene/pub-med-scape-behav-addictions/main/Data%20extraction/combined_results_clean.csv?token=GHSAT0AAAAAACFNISZMISA65FOPSMYTTPOOZHFLN6Q"))
+url_behav_addic_data_link <- getURL("https://raw.githubusercontent.com/rheirene/pub-med-scape-behav-addictions/main/Data%20extraction/combined_results_clean.csv?token=GHSAT0AAAAAACFNISZMOVNYWMDCPFSVQTT6ZHFN7CQ")
+
+raw_data <- read.csv(text = url_behav_addic_data_link)
 
 str(raw_data)
 # View(raw_data)
@@ -61,7 +62,10 @@ raw_data %>%
   rename(unique_count = value)
 ```
 
-```{r}
+```{r  warning=FALSE, message=FALSE}
+#| code-fold: true
+#| code-summary: "Code: Animated line graph"
+#| fig-align: center
 total_year_gganimate <- raw_data %>%
    distinct(PMID, .keep_all = TRUE) %>%
    filter(Year != "2023") %>%
@@ -75,17 +79,16 @@ total_year_gganimate <- raw_data %>%
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +  
    # theme_classic() +
    theme(
-     plot.background = element_rect(fill = "#002B36"),
+     plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
      panel.background = element_rect(fill = "#002B36"),
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
      axis.text = element_text(color = "#F5F7F0", size = 12),
      panel.grid = element_blank(),
-     plot.margin = margin(20, 20, 20, 20),
+     plot.margin = margin(20, 5, 20, 20),
      axis.title.y = element_blank(),  # Adjust y-axis title position
      axis.title.x = element_text(margin = margin(t = 15), size = 14),
      plot.title = element_text(color = "#F5F7F0", size = 14, margin = margin(b = 15))
      # panel.border = element_rect(color = "#002B36")
-      # panel.border.bottom = element_rect(color = "#F5F7F0")  # Re-add bottom panel border
    )  +
    labs(
      title = "Number of Behavioural Addictions papers published per year on PubMed",  # Add header
@@ -95,11 +98,15 @@ total_year_gganimate <- raw_data %>%
    transition_reveal(Year)
       # view_follow()
   
-animate(total_year_gganimate, width = 750, height = 380, rewind = FALSE)
-
-anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", total_year_gganimate)
+animate(total_year_gganimate, width = 700, height = 380, rewind = FALSE)
 
 ```
+
+```{r include = FALSE}
+anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", total_year_gganimate)
+```
+
+Now let's start to look publication rates for each "addiction" in our dataset.
 
 ------------------------------------------------------------------------
 
@@ -117,5 +124,5 @@ anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganim
         data-lang="en"
         crossorigin="anonymous"
         async>
-</script>
+</script
 ```
