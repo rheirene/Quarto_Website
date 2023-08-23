@@ -32,7 +32,6 @@ packages <- c('readr', # Load dataset from GitHib
               'sysfonts', # Special fonts for figures
               'showtext', # Special fonts for figures
               'htmlwidgets') # Make plotly plots HTML format for rendering in Quarto
-              
 
 # Load desired package with versions specific to project start date:
 groundhog.library(packages, "2023-08-01") 
@@ -41,6 +40,7 @@ groundhog.library(packages, "2023-08-01")
 font_add_google("Poppins", "Poppins")
 font_add_google("Reem Kufi", "Reem Kufi")
 showtext_auto(enable = TRUE) 
+
 ```
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
@@ -76,12 +76,29 @@ raw_data %>%
   ) %>% 
   arrange(min) %>% 
   print(n=22)
+
 ```
 
 ```{r  warning=FALSE, message=FALSE}
 #| code-fold: true
 #| code-summary: "Code: Animated line graph"
 #| fig-align: center
+
+
+# Compute some summary values will use in the labels:
+n_papers_2022<- raw_data %>%
+  distinct(PMID, .keep_all = TRUE) %>%
+  filter(Year == 2022) %>%
+  distinct(PMID) %>% 
+  count() %>%
+  pull()
+
+n_journals_2022<- raw_data %>%
+  distinct(PMID, .keep_all = TRUE) %>%
+  filter(Year == 2022) %>%
+  distinct(Journal_Title) %>% 
+  count() %>%
+  pull()
 
 # Prepare data:
 data_total_per_year_pubs <- raw_data %>%
@@ -96,12 +113,16 @@ data_total_per_year_pubs <- raw_data %>%
                                TRUE ~ "")) %>%
   mutate(behav_addic_1994_label = case_when(Year >= 1994 & Year < 2004 ~ sprintf("1994  \nFirst mention of \"Behavioural \n addictions\" in the literature"),
                                TRUE ~ "")) %>%
-  mutate(first_gaming_2004_label = case_when(Year >= 2004 & Year < 2013 ~ sprintf("1961  \nFirst available studies \non gaming addiction"),
+  mutate(first_gaming_2004_label = case_when(Year >= 2004 & Year < 2013 ~ sprintf("2004  \nFirst available studies \non gaming addiction"),
                                TRUE ~ "")) %>%
-  mutate(gam_DSMV_label = case_when(Year >= 2013 & Year < 2021 ~ sprintf("2013 \n\"Gambling disorder\"\nadded in \"addictive \ndisorders\" class in \nDSM-V"),
-                               TRUE ~ ""))                     
+  mutate(gam_DSMV_label = case_when(Year >= 2013 & Year < 2020 ~ sprintf("2013 \n\"Gambling disorder\"\nadded in \"addictive \ndisorders\" class in \nDSM-V"),
+                               TRUE ~ "")) %>%
+  mutate(final_year_label = case_when(
+    Year >= 2020 & Year < 2023 ~ sprintf("2022 \n%s studies\n published \nacross %s  \njournals", n_papers_2022, n_journals_2022),
+    TRUE ~ ""
+  ))                     
                    
-  
+ # Make plot: 
 total_year_gganimate <- data_total_per_year_pubs %>%
    ggplot(aes(Year, n)) + 
    geom_point() + 
@@ -114,13 +135,15 @@ total_year_gganimate <- data_total_per_year_pubs %>%
   geom_text(aes(x = 1970, y =100, label = gam_1980_label), hjust = 0, vjust = 0, alpha = 0.9, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add 1994 behavioural addictions label
   geom_text(aes(x = 1984, y =110, label = behav_addic_1994_label), hjust = 0, vjust = 0, alpha = 0.9, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
-   # Add 2013 gambling label
   # Add 2004 gaming addiction label
   geom_text(aes(x = 1994, y =150, label = first_gaming_2004_label), hjust = 0, vjust = 0, alpha = 0.9, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
    # Add 2013 gambling label
-  geom_text(aes(x = 2000, y =320, label = gam_DSMV_label), hjust = 0, vjust = 0, alpha = 0.9, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
+  geom_text(aes(x = 2001, y =260, label = gam_DSMV_label), hjust = 0, vjust = 0, alpha = 0.9, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
+  # Add final year label
+  geom_text(aes(x = 2013, y =530, label = final_year_label), hjust = 0, vjust = 0, alpha = 0.9, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
 # Define x-axis dates
   scale_x_continuous(breaks = seq(1960, 2020, by = 10)) +  
+  # Define theme elements
    theme(
      plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
      panel.background = element_rect(fill = "#002B36"),
@@ -129,36 +152,45 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      panel.grid = element_blank(),
      plot.margin = margin(20, 5, 20, 20),
      axis.title.y = element_blank(),  # Adjust y-axis title position
-     axis.title.x = element_text(margin = margin(t = 15), size = 14),
-     plot.title = element_text(color = "#F5F7F0", size = 16, margin = margin(b = 15))
+     axis.title.x = element_text(margin = margin(t = 18), size = 14),
+     plot.title = element_text(color = "#289998", size = 16, margin = margin(b = 15))
      # panel.border = element_rect(color = "#002B36")
    ) +
+  # Add titles and labels
    labs(
      title = "Number of Behavioural Addictions papers published per year on PubMed",  # Add header
      subtitle = "Up to end of 2022",
-     x = "Year"
+     x = "Year",
+     caption = "Made by Rob Heirene (@rheirene)"
    ) +
-   transition_reveal(Year) + 
-  enter_fade() + 
-  exit_shrink() 
+  theme(plot.caption = element_text(color = "#289998",  hjust = .98,
+                                    vjust = .98)) +
+  # Add gganimate animation
+   transition_reveal(Year) 
       # view_follow()
-  
-animate(total_year_gganimate, 
-        width = 740, height = 420, 
-        rewind = FALSE, 
-        type = "cairo") 
 
+# Animate and present plot:
 animate(
   total_year_gganimate,
   width = 740, height = 420, 
         rewind = FALSE, 
         type = "cairo",
+  duration = 14,
+  fps = 12,
   renderer = av_renderer()
 )
-
 ```
 
 ```{r include = FALSE}
+
+# Animate plot in GIF format:
+animate(total_year_gganimate, 
+        width = 740, height = 420, 
+        rewind = FALSE, 
+        type = "cairo",
+        duration = 21) 
+
+# Save GIF: 
 anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", animation = last_animation())
 ```
 
