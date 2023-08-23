@@ -1,5 +1,26 @@
 [
   {
+    "objectID": "about.html",
+    "href": "about.html",
+    "title": "About",
+    "section": "",
+    "text": "About me\nI’m a Lecturer in Psychology at the University of Plymouth, UK.\nI’ve worked in academic posts in the UK and Australia since finishing my PhD in Psychology (topic: alcohol-related neurocognitive impairment) in 2019.\nI’m interested in the science of addiction with a passion for data science and visualisation.\n\n\n\n\n\n\n  \n    \n    \n      Map\n      Position\n      Dates\n    \n  \n  \n    \nPhD Scholarship\nUniversity of South-Wales\nApr 2016 → Jun 2019\n    \nPostdoctoral Researcher\nUniversity of Sydney\nJul 2019 → Jan 2022\n    \nPsychology Lecturer\nCharles Darwin University\nFeb 2022 → Feb 2023\n    \nPsychology Lecturer\nUniversity of Plymouth\nMar 2023 → ongoing\n  \n  \n  \n\n\n\n\n\n\n\n\n\n\n\n\n\nAbout my work\nMy career aim is to conduct research that can help prevent and reduce the harms associated with activities like gambling and substance use.\nI’m also an advocate for increasing transparency and openness in research and so some of my work focuses on scientific reform within the addiction field.\nHere’s a visual summary of my peer-reviewed publications by year and topic area:\n\n\n\n\n\n\n  \n    \n    \n    \n    \n    \n    \n  \n  \n    \n    \n      Year\n      Extreme sports\n      Alcohol\n      Gambling\n      Scientific reform\n      Other\n    \n  \n  \n    2016\n2\n1\n0\n0\n0\n    2017\n0\n0\n0\n0\n0\n    2018\n1\n1\n0\n0\n0\n    2019\n0\n1\n0\n0\n0\n    2020\n0\n1\n0\n1\n1\n    2021\n0\n2\n2\n0\n0\n    2022\n0\n1\n2\n1\n0\n    2023\n0\n1\n1\n2\n0\n  \n  \n  \n    \n       Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only. There is overlap between the gamblng & scientific reform categories in 2022 & 23 where one paper is counted in both.\n    \n  \n\n\n\n\n\n\nAbout this site\nI made this site and all the visualisations in it from scratch with Quarto, using mostly R and CSS code.\nI store the full texts for all of my scientific publications here.\nI recently started a little side project called Sci-Software–writing about all the great software and tools available to help students and academics with their careers [I’m currently migrating this from my old website – check back soon!]."
+  },
+  {
+    "objectID": "index.html#latest-research-findings",
+    "href": "index.html#latest-research-findings",
+    "title": "Rob Heirene",
+    "section": "Latest research findings",
+    "text": "Latest research findings\nThe state of the open science in the behavioural addictions field\nI recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research—find out more here. The paper was led by Dr Charlotte Eben, who is doing some great work in this space!"
+  },
+  {
+    "objectID": "index.html#what-im-working-on",
+    "href": "index.html#what-im-working-on",
+    "title": "Rob Heirene",
+    "section": "What I’m working on",
+    "text": "What I’m working on\nPondering + plotting\nI’m currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the plotly R package. I’m marrying these interests by making the below chart of prevention strategies for problem gambling.\nClick on the bars to see more. It’s best viewed on a pc/mac or tablet, not on mobile (if you are on mobile, turn it to landscape mode)."
+  },
+  {
     "objectID": "posts/2020-alcohol-adult-brain/index.html",
     "href": "posts/2020-alcohol-adult-brain/index.html",
     "title": "Alcohol & the adult brain: How much is too much?",
