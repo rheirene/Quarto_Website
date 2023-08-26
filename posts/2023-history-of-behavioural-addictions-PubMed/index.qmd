@@ -167,17 +167,17 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      plot.margin = margin(20, 5, 20, 20),
      axis.title.y = element_blank(),  # Adjust y-axis title position
      axis.title.x = element_text(margin = margin(t = 18), size = 14),
-     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 15), hjust = 14)
+     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = -4)
      # panel.border = element_rect(color = "#002B36")
    ) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = c(.01, 0)) +  # Define x-axis dates & Make the plot fill the available space better
-  scale_y_continuous(limits = c(0, 1000), breaks = seq(0, 1000, by = 250)) +  # Define y-axis labels
+  scale_y_continuous(limits = c(0, 1000), breaks = seq(0, 750, by = 250)) +  # Define y-axis labels
   # Add titles and labels
    labs(
      title = "Number of Behavioural Addictions papers published per year on PubMed",  # Add header
      subtitle = "(Up to end of 2022)",
      x = "Year",
-     caption = "Made by Rob Heirene (@rheirene)"
+     caption = "Rob Heirene (@rheirene)"
    ) +
   theme(plot.caption = element_text(color = "#289998",  hjust = .98,
                                     vjust = .98)) +
@@ -185,27 +185,27 @@ total_year_gganimate <- data_total_per_year_pubs %>%
    transition_reveal(Year) 
       # view_follow()
 
-
-# # Animate plot in GIF format:
-# animate(total_year_gganimate, 
-#         width = 700, height = 420, 
-#         end_pause = 15,
-#         type = "cairo",
-#         duration = 21) 
-# 
-# # Save GIF: 
-# anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", animation = last_animation())
-
 # Animate and present plot:
-animate(
-  total_year_gganimate,
-  width = 700, height = 420, 
-        rewind = FALSE, 
+# animate(
+#   total_year_gganimate,
+#   width = 700, height = 420, 
+#         rewind = FALSE, 
+#         type = "cairo",
+#   duration = 14,
+#   fps = 12,
+#   renderer = av_renderer()
+# )
+
+ # Animate plot in GIF format:
+animate(total_year_gganimate,
+        width = 700, height = 420,
+        end_pause = 20,
         type = "cairo",
-  duration = 14,
-  fps = 12,
-  renderer = av_renderer()
-)
+        duration = 21)
+
+# Save GIF:
+anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", animation = last_animation())
+
 ```
 
  
@@ -258,6 +258,8 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
 
 ```
 
+::: {.videoset}
+
 ```{r  warning=FALSE, message=FALSE}
 #| fig-align: center
 #| code-fold: true
@@ -267,8 +269,12 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
 num_labels <- length(unique(data$Label))
 palette_colors <- rev(scico(n = num_labels, palette = 'imola'))
 
+# levels(as.factor(data$Label)) # Check out all behavioural addictions in the dataset
+
 # Prepare the data:
 data_bar_chart_race_pubs_year<- data %>% 
+  # Remove generic behav addictions category:
+  filter(Label != "behavioural_addictions") %>%
     # Tidy the behavioural addiction labels:
     mutate(Label = str_replace_all(Label, "_", " ") %>%
                  str_to_title()) %>%
@@ -352,9 +358,9 @@ bar_chart_race_pubs_year <-
    labs(
      # title = "",  # Add header
      # subtitle = "",
-     caption = "Made by Rob Heirene (@rheirene)"
+     caption = "Bars represent cumulative number of publications over time | Rob Heirene (@rheirene)"
    ) +
-  theme(plot.caption = element_text(color = "#289998",  hjust = 1.2,
+  theme(plot.caption = element_text(color = "#289998",  hjust = 1.1,
                                     vjust = 0.5)) +
   transition_states(Year, 
                     wrap = FALSE, # THis stops it from rewinding at the end
@@ -363,30 +369,32 @@ bar_chart_race_pubs_year <-
    enter_grow() +
   ease_aes('linear')
 
-
-# # Animate plot in GIF format:
+# Animate in video format:
 # animate(bar_chart_race_pubs_year, 
 #         fps = 20, 
 #         end_pause = 50,
 #         duration = 30, 
+#         rewind = FALSE,
 #         width = 600, height = 650,
-#         type = "cairo")
-# 
-# # Save GIF: 
-# anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
+#         type = "cairo",
+#         renderer = av_renderer())
 
-# Animate in video format:
-animate(bar_chart_race_pubs_year, 
-        fps = 20, 
+
+# Animate plot in GIF format:
+animate(bar_chart_race_pubs_year,
+        fps = 20,
         end_pause = 50,
-        duration = 30, 
-        rewind = FALSE,
+        duration = 30,
         width = 600, height = 650,
-        type = "cairo",
-        renderer = av_renderer())
+        type = "cairo")
+
+# Save GIF:
+anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
+
 
 ```
 
+:::
  
 
 ::: {.callout-tip collapse="true" icon="false"}
