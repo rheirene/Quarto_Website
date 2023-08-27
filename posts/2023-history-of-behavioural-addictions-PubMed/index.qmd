@@ -442,6 +442,7 @@ bar_chart_race_pubs_year <-
   geom_text(aes(x = -Rank, y = -100, 
                 label = Label),
             hjust = 1, 
+            size = 6, ###### ADDED NEED TO CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
             color = "#F5F7F0",
             family = "Reem Kufi") + 
   # Add value label

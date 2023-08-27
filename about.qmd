@@ -21,6 +21,12 @@ library(tidyverse)
 library(gt)
 library(gtExtras)
 library(reactable)
+library(sysfonts)
+library(showtext)
+
+# Load new font for figures/graphs/tables
+font_add_google("Reem Kufi", "Reem Kufi")
+showtext_auto(enable = TRUE) 
 
 
 table_images<- c("files/one.png",
@@ -99,7 +105,10 @@ gttable1 <- gttable1 %>%
                          color = "#289998",
                          weight = px(2)),
     locations = list(cells_footnotes(), cells_source_notes())
-  )
+  ) %>%
+  opt_table_font(
+    font = google_font("Reem Kufi"))
+  
 ```
 
 ```{r echo = FALSE, warning = FALSE}
@@ -333,7 +342,10 @@ Publication_record_table %>%
     Science_reform = "Scientific reform"
   ) %>%
   cols_width(everything() ~ px(80)) %>%
-    cols_width(Year ~ px(100))
+    cols_width(Year ~ px(100)) %>%
+    tab_options(data_row.padding = px(4.5)) %>% # decrease row height
+  opt_table_font(
+    font = google_font("Reem Kufi"))
 ```
 
 ### About this site
