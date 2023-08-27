@@ -167,7 +167,8 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      plot.margin = margin(20, 5, 20, 20),
      axis.title.y = element_blank(),  # Adjust y-axis title position
      axis.title.x = element_text(margin = margin(t = 18), size = 14),
-     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = -4)
+     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = -4),
+     plot.subtitle = element_text(color = "#289998", hjust = -0.01)
      # panel.border = element_rect(color = "#002B36")
    ) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = c(.01, 0)) +  # Define x-axis dates & Make the plot fill the available space better
@@ -199,7 +200,7 @@ total_year_gganimate <- data_total_per_year_pubs %>%
  # Animate plot in GIF format:
 animate(total_year_gganimate,
         width = 700, height = 420,
-        end_pause = 20,
+        end_pause = 30,
         type = "cairo",
         duration = 21)
 
@@ -284,7 +285,7 @@ data_bar_chart_race_pubs_year<- data %>%
   ungroup() %>%
   group_by(Label) %>% 
   mutate(Accumulated_Papers = cumsum(n)) %>% # Produce a variable that is the cumulative sum of studies for each disorder each year (this is what we will be plotting)
-  # This next part is a bit clunky, but we need to find a way to have a value for every addiction for every year, even though we don't have one currently. We can do this by pivoting wider so we create a column for each year
+  # This next part is a bit clunky, but we need to find a way to have a value for every addiction for every year, even though we don't have one currently. We can do this by pivoting wider so we create a column for each year then go from there
   ungroup() %>%
   mutate(percent = round(n/sum(n)*100, 2))  %>% # just for interest
   # mutate(Label = factor(Label, levels = unique(Label))) %>%  # order the Label by descending n
@@ -332,7 +333,7 @@ bar_chart_race_pubs_year <-
             family = "Reem Kufi") + 
   # Add value label
   geom_text(aes(y = Accumulated_Papers, 
-              label = as.factor(Accumulated_Papers)), # Putting this as a factor as key otherwise it displays decimals to ~10 places at times!
+              label = as.factor(Accumulated_Papers)), # Putting this as a factor is key otherwise it displays decimals to ~10 places at times!
           hjust = -0.2,
           color = "#F5F7F0",
           fontface = "bold", 
@@ -346,24 +347,25 @@ bar_chart_race_pubs_year <-
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
      axis.text = element_text(color = "#F5F7F0", size = 12),
      panel.grid = element_blank(),
-     plot.margin = margin(10, 60, 20, 160),
+     plot.margin = margin(10, 60, 20, 130),
      axis.text.y = element_blank(), 
      axis.text.x = element_blank(),  # remove x-axis text
-     axis.title = element_blank()   # remove x-axis title
-     # plot.title = element_text(color = "#289998", size = 15, margin = margin(b = 15), hjust = 14),
+     axis.title = element_blank(),   # remove x-axis title
+     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 0.8),
+     plot.subtitle = element_text(color = "#289998", margin = margin(b = 20), hjust = -0.4),
+     plot.caption = element_text(color = "#289998",  hjust = 1.25,
+                                    vjust = 0.2)
      # axis.text.y = element_text(size = 12, hjust = 1)
      # panel.border = element_rect(color = "#002B36")
    ) +
   # Add titles and labels
    labs(
-     # title = "",  # Add header
-     # subtitle = "",
-     caption = "Bars represent cumulative number of publications over time | Rob Heirene (@rheirene)"
+     title = "Cumulative publications per addiction over time",  # Add header
+     subtitle = "1961-2023",
+     caption = "Rob Heirene (@rheirene)"
    ) +
-  theme(plot.caption = element_text(color = "#289998",  hjust = 1.1,
-                                    vjust = 0.5)) +
   transition_states(Year, 
-                    wrap = FALSE, # THis stops it from rewinding at the end
+                    wrap = FALSE, # This stops it from rewinding at the end
                     transition_length = 5, 
                     state_length = 1) +
    enter_grow() +
@@ -375,7 +377,7 @@ bar_chart_race_pubs_year <-
 #         end_pause = 50,
 #         duration = 30, 
 #         rewind = FALSE,
-#         width = 600, height = 650,
+#         width = 600, height = 700,
 #         type = "cairo",
 #         renderer = av_renderer())
 
@@ -383,9 +385,9 @@ bar_chart_race_pubs_year <-
 # Animate plot in GIF format:
 animate(bar_chart_race_pubs_year,
         fps = 20,
-        end_pause = 50,
+        end_pause = 70,
         duration = 30,
-        width = 600, height = 650,
+        width = 480, height = 650,
         type = "cairo")
 
 # Save GIF:
