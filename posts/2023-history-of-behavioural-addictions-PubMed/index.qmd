@@ -8,6 +8,8 @@ date: 2023-08-25
 draft: true 
 ---
 
+The world of behavioural addictions research is a strange place.
+
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
 #| code-summary: "Code: set-up"
@@ -23,6 +25,7 @@ packages <- c('readr', # Load dataset from GitHib
               'tidyverse', # Clean, organise, and visualise data
               'plotly', # Add interactive elements to figures
               'gganimate', # Make animated plots
+              'transformr', # Needed for certain animations (dumbell lines)
               'png',# Helps render gganimate plots
               'gifski', # Helps render gganimate plots
               'rmarkdown', # Helps render gganimate plots
@@ -43,6 +46,15 @@ font_add_google("Poppins", "Poppins")
 font_add_google("Reem Kufi", "Reem Kufi")
 showtext_auto(enable = TRUE) 
 
+
+plot_theme <-  theme(plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
+     panel.background = element_rect(fill = "#002B36"),
+     text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
+     axis.text = element_text(color = "#F5F7F0", size = 12),
+     panel.grid = element_blank(),
+     plot.title = element_text(color = "#F5F7F0", size = 15),
+     plot.subtitle = element_text(color = "#289998"),
+     plot.caption = element_text(color = "#289998"))
 ```
 
 Okay, so let's load in the dataset and do a little cleaning:
@@ -80,8 +92,12 @@ data %>%
   mutate(full_unique_discrepancy = full_count-value) %>%
   rename(unique_count = value)
 
-# Find the first study for each "addiction":
-data %>%
+# Get palette colors
+num_labels <- length(unique(data$Label))
+palette_colors <- rev(scico(n = num_labels, palette = 'imola'))
+
+# Find the first and last study for each "addiction":
+dumbbell_plot_data<- data %>%
   distinct(PMID, .keep_all = TRUE) %>%
   group_by(Label) %>% 
   summarise(
@@ -89,10 +105,49 @@ data %>%
     max = max(Year)
   ) %>% 
   arrange(min) %>% 
-  print(n=22)
+  pivot_longer(cols = c(min, max),
+               names_to = "Range",
+               values_to = "Year") %>%
+  # Add a value that tells us whether a date is min or max for colouring later:
+    # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title())
 
+# Order the behavioural addictions Based on the first year of publication
+label_order <- dumbbell_plot_data %>% 
+  filter(Range == "min") %>% 
+  arrange(Year) %>% 
+  pull(Label)
 
+# Fix the order:
+dumbbell_plot_data$Label <- factor(dumbbell_plot_data$Label, levels = rev(label_order))
 
+  # Plot data: 
+dumbbell_plot_first_last <- dumbbell_plot_data %>% 
+ggplot(aes(x= Year, y= Label)) +
+  geom_line(aes(group = Label), 
+            size = 1.5, 
+            colour="#666666") +
+    geom_point(aes(color=Range), size=4) +
+  scale_color_manual(values = c("min" = "#70A377", "max" = "#50B5C8"), guide=FALSE) +
+  plot_theme +
+  theme(axis.title = element_blank(),
+        # plot.title = element_text(),
+        plot.title = element_markdown(margin = margin(b = 15)),
+        plot.caption = element_text(color = "#289998", margin = margin(t = 10, b = 5), hjust = .98)) + 
+labs(
+     title = sprintf("<span style = 'color: #70A377;'>First</span> and <span style = 'color: #50B5C8;'>last</span> publications for each \"addiction\""),
+     caption = "Rob Heirene (@rheirene)"
+   ) 
+  #  labs(
+  #    title = "First and last publications for each \"addiction\"",  # Add header
+  #    # subtitle = "",
+  #    caption = "Rob Heirene (@rheirene)"
+  #  ) +
+  # transition_states(Range) 
+dumbbell_plot_first_last
+
+ ggplotly(dumbbell_plot_first_last)
 ```
 
 ```{r  warning=FALSE, message=FALSE}
@@ -203,13 +258,17 @@ animate(total_year_gganimate,
         end_pause = 30,
         type = "cairo",
         duration = 21)
+```
 
+```{r include=FALSE}
 # Save GIF:
 anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", animation = last_animation())
 
 ```
 
  
+
+How many in the last 10 years alone?
 
 Now let's start to look publication rates for each "addiction" in our dataset.
 
@@ -254,8 +313,8 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
      plot.margin = margin(10, 10, 10, 20),
      axis.title = element_blank(),  # Adjust y-axis title position
      axis.text.x = element_blank(),   # remove x-axis text
-     axis.title.x = element_blank()   # remove x-axis title
-   ) 
+     axis.title.x = element_blank())  # remove x-axis title
+
 
 ```
 
@@ -323,8 +382,10 @@ bar_chart_race_pubs_year <-
    geom_text(aes(y = 2400, x = -24, 
                  label = as.factor(Year)), 
              hjust = 0, vjust = 0, 
-             alpha = 0.6, colour = "#289998", 
-             size = 14, family = "Reem Kufi") +
+             alpha = 0.6, col = "#289998", # Alpha not working here for some unknown reason (send help!)
+             size = 14, family = "Reem Kufi",
+             inherit.aes = FALSE) + # Adding this didn't fix the alpha issue
+
   # Add behavioural addiction label
   geom_text(aes(x = -Rank, y = -100, 
                 label = Label),
@@ -352,7 +413,7 @@ bar_chart_race_pubs_year <-
      axis.text.x = element_blank(),  # remove x-axis text
      axis.title = element_blank(),   # remove x-axis title
      plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 0.8),
-     plot.subtitle = element_text(color = "#289998", margin = margin(b = 20), hjust = -0.4),
+     plot.subtitle = element_text(color = "#289998", margin = margin(b = 17), hjust = -0.4),
      plot.caption = element_text(color = "#289998",  hjust = 1.25,
                                     vjust = 0.2)
      # axis.text.y = element_text(size = 12, hjust = 1)
@@ -360,7 +421,7 @@ bar_chart_race_pubs_year <-
    ) +
   # Add titles and labels
    labs(
-     title = "Cumulative publications per addiction over time",  # Add header
+     title = "Cumulative publications per \"addiction\" over time",  # Add header
      subtitle = "1961-2023",
      caption = "Rob Heirene (@rheirene)"
    ) +
@@ -387,12 +448,14 @@ animate(bar_chart_race_pubs_year,
         fps = 20,
         end_pause = 70,
         duration = 30,
-        width = 480, height = 650,
+        width = 480, height = 670,
         type = "cairo")
 
+```
+
+```{r include=FALSE}
 # Save GIF:
 anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
-
 
 ```
 
