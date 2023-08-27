@@ -123,17 +123,22 @@ data %>%
 
 ### All behavioural "addictions" found
 
+ 
+
 ::: {.callout-tip appearance="minimal" icon="false"}
 ## Are these all "true" addictions?
 
 In no way do I endorse
 :::
 
-```{r}
+\
+ 
+
+```{r warning=FALSE, message=FALSE}
 #| code-fold: true
-#| class: output
 #| code-summary: "Code: Table all addictions"
 
+# Arrange data:
 data %>%
   distinct(PMID, .keep_all = TRUE) %>%
   group_by(Label) %>% 
@@ -144,18 +149,19 @@ data %>%
       # Tidy the behavioural addiction labels:
     mutate(Label = str_replace_all(Label, "_", " ") %>%
                  str_to_title()) %>%
-   gt() %>% 
+   gt() %>% # Turn dataframe into gt table
    # tab_header(
     # title = md("**Number of publications on PubMed**"),
     # subtitle = md("*Up to end of 2022*"))  %>%
-  gt_color_rows(n, palette = c("#002B36", "#289998"))  %>%
+  gt_color_rows(n, palette = c("#002B36", "#289998"))  %>% # Make n column heatmap style
    tab_style(
     style = cell_borders(sides = c("top", "bottom"),
                          color = "#002B36",
-                         weight = px(1.5),
+                         weight = px(1.8),
                          style = "solid"),
     locations = cells_body()
   ) %>%
+  tab_options(data_row.padding = px(1.6)) %>% # decrease row height
   tab_options(table.font.color = "#289998",
               table.background.color = "#002B36",
               table.border.bottom.color = "#289998",
@@ -190,7 +196,9 @@ data %>%
   ) %>%
        cols_label(
     Label = "Behavioural addiction",
-    n = "N") 
+    n = "N") %>%
+   opt_table_font(
+    font = google_font("Reem Kufi"))
   
 
 ```
@@ -588,7 +596,7 @@ reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url
 reem_kufi_css <- paste0(
   "<style type = 'text/css'>",
     "@font-face { ",
-      "font-family: 'Reem Kufi'; ", # Use the exact name as it appears in Google Fonts
+      "font-family: 'Reem Kufi'; ", 
       "src: url('", reem_kufi_file, "'); ",
     "}",
   "</style>"
@@ -620,13 +628,13 @@ saveWidget(dumbbell_plot_first_last_ggplotly, 'dumbbell_plot.html')
 ```
 
 ```{=html}
-<iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
+<iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="800" style="border:none;"></iframe>
 ```
  
 
-The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with \`ggplot2\`, I used to the great \`ggplotly\` package to make it interactive---hover over any of the dots to see more information about what was going on that year for each addiction.
+The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with `ggplot2`, I used to the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year for each addiction.
 
-::: {.callout-tip collapse="true" icon="false"}
+::: {.callout-tip collapse="true" appearance="minimal" icon="false"}
 ## Expand for session information
 
 ```{r}
