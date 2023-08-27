@@ -78,8 +78,10 @@ filtered_data <- raw_data %>%
          str_detect(Publication_Type, "Retraction")) %>% 
   distinct(PMID, .keep_all = TRUE)
 
+# Let's now remove these pubs and any from 2023 so we have data for all "full" years:
 data <- raw_data %>% 
-  anti_join(filtered_data)
+  anti_join(filtered_data) %>%
+    filter(Year != "2023") 
 
 ```
 
@@ -96,58 +98,21 @@ data %>%
 num_labels <- length(unique(data$Label))
 palette_colors <- rev(scico(n = num_labels, palette = 'imola'))
 
-# Find the first and last study for each "addiction":
-dumbbell_plot_data<- data %>%
+
+# data %>%
+#   distinct(PMID, .keep_all = TRUE) %>%
+#   group_by(Label) %>% 
+#   filter(Year %in% c(min(Year), max(Year)))
+
+# Find the first and last study for each "addiction" with number of papers at these years:
+data %>%
   distinct(PMID, .keep_all = TRUE) %>%
   group_by(Label) %>% 
   summarise(
-    min = min(Year),
-    max = max(Year)
+    min = min(Year), # identify first year
+    max = max(Year) # identify last  year
   ) %>% 
-  arrange(min) %>% 
-  pivot_longer(cols = c(min, max),
-               names_to = "Range",
-               values_to = "Year") %>%
-  # Add a value that tells us whether a date is min or max for colouring later:
-    # Tidy the behavioural addiction labels:
-    mutate(Label = str_replace_all(Label, "_", " ") %>%
-                 str_to_title())
-
-# Order the behavioural addictions Based on the first year of publication
-label_order <- dumbbell_plot_data %>% 
-  filter(Range == "min") %>% 
-  arrange(Year) %>% 
-  pull(Label)
-
-# Fix the order:
-dumbbell_plot_data$Label <- factor(dumbbell_plot_data$Label, levels = rev(label_order))
-
-  # Plot data: 
-dumbbell_plot_first_last <- dumbbell_plot_data %>% 
-ggplot(aes(x= Year, y= Label)) +
-  geom_line(aes(group = Label), 
-            size = 1.5, 
-            colour="#666666") +
-    geom_point(aes(color=Range), size=4) +
-  scale_color_manual(values = c("min" = "#70A377", "max" = "#50B5C8"), guide=FALSE) +
-  plot_theme +
-  theme(axis.title = element_blank(),
-        # plot.title = element_text(),
-        plot.title = element_markdown(margin = margin(b = 15)),
-        plot.caption = element_text(color = "#289998", margin = margin(t = 10, b = 5), hjust = .98)) + 
-labs(
-     title = sprintf("<span style = 'color: #70A377;'>First</span> and <span style = 'color: #50B5C8;'>last</span> publications for each \"addiction\""),
-     caption = "Rob Heirene (@rheirene)"
-   ) 
-  #  labs(
-  #    title = "First and last publications for each \"addiction\"",  # Add header
-  #    # subtitle = "",
-  #    caption = "Rob Heirene (@rheirene)"
-  #  ) +
-  # transition_states(Range) 
-dumbbell_plot_first_last
-
- ggplotly(dumbbell_plot_first_last)
+  arrange(min) 
 ```
 
 ```{r  warning=FALSE, message=FALSE}
@@ -223,7 +188,7 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      axis.title.y = element_blank(),  # Adjust y-axis title position
      axis.title.x = element_text(margin = margin(t = 18), size = 14),
      plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = -4),
-     plot.subtitle = element_text(color = "#289998", hjust = -0.01)
+     plot.subtitle = element_text(color = "#289998", hjust = -0.02)
      # panel.border = element_rect(color = "#002B36")
    ) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = c(.01, 0)) +  # Define x-axis dates & Make the plot fill the available space better
@@ -413,7 +378,7 @@ bar_chart_race_pubs_year <-
      axis.text.x = element_blank(),  # remove x-axis text
      axis.title = element_blank(),   # remove x-axis title
      plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 0.8),
-     plot.subtitle = element_text(color = "#289998", margin = margin(b = 17), hjust = -0.4),
+     plot.subtitle = element_text(color = "#289998", margin = margin(b = 17), hjust = -0.65),
      plot.caption = element_text(color = "#289998",  hjust = 1.25,
                                     vjust = 0.2)
      # axis.text.y = element_text(size = 12, hjust = 1)
@@ -422,11 +387,11 @@ bar_chart_race_pubs_year <-
   # Add titles and labels
    labs(
      title = "Cumulative publications per \"addiction\" over time",  # Add header
-     subtitle = "1961-2023",
+     subtitle = "(Up to end of 2022)",
      caption = "Rob Heirene (@rheirene)"
    ) +
   transition_states(Year, 
-                    wrap = FALSE, # This stops it from rewinding at the end
+                    wrap = FALSE, # This (with some of the animation arguments) stops it from rewinding at the end
                     transition_length = 5, 
                     state_length = 1) +
    enter_grow() +
@@ -457,6 +422,124 @@ animate(bar_chart_race_pubs_year,
 # Save GIF:
 anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
 
+```
+
+```{r}
+
+# Arrange data:
+dumbbell_plot_data<- data %>%
+  # filter(Year != "2023") %>%
+  filter(Label != "behavioural_addictions") %>%
+  group_by(Label) %>% 
+  summarise(
+    min = min(Year), # identify first year
+    max = max(Year), # identify last  year
+    min_papers = sum(Year == min(Year)),  # Count papers for first year
+    max_papers = sum(Year == max(Year))   # Count papers for last year
+  ) %>% 
+  arrange(min) %>% 
+  pivot_longer(cols = c(min, max),
+    names_to = "Range",
+    values_to = "Year"
+  ) %>%
+  # Compute a single column that contains our n papers for the first and last pub years:
+  mutate(papers_this_year = case_when(Range == "max" ~ max_papers, 
+                                      Range == "min" ~ min_papers)) %>%
+  select(-min_papers,
+         -max_papers) %>% 
+  # Add a value that tells us whether a date is min or max for colouring later:
+    # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title())
+
+# Order the behavioural addictions Based on the first year of publication
+label_order <- dumbbell_plot_data %>% 
+  filter(Range == "min") %>% 
+  arrange(Year) %>% 
+  pull(Label)
+
+# Fix the order:
+dumbbell_plot_data$Label <- factor(dumbbell_plot_data$Label, levels = rev(label_order))
+
+# Create data for every publication year per label
+every_year_data <- data %>%
+  filter(Label != "behavioural_addictions") %>%
+  group_by(Label, Year) %>%
+  summarise(n_papers = n()) %>%
+  ungroup() %>%
+  mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title())
+
+# Order the behavioural addictions Based on the first year of publication
+label_order <- dumbbell_plot_data %>% 
+  filter(Range == "min") %>% 
+  arrange(Year) %>% 
+  pull(Label)
+
+# Fix the order:
+every_year_data$Label <- factor(every_year_data$Label, levels = rev(label_order))
+
+  # Plot: 
+dumbbell_plot_first_last <- ggplot() +
+  geom_line(data = dumbbell_plot_data, aes(x= Year, y= Label, text = Label),
+            size = 1,
+            colour="#666666") +
+  geom_point(data = every_year_data, aes(x = Year, y = Label, size=sqrt(n_papers), text = paste("Label:", Label, "\nYear:", Year, "\nNo. of publications:", n_papers)), color="grey", alpha=0.3) +
+  geom_point(data = dumbbell_plot_data, aes(x = Year, y = Label, color=Range, size=sqrt(papers_this_year), text = paste("Label:", Label, "\nYear:", Year, "\nNo. of publications:", papers_this_year))) +
+  scale_size_continuous(guide="none") +
+  scale_color_manual(values = c("min" = "#70A377", "max" = "#50B5C8"), guide=FALSE) +
+  plot_theme +
+  theme(axis.title = element_blank(),
+        plot.title = element_markdown(margin = margin(b = 15, t = 40)),
+        plot.caption = element_text(color = "#289998", margin = margin(t = 10, b = 5), hjust = .98)) + 
+  labs(
+    title = sprintf("<span style = 'color: #70A377;'>Earliest</span> and <span style = 'color: #50B5C8;'>most recent</span> studies of \n\"behavioural addictions\" on PubMed"),
+    subtitle = "(Up to end of 2022)",
+    caption = "Rob Heirene (@rheirene)"
+  )
+
+print(dumbbell_plot_first_last)
+
+# dumbbell_plot_first_last # View static plot
+
+# We're going to turn this into an interactive plot now using ggplotly, butthis remove some of our existing theme settings, especially the fonts.  The standard way of changing the font in ggplotly  doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
+
+# Get the URL for the "Reem Kufi" font from Google Fonts:
+reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
+
+# Create custom CSS:
+reem_kufi_css <- paste0(
+  "<style type = 'text/css'>",
+    "@font-face { ",
+      "font-family: 'Reem Kufi'; ", # Use the exact name as it appears in Google Fonts
+      "src: url('", reem_kufi_file, "'); ",
+    "}",
+  "</style>"
+)
+
+# Convert static plot to ggplotly format and adjust theme settings where required: 
+dumbbell_plot_first_last_ggplotly <- ggplotly(dumbbell_plot_first_last,
+                                              tooltip = 'text') %>% 
+  hide_legend() %>%
+  plotly::layout(margin = list(t = 90), # Increase top margin
+                 font = list(family = "Reem Kufi"),
+                 title = list(x = 0, y = 0.945), # Adjust x and y to position the title
+    hoverlabel = list(font = list(family = "Reem Kufi")
+                 
+))
+
+# Add the CSS as a dependency for the plotly plot:
+dumbbell_plot_first_last_ggplotly$dependencies <- c(
+  dumbbell_plot_first_last_ggplotly$dependencies,
+  list(
+    htmltools::htmlDependency(
+      name = "reem-kufi-font", 
+      version = "0",  
+      src = "",
+      head = reem_kufi_css)))
+
+# Display plot:
+dumbbell_plot_first_last_ggplotly
 ```
 
 :::
