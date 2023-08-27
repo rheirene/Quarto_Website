@@ -10,6 +10,10 @@ draft: true
 
 The world of behavioural addictions research is a strange place.
 
+### Data & code set-up
+
+Okay, so let's get started with exploring the data. I'll first load all the required packages and fonts for figures.
+
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
 #| code-summary: "Code: set-up"
@@ -23,6 +27,8 @@ library(groundhog) # Load
 packages <- c('readr', # Load dataset from GitHib
               'RCurl', # Load dataset from GitHib
               'tidyverse', # Clean, organise, and visualise data
+              'gt', #  table data
+              'gtExtras', # Add colours to gt tables
               'plotly', # Add interactive elements to figures
               'gganimate', # Make animated plots
               'transformr', # Needed for certain animations (dumbell lines)
@@ -50,14 +56,14 @@ showtext_auto(enable = TRUE)
 plot_theme <-  theme(plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
      panel.background = element_rect(fill = "#002B36"),
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
-     axis.text = element_text(color = "#F5F7F0", size = 12),
+     axis.text = element_text(color = "#F5F7F0", size = 13),
      panel.grid = element_blank(),
-     plot.title = element_text(color = "#F5F7F0", size = 15),
+     plot.title = element_text(color = "#F5F7F0", size = 16),
      plot.subtitle = element_text(color = "#289998"),
      plot.caption = element_text(color = "#289998"))
 ```
 
-Okay, so let's load in the dataset and do a little cleaning:
+Now I'll load in the dataset and do a little cleaning. Of note, I'm going to remove all publications from 2023 so that we only have data for complete years (see comments in the code chunk below for any other exclusions).
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -84,7 +90,6 @@ data <- raw_data %>%
     filter(Year != "2023") 
 
 ```
-
 
 ```{r include=FALSE}
 data %>%
@@ -115,6 +120,82 @@ data %>%
   ) %>% 
   arrange(min) 
 ```
+
+### All behavioural "addictions" found
+
+::: {.callout-tip appearance="minimal" icon="false"}
+## Are these all "true" addictions?
+
+In no way do I endorse
+:::
+
+```{r}
+#| code-fold: true
+#| class: output
+#| code-summary: "Code: Table all addictions"
+
+data %>%
+  distinct(PMID, .keep_all = TRUE) %>%
+  group_by(Label) %>% 
+  summarise(
+    n = n()
+  ) %>%
+  arrange(desc(n)) %>%
+      # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title()) %>%
+   gt() %>% 
+   # tab_header(
+    # title = md("**Number of publications on PubMed**"),
+    # subtitle = md("*Up to end of 2022*"))  %>%
+  gt_color_rows(n, palette = c("#002B36", "#289998"))  %>%
+   tab_style(
+    style = cell_borders(sides = c("top", "bottom"),
+                         color = "#002B36",
+                         weight = px(1.5),
+                         style = "solid"),
+    locations = cells_body()
+  ) %>%
+  tab_options(table.font.color = "#289998",
+              table.background.color = "#002B36",
+              table.border.bottom.color = "#289998",
+              table_body.border.bottom.color = "#289998") %>%
+    tab_style(
+    style = cell_borders(sides = c("t", "b"),
+                         color = "#289998",
+                         weight = px(2)),
+    locations = list(cells_column_labels(), cells_stubhead())
+  ) %>%
+  tab_style(
+    style = list(
+      cell_fill(color = "#002B36"),
+      cell_text(color = "#289998", weight = "bold")
+    ),
+    locations = list(cells_column_labels())
+  ) %>%
+  tab_style(
+      style = list(
+        cell_fill(color = "#002B36"),
+        cell_text(color = "#F5F7F0")
+      ),
+      locations = cells_body(columns = Label)
+    ) %>%
+  cols_align(align = "center", columns = n) %>%
+   cols_align(align = "right", columns = Label) %>%
+  tab_style(
+    style = cell_borders(sides = c("t"),
+                         color = "#289998",
+                         weight = px(2)),
+    locations = list(cells_footnotes(), cells_source_notes())
+  ) %>%
+       cols_label(
+    Label = "Behavioural addiction",
+    n = "N") 
+  
+
+```
+
+### Patterns over time
 
 ```{r  warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -229,7 +310,6 @@ animate(total_year_gganimate,
 ```{r include=FALSE}
 # Save GIF:
 anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", animation = last_animation())
-
 ```
 
  
@@ -420,19 +500,17 @@ animate(bar_chart_race_pubs_year,
 ```{r include=FALSE}
 # Save GIF:
 anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
-
 ```
 
  
 
 Well that was fun, but it's actually quite difficult to see exactly what's going on at every year given how many different supposed addictions there are. Let's try another approach:
 
-
-```{r}
+```{r warning=FALSE,  message=FALSE}
 #| fig-align: center
 #| code-fold: true
 #| code-summary: "Code: Dumbbell plot (publications by addiction)"
-#| fig-height: 7
+#| fig-height: 8.5
 
 # Arrange data:
 dumbbell_plot_data<- data %>%
@@ -492,12 +570,12 @@ dumbbell_plot_first_last <- ggplot() +
         plot.title = element_markdown(margin = margin(b = 15, t = 40)),
         plot.caption = element_text(color = "#289998", margin = margin(t = 10, b = 5), hjust = .98)) + 
   labs(
-    title = sprintf("<span style = 'color: #70A377;'>Earliest</span> and <span style = 'color: #50B5C8;'>most recent</span> studies of \n\"behavioural addictions\" on PubMed"),
+    title = sprintf("<span style = 'color: #70A377;'>Earliest</span> and <span style = 'color: #50B5C8;'>most recent</span> studies of \"behavioural addictions\" on PubMed"),
     subtitle = "(Up to end of 2022)",
     caption = "Rob Heirene (@rheirene)"
   )
 
-print(dumbbell_plot_first_last)
+# print(dumbbell_plot_first_last)
 
 # dumbbell_plot_first_last # View static plot
 
@@ -541,12 +619,12 @@ dumbbell_plot_first_last_ggplotly$dependencies <- c(
 saveWidget(dumbbell_plot_first_last_ggplotly, 'dumbbell_plot.html')
 ```
 
-```{html}
-<iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="700" style="border:none;"></iframe>
-````
+```{=html}
+<iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
+```
  
- 
-The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with `ggplot2`, I used to the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year for each addiction.
+
+The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with \`ggplot2\`, I used to the great \`ggplotly\` package to make it interactive---hover over any of the dots to see more information about what was going on that year for each addiction.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## Expand for session information
@@ -556,7 +634,6 @@ The size of the dots in the above plot correspond to the number of publications 
 #| code-summary: "Code: Get session info"
 
 session_info(pkgs = "attached")
-
 ```
 :::
 
