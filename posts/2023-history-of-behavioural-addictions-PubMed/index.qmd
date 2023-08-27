@@ -85,6 +85,7 @@ data <- raw_data %>%
 
 ```
 
+
 ```{r include=FALSE}
 data %>%
   distinct(PMID) %>%
@@ -283,8 +284,6 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
 
 ```
 
-::: {.videoset}
-
 ```{r  warning=FALSE, message=FALSE}
 #| fig-align: center
 #| code-fold: true
@@ -424,7 +423,16 @@ anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_ye
 
 ```
 
+ 
+
+Well that was fun, but it's actually quite difficult to see exactly what's going on at every year given how many different supposed addictions there are. Let's try another approach:
+
+
 ```{r}
+#| fig-align: center
+#| code-fold: true
+#| code-summary: "Code: Dumbbell plot (publications by addiction)"
+#| fig-height: 7
 
 # Arrange data:
 dumbbell_plot_data<- data %>%
@@ -452,7 +460,7 @@ dumbbell_plot_data<- data %>%
     mutate(Label = str_replace_all(Label, "_", " ") %>%
                  str_to_title())
 
-# Order the behavioural addictions Based on the first year of publication
+# Order the behavioural addictions based on the first year of publication
 label_order <- dumbbell_plot_data %>% 
   filter(Range == "min") %>% 
   arrange(Year) %>% 
@@ -470,22 +478,13 @@ every_year_data <- data %>%
   mutate(Label = str_replace_all(Label, "_", " ") %>%
                  str_to_title())
 
-# Order the behavioural addictions Based on the first year of publication
-label_order <- dumbbell_plot_data %>% 
-  filter(Range == "min") %>% 
-  arrange(Year) %>% 
-  pull(Label)
-
-# Fix the order:
-every_year_data$Label <- factor(every_year_data$Label, levels = rev(label_order))
-
   # Plot: 
 dumbbell_plot_first_last <- ggplot() +
   geom_line(data = dumbbell_plot_data, aes(x= Year, y= Label, text = Label),
             size = 1,
             colour="#666666") +
-  geom_point(data = every_year_data, aes(x = Year, y = Label, size=sqrt(n_papers), text = paste("Label:", Label, "\nYear:", Year, "\nNo. of publications:", n_papers)), color="grey", alpha=0.3) +
-  geom_point(data = dumbbell_plot_data, aes(x = Year, y = Label, color=Range, size=sqrt(papers_this_year), text = paste("Label:", Label, "\nYear:", Year, "\nNo. of publications:", papers_this_year))) +
+  geom_point(data = every_year_data, aes(x = Year, y = Label, size=sqrt(n_papers), text = paste(Label, "\nYear:", Year, "\nNo. of publications:", n_papers)), color="grey", alpha=0.3) +
+  geom_point(data = dumbbell_plot_data, aes(x = Year, y = Label, color=Range, size=sqrt(papers_this_year), text = paste(Label, "\nYear:", Year, "\nNo. of publications:", papers_this_year))) +
   scale_size_continuous(guide="none") +
   scale_color_manual(values = c("min" = "#70A377", "max" = "#50B5C8"), guide=FALSE) +
   plot_theme +
@@ -539,11 +538,15 @@ dumbbell_plot_first_last_ggplotly$dependencies <- c(
       head = reem_kufi_css)))
 
 # Display plot:
-dumbbell_plot_first_last_ggplotly
+saveWidget(dumbbell_plot_first_last_ggplotly, 'dumbbell_plot.html')
 ```
 
-:::
+```{html}
+<iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="700" style="border:none;"></iframe>
+````
  
+ 
+The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with `ggplot2`, I used to the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year for each addiction.
 
 ::: {.callout-tip collapse="true" icon="false"}
 ## Expand for session information

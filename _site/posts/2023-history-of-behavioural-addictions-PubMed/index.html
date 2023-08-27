@@ -99,11 +99,11 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Rob Heirene - The history of behavioural addictions research (according to PubMed)">
 <meta property="og:description" content="">
-<meta property="og:image" content="index_files/figure-html/unnamed-chunk-4-1.gif">
+<meta property="og:image" content="index_files/figure-html/unnamed-chunk-3-1.png">
 <meta property="og:site-name" content="Rob Heirene">
 <meta name="twitter:title" content="Rob Heirene - The history of behavioural addictions research (according to PubMed)">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="index_files/figure-html/unnamed-chunk-4-1.gif">
+<meta name="twitter:image" content="index_files/figure-html/unnamed-chunk-3-1.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -193,6 +193,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+<p>The world of behavioural addictions research is a strange place.</p>
 <div class="cell">
 <details>
 <summary>Code: set-up</summary>
@@ -207,25 +208,36 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>              <span class="st">'tidyverse'</span>, <span class="co"># Clean, organise, and visualise data</span></span>
 <span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>              <span class="st">'plotly'</span>, <span class="co"># Add interactive elements to figures</span></span>
 <span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>              <span class="st">'gganimate'</span>, <span class="co"># Make animated plots</span></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>              <span class="st">'png'</span>,<span class="co"># Helps render gganimate plots</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>              <span class="st">'gifski'</span>, <span class="co"># Helps render gganimate plots</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>              <span class="st">'rmarkdown'</span>, <span class="co"># Helps render gganimate plots</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">'av'</span>, <span class="co"># render gganimate plots as videos</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Cairo'</span>, <span class="co"># Anti-aliasing for the line plots (smoothing output)</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">'ggtext'</span>, <span class="co"># make fancy labels in plots</span></span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>              <span class="st">'sysfonts'</span>, <span class="co"># Special fonts for figures</span></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>              <span class="st">'showtext'</span>, <span class="co"># Special fonts for figures</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>              <span class="st">'htmlwidgets'</span>, <span class="co"># Make plotly plots HTML format for rendering in Quarto</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>              <span class="st">'scico'</span>, <span class="co"># Colour palette</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>              <span class="st">'sessioninfo'</span>) <span class="co"># Detailed session info for reproducibility </span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Load desired package with versions specific to project start date:</span></span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="fu">groundhog.library</span>(packages, <span class="st">"2023-08-01"</span>) </span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Load new font for figures/graphs</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poppins"</span>, <span class="st">"Poppins"</span>)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Reem Kufi"</span>, <span class="st">"Reem Kufi"</span>)</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>(<span class="at">enable =</span> <span class="cn">TRUE</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>              <span class="st">'transformr'</span>, <span class="co"># Needed for certain animations (dumbell lines)</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>              <span class="st">'png'</span>,<span class="co"># Helps render gganimate plots</span></span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>              <span class="st">'gifski'</span>, <span class="co"># Helps render gganimate plots</span></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>              <span class="st">'rmarkdown'</span>, <span class="co"># Helps render gganimate plots</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>              <span class="st">'av'</span>, <span class="co"># render gganimate plots as videos</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>              <span class="st">'Cairo'</span>, <span class="co"># Anti-aliasing for the line plots (smoothing output)</span></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a>              <span class="st">'ggtext'</span>, <span class="co"># make fancy labels in plots</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a>              <span class="st">'sysfonts'</span>, <span class="co"># Special fonts for figures</span></span>
+<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>              <span class="st">'showtext'</span>, <span class="co"># Special fonts for figures</span></span>
+<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>              <span class="st">'htmlwidgets'</span>, <span class="co"># Make plotly plots HTML format for rendering in Quarto</span></span>
+<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>              <span class="st">'scico'</span>, <span class="co"># Colour palette</span></span>
+<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>              <span class="st">'sessioninfo'</span>) <span class="co"># Detailed session info for reproducibility </span></span>
+<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Load desired package with versions specific to project start date:</span></span>
+<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="fu">groundhog.library</span>(packages, <span class="st">"2023-08-01"</span>) </span>
+<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a><span class="co"># Load new font for figures/graphs</span></span>
+<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poppins"</span>, <span class="st">"Poppins"</span>)</span>
+<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Reem Kufi"</span>, <span class="st">"Reem Kufi"</span>)</span>
+<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a><span class="fu">showtext_auto</span>(<span class="at">enable =</span> <span class="cn">TRUE</span>) </span>
+<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>plot_theme <span class="ot">&lt;-</span>  <span class="fu">theme</span>(<span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
+<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
+<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>),</span>
+<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>),</span>
+<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Okay, so let’s load in the dataset and do a little cleaning:</p>
@@ -247,266 +259,420 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>         <span class="fu">str_detect</span>(Publication_Type, <span class="st">"Retraction"</span>)) <span class="sc">%&gt;%</span> </span>
 <span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>)</span>
 <span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> raw_data <span class="sc">%&gt;%</span> </span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(filtered_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Let's now remove these pubs and any from 2023 so we have data for all "full" years:</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> raw_data <span class="sc">%&gt;%</span> </span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">anti_join</span>(filtered_data) <span class="sc">%&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>    <span class="fu">filter</span>(Year <span class="sc">!=</span> <span class="st">"2023"</span>) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
+</div>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code: Dumbbell plot (publications by addiction)</summary>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange data:</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>dumbbell_plot_data<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="co"># filter(Year != "2023") %&gt;%</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Label <span class="sc">!=</span> <span class="st">"behavioural_addictions"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">min =</span> <span class="fu">min</span>(Year), <span class="co"># identify first year</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">max =</span> <span class="fu">max</span>(Year), <span class="co"># identify last  year</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">min_papers =</span> <span class="fu">sum</span>(Year <span class="sc">==</span> <span class="fu">min</span>(Year)),  <span class="co"># Count papers for first year</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">max_papers =</span> <span class="fu">sum</span>(Year <span class="sc">==</span> <span class="fu">max</span>(Year))   <span class="co"># Count papers for last year</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(min) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">c</span>(min, max),</span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">names_to =</span> <span class="st">"Range"</span>,</span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">values_to =</span> <span class="st">"Year"</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Compute a single column that contains our n papers for the first and last pub years:</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">papers_this_year =</span> <span class="fu">case_when</span>(Range <span class="sc">==</span> <span class="st">"max"</span> <span class="sc">~</span> max_papers, </span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                                      Range <span class="sc">==</span> <span class="st">"min"</span> <span class="sc">~</span> min_papers)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>min_papers,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>max_papers) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add a value that tells us whether a date is min or max for colouring later:</span></span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Tidy the behavioural addiction labels:</span></span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Label =</span> <span class="fu">str_replace_all</span>(Label, <span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">str_to_title</span>())</span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a><span class="co"># Order the behavioural addictions based on the first year of publication</span></span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>label_order <span class="ot">&lt;-</span> dumbbell_plot_data <span class="sc">%&gt;%</span> </span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Range <span class="sc">==</span> <span class="st">"min"</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Label)</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Fix the order:</span></span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>dumbbell_plot_data<span class="sc">$</span>Label <span class="ot">&lt;-</span> <span class="fu">factor</span>(dumbbell_plot_data<span class="sc">$</span>Label, <span class="at">levels =</span> <span class="fu">rev</span>(label_order))</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a><span class="co"># Create data for every publication year per label</span></span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>every_year_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Label <span class="sc">!=</span> <span class="st">"behavioural_addictions"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label, Year) <span class="sc">%&gt;%</span></span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">n_papers =</span> <span class="fu">n</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Label =</span> <span class="fu">str_replace_all</span>(Label, <span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">str_to_title</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Label'. You can override using the
+`.groups` argument.</code></pre>
+</div>
+<details>
+<summary>Code: Dumbbell plot (publications by addiction)</summary>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Plot: </span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>dumbbell_plot_first_last <span class="ot">&lt;-</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">data =</span> dumbbell_plot_data, <span class="fu">aes</span>(<span class="at">x=</span> Year, <span class="at">y=</span> Label, <span class="at">text =</span> Label),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="dv">1</span>,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">colour=</span><span class="st">"#666666"</span>) <span class="sc">+</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> every_year_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Label, <span class="at">size=</span><span class="fu">sqrt</span>(n_papers), <span class="at">text =</span> <span class="fu">paste</span>(Label, <span class="st">"</span><span class="sc">\n</span><span class="st">Year:"</span>, Year, <span class="st">"</span><span class="sc">\n</span><span class="st">No. of publications:"</span>, n_papers)), <span class="at">color=</span><span class="st">"grey"</span>, <span class="at">alpha=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">data =</span> dumbbell_plot_data, <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Label, <span class="at">color=</span>Range, <span class="at">size=</span><span class="fu">sqrt</span>(papers_this_year), <span class="at">text =</span> <span class="fu">paste</span>(Label, <span class="st">"</span><span class="sc">\n</span><span class="st">Year:"</span>, Year, <span class="st">"</span><span class="sc">\n</span><span class="st">No. of publications:"</span>, papers_this_year))) <span class="sc">+</span></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_size_continuous</span>(<span class="at">guide=</span><span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"min"</span> <span class="ot">=</span> <span class="st">"#70A377"</span>, <span class="st">"max"</span> <span class="ot">=</span> <span class="st">"#50B5C8"</span>), <span class="at">guide=</span><span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a>  plot_theme <span class="sc">+</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>, <span class="at">t =</span> <span class="dv">40</span>)),</span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">5</span>), <span class="at">hjust =</span> .<span class="dv">98</span>)) <span class="sc">+</span> </span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">sprintf</span>(<span class="st">"&lt;span style = 'color: #70A377;'&gt;Earliest&lt;/span&gt; and &lt;span style = 'color: #50B5C8;'&gt;most recent&lt;/span&gt; studies of </span><span class="sc">\n\"</span><span class="st">behavioural addictions</span><span class="sc">\"</span><span class="st"> on PubMed"</span>),</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
+<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: Using `size` aesthetic for lines was deprecated in ggplot2 3.4.0.
+ℹ Please use `linewidth` instead.</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_line(data = dumbbell_plot_data, aes(x = Year, y = Label, :
+Ignoring unknown aesthetics: text</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_point(data = every_year_data, aes(x = Year, y = Label, size =
+sqrt(n_papers), : Ignoring unknown aesthetics: text</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in geom_point(data = dumbbell_plot_data, aes(x = Year, y = Label, :
+Ignoring unknown aesthetics: text</code></pre>
+</div>
+<details>
+<summary>Code: Dumbbell plot (publications by addiction)</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(dumbbell_plot_first_last)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: The `guide` argument in `scale_*()` cannot be `FALSE`. This was deprecated in
+ggplot2 3.3.4.
+ℹ Please use "none" instead.</code></pre>
+</div>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<details>
+<summary>Code: Dumbbell plot (publications by addiction)</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dumbbell_plot_first_last # View static plot</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co"># We're going to turn this into an interactive plot now using ggplotly, butthis remove some of our existing theme settings, especially the fonts.  The standard way of changing the font in ggplotly  doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the URL for the "Reem Kufi" font from Google Fonts:</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>reem_kufi_file <span class="ot">&lt;-</span> showtextdb<span class="sc">::</span><span class="fu">google_fonts</span>(<span class="st">"Reem Kufi"</span>)<span class="sc">$</span>regular_url </span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom CSS:</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>reem_kufi_css <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a>  <span class="st">"&lt;style type = 'text/css'&gt;"</span>,</span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>    <span class="st">"@font-face { "</span>,</span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a>      <span class="st">"font-family: 'Reem Kufi'; "</span>, <span class="co"># Use the exact name as it appears in Google Fonts</span></span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>      <span class="st">"src: url('"</span>, reem_kufi_file, <span class="st">"'); "</span>,</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="st">"}"</span>,</span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>  <span class="st">"&lt;/style&gt;"</span></span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Convert static plot to ggplotly format and adjust theme settings where required: </span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>dumbbell_plot_first_last_ggplotly <span class="ot">&lt;-</span> <span class="fu">ggplotly</span>(dumbbell_plot_first_last,</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>                                              <span class="at">tooltip =</span> <span class="st">'text'</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hide_legend</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>  plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">margin =</span> <span class="fu">list</span>(<span class="at">t =</span> <span class="dv">90</span>), <span class="co"># Increase top margin</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>                 <span class="at">font =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>),</span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>                 <span class="at">title =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.945</span>), <span class="co"># Adjust x and y to position the title</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a>    <span class="at">hoverlabel =</span> <span class="fu">list</span>(<span class="at">font =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>)</span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>                 </span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>))</span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the CSS as a dependency for the plotly plot:</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a>dumbbell_plot_first_last_ggplotly<span class="sc">$</span>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>  dumbbell_plot_first_last_ggplotly<span class="sc">$</span>dependencies,</span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>    htmltools<span class="sc">::</span><span class="fu">htmlDependency</span>(</span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"reem-kufi-font"</span>, </span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>      <span class="at">version =</span> <span class="st">"0"</span>,  </span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>      <span class="at">src =</span> <span class="st">""</span>,</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>      <span class="at">head =</span> reem_kufi_css)))</span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a><span class="co"># Display plot:</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a><span class="fu">saveWidget</span>(dumbbell_plot_first_last_ggplotly, <span class="st">'dumbbell_plot.html'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode html code-with-copy"><code class="sourceCode html"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;iframe</span> <span class="er">src</span><span class="ot">=</span><span class="st">"dumbbell_plot.html"</span> <span class="er">class</span><span class="ot">=</span><span class="st">"fade-inhtml"</span> <span class="er">width</span><span class="ot">=</span><span class="st">"100%"</span> <span class="er">height</span><span class="ot">=</span><span class="st">"700"</span> <span class="er">style</span><span class="ot">=</span><span class="st">"border:none;"</span><span class="kw">&gt;&lt;/iframe&gt;</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code: Bar chart of total pubs</summary>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute some summary values will use in the labels:</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>n_papers_2022<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
-<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>n_journals_2022<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Journal_Title) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
-<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data:</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>data_total_per_year_pubs <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Year <span class="sc">!=</span> <span class="st">"2023"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span></span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_study_1961_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">1961</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">1980</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"1961  </span><span class="sc">\n</span><span class="st">First available study: </span><span class="sc">\n\"</span><span class="st">Compulsive gambling</span><span class="sc">\"</span><span class="st">"</span>),</span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gam_1980_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">1980</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">1994</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"1980  </span><span class="sc">\n</span><span class="st">Pathological Gambling added </span><span class="sc">\n</span><span class="st">to DSM (version III)"</span>),</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">behav_addic_1994_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">1994</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2004</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"1994  </span><span class="sc">\n</span><span class="st">First mention of </span><span class="sc">\"</span><span class="st">Behavioural </span><span class="sc">\n</span><span class="st"> addictions</span><span class="sc">\"</span><span class="st"> in the literature"</span>),</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_gaming_2004_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">2004</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2013</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"2004  </span><span class="sc">\n</span><span class="st">First available studies </span><span class="sc">\n</span><span class="st">on gaming addiction"</span>),</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gam_DSMV_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">2013</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2020</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"2013 </span><span class="sc">\n\"</span><span class="st">Gambling disorder</span><span class="sc">\"\n</span><span class="st">added in </span><span class="sc">\"</span><span class="st">addictive </span><span class="sc">\n</span><span class="st">disorders</span><span class="sc">\"</span><span class="st"> class in </span><span class="sc">\n</span><span class="st">DSM-V"</span>),</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">final_year_label =</span> <span class="fu">case_when</span>(</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    Year <span class="sc">&gt;=</span> <span class="dv">2020</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2023</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"2022 </span><span class="sc">\n</span><span class="st">%s studies</span><span class="sc">\n</span><span class="st"> published </span><span class="sc">\n</span><span class="st">across %s  </span><span class="sc">\n</span><span class="st">journals"</span>, n_papers_2022, n_journals_2022),</span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span></span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  ))                     </span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>                   </span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a> <span class="co"># Make plot: </span></span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>total_year_gganimate <span class="ot">&lt;-</span> data_total_per_year_pubs <span class="sc">%&gt;%</span></span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, n)) <span class="sc">+</span> </span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">color =</span> <span class="st">"#289998"</span>) <span class="sc">+</span> </span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add year counting label</span></span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1984</span>, <span class="at">y =</span> <span class="dv">370</span>, <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#289998"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1961 first study label</span></span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1961</span>, <span class="at">y =</span><span class="dv">90</span>, <span class="at">label =</span> first_study_1961_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1980 gambling label</span></span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1970</span>, <span class="at">y =</span><span class="dv">100</span>, <span class="at">label =</span> gam_1980_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1994 behavioural addictions label</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1984</span>, <span class="at">y =</span><span class="dv">110</span>, <span class="at">label =</span> behav_addic_1994_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 2004 gaming addiction label</span></span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1994</span>, <span class="at">y =</span><span class="dv">150</span>, <span class="at">label =</span> first_gaming_2004_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Add 2013 gambling label</span></span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">2002</span>, <span class="at">y =</span><span class="dv">260</span>, <span class="at">label =</span> gam_DSMV_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add final year label</span></span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">2014</span>, <span class="at">y =</span><span class="dv">670</span>, <span class="at">label =</span> final_year_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define theme elements</span></span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
-<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb3-64"><a href="#cb3-64" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">20</span>),</span>
-<span id="cb3-65"><a href="#cb3-65" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),  <span class="co"># Adjust y-axis title position</span></span>
-<span id="cb3-66"><a href="#cb3-66" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">18</span>), <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb3-67"><a href="#cb3-67" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="dv">4</span>),</span>
-<span id="cb3-68"><a href="#cb3-68" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.01</span>)</span>
-<span id="cb3-69"><a href="#cb3-69" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
-<span id="cb3-70"><a href="#cb3-70" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb3-71"><a href="#cb3-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1960</span>, <span class="dv">2020</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">expand =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>)) <span class="sc">+</span>  <span class="co"># Define x-axis dates &amp; Make the plot fill the available space better</span></span>
-<span id="cb3-72"><a href="#cb3-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">750</span>, <span class="at">by =</span> <span class="dv">250</span>)) <span class="sc">+</span>  <span class="co"># Define y-axis labels</span></span>
-<span id="cb3-73"><a href="#cb3-73" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
-<span id="cb3-74"><a href="#cb3-74" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb3-75"><a href="#cb3-75" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Number of Behavioural Addictions papers published per year on PubMed"</span>,  <span class="co"># Add header</span></span>
-<span id="cb3-76"><a href="#cb3-76" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
-<span id="cb3-77"><a href="#cb3-77" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb3-78"><a href="#cb3-78" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
-<span id="cb3-79"><a href="#cb3-79" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb3-80"><a href="#cb3-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>,  <span class="at">hjust =</span> .<span class="dv">98</span>,</span>
-<span id="cb3-81"><a href="#cb3-81" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> .<span class="dv">98</span>)) <span class="sc">+</span></span>
-<span id="cb3-82"><a href="#cb3-82" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gganimate animation</span></span>
-<span id="cb3-83"><a href="#cb3-83" aria-hidden="true" tabindex="-1"></a>   <span class="fu">transition_reveal</span>(Year) </span>
-<span id="cb3-84"><a href="#cb3-84" aria-hidden="true" tabindex="-1"></a>      <span class="co"># view_follow()</span></span>
-<span id="cb3-85"><a href="#cb3-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-86"><a href="#cb3-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate and present plot:</span></span>
-<span id="cb3-87"><a href="#cb3-87" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(</span></span>
-<span id="cb3-88"><a href="#cb3-88" aria-hidden="true" tabindex="-1"></a><span class="co">#   total_year_gganimate,</span></span>
-<span id="cb3-89"><a href="#cb3-89" aria-hidden="true" tabindex="-1"></a><span class="co">#   width = 700, height = 420, </span></span>
-<span id="cb3-90"><a href="#cb3-90" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE, </span></span>
-<span id="cb3-91"><a href="#cb3-91" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
-<span id="cb3-92"><a href="#cb3-92" aria-hidden="true" tabindex="-1"></a><span class="co">#   duration = 14,</span></span>
-<span id="cb3-93"><a href="#cb3-93" aria-hidden="true" tabindex="-1"></a><span class="co">#   fps = 12,</span></span>
-<span id="cb3-94"><a href="#cb3-94" aria-hidden="true" tabindex="-1"></a><span class="co">#   renderer = av_renderer()</span></span>
-<span id="cb3-95"><a href="#cb3-95" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb3-96"><a href="#cb3-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-97"><a href="#cb3-97" aria-hidden="true" tabindex="-1"></a> <span class="co"># Animate plot in GIF format:</span></span>
-<span id="cb3-98"><a href="#cb3-98" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(total_year_gganimate,</span>
-<span id="cb3-99"><a href="#cb3-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">700</span>, <span class="at">height =</span> <span class="dv">420</span>,</span>
-<span id="cb3-100"><a href="#cb3-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">30</span>,</span>
-<span id="cb3-101"><a href="#cb3-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>,</span>
-<span id="cb3-102"><a href="#cb3-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute some summary values will use in the labels:</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>n_papers_2022<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>n_journals_2022<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Year <span class="sc">==</span> <span class="dv">2022</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(Journal_Title) <span class="sc">%&gt;%</span> </span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>()</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare data:</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>data_total_per_year_pubs <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Year <span class="sc">!=</span> <span class="st">"2023"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>   <span class="fu">count</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_study_1961_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">1961</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">1980</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"1961  </span><span class="sc">\n</span><span class="st">First available study: </span><span class="sc">\n\"</span><span class="st">Compulsive gambling</span><span class="sc">\"</span><span class="st">"</span>),</span>
+<span id="cb14-24"><a href="#cb14-24" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-25"><a href="#cb14-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gam_1980_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">1980</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">1994</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"1980  </span><span class="sc">\n</span><span class="st">Pathological Gambling added </span><span class="sc">\n</span><span class="st">to DSM (version III)"</span>),</span>
+<span id="cb14-26"><a href="#cb14-26" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-27"><a href="#cb14-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">behav_addic_1994_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">1994</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2004</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"1994  </span><span class="sc">\n</span><span class="st">First mention of </span><span class="sc">\"</span><span class="st">Behavioural </span><span class="sc">\n</span><span class="st"> addictions</span><span class="sc">\"</span><span class="st"> in the literature"</span>),</span>
+<span id="cb14-28"><a href="#cb14-28" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-29"><a href="#cb14-29" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">first_gaming_2004_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">2004</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2013</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"2004  </span><span class="sc">\n</span><span class="st">First available studies </span><span class="sc">\n</span><span class="st">on gaming addiction"</span>),</span>
+<span id="cb14-30"><a href="#cb14-30" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-31"><a href="#cb14-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">gam_DSMV_label =</span> <span class="fu">case_when</span>(Year <span class="sc">&gt;=</span> <span class="dv">2013</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2020</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"2013 </span><span class="sc">\n\"</span><span class="st">Gambling disorder</span><span class="sc">\"\n</span><span class="st">added in </span><span class="sc">\"</span><span class="st">addictive </span><span class="sc">\n</span><span class="st">disorders</span><span class="sc">\"</span><span class="st"> class in </span><span class="sc">\n</span><span class="st">DSM-V"</span>),</span>
+<span id="cb14-32"><a href="#cb14-32" aria-hidden="true" tabindex="-1"></a>                               <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb14-33"><a href="#cb14-33" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">final_year_label =</span> <span class="fu">case_when</span>(</span>
+<span id="cb14-34"><a href="#cb14-34" aria-hidden="true" tabindex="-1"></a>    Year <span class="sc">&gt;=</span> <span class="dv">2020</span> <span class="sc">&amp;</span> Year <span class="sc">&lt;</span> <span class="dv">2023</span> <span class="sc">~</span> <span class="fu">sprintf</span>(<span class="st">"2022 </span><span class="sc">\n</span><span class="st">%s studies</span><span class="sc">\n</span><span class="st"> published </span><span class="sc">\n</span><span class="st">across %s  </span><span class="sc">\n</span><span class="st">journals"</span>, n_papers_2022, n_journals_2022),</span>
+<span id="cb14-35"><a href="#cb14-35" aria-hidden="true" tabindex="-1"></a>    <span class="cn">TRUE</span> <span class="sc">~</span> <span class="st">""</span></span>
+<span id="cb14-36"><a href="#cb14-36" aria-hidden="true" tabindex="-1"></a>  ))                     </span>
+<span id="cb14-37"><a href="#cb14-37" aria-hidden="true" tabindex="-1"></a>                   </span>
+<span id="cb14-38"><a href="#cb14-38" aria-hidden="true" tabindex="-1"></a> <span class="co"># Make plot: </span></span>
+<span id="cb14-39"><a href="#cb14-39" aria-hidden="true" tabindex="-1"></a>total_year_gganimate <span class="ot">&lt;-</span> data_total_per_year_pubs <span class="sc">%&gt;%</span></span>
+<span id="cb14-40"><a href="#cb14-40" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, n)) <span class="sc">+</span> </span>
+<span id="cb14-41"><a href="#cb14-41" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
+<span id="cb14-42"><a href="#cb14-42" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">color =</span> <span class="st">"#289998"</span>) <span class="sc">+</span> </span>
+<span id="cb14-43"><a href="#cb14-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add year counting label</span></span>
+<span id="cb14-44"><a href="#cb14-44" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1984</span>, <span class="at">y =</span> <span class="dv">370</span>, <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#289998"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-45"><a href="#cb14-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1961 first study label</span></span>
+<span id="cb14-46"><a href="#cb14-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1961</span>, <span class="at">y =</span><span class="dv">90</span>, <span class="at">label =</span> first_study_1961_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-47"><a href="#cb14-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1980 gambling label</span></span>
+<span id="cb14-48"><a href="#cb14-48" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1970</span>, <span class="at">y =</span><span class="dv">100</span>, <span class="at">label =</span> gam_1980_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-49"><a href="#cb14-49" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1994 behavioural addictions label</span></span>
+<span id="cb14-50"><a href="#cb14-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1984</span>, <span class="at">y =</span><span class="dv">110</span>, <span class="at">label =</span> behav_addic_1994_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-51"><a href="#cb14-51" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 2004 gaming addiction label</span></span>
+<span id="cb14-52"><a href="#cb14-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1994</span>, <span class="at">y =</span><span class="dv">150</span>, <span class="at">label =</span> first_gaming_2004_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-53"><a href="#cb14-53" aria-hidden="true" tabindex="-1"></a>   <span class="co"># Add 2013 gambling label</span></span>
+<span id="cb14-54"><a href="#cb14-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">2002</span>, <span class="at">y =</span><span class="dv">260</span>, <span class="at">label =</span> gam_DSMV_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-55"><a href="#cb14-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add final year label</span></span>
+<span id="cb14-56"><a href="#cb14-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">2014</span>, <span class="at">y =</span><span class="dv">670</span>, <span class="at">label =</span> final_year_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb14-57"><a href="#cb14-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define theme elements</span></span>
+<span id="cb14-58"><a href="#cb14-58" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
+<span id="cb14-59"><a href="#cb14-59" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
+<span id="cb14-60"><a href="#cb14-60" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb14-61"><a href="#cb14-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
+<span id="cb14-62"><a href="#cb14-62" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb14-63"><a href="#cb14-63" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb14-64"><a href="#cb14-64" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb14-65"><a href="#cb14-65" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),  <span class="co"># Adjust y-axis title position</span></span>
+<span id="cb14-66"><a href="#cb14-66" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">18</span>), <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb14-67"><a href="#cb14-67" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="dv">4</span>),</span>
+<span id="cb14-68"><a href="#cb14-68" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.02</span>)</span>
+<span id="cb14-69"><a href="#cb14-69" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
+<span id="cb14-70"><a href="#cb14-70" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb14-71"><a href="#cb14-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1960</span>, <span class="dv">2020</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">expand =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>)) <span class="sc">+</span>  <span class="co"># Define x-axis dates &amp; Make the plot fill the available space better</span></span>
+<span id="cb14-72"><a href="#cb14-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">750</span>, <span class="at">by =</span> <span class="dv">250</span>)) <span class="sc">+</span>  <span class="co"># Define y-axis labels</span></span>
+<span id="cb14-73"><a href="#cb14-73" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
+<span id="cb14-74"><a href="#cb14-74" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb14-75"><a href="#cb14-75" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Number of Behavioural Addictions papers published per year on PubMed"</span>,  <span class="co"># Add header</span></span>
+<span id="cb14-76"><a href="#cb14-76" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
+<span id="cb14-77"><a href="#cb14-77" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb14-78"><a href="#cb14-78" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
+<span id="cb14-79"><a href="#cb14-79" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb14-80"><a href="#cb14-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>,  <span class="at">hjust =</span> .<span class="dv">98</span>,</span>
+<span id="cb14-81"><a href="#cb14-81" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> .<span class="dv">98</span>)) <span class="sc">+</span></span>
+<span id="cb14-82"><a href="#cb14-82" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gganimate animation</span></span>
+<span id="cb14-83"><a href="#cb14-83" aria-hidden="true" tabindex="-1"></a>   <span class="fu">transition_reveal</span>(Year) </span>
+<span id="cb14-84"><a href="#cb14-84" aria-hidden="true" tabindex="-1"></a>      <span class="co"># view_follow()</span></span>
+<span id="cb14-85"><a href="#cb14-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-86"><a href="#cb14-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate and present plot:</span></span>
+<span id="cb14-87"><a href="#cb14-87" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(</span></span>
+<span id="cb14-88"><a href="#cb14-88" aria-hidden="true" tabindex="-1"></a><span class="co">#   total_year_gganimate,</span></span>
+<span id="cb14-89"><a href="#cb14-89" aria-hidden="true" tabindex="-1"></a><span class="co">#   width = 700, height = 420, </span></span>
+<span id="cb14-90"><a href="#cb14-90" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE, </span></span>
+<span id="cb14-91"><a href="#cb14-91" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
+<span id="cb14-92"><a href="#cb14-92" aria-hidden="true" tabindex="-1"></a><span class="co">#   duration = 14,</span></span>
+<span id="cb14-93"><a href="#cb14-93" aria-hidden="true" tabindex="-1"></a><span class="co">#   fps = 12,</span></span>
+<span id="cb14-94"><a href="#cb14-94" aria-hidden="true" tabindex="-1"></a><span class="co">#   renderer = av_renderer()</span></span>
+<span id="cb14-95"><a href="#cb14-95" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb14-96"><a href="#cb14-96" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-97"><a href="#cb14-97" aria-hidden="true" tabindex="-1"></a> <span class="co"># Animate plot in GIF format:</span></span>
+<span id="cb14-98"><a href="#cb14-98" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(total_year_gganimate,</span>
+<span id="cb14-99"><a href="#cb14-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">700</span>, <span class="at">height =</span> <span class="dv">420</span>,</span>
+<span id="cb14-100"><a href="#cb14-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">30</span>,</span>
+<span id="cb14-101"><a href="#cb14-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>,</span>
+<span id="cb14-102"><a href="#cb14-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-4-1.gif" class="img-fluid figure-img"></p>
+<p><img src="index_files/figure-html/unnamed-chunk-6-1.gif" class="img-fluid figure-img"></p>
 </figure>
-</div>
-</div>
-</div>
-<p>&nbsp; How many in the last 10 years alone?</p>
-<p>Now let’s start to look publication rates for each “addiction” in our dataset.</p>
-<div class="videoset">
-<div class="cell" data-layout-align="center">
-<details>
-<summary>Code: Bar chart race (publications by addiction)</summary>
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get palette colors</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>num_labels <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Label))</span>
-<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>palette_colors <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">scico</span>(<span class="at">n =</span> num_labels, <span class="at">palette =</span> <span class="st">'imola'</span>))</span>
-<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="co"># levels(as.factor(data$Label)) # Check out all behavioural addictions in the dataset</span></span>
-<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data:</span></span>
-<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>data_bar_chart_race_pubs_year<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
-<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove generic behav addictions category:</span></span>
-<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Label <span class="sc">!=</span> <span class="st">"behavioural_addictions"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Tidy the behavioural addiction labels:</span></span>
-<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Label =</span> <span class="fu">str_replace_all</span>(Label, <span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">str_to_title</span>()) <span class="sc">%&gt;%</span></span>
-<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Aggregate the data by behavioural addiction type:</span></span>
-<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, Label) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
-<span id="cb4-17"><a href="#cb4-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-18"><a href="#cb4-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-19"><a href="#cb4-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Accumulated_Papers =</span> <span class="fu">cumsum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Produce a variable that is the cumulative sum of studies for each disorder each year (this is what we will be plotting)</span></span>
-<span id="cb4-20"><a href="#cb4-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This next part is a bit clunky, but we need to find a way to have a value for every addiction for every year, even though we don't have one currently. We can do this by pivoting wider so we create a column for each year then go from there</span></span>
-<span id="cb4-21"><a href="#cb4-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-22"><a href="#cb4-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>))  <span class="sc">%&gt;%</span> <span class="co"># just for interest</span></span>
-<span id="cb4-23"><a href="#cb4-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(Label = factor(Label, levels = unique(Label))) %&gt;%  # order the Label by descending n</span></span>
-<span id="cb4-24"><a href="#cb4-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">paste0</span>(<span class="st">"label_"</span>, Year)) <span class="sc">%&gt;%</span> <span class="co"># so we can select columns later on easily</span></span>
-<span id="cb4-25"><a href="#cb4-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n,</span>
-<span id="cb4-26"><a href="#cb4-26" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>percent) <span class="sc">%&gt;%</span> <span class="co"># Remove these columns otherwise it throws off the pivot_longer below and makes multiple rows per date</span></span>
-<span id="cb4-27"><a href="#cb4-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Year, <span class="at">values_from =</span> Accumulated_Papers) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-28"><a href="#cb4-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label_1961 =</span> <span class="fu">case_when</span>(label_1961 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
-<span id="cb4-29"><a href="#cb4-29" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">is.na</span>(label_1961) <span class="sc">~</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="co"># This sets the first year to 0 unless there is a paper published, allowing us to use this as a starting point for imputing values</span></span>
-<span id="cb4-30"><a href="#cb4-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"label_"</span>), <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Accumulated_Papers"</span>) <span class="sc">%&gt;%</span> <span class="co"># now put back into longer format</span></span>
-<span id="cb4-31"><a href="#cb4-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span></span>
-<span id="cb4-32"><a href="#cb4-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(Accumulated_Papers, <span class="at">.direction =</span> <span class="st">"down"</span>) <span class="sc">%&gt;%</span> <span class="co"># Impute missing values from one above, by addiction type</span></span>
-<span id="cb4-33"><a href="#cb4-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">str_replace</span>(Year, <span class="st">"label_"</span>, <span class="st">""</span>))  <span class="sc">%&gt;%</span> <span class="co"># remove label from the year values</span></span>
-<span id="cb4-34"><a href="#cb4-34" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
-<span id="cb4-35"><a href="#cb4-35" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
-<span id="cb4-36"><a href="#cb4-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Provide a rank for each addiction that ensures no overlap:</span></span>
-<span id="cb4-37"><a href="#cb4-37" aria-hidden="true" tabindex="-1"></a> <span class="fu">arrange</span>(Year, <span class="fu">desc</span>(Accumulated_Papers), Label) <span class="sc">%&gt;%</span></span>
-<span id="cb4-38"><a href="#cb4-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
-<span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">row_number</span>(),</span>
-<span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">ifelse</span>(<span class="fu">duplicated</span>(Accumulated_Papers, <span class="at">fromLast =</span> <span class="cn">TRUE</span>), Rank <span class="sc">-</span> <span class="fl">0.0001</span>, Rank)</span>
-<span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() </span>
-<span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a><span class="co"># View(data_bar_chart_race_pubs_year) #  Check everything looks okay before proceeding!</span></span>
-<span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce plot:</span></span>
-<span id="cb4-48"><a href="#cb4-48" aria-hidden="true" tabindex="-1"></a>bar_chart_race_pubs_year <span class="ot">&lt;-</span> </span>
-<span id="cb4-49"><a href="#cb4-49" aria-hidden="true" tabindex="-1"></a>  data_bar_chart_race_pubs_year <span class="sc">%&gt;%</span> </span>
-<span id="cb4-50"><a href="#cb4-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span>Rank, <span class="at">y =</span> Accumulated_Papers, <span class="at">fill =</span> Label)) <span class="sc">+</span> </span>
-<span id="cb4-51"><a href="#cb4-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">y =</span> Accumulated_Papers<span class="sc">/</span><span class="dv">2</span>, <span class="at">height =</span> Accumulated_Papers), </span>
-<span id="cb4-52"><a href="#cb4-52" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.9</span>) <span class="sc">+</span> </span>
-<span id="cb4-53"><a href="#cb4-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>(<span class="at">clip =</span> <span class="st">"off"</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># Flip</span></span>
-<span id="cb4-54"><a href="#cb4-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add year counting label</span></span>
-<span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">2400</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">24</span>, </span>
-<span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>                 <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), </span>
-<span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>             <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, </span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#289998"</span>, <span class="co"># Alpha not working here for some unknown reason (send help!)</span></span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>,</span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># Adding this didn't fix the alpha issue</span></span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add behavioural addiction label</span></span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span>Rank, <span class="at">y =</span> <span class="sc">-</span><span class="dv">100</span>, </span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> Label),</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">1</span>, </span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>            <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span> </span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add value label</span></span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> Accumulated_Papers, </span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="fu">as.factor</span>(Accumulated_Papers)), <span class="co"># Putting this as a factor is key otherwise it displays decimals to ~10 places at times!</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>,</span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>          <span class="at">fontface =</span> <span class="st">"bold"</span>, </span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(limits = c(0,3800), breaks = seq(0, 3500, by = 500), expand = c(.01, 0)) +  # Define x-axis dates &amp; Make the plot fill the available space</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette_colors, <span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(</span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">20</span>, <span class="dv">130</span>),</span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),  <span class="co"># remove x-axis text</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),   <span class="co"># remove x-axis title</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="fl">0.8</span>),</span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">17</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.4</span>),</span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>,  <span class="at">hjust =</span> <span class="fl">1.25</span>,</span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> <span class="fl">0.2</span>)</span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a>     <span class="co"># axis.text.y = element_text(size = 12, hjust = 1)</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Cumulative publications per </span><span class="sc">\"</span><span class="st">addiction</span><span class="sc">\"</span><span class="st"> over time"</span>,  <span class="co"># Add header</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"1961-2023"</span>,</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(Year, </span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>                    <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="co"># This stops it from rewinding at the end</span></span>
-<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transition_length =</span> <span class="dv">5</span>, </span>
-<span id="cb4-104"><a href="#cb4-104" aria-hidden="true" tabindex="-1"></a>                    <span class="at">state_length =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb4-105"><a href="#cb4-105" aria-hidden="true" tabindex="-1"></a>   <span class="fu">enter_grow</span>() <span class="sc">+</span></span>
-<span id="cb4-106"><a href="#cb4-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
-<span id="cb4-107"><a href="#cb4-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-108"><a href="#cb4-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate in video format:</span></span>
-<span id="cb4-109"><a href="#cb4-109" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(bar_chart_race_pubs_year, </span></span>
-<span id="cb4-110"><a href="#cb4-110" aria-hidden="true" tabindex="-1"></a><span class="co">#         fps = 20, </span></span>
-<span id="cb4-111"><a href="#cb4-111" aria-hidden="true" tabindex="-1"></a><span class="co">#         end_pause = 50,</span></span>
-<span id="cb4-112"><a href="#cb4-112" aria-hidden="true" tabindex="-1"></a><span class="co">#         duration = 30, </span></span>
-<span id="cb4-113"><a href="#cb4-113" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE,</span></span>
-<span id="cb4-114"><a href="#cb4-114" aria-hidden="true" tabindex="-1"></a><span class="co">#         width = 600, height = 700,</span></span>
-<span id="cb4-115"><a href="#cb4-115" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
-<span id="cb4-116"><a href="#cb4-116" aria-hidden="true" tabindex="-1"></a><span class="co">#         renderer = av_renderer())</span></span>
-<span id="cb4-117"><a href="#cb4-117" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-118"><a href="#cb4-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-119"><a href="#cb4-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate plot in GIF format:</span></span>
-<span id="cb4-120"><a href="#cb4-120" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(bar_chart_race_pubs_year,</span>
-<span id="cb4-121"><a href="#cb4-121" aria-hidden="true" tabindex="-1"></a>        <span class="at">fps =</span> <span class="dv">20</span>,</span>
-<span id="cb4-122"><a href="#cb4-122" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">70</span>,</span>
-<span id="cb4-123"><a href="#cb4-123" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">30</span>,</span>
-<span id="cb4-124"><a href="#cb4-124" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">480</span>, <span class="at">height =</span> <span class="dv">670</span>,</span>
-<span id="cb4-125"><a href="#cb4-125" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="index_files/figure-html/unnamed-chunk-7-1.gif" class="img-fluid figure-img"></p>
-</figure>
-</div>
 </div>
 </div>
 </div>
 <p>&nbsp;</p>
+<p>How many in the last 10 years alone?</p>
+<p>Now let’s start to look publication rates for each “addiction” in our dataset.</p>
+<div class="cell" data-layout-align="center">
+<details>
+<summary>Code: Bar chart race (publications by addiction)</summary>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Get palette colors</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>num_labels <span class="ot">&lt;-</span> <span class="fu">length</span>(<span class="fu">unique</span>(data<span class="sc">$</span>Label))</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>palette_colors <span class="ot">&lt;-</span> <span class="fu">rev</span>(<span class="fu">scico</span>(<span class="at">n =</span> num_labels, <span class="at">palette =</span> <span class="st">'imola'</span>))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a><span class="co"># levels(as.factor(data$Label)) # Check out all behavioural addictions in the dataset</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare the data:</span></span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>data_bar_chart_race_pubs_year<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span> </span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Remove generic behav addictions category:</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Label <span class="sc">!=</span> <span class="st">"behavioural_addictions"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>    <span class="co"># Tidy the behavioural addiction labels:</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Label =</span> <span class="fu">str_replace_all</span>(Label, <span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>                 <span class="fu">str_to_title</span>()) <span class="sc">%&gt;%</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Aggregate the data by behavioural addiction type:</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Year, Label) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>() <span class="sc">%&gt;%</span> </span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">Accumulated_Papers =</span> <span class="fu">cumsum</span>(n)) <span class="sc">%&gt;%</span> <span class="co"># Produce a variable that is the cumulative sum of studies for each disorder each year (this is what we will be plotting)</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>  <span class="co"># This next part is a bit clunky, but we need to find a way to have a value for every addiction for every year, even though we don't have one currently. We can do this by pivoting wider so we create a column for each year then go from there</span></span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>, <span class="dv">2</span>))  <span class="sc">%&gt;%</span> <span class="co"># just for interest</span></span>
+<span id="cb15-23"><a href="#cb15-23" aria-hidden="true" tabindex="-1"></a>  <span class="co"># mutate(Label = factor(Label, levels = unique(Label))) %&gt;%  # order the Label by descending n</span></span>
+<span id="cb15-24"><a href="#cb15-24" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">paste0</span>(<span class="st">"label_"</span>, Year)) <span class="sc">%&gt;%</span> <span class="co"># so we can select columns later on easily</span></span>
+<span id="cb15-25"><a href="#cb15-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>n,</span>
+<span id="cb15-26"><a href="#cb15-26" aria-hidden="true" tabindex="-1"></a>         <span class="sc">-</span>percent) <span class="sc">%&gt;%</span> <span class="co"># Remove these columns otherwise it throws off the pivot_longer below and makes multiple rows per date</span></span>
+<span id="cb15-27"><a href="#cb15-27" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_wider</span>(<span class="at">names_from =</span> Year, <span class="at">values_from =</span> Accumulated_Papers) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-28"><a href="#cb15-28" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">label_1961 =</span> <span class="fu">case_when</span>(label_1961 <span class="sc">==</span> <span class="dv">1</span> <span class="sc">~</span> <span class="dv">1</span>,</span>
+<span id="cb15-29"><a href="#cb15-29" aria-hidden="true" tabindex="-1"></a>                                <span class="fu">is.na</span>(label_1961) <span class="sc">~</span> <span class="dv">0</span>)) <span class="sc">%&gt;%</span> <span class="co"># This sets the first year to 0 unless there is a paper published, allowing us to use this as a starting point for imputing values</span></span>
+<span id="cb15-30"><a href="#cb15-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pivot_longer</span>(<span class="at">cols =</span> <span class="fu">starts_with</span>(<span class="st">"label_"</span>), <span class="at">names_to =</span> <span class="st">"Year"</span>, <span class="at">values_to =</span> <span class="st">"Accumulated_Papers"</span>) <span class="sc">%&gt;%</span> <span class="co"># now put back into longer format</span></span>
+<span id="cb15-31"><a href="#cb15-31" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span></span>
+<span id="cb15-32"><a href="#cb15-32" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fill</span>(Accumulated_Papers, <span class="at">.direction =</span> <span class="st">"down"</span>) <span class="sc">%&gt;%</span> <span class="co"># Impute missing values from one above, by addiction type</span></span>
+<span id="cb15-33"><a href="#cb15-33" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Year =</span> <span class="fu">str_replace</span>(Year, <span class="st">"label_"</span>, <span class="st">""</span>))  <span class="sc">%&gt;%</span> <span class="co"># remove label from the year values</span></span>
+<span id="cb15-34"><a href="#cb15-34" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ungroup</span>() <span class="sc">%&gt;%</span></span>
+<span id="cb15-35"><a href="#cb15-35" aria-hidden="true" tabindex="-1"></a>   <span class="fu">group_by</span>(Year) <span class="sc">%&gt;%</span> </span>
+<span id="cb15-36"><a href="#cb15-36" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Provide a rank for each addiction that ensures no overlap:</span></span>
+<span id="cb15-37"><a href="#cb15-37" aria-hidden="true" tabindex="-1"></a> <span class="fu">arrange</span>(Year, <span class="fu">desc</span>(Accumulated_Papers), Label) <span class="sc">%&gt;%</span></span>
+<span id="cb15-38"><a href="#cb15-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb15-39"><a href="#cb15-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">row_number</span>(),</span>
+<span id="cb15-40"><a href="#cb15-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">Rank =</span> <span class="fu">ifelse</span>(<span class="fu">duplicated</span>(Accumulated_Papers, <span class="at">fromLast =</span> <span class="cn">TRUE</span>), Rank <span class="sc">-</span> <span class="fl">0.0001</span>, Rank)</span>
+<span id="cb15-41"><a href="#cb15-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb15-42"><a href="#cb15-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ungroup</span>() </span>
+<span id="cb15-43"><a href="#cb15-43" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-44"><a href="#cb15-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-45"><a href="#cb15-45" aria-hidden="true" tabindex="-1"></a><span class="co"># View(data_bar_chart_race_pubs_year) #  Check everything looks okay before proceeding!</span></span>
+<span id="cb15-46"><a href="#cb15-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-47"><a href="#cb15-47" aria-hidden="true" tabindex="-1"></a><span class="co"># Produce plot:</span></span>
+<span id="cb15-48"><a href="#cb15-48" aria-hidden="true" tabindex="-1"></a>bar_chart_race_pubs_year <span class="ot">&lt;-</span> </span>
+<span id="cb15-49"><a href="#cb15-49" aria-hidden="true" tabindex="-1"></a>  data_bar_chart_race_pubs_year <span class="sc">%&gt;%</span> </span>
+<span id="cb15-50"><a href="#cb15-50" aria-hidden="true" tabindex="-1"></a>      <span class="fu">ggplot</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span>Rank, <span class="at">y =</span> Accumulated_Papers, <span class="at">fill =</span> Label)) <span class="sc">+</span> </span>
+<span id="cb15-51"><a href="#cb15-51" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_tile</span>(<span class="fu">aes</span>(<span class="at">y =</span> Accumulated_Papers<span class="sc">/</span><span class="dv">2</span>, <span class="at">height =</span> Accumulated_Papers), </span>
+<span id="cb15-52"><a href="#cb15-52" aria-hidden="true" tabindex="-1"></a>              <span class="at">width =</span> <span class="fl">0.9</span>) <span class="sc">+</span> </span>
+<span id="cb15-53"><a href="#cb15-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">coord_flip</span>(<span class="at">clip =</span> <span class="st">"off"</span>, <span class="at">expand =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># Flip</span></span>
+<span id="cb15-54"><a href="#cb15-54" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add year counting label</span></span>
+<span id="cb15-55"><a href="#cb15-55" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">2400</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">24</span>, </span>
+<span id="cb15-56"><a href="#cb15-56" aria-hidden="true" tabindex="-1"></a>                 <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), </span>
+<span id="cb15-57"><a href="#cb15-57" aria-hidden="true" tabindex="-1"></a>             <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, </span>
+<span id="cb15-58"><a href="#cb15-58" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#289998"</span>, <span class="co"># Alpha not working here for some unknown reason (send help!)</span></span>
+<span id="cb15-59"><a href="#cb15-59" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>,</span>
+<span id="cb15-60"><a href="#cb15-60" aria-hidden="true" tabindex="-1"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># Adding this didn't fix the alpha issue</span></span>
+<span id="cb15-61"><a href="#cb15-61" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-62"><a href="#cb15-62" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add behavioural addiction label</span></span>
+<span id="cb15-63"><a href="#cb15-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span>Rank, <span class="at">y =</span> <span class="sc">-</span><span class="dv">100</span>, </span>
+<span id="cb15-64"><a href="#cb15-64" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> Label),</span>
+<span id="cb15-65"><a href="#cb15-65" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">1</span>, </span>
+<span id="cb15-66"><a href="#cb15-66" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
+<span id="cb15-67"><a href="#cb15-67" aria-hidden="true" tabindex="-1"></a>            <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span> </span>
+<span id="cb15-68"><a href="#cb15-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add value label</span></span>
+<span id="cb15-69"><a href="#cb15-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> Accumulated_Papers, </span>
+<span id="cb15-70"><a href="#cb15-70" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="fu">as.factor</span>(Accumulated_Papers)), <span class="co"># Putting this as a factor is key otherwise it displays decimals to ~10 places at times!</span></span>
+<span id="cb15-71"><a href="#cb15-71" aria-hidden="true" tabindex="-1"></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>,</span>
+<span id="cb15-72"><a href="#cb15-72" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
+<span id="cb15-73"><a href="#cb15-73" aria-hidden="true" tabindex="-1"></a>          <span class="at">fontface =</span> <span class="st">"bold"</span>, </span>
+<span id="cb15-74"><a href="#cb15-74" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb15-75"><a href="#cb15-75" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(limits = c(0,3800), breaks = seq(0, 3500, by = 500), expand = c(.01, 0)) +  # Define x-axis dates &amp; Make the plot fill the available space</span></span>
+<span id="cb15-76"><a href="#cb15-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette_colors, <span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb15-77"><a href="#cb15-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb15-78"><a href="#cb15-78" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(</span>
+<span id="cb15-79"><a href="#cb15-79" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
+<span id="cb15-80"><a href="#cb15-80" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb15-81"><a href="#cb15-81" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
+<span id="cb15-82"><a href="#cb15-82" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb15-83"><a href="#cb15-83" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb15-84"><a href="#cb15-84" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">20</span>, <span class="dv">130</span>),</span>
+<span id="cb15-85"><a href="#cb15-85" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb15-86"><a href="#cb15-86" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),  <span class="co"># remove x-axis text</span></span>
+<span id="cb15-87"><a href="#cb15-87" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),   <span class="co"># remove x-axis title</span></span>
+<span id="cb15-88"><a href="#cb15-88" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="fl">0.8</span>),</span>
+<span id="cb15-89"><a href="#cb15-89" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">17</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.65</span>),</span>
+<span id="cb15-90"><a href="#cb15-90" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>,  <span class="at">hjust =</span> <span class="fl">1.25</span>,</span>
+<span id="cb15-91"><a href="#cb15-91" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> <span class="fl">0.2</span>)</span>
+<span id="cb15-92"><a href="#cb15-92" aria-hidden="true" tabindex="-1"></a>     <span class="co"># axis.text.y = element_text(size = 12, hjust = 1)</span></span>
+<span id="cb15-93"><a href="#cb15-93" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
+<span id="cb15-94"><a href="#cb15-94" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb15-95"><a href="#cb15-95" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
+<span id="cb15-96"><a href="#cb15-96" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb15-97"><a href="#cb15-97" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Cumulative publications per </span><span class="sc">\"</span><span class="st">addiction</span><span class="sc">\"</span><span class="st"> over time"</span>,  <span class="co"># Add header</span></span>
+<span id="cb15-98"><a href="#cb15-98" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
+<span id="cb15-99"><a href="#cb15-99" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
+<span id="cb15-100"><a href="#cb15-100" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb15-101"><a href="#cb15-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(Year, </span>
+<span id="cb15-102"><a href="#cb15-102" aria-hidden="true" tabindex="-1"></a>                    <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="co"># This (with some of the animation arguments) stops it from rewinding at the end</span></span>
+<span id="cb15-103"><a href="#cb15-103" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transition_length =</span> <span class="dv">5</span>, </span>
+<span id="cb15-104"><a href="#cb15-104" aria-hidden="true" tabindex="-1"></a>                    <span class="at">state_length =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb15-105"><a href="#cb15-105" aria-hidden="true" tabindex="-1"></a>   <span class="fu">enter_grow</span>() <span class="sc">+</span></span>
+<span id="cb15-106"><a href="#cb15-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
+<span id="cb15-107"><a href="#cb15-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-108"><a href="#cb15-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate in video format:</span></span>
+<span id="cb15-109"><a href="#cb15-109" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(bar_chart_race_pubs_year, </span></span>
+<span id="cb15-110"><a href="#cb15-110" aria-hidden="true" tabindex="-1"></a><span class="co">#         fps = 20, </span></span>
+<span id="cb15-111"><a href="#cb15-111" aria-hidden="true" tabindex="-1"></a><span class="co">#         end_pause = 50,</span></span>
+<span id="cb15-112"><a href="#cb15-112" aria-hidden="true" tabindex="-1"></a><span class="co">#         duration = 30, </span></span>
+<span id="cb15-113"><a href="#cb15-113" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE,</span></span>
+<span id="cb15-114"><a href="#cb15-114" aria-hidden="true" tabindex="-1"></a><span class="co">#         width = 600, height = 700,</span></span>
+<span id="cb15-115"><a href="#cb15-115" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
+<span id="cb15-116"><a href="#cb15-116" aria-hidden="true" tabindex="-1"></a><span class="co">#         renderer = av_renderer())</span></span>
+<span id="cb15-117"><a href="#cb15-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-118"><a href="#cb15-118" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb15-119"><a href="#cb15-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate plot in GIF format:</span></span>
+<span id="cb15-120"><a href="#cb15-120" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(bar_chart_race_pubs_year,</span>
+<span id="cb15-121"><a href="#cb15-121" aria-hidden="true" tabindex="-1"></a>        <span class="at">fps =</span> <span class="dv">20</span>,</span>
+<span id="cb15-122"><a href="#cb15-122" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">70</span>,</span>
+<span id="cb15-123"><a href="#cb15-123" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">30</span>,</span>
+<span id="cb15-124"><a href="#cb15-124" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">480</span>, <span class="at">height =</span> <span class="dv">670</span>,</span>
+<span id="cb15-125"><a href="#cb15-125" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="index_files/figure-html/unnamed-chunk-9-1.gif" class="img-fluid figure-img"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>&nbsp;</p>
+<p>Well that was fun, but it’s actually quite difficult to see exactly what’s going on at every year given how many different supposed addictions there are. Let’s try another approach:</p>
+<p>The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with <code>ggplot2</code>, I used to the great <code>ggplotly</code> package to make it interactive—hover over any of the dots to see more information about what was going on that year for each addiction.</p>
 <div class="callout callout-style-default callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -522,7 +688,7 @@ Expand for session information
 <div class="cell">
 <details>
 <summary>Code: Get session info</summary>
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">session_info</span>(<span class="at">pkgs =</span> <span class="st">"attached"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">session_info</span>(<span class="at">pkgs =</span> <span class="st">"attached"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output cell-output-stdout">
 <pre><code>─ Session info ───────────────────────────────────────────────────────────────
@@ -566,6 +732,7 @@ Expand for session information
  tibble      * 3.2.1     2023-03-20 [1] CRAN (R 4.3.1)
  tidyr       * 1.3.0     2023-01-24 [1] CRAN (R 4.3.1)
  tidyverse   * 2.0.0     2023-02-22 [1] CRAN (R 4.3.1)
+ transformr  * 0.1.4     2022-08-18 [1] CRAN (R 4.3.1)
 
  [1] C:/Users/rheirene/AppData/Local/R/win-library/4.3
  [2] C:/Program Files/R/R-4.3.1/library
