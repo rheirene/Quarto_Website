@@ -190,7 +190,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
    
   <ul>
   <li><a href="#data-code-set-up" id="toc-data-code-set-up" class="nav-link active" data-scroll-target="#data-code-set-up">Data &amp; code set-up</a></li>
-  <li><a href="#all-behavioural-addictions-found" id="toc-all-behavioural-addictions-found" class="nav-link" data-scroll-target="#all-behavioural-addictions-found">All behavioural “addictions” found</a></li>
+  <li><a href="#all-addictions-found" id="toc-all-addictions-found" class="nav-link" data-scroll-target="#all-addictions-found">All “addictions” found</a></li>
   <li><a href="#patterns-over-time" id="toc-patterns-over-time" class="nav-link" data-scroll-target="#patterns-over-time">Patterns over time</a></li>
   </ul>
 </nav>
@@ -202,6 +202,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 <p>The world of behavioural addictions research is a strange place.</p>
+<p>FIX UP ALL THE PLOT TITLES TO BE CONSITENT</p>
+<p>MAKE BAR CHART RACE A LITTLE WIDER</p>
+<p>Don’t always focus on the “addiction” but mention it</p>
 <section id="data-code-set-up" class="level3">
 <h3 class="anchored" data-anchor-id="data-code-set-up">Data &amp; code set-up</h3>
 <p>Okay, so let’s get started with exploring the data. I’ll first load all the required packages and fonts for figures.</p>
@@ -249,8 +252,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">13</span>),</span>
 <span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">16</span>),</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>),</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#50B5C8"</span>),</span>
+<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#50B5C8"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
 <p>Now I’ll load in the dataset and do a little cleaning. Of note, I’m going to remove all publications from 2023 so that we only have data for complete years (see comments in the code chunk below for any other exclusions).</p>
@@ -279,8 +282,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 </section>
-<section id="all-behavioural-addictions-found" class="level3">
-<h3 class="anchored" data-anchor-id="all-behavioural-addictions-found">All behavioural “addictions” found</h3>
+<section id="all-addictions-found" class="level3">
+<h3 class="anchored" data-anchor-id="all-addictions-found">All “addictions” found</h3>
 <p>&nbsp;</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -302,11 +305,11 @@ Are these all “true” addictions?
 <summary>Code: Table all addictions</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Arrange data:</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">distinct</span>(PMID, <span class="at">.keep_all =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span> </span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
-<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Label) <span class="sc">%&gt;%</span> </span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="fu">n</span>()</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">percent =</span> <span class="fu">round</span>(n<span class="sc">/</span><span class="fu">sum</span>(n)<span class="sc">*</span><span class="dv">100</span>,<span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(n)) <span class="sc">%&gt;%</span></span>
 <span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>      <span class="co"># Tidy the behavioural addiction labels:</span></span>
 <span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>    <span class="fu">mutate</span>(<span class="at">Label =</span> <span class="fu">str_replace_all</span>(Label, <span class="st">"_"</span>, <span class="st">" "</span>) <span class="sc">%&gt;%</span></span>
@@ -316,72 +319,74 @@ Are these all “true” addictions?
 <span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>    <span class="co"># title = md("**Number of publications on PubMed**"),</span></span>
 <span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    <span class="co"># subtitle = md("*Up to end of 2022*"))  %&gt;%</span></span>
 <span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gt_color_rows</span>(n, <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#002B36"</span>, <span class="st">"#289998"</span>))  <span class="sc">%&gt;%</span> <span class="co"># Make n column heatmap style</span></span>
-<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">tab_style</span>(</span>
-<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="fu">c</span>(<span class="st">"top"</span>, <span class="st">"bottom"</span>),</span>
-<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">"#002B36"</span>,</span>
-<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                         <span class="at">weight =</span> <span class="fu">px</span>(<span class="fl">1.8</span>),</span>
-<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                         <span class="at">style =</span> <span class="st">"solid"</span>),</span>
-<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>()</span>
-<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">data_row.padding =</span> <span class="fu">px</span>(<span class="fl">1.6</span>)) <span class="sc">%&gt;%</span> <span class="co"># decrease row height</span></span>
-<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">table.font.color =</span> <span class="st">"#289998"</span>,</span>
-<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>              <span class="at">table.background.color =</span> <span class="st">"#002B36"</span>,</span>
-<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>              <span class="at">table.border.bottom.color =</span> <span class="st">"#289998"</span>,</span>
-<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">table_body.border.bottom.color =</span> <span class="st">"#289998"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_style</span>(</span>
-<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="fu">c</span>(<span class="st">"t"</span>, <span class="st">"b"</span>),</span>
-<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">"#289998"</span>,</span>
-<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                         <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">2</span>)),</span>
-<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_column_labels</span>(), <span class="fu">cells_stubhead</span>())</span>
-<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#002B36"</span>),</span>
-<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>)</span>
-<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>    ),</span>
-<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_column_labels</span>())</span>
-<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>      <span class="at">style =</span> <span class="fu">list</span>(</span>
-<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#002B36"</span>),</span>
-<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>)</span>
-<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>      ),</span>
-<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>      <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> Label)</span>
-<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>  <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"center"</span>, <span class="at">columns =</span> n) <span class="sc">%&gt;%</span></span>
-<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>   <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"right"</span>, <span class="at">columns =</span> Label) <span class="sc">%&gt;%</span></span>
-<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
-<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="fu">c</span>(<span class="st">"t"</span>),</span>
-<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">"#289998"</span>,</span>
-<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                         <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">2</span>)),</span>
-<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_footnotes</span>(), <span class="fu">cells_source_notes</span>())</span>
-<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
-<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cols_label</span>(</span>
-<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">Label =</span> <span class="st">"Behavioural addiction"</span>,</span>
-<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"N"</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>   <span class="fu">opt_table_font</span>(</span>
-<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">font =</span> <span class="fu">google_font</span>(<span class="st">"Reem Kufi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>   <span class="fu">gt_color_rows</span>(percent, <span class="at">palette =</span> <span class="fu">c</span>(<span class="st">"#002B36"</span>, <span class="st">"#289998"</span>))  <span class="sc">%&gt;%</span> <span class="co"># Make % column heatmap style</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>   <span class="fu">tab_style</span>(</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="fu">c</span>(<span class="st">"top"</span>, <span class="st">"bottom"</span>),</span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">"#002B36"</span>,</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>                         <span class="at">weight =</span> <span class="fu">px</span>(<span class="fl">1.8</span>),</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>                         <span class="at">style =</span> <span class="st">"solid"</span>),</span>
+<span id="cb3-23"><a href="#cb3-23" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">cells_body</span>()</span>
+<span id="cb3-24"><a href="#cb3-24" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-25"><a href="#cb3-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">data_row.padding =</span> <span class="fu">px</span>(<span class="fl">1.6</span>)) <span class="sc">%&gt;%</span> <span class="co"># decrease row height</span></span>
+<span id="cb3-26"><a href="#cb3-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_options</span>(<span class="at">table.font.color =</span> <span class="st">"#289998"</span>,</span>
+<span id="cb3-27"><a href="#cb3-27" aria-hidden="true" tabindex="-1"></a>              <span class="at">table.background.color =</span> <span class="st">"#002B36"</span>,</span>
+<span id="cb3-28"><a href="#cb3-28" aria-hidden="true" tabindex="-1"></a>              <span class="at">table.border.bottom.color =</span> <span class="st">"#289998"</span>,</span>
+<span id="cb3-29"><a href="#cb3-29" aria-hidden="true" tabindex="-1"></a>              <span class="at">table_body.border.bottom.color =</span> <span class="st">"#289998"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-30"><a href="#cb3-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">tab_style</span>(</span>
+<span id="cb3-31"><a href="#cb3-31" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="fu">c</span>(<span class="st">"t"</span>, <span class="st">"b"</span>),</span>
+<span id="cb3-32"><a href="#cb3-32" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">"#289998"</span>,</span>
+<span id="cb3-33"><a href="#cb3-33" aria-hidden="true" tabindex="-1"></a>                         <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">2</span>)),</span>
+<span id="cb3-34"><a href="#cb3-34" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_column_labels</span>(), <span class="fu">cells_stubhead</span>())</span>
+<span id="cb3-35"><a href="#cb3-35" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-36"><a href="#cb3-36" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-37"><a href="#cb3-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb3-38"><a href="#cb3-38" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb3-39"><a href="#cb3-39" aria-hidden="true" tabindex="-1"></a>      <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">weight =</span> <span class="st">"bold"</span>)</span>
+<span id="cb3-40"><a href="#cb3-40" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb3-41"><a href="#cb3-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_column_labels</span>())</span>
+<span id="cb3-42"><a href="#cb3-42" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-43"><a href="#cb3-43" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-44"><a href="#cb3-44" aria-hidden="true" tabindex="-1"></a>      <span class="at">style =</span> <span class="fu">list</span>(</span>
+<span id="cb3-45"><a href="#cb3-45" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cell_fill</span>(<span class="at">color =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb3-46"><a href="#cb3-46" aria-hidden="true" tabindex="-1"></a>        <span class="fu">cell_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>)</span>
+<span id="cb3-47"><a href="#cb3-47" aria-hidden="true" tabindex="-1"></a>      ),</span>
+<span id="cb3-48"><a href="#cb3-48" aria-hidden="true" tabindex="-1"></a>      <span class="at">locations =</span> <span class="fu">cells_body</span>(<span class="at">columns =</span> Label)</span>
+<span id="cb3-49"><a href="#cb3-49" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-50"><a href="#cb3-50" aria-hidden="true" tabindex="-1"></a>   <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"center"</span>, <span class="at">columns =</span> <span class="fu">c</span>(n, percent)) <span class="sc">%&gt;%</span></span>
+<span id="cb3-51"><a href="#cb3-51" aria-hidden="true" tabindex="-1"></a>   <span class="fu">cols_align</span>(<span class="at">align =</span> <span class="st">"right"</span>, <span class="at">columns =</span> Label) <span class="sc">%&gt;%</span></span>
+<span id="cb3-52"><a href="#cb3-52" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_style</span>(</span>
+<span id="cb3-53"><a href="#cb3-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">style =</span> <span class="fu">cell_borders</span>(<span class="at">sides =</span> <span class="fu">c</span>(<span class="st">"t"</span>),</span>
+<span id="cb3-54"><a href="#cb3-54" aria-hidden="true" tabindex="-1"></a>                         <span class="at">color =</span> <span class="st">"#289998"</span>,</span>
+<span id="cb3-55"><a href="#cb3-55" aria-hidden="true" tabindex="-1"></a>                         <span class="at">weight =</span> <span class="fu">px</span>(<span class="dv">2</span>)),</span>
+<span id="cb3-56"><a href="#cb3-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">locations =</span> <span class="fu">list</span>(<span class="fu">cells_footnotes</span>(), <span class="fu">cells_source_notes</span>())</span>
+<span id="cb3-57"><a href="#cb3-57" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
+<span id="cb3-58"><a href="#cb3-58" aria-hidden="true" tabindex="-1"></a>       <span class="fu">cols_label</span>(</span>
+<span id="cb3-59"><a href="#cb3-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">Label =</span> <span class="st">"Behavioural addiction"</span>,</span>
+<span id="cb3-60"><a href="#cb3-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">n =</span> <span class="st">"N"</span>,</span>
+<span id="cb3-61"><a href="#cb3-61" aria-hidden="true" tabindex="-1"></a>    <span class="at">percent =</span> <span class="st">"%"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb3-62"><a href="#cb3-62" aria-hidden="true" tabindex="-1"></a>   <span class="fu">opt_table_font</span>(</span>
+<span id="cb3-63"><a href="#cb3-63" aria-hidden="true" tabindex="-1"></a>    <span class="at">font =</span> <span class="fu">google_font</span>(<span class="st">"Reem Kufi"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 
-<div id="nonlprjeht" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="hgaobfmleb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#nonlprjeht table {
+#hgaobfmleb table {
   font-family: 'Reem Kufi', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nonlprjeht thead, #nonlprjeht tbody, #nonlprjeht tfoot, #nonlprjeht tr, #nonlprjeht td, #nonlprjeht th {
+#hgaobfmleb thead, #hgaobfmleb tbody, #hgaobfmleb tfoot, #hgaobfmleb tr, #hgaobfmleb td, #hgaobfmleb th {
   border-style: none;
 }
 
-#nonlprjeht p {
+#hgaobfmleb p {
   margin: 0;
   padding: 0;
 }
 
-#nonlprjeht .gt_table {
+#hgaobfmleb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -407,12 +412,12 @@ Are these all “true” addictions?
   border-left-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_caption {
+#hgaobfmleb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nonlprjeht .gt_title {
+#hgaobfmleb .gt_title {
   color: #FFFFFF;
   font-size: 125%;
   font-weight: initial;
@@ -424,7 +429,7 @@ Are these all “true” addictions?
   border-bottom-width: 0;
 }
 
-#nonlprjeht .gt_subtitle {
+#hgaobfmleb .gt_subtitle {
   color: #FFFFFF;
   font-size: 85%;
   font-weight: initial;
@@ -436,7 +441,7 @@ Are these all “true” addictions?
   border-top-width: 0;
 }
 
-#nonlprjeht .gt_heading {
+#hgaobfmleb .gt_heading {
   background-color: #002B36;
   text-align: center;
   border-bottom-color: #002B36;
@@ -448,13 +453,13 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_bottom_border {
+#hgaobfmleb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_col_headings {
+#hgaobfmleb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -469,7 +474,7 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_col_heading {
+#hgaobfmleb .gt_col_heading {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -489,7 +494,7 @@ Are these all “true” addictions?
   overflow-x: hidden;
 }
 
-#nonlprjeht .gt_column_spanner_outer {
+#hgaobfmleb .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -501,15 +506,15 @@ Are these all “true” addictions?
   padding-right: 4px;
 }
 
-#nonlprjeht .gt_column_spanner_outer:first-child {
+#hgaobfmleb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nonlprjeht .gt_column_spanner_outer:last-child {
+#hgaobfmleb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nonlprjeht .gt_column_spanner {
+#hgaobfmleb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -521,11 +526,11 @@ Are these all “true” addictions?
   width: 100%;
 }
 
-#nonlprjeht .gt_spanner_row {
+#hgaobfmleb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nonlprjeht .gt_group_heading {
+#hgaobfmleb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -551,7 +556,7 @@ Are these all “true” addictions?
   text-align: left;
 }
 
-#nonlprjeht .gt_empty_group_heading {
+#hgaobfmleb .gt_empty_group_heading {
   padding: 0.5px;
   color: #FFFFFF;
   background-color: #002B36;
@@ -566,15 +571,15 @@ Are these all “true” addictions?
   vertical-align: middle;
 }
 
-#nonlprjeht .gt_from_md > :first-child {
+#hgaobfmleb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nonlprjeht .gt_from_md > :last-child {
+#hgaobfmleb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nonlprjeht .gt_row {
+#hgaobfmleb .gt_row {
   padding-top: 1.6px;
   padding-bottom: 1.6px;
   padding-left: 5px;
@@ -593,7 +598,7 @@ Are these all “true” addictions?
   overflow-x: hidden;
 }
 
-#nonlprjeht .gt_stub {
+#hgaobfmleb .gt_stub {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -606,7 +611,7 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#nonlprjeht .gt_stub_row_group {
+#hgaobfmleb .gt_stub_row_group {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -620,15 +625,15 @@ Are these all “true” addictions?
   vertical-align: top;
 }
 
-#nonlprjeht .gt_row_group_first td {
+#hgaobfmleb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nonlprjeht .gt_row_group_first th {
+#hgaobfmleb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nonlprjeht .gt_summary_row {
+#hgaobfmleb .gt_summary_row {
   color: #FFFFFF;
   background-color: #002B36;
   text-transform: inherit;
@@ -638,16 +643,16 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#nonlprjeht .gt_first_summary_row {
+#hgaobfmleb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_first_summary_row.thick {
+#hgaobfmleb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nonlprjeht .gt_last_summary_row {
+#hgaobfmleb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -657,7 +662,7 @@ Are these all “true” addictions?
   border-bottom-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_grand_summary_row {
+#hgaobfmleb .gt_grand_summary_row {
   color: #FFFFFF;
   background-color: #002B36;
   text-transform: inherit;
@@ -667,7 +672,7 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#nonlprjeht .gt_first_grand_summary_row {
+#hgaobfmleb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -677,7 +682,7 @@ Are these all “true” addictions?
   border-top-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_last_grand_summary_row_top {
+#hgaobfmleb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -687,11 +692,11 @@ Are these all “true” addictions?
   border-bottom-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_striped {
+#hgaobfmleb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nonlprjeht .gt_table_body {
+#hgaobfmleb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -700,7 +705,7 @@ Are these all “true” addictions?
   border-bottom-color: #289998;
 }
 
-#nonlprjeht .gt_footnotes {
+#hgaobfmleb .gt_footnotes {
   color: #FFFFFF;
   background-color: #002B36;
   border-bottom-style: none;
@@ -714,7 +719,7 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_footnote {
+#hgaobfmleb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -723,7 +728,7 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#nonlprjeht .gt_sourcenotes {
+#hgaobfmleb .gt_sourcenotes {
   color: #FFFFFF;
   background-color: #002B36;
   border-bottom-style: none;
@@ -737,7 +742,7 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#nonlprjeht .gt_sourcenote {
+#hgaobfmleb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -745,63 +750,63 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#nonlprjeht .gt_left {
+#hgaobfmleb .gt_left {
   text-align: left;
 }
 
-#nonlprjeht .gt_center {
+#hgaobfmleb .gt_center {
   text-align: center;
 }
 
-#nonlprjeht .gt_right {
+#hgaobfmleb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nonlprjeht .gt_font_normal {
+#hgaobfmleb .gt_font_normal {
   font-weight: normal;
 }
 
-#nonlprjeht .gt_font_bold {
+#hgaobfmleb .gt_font_bold {
   font-weight: bold;
 }
 
-#nonlprjeht .gt_font_italic {
+#hgaobfmleb .gt_font_italic {
   font-style: italic;
 }
 
-#nonlprjeht .gt_super {
+#hgaobfmleb .gt_super {
   font-size: 65%;
 }
 
-#nonlprjeht .gt_footnote_marks {
+#hgaobfmleb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nonlprjeht .gt_asterisk {
+#hgaobfmleb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nonlprjeht .gt_indent_1 {
+#hgaobfmleb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nonlprjeht .gt_indent_2 {
+#hgaobfmleb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nonlprjeht .gt_indent_3 {
+#hgaobfmleb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nonlprjeht .gt_indent_4 {
+#hgaobfmleb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nonlprjeht .gt_indent_5 {
+#hgaobfmleb .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -811,55 +816,85 @@ Are these all “true” addictions?
     <tr class="gt_col_headings">
       <th class="gt_col_heading gt_columns_bottom_border gt_right" rowspan="1" colspan="1" style="border-top-width: 2px; border-top-style: solid; border-top-color: #289998; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: #289998; background-color: #002B36; color: #289998; font-weight: bold;" scope="col" id="Behavioural addiction">Behavioural addiction</th>
       <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 2px; border-top-style: solid; border-top-color: #289998; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: #289998; background-color: #002B36; color: #289998; font-weight: bold;" scope="col" id="N">N</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1" style="border-top-width: 2px; border-top-style: solid; border-top-color: #289998; border-bottom-width: 2px; border-bottom-style: solid; border-bottom-color: #289998; background-color: #002B36; color: #289998; font-weight: bold;" scope="col" id="%">%</th>
     </tr>
   </thead>
   <tbody class="gt_table_body">
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Gambling</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #289998; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3145</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #289998; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3372</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #289998; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">44.11</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Gaming</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #0C5159; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1178</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #0E565D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1401</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #0E565D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">18.33</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Behavioural Addictions</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #07444D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">795</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #06434C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">795</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #06434C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">10.40</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Smart Phone</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #054049; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">669</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #06414A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">753</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #06414A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">9.85</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Exercise</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #02353F; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">315</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #02353F; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">351</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #02353F; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">4.59</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Work</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #02323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">239</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #02333D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">262</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #02333D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.43</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Sex</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #01313C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">208</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #02323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">255</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #02323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.34</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Social Media</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #01313B; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">192</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #01323C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">245</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #01323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.21</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Pornography</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">35</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Tanning</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">24</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">61</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.80</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Study</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">19</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">33</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.43</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Tanning</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">29</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.38</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Cybersex</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002C36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">18</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Running</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">9</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Love</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">8</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Extreme Sport</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">5</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Selfie</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">5</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">26</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.34</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Hair Pulling</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Crime</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Polysurgical</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">13</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.17</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Running</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">10</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.13</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Love</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">9</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.12</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Selfie</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">8</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.10</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Extreme Sport</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">6</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.08</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Fortune Telling</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.04</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Youtube</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td></tr>
-    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Death</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Crime</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Dance</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Joyriding</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Polysurgical</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Death</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.01</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Near Death</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.01</td></tr>
   </tbody>
   
   
@@ -914,9 +949,9 @@ Are these all “true” addictions?
 <span id="cb4-39"><a href="#cb4-39" aria-hidden="true" tabindex="-1"></a>total_year_gganimate <span class="ot">&lt;-</span> data_total_per_year_pubs <span class="sc">%&gt;%</span></span>
 <span id="cb4-40"><a href="#cb4-40" aria-hidden="true" tabindex="-1"></a>   <span class="fu">ggplot</span>(<span class="fu">aes</span>(Year, n)) <span class="sc">+</span> </span>
 <span id="cb4-41"><a href="#cb4-41" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_point</span>() <span class="sc">+</span> </span>
-<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.1</span>, <span class="at">color =</span> <span class="st">"#289998"</span>) <span class="sc">+</span> </span>
+<span id="cb4-42"><a href="#cb4-42" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="fl">1.5</span>, <span class="at">color =</span> <span class="st">"#50B5C8"</span>) <span class="sc">+</span> </span>
 <span id="cb4-43"><a href="#cb4-43" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add year counting label</span></span>
-<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1984</span>, <span class="at">y =</span> <span class="dv">370</span>, <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#289998"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb4-44"><a href="#cb4-44" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1984</span>, <span class="at">y =</span> <span class="dv">370</span>, <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"#50B5C8"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
 <span id="cb4-45"><a href="#cb4-45" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1961 first study label</span></span>
 <span id="cb4-46"><a href="#cb4-46" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">1961</span>, <span class="at">y =</span><span class="dv">90</span>, <span class="at">label =</span> first_study_1961_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
 <span id="cb4-47"><a href="#cb4-47" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add 1980 gambling label</span></span>
@@ -930,51 +965,52 @@ Are these all “true” addictions?
 <span id="cb4-55"><a href="#cb4-55" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add final year label</span></span>
 <span id="cb4-56"><a href="#cb4-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="dv">2014</span>, <span class="at">y =</span><span class="dv">670</span>, <span class="at">label =</span> final_year_label), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="dv">1</span>, <span class="at">col =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">4</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
 <span id="cb4-57"><a href="#cb4-57" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Define theme elements</span></span>
-<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
-<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
-<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
-<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
-<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">20</span>),</span>
-<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(),  <span class="co"># Adjust y-axis title position</span></span>
-<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">18</span>), <span class="at">size =</span> <span class="dv">14</span>),</span>
-<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="dv">4</span>),</span>
-<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.02</span>)</span>
-<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
-<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1960</span>, <span class="dv">2020</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">expand =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>)) <span class="sc">+</span>  <span class="co"># Define x-axis dates &amp; Make the plot fill the available space better</span></span>
-<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">750</span>, <span class="at">by =</span> <span class="dv">250</span>)) <span class="sc">+</span>  <span class="co"># Define y-axis labels</span></span>
-<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
-<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Number of Behavioural Addictions papers published per year on PubMed"</span>,  <span class="co"># Add header</span></span>
-<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
-<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Year"</span>,</span>
-<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
-<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>,  <span class="at">hjust =</span> .<span class="dv">98</span>,</span>
-<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> .<span class="dv">98</span>)) <span class="sc">+</span></span>
-<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gganimate animation</span></span>
-<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>   <span class="fu">transition_reveal</span>(Year) </span>
-<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>      <span class="co"># view_follow()</span></span>
-<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate and present plot:</span></span>
-<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(</span></span>
-<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co">#   total_year_gganimate,</span></span>
-<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co">#   width = 700, height = 420, </span></span>
-<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE, </span></span>
-<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
-<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="co">#   duration = 14,</span></span>
-<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">#   fps = 12,</span></span>
-<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co">#   renderer = av_renderer()</span></span>
-<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
-<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a> <span class="co"># Animate plot in GIF format:</span></span>
-<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(total_year_gganimate,</span>
-<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">700</span>, <span class="at">height =</span> <span class="dv">420</span>,</span>
-<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">30</span>,</span>
-<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>,</span>
-<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb4-58"><a href="#cb4-58" aria-hidden="true" tabindex="-1"></a>  plot_theme <span class="sc">+</span></span>
+<span id="cb4-59"><a href="#cb4-59" aria-hidden="true" tabindex="-1"></a>   <span class="fu">theme</span>(</span>
+<span id="cb4-60"><a href="#cb4-60" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
+<span id="cb4-61"><a href="#cb4-61" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb4-62"><a href="#cb4-62" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
+<span id="cb4-63"><a href="#cb4-63" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb4-64"><a href="#cb4-64" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb4-65"><a href="#cb4-65" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">20</span>, <span class="dv">5</span>, <span class="dv">20</span>, <span class="dv">20</span>),</span>
+<span id="cb4-66"><a href="#cb4-66" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb4-67"><a href="#cb4-67" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title.x =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">18</span>), <span class="at">size =</span> <span class="dv">14</span>),</span>
+<span id="cb4-68"><a href="#cb4-68" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="fl">1.5</span>),</span>
+<span id="cb4-69"><a href="#cb4-69" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.02</span>)</span>
+<span id="cb4-70"><a href="#cb4-70" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
+<span id="cb4-71"><a href="#cb4-71" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb4-72"><a href="#cb4-72" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">1960</span>, <span class="dv">2020</span>, <span class="at">by =</span> <span class="dv">10</span>), <span class="at">expand =</span> <span class="fu">c</span>(.<span class="dv">01</span>, <span class="dv">0</span>)) <span class="sc">+</span>  <span class="co"># Define x-axis dates &amp; Make the plot fill the available space better</span></span>
+<span id="cb4-73"><a href="#cb4-73" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_y_continuous</span>(<span class="at">limits =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1000</span>), <span class="at">breaks =</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">750</span>, <span class="at">by =</span> <span class="dv">250</span>)) <span class="sc">+</span>  <span class="co"># Define y-axis labels</span></span>
+<span id="cb4-74"><a href="#cb4-74" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
+<span id="cb4-75"><a href="#cb4-75" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb4-76"><a href="#cb4-76" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Number of papers published on behavioural addictions per year on PubMed"</span>,  <span class="co"># Add header</span></span>
+<span id="cb4-77"><a href="#cb4-77" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
+<span id="cb4-78"><a href="#cb4-78" aria-hidden="true" tabindex="-1"></a>     <span class="at">x =</span> <span class="st">"Year"</span>,</span>
+<span id="cb4-79"><a href="#cb4-79" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
+<span id="cb4-80"><a href="#cb4-80" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb4-81"><a href="#cb4-81" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">hjust =</span> .<span class="dv">98</span>,</span>
+<span id="cb4-82"><a href="#cb4-82" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> .<span class="dv">98</span>)) <span class="sc">+</span></span>
+<span id="cb4-83"><a href="#cb4-83" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add gganimate animation</span></span>
+<span id="cb4-84"><a href="#cb4-84" aria-hidden="true" tabindex="-1"></a>   <span class="fu">transition_reveal</span>(Year) </span>
+<span id="cb4-85"><a href="#cb4-85" aria-hidden="true" tabindex="-1"></a>      <span class="co"># view_follow()</span></span>
+<span id="cb4-86"><a href="#cb4-86" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-87"><a href="#cb4-87" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate and present plot:</span></span>
+<span id="cb4-88"><a href="#cb4-88" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(</span></span>
+<span id="cb4-89"><a href="#cb4-89" aria-hidden="true" tabindex="-1"></a><span class="co">#   total_year_gganimate,</span></span>
+<span id="cb4-90"><a href="#cb4-90" aria-hidden="true" tabindex="-1"></a><span class="co">#   width = 700, height = 420, </span></span>
+<span id="cb4-91"><a href="#cb4-91" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE, </span></span>
+<span id="cb4-92"><a href="#cb4-92" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
+<span id="cb4-93"><a href="#cb4-93" aria-hidden="true" tabindex="-1"></a><span class="co">#   duration = 14,</span></span>
+<span id="cb4-94"><a href="#cb4-94" aria-hidden="true" tabindex="-1"></a><span class="co">#   fps = 12,</span></span>
+<span id="cb4-95"><a href="#cb4-95" aria-hidden="true" tabindex="-1"></a><span class="co">#   renderer = av_renderer()</span></span>
+<span id="cb4-96"><a href="#cb4-96" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb4-97"><a href="#cb4-97" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-98"><a href="#cb4-98" aria-hidden="true" tabindex="-1"></a> <span class="co"># Animate plot in GIF format:</span></span>
+<span id="cb4-99"><a href="#cb4-99" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(total_year_gganimate,</span>
+<span id="cb4-100"><a href="#cb4-100" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">700</span>, <span class="at">height =</span> <span class="dv">420</span>,</span>
+<span id="cb4-101"><a href="#cb4-101" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">30</span>,</span>
+<span id="cb4-102"><a href="#cb4-102" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>,</span>
+<span id="cb4-103"><a href="#cb4-103" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">21</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1047,7 +1083,7 @@ Are these all “true” addictions?
 <span id="cb5-55"><a href="#cb5-55" aria-hidden="true" tabindex="-1"></a>   <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> <span class="dv">2400</span>, <span class="at">x =</span> <span class="sc">-</span><span class="dv">24</span>, </span>
 <span id="cb5-56"><a href="#cb5-56" aria-hidden="true" tabindex="-1"></a>                 <span class="at">label =</span> <span class="fu">as.factor</span>(Year)), </span>
 <span id="cb5-57"><a href="#cb5-57" aria-hidden="true" tabindex="-1"></a>             <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="dv">0</span>, </span>
-<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#289998"</span>, <span class="co"># Alpha not working here for some unknown reason (send help!)</span></span>
+<span id="cb5-58"><a href="#cb5-58" aria-hidden="true" tabindex="-1"></a>             <span class="at">alpha =</span> <span class="fl">0.6</span>, <span class="at">col =</span> <span class="st">"#50B5C8"</span>, <span class="co"># Alpha not working here for some unknown reason (send help!)</span></span>
 <span id="cb5-59"><a href="#cb5-59" aria-hidden="true" tabindex="-1"></a>             <span class="at">size =</span> <span class="dv">14</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>,</span>
 <span id="cb5-60"><a href="#cb5-60" aria-hidden="true" tabindex="-1"></a>             <span class="at">inherit.aes =</span> <span class="cn">FALSE</span>) <span class="sc">+</span> <span class="co"># Adding this didn't fix the alpha issue</span></span>
 <span id="cb5-61"><a href="#cb5-61" aria-hidden="true" tabindex="-1"></a></span>
@@ -1055,66 +1091,67 @@ Are these all “true” addictions?
 <span id="cb5-63"><a href="#cb5-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">x =</span> <span class="sc">-</span>Rank, <span class="at">y =</span> <span class="sc">-</span><span class="dv">100</span>, </span>
 <span id="cb5-64"><a href="#cb5-64" aria-hidden="true" tabindex="-1"></a>                <span class="at">label =</span> Label),</span>
 <span id="cb5-65"><a href="#cb5-65" aria-hidden="true" tabindex="-1"></a>            <span class="at">hjust =</span> <span class="dv">1</span>, </span>
-<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
-<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>            <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span> </span>
-<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add value label</span></span>
-<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> Accumulated_Papers, </span>
-<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="fu">as.factor</span>(Accumulated_Papers)), <span class="co"># Putting this as a factor is key otherwise it displays decimals to ~10 places at times!</span></span>
-<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>,</span>
-<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
-<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>          <span class="at">fontface =</span> <span class="st">"bold"</span>, </span>
-<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
-<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(limits = c(0,3800), breaks = seq(0, 3500, by = 500), expand = c(.01, 0)) +  # Define x-axis dates &amp; Make the plot fill the available space</span></span>
-<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette_colors, <span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
-<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
-<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(</span>
-<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
-<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
-<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
-<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
-<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
-<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">20</span>, <span class="dv">130</span>),</span>
-<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), </span>
-<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),  <span class="co"># remove x-axis text</span></span>
-<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),   <span class="co"># remove x-axis title</span></span>
-<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="fl">0.8</span>),</span>
-<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">17</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.65</span>),</span>
-<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>,  <span class="at">hjust =</span> <span class="fl">1.25</span>,</span>
-<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> <span class="fl">0.2</span>)</span>
-<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>     <span class="co"># axis.text.y = element_text(size = 12, hjust = 1)</span></span>
-<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
-<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
-<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
-<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Cumulative publications per </span><span class="sc">\"</span><span class="st">addiction</span><span class="sc">\"</span><span class="st"> over time"</span>,  <span class="co"># Add header</span></span>
-<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
-<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
-<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
-<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(Year, </span>
-<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>                    <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="co"># This (with some of the animation arguments) stops it from rewinding at the end</span></span>
-<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transition_length =</span> <span class="dv">5</span>, </span>
-<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>                    <span class="at">state_length =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>   <span class="fu">enter_grow</span>() <span class="sc">+</span></span>
-<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
-<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate in video format:</span></span>
-<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(bar_chart_race_pubs_year, </span></span>
-<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="co">#         fps = 20, </span></span>
-<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="co">#         end_pause = 50,</span></span>
-<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="co">#         duration = 30, </span></span>
-<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE,</span></span>
-<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="co">#         width = 600, height = 700,</span></span>
-<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
-<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="co">#         renderer = av_renderer())</span></span>
-<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-66"><a href="#cb5-66" aria-hidden="true" tabindex="-1"></a>            <span class="at">size =</span> <span class="fl">4.5</span>, </span>
+<span id="cb5-67"><a href="#cb5-67" aria-hidden="true" tabindex="-1"></a>            <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
+<span id="cb5-68"><a href="#cb5-68" aria-hidden="true" tabindex="-1"></a>            <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span> </span>
+<span id="cb5-69"><a href="#cb5-69" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add value label</span></span>
+<span id="cb5-70"><a href="#cb5-70" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">y =</span> Accumulated_Papers, </span>
+<span id="cb5-71"><a href="#cb5-71" aria-hidden="true" tabindex="-1"></a>              <span class="at">label =</span> <span class="fu">as.factor</span>(Accumulated_Papers)), <span class="co"># Putting this as a factor is key otherwise it displays decimals to ~10 places at times!</span></span>
+<span id="cb5-72"><a href="#cb5-72" aria-hidden="true" tabindex="-1"></a>          <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.2</span>,</span>
+<span id="cb5-73"><a href="#cb5-73" aria-hidden="true" tabindex="-1"></a>          <span class="at">color =</span> <span class="st">"#F5F7F0"</span>,</span>
+<span id="cb5-74"><a href="#cb5-74" aria-hidden="true" tabindex="-1"></a>          <span class="at">fontface =</span> <span class="st">"bold"</span>, </span>
+<span id="cb5-75"><a href="#cb5-75" aria-hidden="true" tabindex="-1"></a>          <span class="at">family =</span> <span class="st">"Reem Kufi"</span>) <span class="sc">+</span></span>
+<span id="cb5-76"><a href="#cb5-76" aria-hidden="true" tabindex="-1"></a>  <span class="co"># scale_y_continuous(limits = c(0,3800), breaks = seq(0, 3500, by = 500), expand = c(.01, 0)) +  # Define x-axis dates &amp; Make the plot fill the available space</span></span>
+<span id="cb5-77"><a href="#cb5-77" aria-hidden="true" tabindex="-1"></a>    <span class="fu">scale_fill_manual</span>(<span class="at">values =</span> palette_colors, <span class="at">guide =</span> <span class="cn">FALSE</span>) <span class="sc">+</span></span>
+<span id="cb5-78"><a href="#cb5-78" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>) <span class="sc">+</span></span>
+<span id="cb5-79"><a href="#cb5-79" aria-hidden="true" tabindex="-1"></a> <span class="fu">theme</span>(</span>
+<span id="cb5-80"><a href="#cb5-80" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>,  <span class="at">color =</span> <span class="cn">NA</span>), <span class="co"># ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE</span></span>
+<span id="cb5-81"><a href="#cb5-81" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"#002B36"</span>),</span>
+<span id="cb5-82"><a href="#cb5-82" aria-hidden="true" tabindex="-1"></a>     <span class="at">text =</span> <span class="fu">element_text</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="at">color =</span> <span class="st">"#F5F7F0"</span>),</span>
+<span id="cb5-83"><a href="#cb5-83" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">12</span>),</span>
+<span id="cb5-84"><a href="#cb5-84" aria-hidden="true" tabindex="-1"></a>     <span class="at">panel.grid =</span> <span class="fu">element_blank</span>(),</span>
+<span id="cb5-85"><a href="#cb5-85" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.margin =</span> <span class="fu">margin</span>(<span class="dv">10</span>, <span class="dv">60</span>, <span class="dv">20</span>, <span class="dv">130</span>),</span>
+<span id="cb5-86"><a href="#cb5-86" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.y =</span> <span class="fu">element_blank</span>(), </span>
+<span id="cb5-87"><a href="#cb5-87" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.text.x =</span> <span class="fu">element_blank</span>(),  <span class="co"># remove x-axis text</span></span>
+<span id="cb5-88"><a href="#cb5-88" aria-hidden="true" tabindex="-1"></a>     <span class="at">axis.title =</span> <span class="fu">element_blank</span>(),   <span class="co"># remove x-axis title</span></span>
+<span id="cb5-89"><a href="#cb5-89" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.title =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#F5F7F0"</span>, <span class="at">size =</span> <span class="dv">15</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">10</span>), <span class="at">hjust =</span> <span class="fl">0.7</span>),</span>
+<span id="cb5-90"><a href="#cb5-90" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.subtitle =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#50B5C8"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">17</span>), <span class="at">hjust =</span> <span class="sc">-</span><span class="fl">0.4</span>),</span>
+<span id="cb5-91"><a href="#cb5-91" aria-hidden="true" tabindex="-1"></a>     <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#50B5C8"</span>,  <span class="at">hjust =</span> <span class="fl">1.06</span>,</span>
+<span id="cb5-92"><a href="#cb5-92" aria-hidden="true" tabindex="-1"></a>                                    <span class="at">vjust =</span> <span class="fl">0.2</span>)</span>
+<span id="cb5-93"><a href="#cb5-93" aria-hidden="true" tabindex="-1"></a>     <span class="co"># axis.text.y = element_text(size = 12, hjust = 1)</span></span>
+<span id="cb5-94"><a href="#cb5-94" aria-hidden="true" tabindex="-1"></a>     <span class="co"># panel.border = element_rect(color = "#002B36")</span></span>
+<span id="cb5-95"><a href="#cb5-95" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb5-96"><a href="#cb5-96" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Add titles and labels</span></span>
+<span id="cb5-97"><a href="#cb5-97" aria-hidden="true" tabindex="-1"></a>   <span class="fu">labs</span>(</span>
+<span id="cb5-98"><a href="#cb5-98" aria-hidden="true" tabindex="-1"></a>     <span class="at">title =</span> <span class="st">"Cumulative publications per </span><span class="sc">\"</span><span class="st">behavioural addiction</span><span class="sc">\"</span><span class="st"> over time"</span>,  <span class="co"># Add header</span></span>
+<span id="cb5-99"><a href="#cb5-99" aria-hidden="true" tabindex="-1"></a>     <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
+<span id="cb5-100"><a href="#cb5-100" aria-hidden="true" tabindex="-1"></a>     <span class="at">caption =</span> <span class="st">"Rob Heirene (@rheirene)"</span></span>
+<span id="cb5-101"><a href="#cb5-101" aria-hidden="true" tabindex="-1"></a>   ) <span class="sc">+</span></span>
+<span id="cb5-102"><a href="#cb5-102" aria-hidden="true" tabindex="-1"></a>  <span class="fu">transition_states</span>(Year, </span>
+<span id="cb5-103"><a href="#cb5-103" aria-hidden="true" tabindex="-1"></a>                    <span class="at">wrap =</span> <span class="cn">FALSE</span>, <span class="co"># This (with some of the animation arguments) stops it from rewinding at the end</span></span>
+<span id="cb5-104"><a href="#cb5-104" aria-hidden="true" tabindex="-1"></a>                    <span class="at">transition_length =</span> <span class="dv">5</span>, </span>
+<span id="cb5-105"><a href="#cb5-105" aria-hidden="true" tabindex="-1"></a>                    <span class="at">state_length =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb5-106"><a href="#cb5-106" aria-hidden="true" tabindex="-1"></a>   <span class="fu">enter_grow</span>() <span class="sc">+</span></span>
+<span id="cb5-107"><a href="#cb5-107" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ease_aes</span>(<span class="st">'linear'</span>)</span>
+<span id="cb5-108"><a href="#cb5-108" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-109"><a href="#cb5-109" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate in video format:</span></span>
+<span id="cb5-110"><a href="#cb5-110" aria-hidden="true" tabindex="-1"></a><span class="co"># animate(bar_chart_race_pubs_year, </span></span>
+<span id="cb5-111"><a href="#cb5-111" aria-hidden="true" tabindex="-1"></a><span class="co">#         fps = 20, </span></span>
+<span id="cb5-112"><a href="#cb5-112" aria-hidden="true" tabindex="-1"></a><span class="co">#         end_pause = 50,</span></span>
+<span id="cb5-113"><a href="#cb5-113" aria-hidden="true" tabindex="-1"></a><span class="co">#         duration = 30, </span></span>
+<span id="cb5-114"><a href="#cb5-114" aria-hidden="true" tabindex="-1"></a><span class="co">#         rewind = FALSE,</span></span>
+<span id="cb5-115"><a href="#cb5-115" aria-hidden="true" tabindex="-1"></a><span class="co">#         width = 600, height = 700,</span></span>
+<span id="cb5-116"><a href="#cb5-116" aria-hidden="true" tabindex="-1"></a><span class="co">#         type = "cairo",</span></span>
+<span id="cb5-117"><a href="#cb5-117" aria-hidden="true" tabindex="-1"></a><span class="co">#         renderer = av_renderer())</span></span>
 <span id="cb5-118"><a href="#cb5-118" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate plot in GIF format:</span></span>
-<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(bar_chart_race_pubs_year,</span>
-<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a>        <span class="at">fps =</span> <span class="dv">20</span>,</span>
-<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">70</span>,</span>
-<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">30</span>,</span>
-<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">480</span>, <span class="at">height =</span> <span class="dv">670</span>,</span>
-<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb5-119"><a href="#cb5-119" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-120"><a href="#cb5-120" aria-hidden="true" tabindex="-1"></a><span class="co"># Animate plot in GIF format:</span></span>
+<span id="cb5-121"><a href="#cb5-121" aria-hidden="true" tabindex="-1"></a><span class="fu">animate</span>(bar_chart_race_pubs_year,</span>
+<span id="cb5-122"><a href="#cb5-122" aria-hidden="true" tabindex="-1"></a>        <span class="at">fps =</span> <span class="dv">20</span>,</span>
+<span id="cb5-123"><a href="#cb5-123" aria-hidden="true" tabindex="-1"></a>        <span class="at">end_pause =</span> <span class="dv">70</span>,</span>
+<span id="cb5-124"><a href="#cb5-124" aria-hidden="true" tabindex="-1"></a>        <span class="at">duration =</span> <span class="dv">30</span>,</span>
+<span id="cb5-125"><a href="#cb5-125" aria-hidden="true" tabindex="-1"></a>        <span class="at">width =</span> <span class="dv">570</span>, <span class="at">height =</span> <span class="dv">670</span>,</span>
+<span id="cb5-126"><a href="#cb5-126" aria-hidden="true" tabindex="-1"></a>        <span class="at">type =</span> <span class="st">"cairo"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -1185,7 +1222,7 @@ Are these all “true” addictions?
 <span id="cb6-54"><a href="#cb6-54" aria-hidden="true" tabindex="-1"></a>  plot_theme <span class="sc">+</span></span>
 <span id="cb6-55"><a href="#cb6-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">axis.title =</span> <span class="fu">element_blank</span>(),</span>
 <span id="cb6-56"><a href="#cb6-56" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.title =</span> <span class="fu">element_markdown</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">b =</span> <span class="dv">15</span>, <span class="at">t =</span> <span class="dv">40</span>)),</span>
-<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">color =</span> <span class="st">"#289998"</span>, <span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">5</span>), <span class="at">hjust =</span> .<span class="dv">98</span>)) <span class="sc">+</span> </span>
+<span id="cb6-57"><a href="#cb6-57" aria-hidden="true" tabindex="-1"></a>        <span class="at">plot.caption =</span> <span class="fu">element_text</span>(<span class="at">margin =</span> <span class="fu">margin</span>(<span class="at">t =</span> <span class="dv">10</span>, <span class="at">b =</span> <span class="dv">5</span>), <span class="at">hjust =</span> .<span class="dv">96</span>)) <span class="sc">+</span> </span>
 <span id="cb6-58"><a href="#cb6-58" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb6-59"><a href="#cb6-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="fu">sprintf</span>(<span class="st">"&lt;span style = 'color: #70A377;'&gt;Earliest&lt;/span&gt; and &lt;span style = 'color: #50B5C8;'&gt;most recent&lt;/span&gt; studies of </span><span class="sc">\"</span><span class="st">behavioural addictions</span><span class="sc">\"</span><span class="st"> on PubMed"</span>),</span>
 <span id="cb6-60"><a href="#cb6-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"(Up to end of 2022)"</span>,</span>
@@ -1217,7 +1254,7 @@ Are these all “true” addictions?
 <span id="cb6-86"><a href="#cb6-86" aria-hidden="true" tabindex="-1"></a>  <span class="fu">hide_legend</span>() <span class="sc">%&gt;%</span></span>
 <span id="cb6-87"><a href="#cb6-87" aria-hidden="true" tabindex="-1"></a>  plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">margin =</span> <span class="fu">list</span>(<span class="at">t =</span> <span class="dv">90</span>), <span class="co"># Increase top margin</span></span>
 <span id="cb6-88"><a href="#cb6-88" aria-hidden="true" tabindex="-1"></a>                 <span class="at">font =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>),</span>
-<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>                 <span class="at">title =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.945</span>), <span class="co"># Adjust x and y to position the title</span></span>
+<span id="cb6-89"><a href="#cb6-89" aria-hidden="true" tabindex="-1"></a>                 <span class="at">title =</span> <span class="fu">list</span>(<span class="at">x =</span> <span class="dv">0</span>, <span class="at">y =</span> <span class="fl">0.945</span>),</span>
 <span id="cb6-90"><a href="#cb6-90" aria-hidden="true" tabindex="-1"></a>    <span class="at">hoverlabel =</span> <span class="fu">list</span>(<span class="at">font =</span> <span class="fu">list</span>(<span class="at">family =</span> <span class="st">"Reem Kufi"</span>)</span>
 <span id="cb6-91"><a href="#cb6-91" aria-hidden="true" tabindex="-1"></a>                 </span>
 <span id="cb6-92"><a href="#cb6-92" aria-hidden="true" tabindex="-1"></a>))</span>
@@ -1238,7 +1275,7 @@ Are these all “true” addictions?
 </div>
 <iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="800" style="border:none;"></iframe>
 <p>&nbsp;</p>
-<p>The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with <code>ggplot2</code>, I used to the great <code>ggplotly</code> package to make it interactive—hover over any of the dots to see more information about what was going on that year for each addiction.</p>
+<p>The size of the dots in the above plot correspond to the number of publications in that year for the addiction. After sorting the visuals with <code>ggplot2</code>, I used the great <code>ggplotly</code> package to make it interactive—hover over any of the dots to see more information about what was going on that year.</p>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1267,7 +1304,7 @@ Expand for session information
  collate  English_United Kingdom.utf8
  ctype    English_United Kingdom.utf8
  tz       Europe/London
- date     2023-08-27
+ date     2023-08-28
  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────

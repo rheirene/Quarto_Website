@@ -10,6 +10,12 @@ draft: true
 
 The world of behavioural addictions research is a strange place.
 
+FIX UP ALL THE PLOT TITLES TO BE CONSITENT
+
+MAKE BAR CHART RACE A LITTLE WIDER
+
+Don't always focus on the "addiction" but mention it
+
 ### Data & code set-up
 
 Okay, so let's get started with exploring the data. I'll first load all the required packages and fonts for figures.
@@ -59,8 +65,8 @@ plot_theme <-  theme(plot.background = element_rect(fill = "#002B36",  color = N
      axis.text = element_text(color = "#F5F7F0", size = 13),
      panel.grid = element_blank(),
      plot.title = element_text(color = "#F5F7F0", size = 16),
-     plot.subtitle = element_text(color = "#289998"),
-     plot.caption = element_text(color = "#289998"))
+     plot.subtitle = element_text(color = "#50B5C8"),
+     plot.caption = element_text(color = "#50B5C8"))
 ```
 
 Now I'll load in the dataset and do a little cleaning. Of note, I'm going to remove all publications from 2023 so that we only have data for complete years (see comments in the code chunk below for any other exclusions).
@@ -88,6 +94,8 @@ filtered_data <- raw_data %>%
 data <- raw_data %>% 
   anti_join(filtered_data) %>%
     filter(Year != "2023") 
+
+View(data)
 
 ```
 
@@ -121,7 +129,7 @@ data %>%
   arrange(min) 
 ```
 
-### All behavioural "addictions" found
+### All "addictions" found
 
  
 
@@ -140,11 +148,11 @@ In no way do I endorse
 
 # Arrange data:
 data %>%
-  distinct(PMID, .keep_all = TRUE) %>%
   group_by(Label) %>% 
   summarise(
     n = n()
   ) %>%
+  mutate(percent = round(n/sum(n)*100,2)) %>%
   arrange(desc(n)) %>%
       # Tidy the behavioural addiction labels:
     mutate(Label = str_replace_all(Label, "_", " ") %>%
@@ -154,6 +162,7 @@ data %>%
     # title = md("**Number of publications on PubMed**"),
     # subtitle = md("*Up to end of 2022*"))  %>%
   gt_color_rows(n, palette = c("#002B36", "#289998"))  %>% # Make n column heatmap style
+   gt_color_rows(percent, palette = c("#002B36", "#289998"))  %>% # Make % column heatmap style
    tab_style(
     style = cell_borders(sides = c("top", "bottom"),
                          color = "#002B36",
@@ -186,7 +195,7 @@ data %>%
       ),
       locations = cells_body(columns = Label)
     ) %>%
-  cols_align(align = "center", columns = n) %>%
+   cols_align(align = "center", columns = c(n, percent)) %>%
    cols_align(align = "right", columns = Label) %>%
   tab_style(
     style = cell_borders(sides = c("t"),
@@ -196,7 +205,8 @@ data %>%
   ) %>%
        cols_label(
     Label = "Behavioural addiction",
-    n = "N") %>%
+    n = "N",
+    percent = "%") %>%
    opt_table_font(
     font = google_font("Reem Kufi"))
   
@@ -252,9 +262,9 @@ data_total_per_year_pubs <- data %>%
 total_year_gganimate <- data_total_per_year_pubs %>%
    ggplot(aes(Year, n)) + 
    geom_point() + 
-   geom_line(size = 1.1, color = "#289998") + 
+   geom_line(size = 1.5, color = "#50B5C8") + 
   # Add year counting label
-   geom_text(aes(x = 1984, y = 370, label = as.factor(Year)), hjust = 0, vjust = 0, alpha = 0.6, col = "#289998", size = 15, family = "Reem Kufi") +
+   geom_text(aes(x = 1984, y = 370, label = as.factor(Year)), hjust = 0, vjust = 0, col = "#50B5C8", size = 15, family = "Reem Kufi") +
   # Add 1961 first study label
   geom_text(aes(x = 1961, y =90, label = first_study_1961_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add 1980 gambling label
@@ -268,6 +278,7 @@ total_year_gganimate <- data_total_per_year_pubs %>%
   # Add final year label
   geom_text(aes(x = 2014, y =670, label = final_year_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Define theme elements
+  plot_theme +
    theme(
      plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
      panel.background = element_rect(fill = "#002B36"),
@@ -275,22 +286,22 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      axis.text = element_text(color = "#F5F7F0", size = 12),
      panel.grid = element_blank(),
      plot.margin = margin(20, 5, 20, 20),
-     axis.title.y = element_blank(),  # Adjust y-axis title position
+     axis.title.y = element_blank(), 
      axis.title.x = element_text(margin = margin(t = 18), size = 14),
-     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = -4),
-     plot.subtitle = element_text(color = "#289998", hjust = -0.02)
+     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 1.5),
+     plot.subtitle = element_text(hjust = -0.02)
      # panel.border = element_rect(color = "#002B36")
    ) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = c(.01, 0)) +  # Define x-axis dates & Make the plot fill the available space better
   scale_y_continuous(limits = c(0, 1000), breaks = seq(0, 750, by = 250)) +  # Define y-axis labels
   # Add titles and labels
    labs(
-     title = "Number of Behavioural Addictions papers published per year on PubMed",  # Add header
+     title = "Number of papers published on behavioural addictions per year on PubMed",  # Add header
      subtitle = "(Up to end of 2022)",
      x = "Year",
      caption = "Rob Heirene (@rheirene)"
    ) +
-  theme(plot.caption = element_text(color = "#289998",  hjust = .98,
+  theme(plot.caption = element_text(hjust = .98,
                                     vjust = .98)) +
   # Add gganimate animation
    transition_reveal(Year) 
@@ -365,7 +376,7 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
      axis.text = element_text(color = "#F5F7F0", size = 18),
      panel.grid = element_blank(),
      plot.margin = margin(10, 10, 10, 20),
-     axis.title = element_blank(),  # Adjust y-axis title position
+     axis.title = element_blank(),  
      axis.text.x = element_blank(),   # remove x-axis text
      axis.title.x = element_blank())  # remove x-axis title
 
@@ -434,7 +445,7 @@ bar_chart_race_pubs_year <-
    geom_text(aes(y = 2400, x = -24, 
                  label = as.factor(Year)), 
              hjust = 0, vjust = 0, 
-             alpha = 0.6, col = "#289998", # Alpha not working here for some unknown reason (send help!)
+             alpha = 0.6, col = "#50B5C8", # Alpha not working here for some unknown reason (send help!)
              size = 14, family = "Reem Kufi",
              inherit.aes = FALSE) + # Adding this didn't fix the alpha issue
 
@@ -442,7 +453,7 @@ bar_chart_race_pubs_year <-
   geom_text(aes(x = -Rank, y = -100, 
                 label = Label),
             hjust = 1, 
-            size = 6, ###### ADDED NEED TO CHECK!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+            size = 4.5, 
             color = "#F5F7F0",
             family = "Reem Kufi") + 
   # Add value label
@@ -465,16 +476,16 @@ bar_chart_race_pubs_year <-
      axis.text.y = element_blank(), 
      axis.text.x = element_blank(),  # remove x-axis text
      axis.title = element_blank(),   # remove x-axis title
-     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 0.8),
-     plot.subtitle = element_text(color = "#289998", margin = margin(b = 17), hjust = -0.65),
-     plot.caption = element_text(color = "#289998",  hjust = 1.25,
+     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 0.7),
+     plot.subtitle = element_text(color = "#50B5C8", margin = margin(b = 17), hjust = -0.4),
+     plot.caption = element_text(color = "#50B5C8",  hjust = 1.06,
                                     vjust = 0.2)
      # axis.text.y = element_text(size = 12, hjust = 1)
      # panel.border = element_rect(color = "#002B36")
    ) +
   # Add titles and labels
    labs(
-     title = "Cumulative publications per \"addiction\" over time",  # Add header
+     title = "Cumulative publications per \"behavioural addiction\" over time",  # Add header
      subtitle = "(Up to end of 2022)",
      caption = "Rob Heirene (@rheirene)"
    ) +
@@ -501,7 +512,7 @@ animate(bar_chart_race_pubs_year,
         fps = 20,
         end_pause = 70,
         duration = 30,
-        width = 480, height = 670,
+        width = 570, height = 670,
         type = "cairo")
 
 ```
@@ -577,7 +588,7 @@ dumbbell_plot_first_last <- ggplot() +
   plot_theme +
   theme(axis.title = element_blank(),
         plot.title = element_markdown(margin = margin(b = 15, t = 40)),
-        plot.caption = element_text(color = "#289998", margin = margin(t = 10, b = 5), hjust = .98)) + 
+        plot.caption = element_text(margin = margin(t = 10, b = 5), hjust = .96)) + 
   labs(
     title = sprintf("<span style = 'color: #70A377;'>Earliest</span> and <span style = 'color: #50B5C8;'>most recent</span> studies of \"behavioural addictions\" on PubMed"),
     subtitle = "(Up to end of 2022)",
@@ -609,7 +620,7 @@ dumbbell_plot_first_last_ggplotly <- ggplotly(dumbbell_plot_first_last,
   hide_legend() %>%
   plotly::layout(margin = list(t = 90), # Increase top margin
                  font = list(family = "Reem Kufi"),
-                 title = list(x = 0, y = 0.945), # Adjust x and y to position the title
+                 title = list(x = 0, y = 0.945),
     hoverlabel = list(font = list(family = "Reem Kufi")
                  
 ))
@@ -633,7 +644,11 @@ saveWidget(dumbbell_plot_first_last_ggplotly, 'dumbbell_plot.html')
 ```
  
 
-The size of the dots in the above plot correspond to the number of publications it that year for the addiction. After sorting the visuals with `ggplot2`, I used to the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year for each addiction.
+The size of the dots in the above plot correspond to the number of publications in that year for the addiction. After sorting the visuals with `ggplot2`, I used the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year.
+
+### Where do these papers come from?
+
+### Where are these published?
 
 ::: {.callout-tip collapse="true" appearance="minimal" icon="false"}
 ## Expand for session information
