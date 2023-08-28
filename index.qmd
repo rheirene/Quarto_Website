@@ -74,15 +74,41 @@ gam_prevention_sunburst<- plot_ly(gam_prevention_data,
                                    sort = TRUE) %>%
    plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),
          font = list(
-           # family = "Poppins", # I can't get this to work so let me know if you can!
+           size = 14,
+           family = "Reem Kufi", # I can't get this to work so let me know if you can!
                      color = "#FFF7E7"), # Set main font so the central layer text can be seen
          paper_bgcolor = '#002B36', # background consistent with site
          plot_bgcolor = '#002B36',
-        hoverlabel = list(font = list(size = 12)))  # Increase the font size for hover text)
+         hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size for hover text)
+ 
+# The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:
+
+# Get the URL for the "Reem Kufi" font from Google Fonts:
+reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
+
+# Create custom CSS:
+reem_kufi_css <- paste0(
+  "<style type = 'text/css'>",
+    "@font-face { ",
+      "font-family: 'Reem Kufi'; ", 
+      "src: url('", reem_kufi_file, "'); ",
+    "}",
+  "</style>"
+)
+
+
+# Add the CSS as a dependency for the plotly plot:
+gam_prevention_sunburst$dependencies <- c(
+  gam_prevention_sunburst$dependencies,
+  list(
+    htmltools::htmlDependency(
+      name = "reem-kufi-font", 
+      version = "0",  
+      src = "",
+      head = reem_kufi_css)))
 
 # Save plot as a HTML file (it doesn't render well with quarto otherwise):
 saveWidget(gam_prevention_sunburst, 'fig.html')
-
 ```
 
 ```{=html}

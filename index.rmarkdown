@@ -1,0 +1,123 @@
+---
+title: ""
+format:
+  html:
+    toc: false
+---
+
+
+![](headshot.svg){fig-align="center" width="225"}
+
+::: {.text .padding .fade-in}
+Hi 👋 I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
+
+You can find out more about me [here](https://robheirene.netlify.app/about.html).
+:::
+
+------------------------------------------------------------------------
+
+<br>
+
+::: fade-in
+
+## Latest research findings
+
+[The state of the open science in the behavioural addictions field]{style="color: #289998; font-weight: bold;"}
+
+I recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research---find out more [here](https://robheirene.netlify.app/publication/2023-open-science-landscape-eben-heirene/). The paper was led by [Dr Charlotte Eben](https://twitter.com/CharlotteEben), who is doing some great work in this space!
+
+## What I'm working on
+
+[Pondering + plotting]{style="color: #289998; font-weight: bold;"}
+
+I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below chart of prevention strategies for problem gambling.
+
+[Click on the bars to see more]{style="color: #289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, not on mobile (if you are on mobile, turn it to landscape mode).
+
+:::
+
+
+```{r echo =FALSE, results=FALSE, warning=FALSE, message=FALSE}
+# Install and load the groundhog package to ensure consistency of the package versions used here:
+# install.packages("groundhog") # Install
+
+library(groundhog) # Load
+
+packages <- c('tidyverse', # Clean, organise, and visualise data
+              'plotly', # Add interactive elements to figures
+              'sysfonts', # Special fonts for figures
+              'showtext', # Special fonts for figures
+              'htmlwidgets') # Make plotly plots HTML format for rendering in Quarto
+              
+# Load desired package with versions specific to project start date:
+groundhog.library(packages, "2023-06-05") # Set Slightly earlier than start date as some of the plotly dependency packages wouldn't load properly with date as 07/07/2023
+
+# Load new font for figures/graphs
+font_add_google("Poppins")
+showtext_auto()
+```
+
+```{r echo =FALSE,warning=FALSE, message=FALSE}
+# Load manually input data:
+gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>%
+  select(Layer:Description) # Warning, something as simple as a' and this dataset can cause it to not play nice
+
+# Make sunburst chart:
+gam_prevention_sunburst<- plot_ly(gam_prevention_data,
+                                   ids = ~IDs,
+                                   labels = ~Label,
+                                   parents = ~Parents,
+                                   hoverinfo = "text",  # Needed for below argument to work
+                                   hovertext = ~Description,
+                                   type = 'sunburst',
+                                   maxdepth = 3,
+                                   insidetextorientation = 'radial',
+                                   marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color
+                                   sort = TRUE) %>%
+   plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),
+         font = list(
+           size = 14,
+           family = "Reem Kufi", # I can't get this to work so let me know if you can!
+                     color = "#FFF7E7"), # Set main font so the central layer text can be seen
+         paper_bgcolor = '#002B36', # background consistent with site
+         plot_bgcolor = '#002B36',
+         hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size for hover text)
+ 
+# The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:
+
+# Get the URL for the "Reem Kufi" font from Google Fonts:
+reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
+
+# Create custom CSS:
+reem_kufi_css <- paste0(
+  "<style type = 'text/css'>",
+    "@font-face { ",
+      "font-family: 'Reem Kufi'; ", 
+      "src: url('", reem_kufi_file, "'); ",
+    "}",
+  "</style>"
+)
+
+
+# Add the CSS as a dependency for the plotly plot:
+gam_prevention_sunburst$dependencies <- c(
+  gam_prevention_sunburst$dependencies,
+  list(
+    htmltools::htmlDependency(
+      name = "reem-kufi-font", 
+      version = "0",  
+      src = "",
+      head = reem_kufi_css)))
+
+# Save plot as a HTML file (it doesn't render well with quarto otherwise):
+saveWidget(gam_prevention_sunburst, 'fig.html')
+```
+
+```{=html}
+<iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
+```
+
+::: fade-in
+It's very much a work in progress (*I still need to add many strategies and labels for those I have*), but you can find out more about my plans for this [here](https://robheirene.netlify.app/posts/2023-gambling-harms-chart).
+:::
+

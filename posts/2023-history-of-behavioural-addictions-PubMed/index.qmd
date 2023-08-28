@@ -599,7 +599,7 @@ dumbbell_plot_first_last <- ggplot() +
 
 # dumbbell_plot_first_last # View static plot
 
-# We're going to turn this into an interactive plot now using ggplotly, butthis remove some of our existing theme settings, especially the fonts.  The standard way of changing the font in ggplotly  doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
+# We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
 
 # Get the URL for the "Reem Kufi" font from Google Fonts:
 reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
