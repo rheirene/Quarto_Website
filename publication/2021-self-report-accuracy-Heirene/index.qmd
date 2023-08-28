@@ -6,7 +6,7 @@ author:
 - name: Amy Wang
 - name: Sally Gainsbury
 categories: [Gambling]
-date: 2019-11-01
+date: 2021-07-19
 image: featured.jpg
 draft: false
 ---
@@ -29,10 +29,10 @@ draft: false
 
 **APA citation**
 
--   Heirene, R. M., Wang, A., & Gainsbury, S. M. (2022). Accuracy of self-reported gambling frequency and outcomes: Comparisons with account data. *Psychology of Addictive Behaviors,* 36 (4), 333--346. https://doi.org/10.1037/adb0000792
+-   Heirene, R. M., Wang, A., & Gainsbury, S. M. (2022). Accuracy of self-reported gambling frequency and outcomes: Comparisons with account data. *Psychology of Addictive Behaviors,* 36 (4), 333--346. <https://doi.org/10.1037/adb0000792>
 
 **Transparency**
 
 | **Pre-registered** |    **Open materials**     |            **Open code**             |       **Open data**       |
-|:------------------:|:-------------------------:|:------------------------------------:|:-------------------------:|
+|:---------------:|:---------------:|:---------------------:|:---------------:|
 |        *NA*        | [✓](https://osf.io/m8rbd) | [✓](https://osf.io/8vjeh/wiki/home/) | [✓](https://osf.io/46uer) |
