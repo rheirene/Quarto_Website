@@ -154,7 +154,7 @@ I want to to visualise this information, but it's going to be quite tricky as ea
 #            )
 
 # Now, break this to a CSV file because this took forever to extract the data we to want to have to do this every time I render this page!!
-write.csv(data_locations_with_full_geo_location, "data_locations_with_full_geo_location.csv")
+write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
 ```
 
 ### Where are these published?
