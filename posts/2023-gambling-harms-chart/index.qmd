@@ -81,11 +81,11 @@ gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>% select(Layer:Desc
    plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),
          font = list(
            size = 14,
-           family = "Reem Kufi", # I can't get this to work so let me know if you can!
+           family = "Reem Kufi", # change main font
                      color = "#FFF7E7"), # Set main font so the central layer text can be seen
          paper_bgcolor = '#002B36', # background consistent with site
          plot_bgcolor = '#002B36',
-         hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size for hover text)
+         hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size and family for hover text)
  
 # The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:
 
@@ -134,6 +134,14 @@ As I (re-)read the literature on this topic, I'm also creating a record of relev
 There will eventually be a lot of information presented here, so I've hidden the text for each prevention strategy inside expandable boxes for easier navigation.
 
 #### Consumer protection tools
+
+::: {.callout-note collapse="true" appearance="simple" icon="false"}
+## Self-assessments
+
+-   The authors in [this study](https://doi.org/10.1007/s10899-023-10230-1) collected retrospective data from a European gambling site that offers their customers the ability to estimate their recent gambling behaviour and expenditure ("Recent gambling self assessment" in the chart), including amount wagered, deposited, and withdrawn, as well as play duration in hours (all over the last 30 days). They compared peoples' (n = 639) deposit amount before and after this self-assessment and found a significant reduction that wasn't affected by whether people underestimated, overestimated, or correctly estimated their past 30 day deposit amount. While the reduction was quite substantial (averaged between -\$85 to \$-300 across the three estimation groups), there was no control/comparator group and so we do not know whether this change would have occurred in the absence of this self-assessment (just regression to the mean?). Also, as the authors note, the group of people who voluntarily and actively took time to complete this self-assessment may have already made the decision to decrease their gambling before taking the self-assessment.
+
+    -   Auer, M., Hopfgartner, N., Helic, D., & others. (2023). Self-reported Deposits Versus Actual Deposits in Online Gambling: An Empirical Study. *J Gambl Stud.* [**https://doi.org/10.1007/s10899-023-10230-1**](https://doi.org/10.1007/s10899-023-10230-1)
+:::
 
 #### Restrictions
 
