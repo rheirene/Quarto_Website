@@ -104,57 +104,181 @@ I want to to visualise this information, but it's going to be quite tricky as ea
 # Okay, so we're going to need to create an ID variable for each paper (this makes the string split and a nest below work bettter than relying on titles), Then split the author_address strings into separate addresses, then unnest these into new rows. 
 
 # The un-nest doesn't seem to work well when we retain all of the columns in the dataset, so I do it with only id and institution (address) in the data, then join all of the rest of the data set to the unnested rows after this. For this to work, we need to create a dataset that has the ID variable in before splitting the string and and unnesting. Let's do that:
-# data_id <-data %>%
-#   rowid_to_column(var = "id")
-# 
-# # Now split the address  string and then  unnest it into multiple rows, and finally re-join with the main dataset
-# data_locations <- data_id %>%
-#   mutate(institution = str_split(Author_Address, ";")) %>% 
-#   select(id, institution) %>%
-#   unnest(institution) %>%
-#   full_join(data_id, by = "id") %>% 
-#   # Whilst we're doing this, we'll also create a counter/number for each institution per paper
-#   group_by(id) %>%
-#   mutate(author_num = row_number()) %>%
-#   ungroup() 
-#   # We can also pivot to wide format if that makes sense at any point:
-#   # pivot_wider(names_from = author_num, 
-#   #             values_from = institution, 
-#   #             names_prefix = "author_", 
-#   #             values_fill = NA_character_)
-# 
-# # View(data_locations) # Looks good!
-# 
-# # Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
-# ## Loading country data from package maps
-# data(world.cities)
-# 
-# # Extract just the city names so we can try and match author locations using these:
-# city_names_from_world <- world.cities$name
-# 
-# # Create a pattern of city names for matching with word boundaries:
-# city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
-# 
-# # Extract city namesusing stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match you're looking for)
-# cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
-# 
-# # Add the extracted city names to our dataset:
-# data_locations_with_city<- data_locations %>%
-#   bind_cols(cities_of_authors) %>%
-#   rename(cities_of_authors = 18) 
-# 
-# # Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy erros when joining (I checked this doesn't results in mismatches):
-# world.cities <- as_tibble(world.cities) %>%
-#   rename(cities_of_authors = 1) %>%
-#   distinct(cities_of_authors, .keep_all = TRUE)
-# 
-# #Join the world.cities dataset with our paper data so we have latitude and longer to for each city:
-# data_locations_with_full_geo_location<- left_join(data_locations_with_city, 
-#            world.cities
-#            )
+ data_id <-data %>%
+  rowid_to_column(var = "id")
+
+# Now split the address  string and then  unnest it into multiple rows, and finally re-join with the main dataset
+data_locations <- data_id %>%
+  mutate(institution = str_split(Author_Address, ";")) %>%
+  select(id, institution) %>%
+  unnest(institution) %>%
+  full_join(data_id, by = "id") %>%
+  # Whilst we're doing this, we'll also create a counter/number for each institution per paper
+  group_by(id) %>%
+  mutate(author_num = row_number()) %>%
+  ungroup()
+  # We can also pivot to wide format if that makes sense at any point:
+  # pivot_wider(names_from = author_num,
+  #             values_from = institution,
+  #             names_prefix = "author_",
+  #             values_fill = NA_character_)
+
+# View(data_locations) # Looks good!
+
+# Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
+## Loading country data from package maps
+data(world.cities)
+ 
+world_cities_filtered <-  world.cities %>%
+  group_by(name) %>%
+  filter(pop == max(pop)) %>%
+  ungroup() %>% 
+  filter(name != "China") # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
+
+
+# Extract just the city names so we can try and match author locations using these:
+city_names_from_world <- world_cities_filtered$name
+
+# Create a pattern of city names for matching with word boundaries:
+city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
+
+# Extract city namesusing stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match you're looking for)
+cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
+
+# Add the extracted city names to our dataset:
+data_locations_with_city<- data_locations %>%
+  bind_cols(cities_of_authors) %>%
+  rename(cities_of_authors = 18)
+
+# Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy erros when joining (I checked this doesn't results in mismatches):
+world_cities_filtered <- as_tibble(world_cities_filtered) %>%
+  rename(cities_of_authors = 1) %>%
+  distinct(cities_of_authors, .keep_all = TRUE)
+
+#Join the world.cities dataset with our paper data so we have latitude and longer to for each city:
+data_locations_with_full_geo_location<- left_join(data_locations_with_city,
+           world_cities_filtered
+           )
 
 # Now, break this to a CSV file because this took forever to extract the data we to want to have to do this every time I render this page!!
 write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
+
+
+
+# Okay, now actually load pre-created data from Github:
+url_geo_loc_data_link <- "https://raw.githubusercontent.com/rheirene/Quarto_Website/master/posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv"
+
+data_locations_with_full_geo_location <- read_csv(url_geo_loc_data_link) %>%
+  as_tibble() %>% 
+
+```
+
+
+```{r}
+# Load world map data but filtered Antarctica as we don't have any values/papers for this region and it just takes up space on the map:
+world_map <- map_data("world") %>% filter(region != "Antarctica")
+
+# Join the world map data with our paper data:
+data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location, world_map) %>%
+  # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title())
+
+
+data_locations_with_full_geo_location_WORLD_city_aggregate<-data_locations_with_full_geo_location_WORLD %>%  
+   group_by(cities_of_authors) %>%
+  summarise(
+    num_papers = n_distinct(PMID),
+    lat = first(lat),   # Retain the first value of latitude for the city
+    long = first(long),  # Retain the first value of longitude for the city
+    group = first(group) # Retain the group value from the world map dataset  
+  ) %>%
+  filter(!is.na(cities_of_authors)) %>% # Remove rows where we can get the city
+    arrange(desc(num_papers))   # Just for easier viewing
+
+
+data_locations_with_full_geo_location_WORLD_city_label_aggregate<-data_locations_with_full_geo_location_WORLD %>%
+ left_join(world_map) %>%
+   group_by(cities_of_authors,Label) %>%
+  summarise(
+    num_papers = n_distinct(PMID),
+    lat = first(lat),   # Retain the first value of latitude for the city
+    long = first(long),  # Retain the first value of longitude for the city
+    group = first(group) # Retain the group value from the world map dataset  
+  ) %>%
+  filter(!is.na(cities_of_authors)) %>% # Remove rows where we can get the city
+    arrange(desc(num_papers)) %>%  # Just for easier viewing
+   # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title())
+
+   
+all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill="#289998", colour = "#289998") +
+   geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate, 
+              aes(x = long, y = lat, 
+              size = sqrt(num_papers),
+              text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),  
+              colour = "#50B5C8",
+              fill = "#F5F7F0",
+              alpha = 1,
+              shape = 21) +  # Use shape 21 for filled circles
+  scale_size_continuous(guide="none") +
+  scale_x_continuous(expand = c(.001, .001)) +
+  scale_y_continuous(expand = c(.001, .001)) +
+  plot_theme +
+  theme(
+    axis.text = element_blank(),
+    axis.title = element_blank()) 
+  # transition_states(Year, 
+  #                   wrap = FALSE, # This (with some of the animation arguments) stops it from rewinding at the end
+  #                   transition_length = 5, 
+  #                   state_length = 1) +
+  #  enter_grow() +
+  # ease_aes('linear')
+
+# Save this now as a basic plot:
+ggsave("posts/2023-history-of-behavioural-addictions-PubMed-part2/all_publications_map.svg", plot = all_publications_map, dpi = 300)
+
+
+# We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
+
+# Get the URL for the "Reem Kufi" font from Google Fonts:
+reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
+
+# Create custom CSS:
+reem_kufi_css <- paste0(
+  "<style type = 'text/css'>",
+    "@font-face { ",
+      "font-family: 'Reem Kufi'; ", 
+      "src: url('", reem_kufi_file, "'); ",
+    "}",
+  "</style>"
+)
+
+# Convert static plot to ggplotly format and adjust theme settings where required: 
+all_publications_map_ggplotly <- ggplotly(all_publications_map,
+                                              tooltip = 'text') %>% 
+  hide_legend() %>%
+  plotly::layout(margin = list(t = 90), # Increase top margin
+                 font = list(family = "Reem Kufi"),
+                 title = list(x = 0, y = 0.945),
+    hoverlabel = list(font = list(family = "Reem Kufi")
+                 
+))
+
+# Add the CSS as a dependency for the plotly plot:
+all_publications_map_ggplotly$dependencies <- c(
+  all_publications_map_ggplotly$dependencies,
+  list(
+    htmltools::htmlDependency(
+      name = "reem-kufi-font", 
+      version = "0",  
+      src = "",
+      head = reem_kufi_css)))
+
+# Display plot:
+saveWidget(all_publications_map_ggplotly, 'all_pubs_map.html')
 ```
 
 ### Where are these published?
@@ -188,3 +312,4 @@ session_info(pkgs = "attached")
         async>
 </script
 ```
+If
