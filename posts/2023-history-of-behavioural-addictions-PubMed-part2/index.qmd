@@ -131,9 +131,13 @@ data(world.cities)
  
 world_cities_filtered <-  world.cities %>%
   group_by(name) %>%
-  filter(pop == max(pop)) %>%
+  filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map with, for example, putting "Cambridge" in the Caribbean as one of the most actively publishing cities on behavioural addictions in the world....
   ungroup() %>% 
-  filter(name != "China") # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
+  filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
+                        "India", # Same sort of issue (City in Africa)
+                        "San",  # Same sort of issue (City in Africa, again)
+                        "Institut" # This appears to be act somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
+                       ))
 
 
 # Extract just the city names so we can try and match author locations using these:
@@ -169,10 +173,9 @@ write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behaviou
 url_geo_loc_data_link <- "https://raw.githubusercontent.com/rheirene/Quarto_Website/master/posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv"
 
 data_locations_with_full_geo_location <- read_csv(url_geo_loc_data_link) %>%
-  as_tibble() %>% 
+  as_tibble()
 
 ```
-
 
 ```{r}
 # Load world map data but filtered Antarctica as we don't have any values/papers for this region and it just takes up space on the map:
@@ -280,6 +283,15 @@ all_publications_map_ggplotly$dependencies <- c(
 # Display plot:
 saveWidget(all_publications_map_ggplotly, 'all_pubs_map.html')
 ```
+
+```{=html}
+<iframe src="all_pubs_map.html" class="fade-inhtml" width="100%" height="800" style="border:none;"></iframe>
+```
+::: {.callout-tip appearance="minimal" icon="false"}
+## Spot an error in the map?
+
+Trying to match city names to author institutions listed in the data has taught me that there are a lot of duplicated/triplicated/quadruplicated (not sure if that's even a word) city names throughout the world. This sometimes means that the author institutions were linked to the wrong city when I first at this. I've tried to fix all of these errors (some manually, some using some quick workarounds), but if you think you spot an error like this then please do let me know!
+:::
 
 ### Where are these published?
 
