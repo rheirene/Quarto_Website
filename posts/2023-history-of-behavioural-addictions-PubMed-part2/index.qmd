@@ -1,0 +1,190 @@
+---
+title: "The history of behavioural addictions research (according to PubMed): Part 2"
+description: ""
+author:
+  - name: Rob Heirene
+categories: [Gambling] 
+date: 2023-08-25
+draft: true 
+---
+
+### Data & code set-up
+
+Just like in Part 1, I'll first load all the required packages and fonts for figures.
+
+```{r results=FALSE, warning=FALSE, message=FALSE}
+#| code-fold: true
+#| code-summary: "Code: set-up"
+
+# Install and load the groundhog package to ensure consistency of the package versions used here:
+# install.packages("groundhog") # Install
+
+library(groundhog) # Load
+
+# List desired packages:
+packages <- c('readr', # Load dataset from GitHib
+              'tidyverse', # Clean, organise, and visualise data
+              'gt', #  table data
+              'gtExtras', # Add colours to gt tables
+              'plotly', # Add interactive elements to figures
+              'gganimate', # Make animated plots
+              'transformr', # Needed for certain animations (dumbell lines)
+              'png',# Helps render gganimate plots
+              'gifski', # Helps render gganimate plots
+              'rmarkdown', # Helps render gganimate plots
+              'av', # render gganimate plots as videos
+              'Cairo', # Anti-aliasing for the line plots (smoothing output)
+              'ggtext', # make fancy labels in plots
+              'sysfonts', # Special fonts for figures
+              'showtext', # Special fonts for figures
+              'htmlwidgets', # Make plotly plots HTML format for rendering in Quarto
+              'scico', # Colour palette
+              'maps', # Get map/geographic data for author locations
+              'stringr', # extract city names
+              'sessioninfo') # Detailed session info for reproducibility 
+
+# Load desired package with versions specific to project start date:
+groundhog.library(packages, "2023-08-01") 
+
+# Load new font for figures/graphs
+font_add_google("Poppins", "Poppins")
+font_add_google("Reem Kufi", "Reem Kufi")
+showtext_auto(enable = TRUE) 
+
+
+plot_theme <-  theme(plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
+     panel.background = element_rect(fill = "#002B36"),
+     text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
+     axis.text = element_text(color = "#F5F7F0", size = 13),
+     panel.grid = element_blank(),
+     plot.title = element_text(color = "#F5F7F0", size = 16),
+     plot.subtitle = element_text(color = "#50B5C8"),
+     plot.caption = element_text(color = "#50B5C8"))
+```
+
+Now I'll load in the dataset and do a little cleaning. Again,, I'm going to remove all publications from 2023 so that we only have data for complete years (see comments in the code chunk below for any other exclusions).
+
+```{r results=FALSE, warning=FALSE, message=FALSE}
+#| code-fold: true
+#| code-summary: "Code: load dataset"
+
+url_behav_addic_data_link <- "https://raw.githubusercontent.com/rheirene/pub-med-scape-behav-addictions/main/Data%20extraction/combined_results_clean.csv"
+
+raw_data <- read_csv(url_behav_addic_data_link) %>%
+  as_tibble()
+
+str(raw_data)
+# View(data)
+
+# Despite my best efforts with manual searching, my explorations of this dataset in R revealed that there are a few erratums/corrigendums and one notice of retraction included in the data. Let's remove these before moving forward:
+filtered_data <- raw_data %>%
+  filter(str_detect(Publication_Type, "Erratum") | 
+         str_detect(Publication_Type, "corrigendum") | 
+         str_detect(Publication_Type, "Retraction")) %>% 
+  distinct(PMID, .keep_all = TRUE)
+
+# Let's now remove these pubs and any from 2023 so we have data for all "full" years:
+data <- raw_data %>% 
+  anti_join(filtered_data) %>%
+    filter(Year != "2023") 
+
+# View(data)
+
+```
+
+### Where do these papers come from?
+
+I want to to visualise this information, but it's going to be quite tricky as each paper has a variable number of authors and therefore institution addresses that are all listed in a single string within one column in the dataset. I'll have to separate out each author institution and then find a way to extract only the relevant information to be able to geo-locate them.
+
+```{r}
+
+# ***********************The below code is almost all commented out on purpose as the process of extracting and matching city names from the author address column is so computationally taxing that it takes a long time to process.  I've left the code here so that anyone can see how I did it, but I saved the results as a .csv file and now load the data like that***********************
+# as_tibble(data$Author_Address) # Take a look at how the author addresses are structured
+
+# Okay, so we're going to need to create an ID variable for each paper (this makes the string split and a nest below work bettter than relying on titles), Then split the author_address strings into separate addresses, then unnest these into new rows. 
+
+# The un-nest doesn't seem to work well when we retain all of the columns in the dataset, so I do it with only id and institution (address) in the data, then join all of the rest of the data set to the unnested rows after this. For this to work, we need to create a dataset that has the ID variable in before splitting the string and and unnesting. Let's do that:
+# data_id <-data %>%
+#   rowid_to_column(var = "id")
+# 
+# # Now split the address  string and then  unnest it into multiple rows, and finally re-join with the main dataset
+# data_locations <- data_id %>%
+#   mutate(institution = str_split(Author_Address, ";")) %>% 
+#   select(id, institution) %>%
+#   unnest(institution) %>%
+#   full_join(data_id, by = "id") %>% 
+#   # Whilst we're doing this, we'll also create a counter/number for each institution per paper
+#   group_by(id) %>%
+#   mutate(author_num = row_number()) %>%
+#   ungroup() 
+#   # We can also pivot to wide format if that makes sense at any point:
+#   # pivot_wider(names_from = author_num, 
+#   #             values_from = institution, 
+#   #             names_prefix = "author_", 
+#   #             values_fill = NA_character_)
+# 
+# # View(data_locations) # Looks good!
+# 
+# # Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
+# ## Loading country data from package maps
+# data(world.cities)
+# 
+# # Extract just the city names so we can try and match author locations using these:
+# city_names_from_world <- world.cities$name
+# 
+# # Create a pattern of city names for matching with word boundaries:
+# city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
+# 
+# # Extract city namesusing stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match you're looking for)
+# cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
+# 
+# # Add the extracted city names to our dataset:
+# data_locations_with_city<- data_locations %>%
+#   bind_cols(cities_of_authors) %>%
+#   rename(cities_of_authors = 18) 
+# 
+# # Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy erros when joining (I checked this doesn't results in mismatches):
+# world.cities <- as_tibble(world.cities) %>%
+#   rename(cities_of_authors = 1) %>%
+#   distinct(cities_of_authors, .keep_all = TRUE)
+# 
+# #Join the world.cities dataset with our paper data so we have latitude and longer to for each city:
+# data_locations_with_full_geo_location<- left_join(data_locations_with_city, 
+#            world.cities
+#            )
+
+# Now, break this to a CSV file because this took forever to extract the data we to want to have to do this every time I render this page!!
+write.csv(data_locations_with_full_geo_location, "data_locations_with_full_geo_location.csv")
+```
+
+### Where are these published?
+
+::: {.callout-tip collapse="true" appearance="minimal" icon="false"}
+## Expand for session information
+
+```{r}
+#| code-fold: true
+#| code-summary: "Code: Get session info"
+
+session_info(pkgs = "attached")
+```
+:::
+
+------------------------------------------------------------------------
+
+```{=html}
+<script src="https://giscus.app/client.js"
+        data-repo="rheirene/Quarto_Website"
+        data-repo-id="R_kgDOJ0d4fA"
+        data-category-id="DIC_kwDOJ0d4fM4CXv7I"
+        data-mapping="pathname"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="dark_dimmed"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+</script
+```
