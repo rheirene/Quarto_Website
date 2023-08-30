@@ -41,6 +41,7 @@ packages <- c('readr', # Load dataset from GitHib
               'scico', # Colour palette
               'maps', # Get map/geographic data for author locations
               'stringr', # extract city names
+              'viridis', # More colour palettes
               'sessioninfo') # Detailed session info for reproducibility 
 
 # Load desired package with versions specific to project start date:
@@ -58,7 +59,7 @@ plot_theme <-  theme(plot.background = element_rect(fill = "#002B36",  color = N
      axis.text = element_text(color = "#F5F7F0", size = 13),
      panel.grid = element_blank(),
      plot.title = element_text(color = "#F5F7F0", size = 16),
-     plot.subtitle = element_text(color = "#50B5C8"),
+     plot.subtitle = element_text(color = "#50B5C8", size = 12),
      plot.caption = element_text(color = "#50B5C8"))
 ```
 
@@ -96,9 +97,9 @@ data <- raw_data %>%
 
 I want to to visualise this information, but it's going to be quite tricky as each paper has a variable number of authors and therefore institution addresses, all of which are listed in a single (often messy) string within one column in the dataset. I'll have to separate out each author institution and then find a way to extract only the relevant information to be able to geo-locate them.
 
-```{r}
+```{r warning=FALSE, message=FALSE}
 #| code-fold: true
-#| code-summary: "Code: Extracy location data for each paper"
+#| code-summary: "Code: Extract location data for each paper"
 
 # ***********************The below code is almost all commented out on purpose as the process of extracting and matching city names from the author address column is so computationally taxing that it takes a long time to process.  I've left the code here so that anyone can see how I did it, but I saved the results as a .csv file and now load the data like that***********************
 # as_tibble(data$Author_Address) # Take a look at how the author addresses are structured
@@ -180,134 +181,246 @@ data_locations_with_full_geo_location <- read_csv(url_geo_loc_data_link) %>%
 ```
 
 ```{r}
-# Load world map data but filtered Antarctica as we don't have any values/papers for this region and it just takes up space on the map:
-world_map <- map_data("world") %>% filter(region != "Antarctica")
+#| code-fold: true
+#| code-summary: "Code: Create interactive map of papers"
+#| fig-align: center
 
-# Join the world map data with our paper data:
-data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location, world_map) %>%
-  # Tidy the behavioural addiction labels:
-    mutate(Label = str_replace_all(Label, "_", " ") %>%
-                 str_to_title())
+# It takes quite a long time to produce the interactive plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment out all of the code below to create the plot.
 
-# Wrangle data for plot:
-data_locations_with_full_geo_location_WORLD_city_aggregate<- data_locations_with_full_geo_location_WORLD %>%  
-  # Calculate the unique number of papers that can be linked to each city:
-   group_by(cities_of_authors) %>%
-  summarise(
-    num_papers = n_distinct(PMID),
-    lat = first(lat),   # Retain the first value of latitude for the city
-    long = first(long),  # Retain the first value of longitude for the city
-    group = first(group) # Retain the group value from the world map dataset  
-  ) %>%
-  filter(!is.na(cities_of_authors)) %>% # Remove rows where we don't have a city
-    arrange(desc(num_papers))   # Just for easier viewing
-
-   
-all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
-  geom_polygon(fill="#289998", colour = "#289998") +
-   geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate, 
-              aes(x = long, y = lat, 
-              size = sqrt(num_papers),
-              text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),  
-              colour = "#50B5C8",
-              fill = "#F5F7F0",
-              alpha = 1,
-              shape = 21) +  # Use shape 21 for filled circles
-  scale_size_continuous(guide="none") +
-  scale_x_continuous(expand = c(.001, .001)) +
-  # scale_y_continuous(expand = c(.001, .001)) +
-  plot_theme +
-  theme(
-    axis.text = element_blank(),
-    axis.title = element_blank()) +
-  labs(
-    title = "Institutions of authors publishing behavioural addictions research",
-    subtitle = "Each circle represents a city and its size corresponds to the number of papers can be linked to it",
-    caption = "Rob Heirene (@rheirene)"
-  )
-
-# Save this now as a basic plot:
-ggsave("all_publications_map.svg", 
-       plot = all_publications_map, 
-       width = 9, 
-       height = 6,
-       dpi = 600)
-
-
-# We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
-
-# Get the URL for the "Reem Kufi" font from Google Fonts:
-reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
-
-# Create custom CSS:
-reem_kufi_css <- paste0(
-  "<style type = 'text/css'>",
-    "@font-face { ",
-      "font-family: 'Reem Kufi'; ", 
-      "src: url('", reem_kufi_file, "'); ",
-    "}",
-  "</style>"
-)
-
-# Convert static plot to ggplotly format and adjust theme settings where required: 
-all_publications_map_ggplotly <- ggplotly(all_publications_map,
-                                              tooltip = 'text') %>% 
-  hide_legend() %>%
-  plotly::layout(margin = list(t = 90), # Increase top margin
-                 font = list(family = "Reem Kufi"),
-                 title = list(x = 0, y = 0.945),
-    hoverlabel = list(font = list(family = "Reem Kufi")
-                 
-))
-
-# Add the CSS as a dependency for the plotly plot:
-all_publications_map_ggplotly$dependencies <- c(
-  all_publications_map_ggplotly$dependencies,
-  list(
-    htmltools::htmlDependency(
-      name = "reem-kufi-font", 
-      version = "0",  
-      src = "",
-      head = reem_kufi_css)))
-
-# Display plot:
-saveWidget(all_publications_map_ggplotly, 'all_pubs_map.html')
+# # Load world map data but filter out Antarctica as we don't have any values/papers for this region and it just takes up space on the map:
+# world_map <- map_data("world") %>% filter(region != "Antarctica")
+# 
+# # Join the world map data with our paper data:
+# data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location, world_map) %>%
+#   # Tidy the behavioural addiction labels:
+#     mutate(Label = str_replace_all(Label, "_", " ") %>%
+#                  str_to_title())
+# 
+# # Wrangle data for plot:
+# data_locations_with_full_geo_location_WORLD_city_aggregate<- data_locations_with_full_geo_location_WORLD %>%
+#   # Calculate the unique number of papers that can be linked to each city:
+#    group_by(cities_of_authors) %>%
+#   summarise(
+#     num_papers = n_distinct(PMID),
+#     lat = first(lat),   # Retain the first value of latitude for the city
+#     long = first(long),  # Retain the first value of longitude for the city
+#     group = first(group) # Retain the group value from the world map dataset
+#   ) %>%
+#   filter(!is.na(cities_of_authors)) %>% # Remove rows where we don't have a city
+#     arrange(desc(num_papers))   # Just for easier viewing
+# 
+# 
+# all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+#   geom_polygon(fill="#289998", colour = "#289998") +
+#    geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate,
+#               aes(x = long, y = lat,
+#               size = sqrt(num_papers),
+#               text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),
+#               colour = "#50B5C8",
+#               fill = "#F5F7F0",
+#               alpha = 1,
+#               shape = 21) +  # Use shape 21 for filled circles
+#   scale_size_continuous(guide="none") +
+#   scale_x_continuous(expand = c(.001, .001)) +
+#   # scale_y_continuous(expand = c(.001, .001)) +
+#   plot_theme +
+#   theme(
+#     axis.text = element_blank(),
+#     axis.title = element_blank()) +
+#   labs(
+#     title = "Institutions of authors publishing behavioural addictions research",
+#     subtitle = "Each circle represents a city and its size corresponds to the number of papers can be linked to it",
+#     caption = "Rob Heirene (@rheirene)"
+#   )
+# 
+# # Save this now as a basic plot:
+# ggsave("posts/2023-history-of-behavioural-addictions-PubMed-part2/all_publications_map.svg",
+#        plot = all_publications_map,
+#        width = 9,
+#        height = 6,
+#        dpi = 600)
+# 
+# 
+# # We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
+# 
+# # Get the URL for the "Reem Kufi" font from Google Fonts:
+# reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url
+# 
+# # Create custom CSS:
+# reem_kufi_css <- paste0(
+#   "<style type = 'text/css'>",
+#     "@font-face { ",
+#       "font-family: 'Reem Kufi'; ",
+#       "src: url('", reem_kufi_file, "'); ",
+#     "}",
+#   "</style>"
+# )
+# 
+# # Convert static plot to ggplotly format and adjust theme settings where required:
+#  all_publications_map_ggplotly <-ggplotly(all_publications_map,
+#                                               tooltip = 'text') %>%
+#   hide_legend() %>%
+#   plotly::layout(annotations =
+#  list(x = 1, y = -0.1, text = "Rob Heirene (@rheirene)",
+#       showarrow = F, xref='paper', yref='paper',
+#       xanchor='right', yanchor='auto', xshift=0, yshift=25,
+#       font=list(size=12, color="#50B5C8")),
+#        margin = list(t = 70), # Increase top margin
+#                  font = list(family = "Reem Kufi"),
+#                  title = list(x = 0, y = 0.945),
+#     hoverlabel = list(font = list(family = "Reem Kufi")
+# ))
+# 
+# # Add the CSS as a dependency for the plotly plot:
+# all_publications_map_ggplotly$dependencies <- c(
+#   all_publications_map_ggplotly$dependencies,
+#   list(
+#     htmltools::htmlDependency(
+#       name = "reem-kufi-font",
+#       version = "0",
+#       src = "",
+#       head = reem_kufi_css)))
+# 
+# # Display plot:
+# saveWidget(all_publications_map_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part2/all_pubs_map.html')
 ```
 
 ```{=html}
 <iframe src="all_pubs_map.html" class="fade-inhtml" width="100%" height="600" style="border:none;"></iframe>
 ```
+Well, that looks nice. I used the `ggplotly` package to make the map interactive so you can zoom into any area and hover over the circles to see which city is represented and how many papers can be linked to it.
+
 ::: {.callout-tip appearance="minimal" icon="false"}
 ## Spot an error in the map?
 
-Trying to match city names to author institutions listed in the data has taught me that there are a lot of duplicated/triplicated/quadruplicated (not sure if that's even a word) city names throughout the world. This sometimes means that the author institutions were linked to the wrong city when I first at this. I've tried to fix all of these errors (some manually, some using some quick workarounds), but if you think you spot an error like this then please do let me know!
+Trying to match city names to author institutions listed in the data has taught me that there are a lot of duplicated/triplicated/quadruplicated (not sure if that's even a word) city names throughout the world. This sometimes means that the author institutions were linked to the wrong city when I first ran this. I've tried to fix all of these errors (some manually, some using some quick workarounds), but if you spot an error like this then please do let me know!
 :::
 
-Well, that looks nice. I used the `ggplotly` package to make the map interactive so you can zoom into any area and hover over the circles to see which city is represented and how many papers can be linked to it.
+L
 
 ```{r}
+#| code-fold: true
+#| code-summary: "Code: Create animated map of papers"
+#| fig-align: center
+
+# It takes quite a long time to produce the animated plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment all of the code below to Cceate the plot.
+
+# # Wrangle data for plot:
+# data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_locations_with_full_geo_location_WORLD %>%
+#  left_join(world_map) %>%
+#    # Calculate the unique number of papers PER ADDICTION that can be linked to each city:
+#    group_by(cities_of_authors,Label) %>%
+#   summarise(
+#     num_papers = n_distinct(PMID),
+#     lat = first(lat),   # Retain the first value of latitude for the city
+#     long = first(long),  # Retain the first value of longitude for the city
+#     group = first(group) # Retain the group value from the world map dataset  
+#   ) %>%
+#   filter(!is.na(cities_of_authors)) %>% # Remove rows where we can get the city
+#     arrange(desc(num_papers)) %>%  # Just for easier viewing
+#    # Tidy the behavioural addiction labels:
+#     mutate(Label = str_replace_all(Label, "_", " ") %>%
+#                  str_to_title()) %>% 
+#     mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
+#                                        Label == "Gaming" ~ "Gaming addiction",
+#                                        Label == "Smart Phone" ~ "Smart Phone addiction",
+#                                        Label == "Exercise" ~ "Exercise addiction",
+#                                        Label == "Social Media" ~ "Social Media addiction",
+#                                        Label == "Tanning" |
+#                                        Label == "Selfie" |
+#                                        Label == "Crime" |
+#                                        Label == "Dance" |
+#                                        Label == "Joyriding" |
+#                                        Label == "Polysurgical" |
+#                                        Label == "Death" |
+#                                          Label == "Near Death" |
+#                                          Label == "Fortune Telling" |
+#                                          Label == "Love"
+#                                          ~ "The more obscure \"addiction\"",
+#                                        TRUE ~ "REMOVE")) %>% 
+#   filter(labels_filter != "REMOVE")  %>% 
+#   mutate(labels_filter = as.factor(labels_filter)) %>% 
+#   ungroup()
+# 
+# # Get palette colors:
+# num_labels <- length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter))
+# palette_colors <- rev(scico(n = num_labels, palette = 'hawaii'))
+# 
+# #Plot data:
+# filtered_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+#   geom_polygon(fill = "#289998", colour = "#289998") +
+#   geom_point(data = data_locations_with_full_geo_location_WORLD_city_label_aggregate, 
+#              aes(x = long, y = lat, 
+#                  size = sqrt(num_papers),
+#                   colour = labels_filter,
+#                  fill = labels_filter),  
+#              alpha = 1,
+#              shape = 21) +
+#   # Removal guides
+#   scale_size_continuous(guide = "none") +
+#   scale_color_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1)+
+#   scale_fill_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1) +
+#   # scale_fill_manual(values = palette_colors, guide = FALSE) +
+#   # scale_color_manual(values = palette_colors,
+#   #                       # rep("#F5F7F0",num_labels),
+#   #                     guide = FALSE) +
+#   # guides(fill = "none", color = "none") +
+#   scale_x_continuous(expand = c(0.001, 0.001)) +
+#   scale_y_continuous(expand = c(0.001, 0.001)) +
+#   plot_theme +
+#   theme(
+#     axis.text = element_blank(),
+#     axis.title = element_blank(),
+#      plot.title = element_text(margin = margin(b = 10))
+#     ) +
+#   labs(
+#     title = "{closest_state} papers",
+#     caption = "Rob Heirene (@rheirene)"
+#   ) +
+#   transition_states( ### NOT FILTER!
+#      labels_filter,
+#      transition_length = 2, 
+#      state_length = 6,
+#      wrap = FALSE
+#    ) +
+#   enter_fade() +
+#   exit_fade()
+#   # enter_fly(y_loc = 0) + # entering data: fly in vertically from bottom
+#   # exit_fly(y_loc = 100) + # exiting data: fly out vertically to top...
+#   # exit_fade() # ...while color is fading
+# 
+# 
+# Animate plot in GIF format:
+# animate(filtered_publications_map,
+#         fps = 20,
+#         end_pause = 70,
+#         duration = 30,
+#         width = 800, height = 520,
+#         type = "cairo")
+
+# The more obscure addictions referred to include turning, selfie, crime, dance, joyriding, polysurgical,  death, near death, fortune telling, and love addictions.
+```
+
+```{r include=FALSE}
+# Save GIF:
+# anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part2/filtered_publications_map.gif", animation =  last_animation())
+```
+
+![](filtered_publications_map.gif){fig-align="center"}
+
+### Where are these published?
+
+```{r warning=FALSE, message=FALSE}
+#| code-fold: true
+#| code-summary: "Code: Create sankey plot of paper destinations"
+#| fig-align: center
+
 # Wrangle data for plot:
-data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_locations_with_full_geo_location_WORLD %>%
- left_join(world_map) %>%
-   # Calculate the unique number of papers PER ADDICTION that can be linked to each city:
-   group_by(cities_of_authors,Label) %>%
-  summarise(
-    num_papers = n_distinct(PMID),
-    lat = first(lat),   # Retain the first value of latitude for the city
-    long = first(long),  # Retain the first value of longitude for the city
-    group = first(group) # Retain the group value from the world map dataset  
-  ) %>%
-  filter(!is.na(cities_of_authors)) %>% # Remove rows where we can get the city
-    arrange(desc(num_papers)) %>%  # Just for easier viewing
-   # Tidy the behavioural addiction labels:
+sankey_data<- data %>%
+  distinct(PMID, .keep_all = TRUE) %>% 
     mutate(Label = str_replace_all(Label, "_", " ") %>%
                  str_to_title()) %>% 
-    mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
-                                       Label == "Gaming" ~ "Gaming addiction",
-                                       Label == "Smart Phone" ~ "Smart Phone addiction",
-                                       Label == "Exercise" ~ "Exercise addiction",
-                                       Label == "Social Media" ~ "Social Media addiction",
-                                       Label == "Tanning" |
+    mutate(Behavioural_addiction = case_when(Label == "Tanning" |
                                        Label == "Selfie" |
                                        Label == "Crime" |
                                        Label == "Dance" |
@@ -317,62 +430,10 @@ data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_location
                                          Label == "Near Death" |
                                          Label == "Fortune Telling" |
                                          Label == "Love"
-                                         ~ "The more obscure \"addiction\"",
-                                       TRUE ~ "REMOVE")) %>% 
-  filter(labels_filter != "REMOVE")  %>% 
-  mutate(labels_filter = as.factor(labels_filter)) %>% 
-  ungroup()
-
-
-filtered_publications_map<- ggplot(world_map, aes(x = long, y = lat, group = group)) +
-  geom_polygon(fill = "#289998", colour = "#289998") +
-  geom_point(data = data_locations_with_full_geo_location_WORLD_city_label_aggregate, 
-             aes(x = long, y = lat, 
-                 size = sqrt(num_papers),
-                  colour = labels_filter,
-                 fill = labels_filter),  
-             alpha = 1,
-             shape = 21) +
-  # Removal guides
-  scale_size_continuous(guide = "none") +
-  guides(fill = "none", color = "none") +
-  scale_x_continuous(expand = c(0.001, 0.001)) +
-  scale_y_continuous(expand = c(0.001, 0.001)) +
-  plot_theme +
-  theme(
-    axis.text = element_blank(),
-    axis.title = element_blank()) +
-  labs(
-    title = "{closest_state} papers",
-    caption = "Rob Heirene (@rheirene)"
-  ) +
-  transition_states( ### NOT FILTER!
-     labels_filter,
-     transition_length = 3, 
-     state_length = 4,
-     wrap = FALSE
-   ) 
-  # enter_fly(y_loc = 0) + # entering data: fly in vertically from bottom
-  # exit_fly(y_loc = 100) + # exiting data: fly out vertically to top...
-  # exit_fade() # ...while color is fading
-
-
-# Animate plot in GIF format:
-animate(filtered_publications_map,
-        fps = 20,
-        end_pause = 70,
-        duration = 25,
-        width = 750, height = 550,
-        type = "cairo")
-
+                                         ~ "More obscure \"addictions\"",
+                                     TRUE ~ Label))
+                                     
 ```
-
-```{r include=FALSE}
-# Save GIF:
-anim_save("filtered_publications_map.gif", animation = filtered_publications_map)
-```
-
-### Where are these published?
 
 ::: {.callout-tip collapse="true" appearance="minimal" icon="false"}
 ## Expand for session information
@@ -403,4 +464,3 @@ session_info(pkgs = "attached")
         async>
 </script
 ```
-If
