@@ -519,7 +519,7 @@ animate(bar_chart_race_pubs_year,
 
 ```{r include=FALSE}
 # Save GIF:
-anim_save("posts/2023-history-of-behavioural-addictions-PubMed/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
+anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part2/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
 ```
 
  
