@@ -40,6 +40,7 @@ packages <- c('readr', # Load dataset from GitHib
               'htmlwidgets', # Make plotly plots HTML format for rendering in Quarto
               'scico', # Colour palette
               'maps', # Get map/geographic data for author locations
+              'purrr', # Help unnest city and author names across papers  equally
               'stringr', # extract city names
               'viridis', # More colour palettes
               'sessioninfo') # Detailed session info for reproducibility 
@@ -102,73 +103,86 @@ I want to to visualise this information, but it's going to be quite tricky as ea
 #| code-summary: "Code: Extract location data for each paper"
 
 # ***********************The below code is almost all commented out on purpose as the process of extracting and matching city names from the author address column is so computationally taxing that it takes a long time to process.  I've left the code here so that anyone can see how I did it, but I saved the results as a .csv file and now load the data like that***********************
+
 # as_tibble(data$Author_Address) # Take a look at how the author addresses are structured
 
-# Okay, so we're going to need to create an ID variable for each paper (this makes the string split and a nest below work bettter than relying on titles), Then split the author_address strings into separate addresses, then unnest these into new rows. 
+# Okay, so we're going to need to create an ID variable for each paper (this makes the string split and a nest below work bettter than relying on titles), then split the author_address strings into separate addresses, then unnest these into new rows. 
+
+# Whilst I'm splitting and unnesting the author address: I'm going to simultaneously do this for the authors name column.
+
 
 # The un-nest doesn't seem to work well when we retain all of the columns in the dataset, so I do it with only id and institution (address) in the data, then join all of the rest of the data set to the unnested rows after this. For this to work, we need to create a dataset that has the ID variable in before splitting the string and and unnesting. Let's do that:
-#  data_id <-data %>%
-#   rowid_to_column(var = "id")
-# 
-# # Now split the address  string and then  unnest it into multiple rows, and finally re-join with the main dataset
-# data_locations <- data_id %>%
-#   mutate(institution = str_split(Author_Address, ";")) %>%
-#   select(id, institution) %>%
-#   unnest(institution) %>%
-#   full_join(data_id, by = "id") %>%
-#   # Whilst we're doing this, we'll also create a counter/number for each institution per paper
-#   group_by(id) %>%
-#   mutate(author_num = row_number()) %>%
-#   ungroup()
-#   # We can also pivot to wide format if that makes sense at any point:
-#   # pivot_wider(names_from = author_num,
-#   #             values_from = institution,
-#   #             names_prefix = "author_",
-#   #             values_fill = NA_character_)
-# 
-# # View(data_locations) # Looks good!
-# 
-# # Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
-# ## Loading country data from package maps
-# data(world.cities)
-#  
-# world_cities_filtered <-  world.cities %>%
-#   group_by(name) %>%
-#   filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map with, for example, putting "Cambridge" in the Caribbean as one of the most actively publishing cities on behavioural addictions in the world....
-#   ungroup() %>% 
-#   filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
-#                         "India", # Same sort of issue (City in Africa)
-#                         "San",  # Same sort of issue (City in Africa, again)
-#                         "Institut" # This appears to be act somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
-#                        ))
-# 
-# 
-# # Extract just the city names so we can try and match author locations using these:
-# city_names_from_world <- world_cities_filtered$name
-# 
-# # Create a pattern of city names for matching with word boundaries:
-# city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
-# 
-# # Extract city namesusing stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match you're looking for)
-# cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
-# 
-# # Add the extracted city names to our dataset:
-# data_locations_with_city<- data_locations %>%
-#   bind_cols(cities_of_authors) %>%
-#   rename(cities_of_authors = 18)
-# 
-# # Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy erros when joining (I checked this doesn't results in mismatches):
-# world_cities_filtered <- as_tibble(world_cities_filtered) %>%
-#   rename(cities_of_authors = 1) %>%
-#   distinct(cities_of_authors, .keep_all = TRUE)
-# 
-# #Join the world.cities dataset with our paper data so we have latitude and longer to for each city:
-# data_locations_with_full_geo_location<- left_join(data_locations_with_city,
-#            world_cities_filtered
-#            )
-# 
-# # Now, break this to a CSV file because this took forever to extract the data we to want to have to do this every time I render this page!!
-# write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
+ data_id <-data %>%
+  rowid_to_column(var = "id")
+ 
+# Now split the author and address strings and then  unnest it into multiple rows, and finally re-join with the main dataset
+data_locations <- data_id %>%
+    mutate(
+    institution = str_split(Author_Address, ";"), # Split author address column into separate strings For each address
+    author_names = str_split(Full_Author_Name, ";") # Split author name column into separate strings For each Name
+  ) %>%
+  # The below code matches the number of author institutions and author names where discrepancies exist, so the unnest further below works:
+ mutate(
+    max_length = pmax(map_int(institution, length), map_int(author_names, length)),
+    institution = map2(institution, max_length, ~ replace(., seq_along(.) + 1 > .y, NA_character_)),
+    author_names = map2(author_names, max_length, ~ replace(., seq_along(.) + 1 > .y, NA_character_))
+  ) %>%
+  select(id, institution, author_names) %>%
+  unnest(c(institution, author_names)) %>%
+  full_join(data_id, by = "id") %>%
+  # Whilst we're doing this, we'll also create a counter/number for each institution per paper
+  group_by(id) %>%
+  mutate(author_num = row_number()) %>%
+  ungroup()
+  # We can also pivot to wide format if that makes sense at any point:
+  # pivot_wider(names_from = author_num,
+  #             values_from = institution,
+  #             names_prefix = "author_",
+  #             values_fill = NA_character_)
+
+# View(data_locations) # Looks good!
+
+# Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
+## Loading country data from package maps
+data(world.cities)
+
+world_cities_filtered <-  world.cities %>%
+  group_by(name) %>%
+  filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map with, for example, putting "Cambridge" in the Caribbean as one of the most actively publishing cities on behavioural addictions in the world....
+  ungroup() %>%
+  filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
+                        "India", # Same sort of issue (City in Africa)
+                        "San",  # Same sort of issue (City in Africa, again)
+                        "Institut" # This appears to be act somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
+                       ))
+
+
+# Extract just the city names so we can try and match author locations using these:
+city_names_from_world <- world_cities_filtered$name
+
+# Create a pattern of city names for matching with word boundaries:
+city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
+
+# Extract city namesusing stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match you're looking for)
+cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
+
+# Add the extracted city names to our dataset:
+data_locations_with_city<- data_locations %>%
+  bind_cols(cities_of_authors) %>%
+  rename(cities_of_authors = 18)
+
+# Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy erros when joining (I checked this doesn't results in mismatches):
+world_cities_filtered <- as_tibble(world_cities_filtered) %>%
+  rename(cities_of_authors = 1) %>%
+  distinct(cities_of_authors, .keep_all = TRUE)
+
+#Join the world.cities dataset with our paper data so we have latitude and longitude for each city:
+data_locations_with_full_geo_location<- left_join(data_locations_with_city,
+           world_cities_filtered
+           )
+
+# Now, Save this to a CSV file because this took forever to extract the data we don't want to have to do this every time I render this page!!
+write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
 
 
 
@@ -185,31 +199,33 @@ data_locations_with_full_geo_location <- read_csv(url_geo_loc_data_link) %>%
 #| code-summary: "Code: Create interactive map of papers"
 #| fig-align: center
 
+# Load world map data but filter out Antarctica as we don't have any values/papers for this region and it just takes up space on the map:
+world_map <- map_data("world") %>% filter(region != "Antarctica")
+
+# Join the world map data with our paper data:
+data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location, world_map) %>%
+  # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title())
+
+# Wrangle data for plot:
+data_locations_with_full_geo_location_WORLD_city_aggregate<- data_locations_with_full_geo_location_WORLD %>%
+  # Calculate the unique number of papers that can be linked to each city:
+   group_by(cities_of_authors) %>%
+  summarise(
+    num_papers = n_distinct(PMID),
+    lat = first(lat),   # Retain the first value of latitude for the city
+    long = first(long),  # Retain the first value of longitude for the city
+    group = first(group) # Retain the group value from the world map dataset
+  ) %>%
+  filter(!is.na(cities_of_authors)) %>% # Remove rows where we don't have a city
+    arrange(desc(num_papers)) %>%    # Just for easier viewing
+  ungroup() #  Doing this usually prevents issues later on!
+
 # It takes quite a long time to produce the interactive plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment out all of the code below to create the plot.
 
-# # Load world map data but filter out Antarctica as we don't have any values/papers for this region and it just takes up space on the map:
-# world_map <- map_data("world") %>% filter(region != "Antarctica")
-# 
-# # Join the world map data with our paper data:
-# data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location, world_map) %>%
-#   # Tidy the behavioural addiction labels:
-#     mutate(Label = str_replace_all(Label, "_", " ") %>%
-#                  str_to_title())
-# 
-# # Wrangle data for plot:
-# data_locations_with_full_geo_location_WORLD_city_aggregate<- data_locations_with_full_geo_location_WORLD %>%
-#   # Calculate the unique number of papers that can be linked to each city:
-#    group_by(cities_of_authors) %>%
-#   summarise(
-#     num_papers = n_distinct(PMID),
-#     lat = first(lat),   # Retain the first value of latitude for the city
-#     long = first(long),  # Retain the first value of longitude for the city
-#     group = first(group) # Retain the group value from the world map dataset
-#   ) %>%
-#   filter(!is.na(cities_of_authors)) %>% # Remove rows where we don't have a city
-#     arrange(desc(num_papers))   # Just for easier viewing
-# 
-# 
+
+# # Create plot:
 # all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
 #   geom_polygon(fill="#289998", colour = "#289998") +
 #    geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate,
@@ -305,98 +321,152 @@ L
 
 # It takes quite a long time to produce the animated plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment all of the code below to Cceate the plot.
 
-# # Wrangle data for plot:
-# data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_locations_with_full_geo_location_WORLD %>%
-#  left_join(world_map) %>%
-#    # Calculate the unique number of papers PER ADDICTION that can be linked to each city:
-#    group_by(cities_of_authors,Label) %>%
-#   summarise(
-#     num_papers = n_distinct(PMID),
-#     lat = first(lat),   # Retain the first value of latitude for the city
-#     long = first(long),  # Retain the first value of longitude for the city
-#     group = first(group) # Retain the group value from the world map dataset  
-#   ) %>%
-#   filter(!is.na(cities_of_authors)) %>% # Remove rows where we can get the city
-#     arrange(desc(num_papers)) %>%  # Just for easier viewing
-#    # Tidy the behavioural addiction labels:
-#     mutate(Label = str_replace_all(Label, "_", " ") %>%
-#                  str_to_title()) %>% 
-#     mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
-#                                        Label == "Gaming" ~ "Gaming addiction",
-#                                        Label == "Smart Phone" ~ "Smart Phone addiction",
-#                                        Label == "Exercise" ~ "Exercise addiction",
-#                                        Label == "Social Media" ~ "Social Media addiction",
-#                                        Label == "Tanning" |
-#                                        Label == "Selfie" |
-#                                        Label == "Crime" |
-#                                        Label == "Dance" |
-#                                        Label == "Joyriding" |
-#                                        Label == "Polysurgical" |
-#                                        Label == "Death" |
-#                                          Label == "Near Death" |
-#                                          Label == "Fortune Telling" |
-#                                          Label == "Love"
-#                                          ~ "The more obscure \"addiction\"",
-#                                        TRUE ~ "REMOVE")) %>% 
-#   filter(labels_filter != "REMOVE")  %>% 
-#   mutate(labels_filter = as.factor(labels_filter)) %>% 
-#   ungroup()
-# 
-# # Get palette colors:
-# num_labels <- length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter))
-# palette_colors <- rev(scico(n = num_labels, palette = 'hawaii'))
-# 
-# #Plot data:
-# filtered_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
-#   geom_polygon(fill = "#289998", colour = "#289998") +
-#   geom_point(data = data_locations_with_full_geo_location_WORLD_city_label_aggregate, 
-#              aes(x = long, y = lat, 
-#                  size = sqrt(num_papers),
-#                   colour = labels_filter,
-#                  fill = labels_filter),  
-#              alpha = 1,
-#              shape = 21) +
-#   # Removal guides
-#   scale_size_continuous(guide = "none") +
-#   scale_color_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1)+
-#   scale_fill_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1) +
-#   # scale_fill_manual(values = palette_colors, guide = FALSE) +
-#   # scale_color_manual(values = palette_colors,
-#   #                       # rep("#F5F7F0",num_labels),
-#   #                     guide = FALSE) +
-#   # guides(fill = "none", color = "none") +
-#   scale_x_continuous(expand = c(0.001, 0.001)) +
-#   scale_y_continuous(expand = c(0.001, 0.001)) +
-#   plot_theme +
-#   theme(
-#     axis.text = element_blank(),
-#     axis.title = element_blank(),
-#      plot.title = element_text(margin = margin(b = 10))
-#     ) +
-#   labs(
-#     title = "{closest_state} papers",
-#     caption = "Rob Heirene (@rheirene)"
-#   ) +
-#   transition_states( ### NOT FILTER!
-#      labels_filter,
-#      transition_length = 2, 
-#      state_length = 6,
-#      wrap = FALSE
-#    ) +
-#   enter_fade() +
-#   exit_fade()
-#   # enter_fly(y_loc = 0) + # entering data: fly in vertically from bottom
-#   # exit_fly(y_loc = 100) + # exiting data: fly out vertically to top...
-#   # exit_fade() # ...while color is fading
-# 
-# 
+
+# Wrangle data for plot:
+data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_locations_with_full_geo_location_WORLD %>%
+ left_join(world_map) %>%
+   # Calculate the unique number of papers PER ADDICTION that can be linked to each city:
+   group_by(cities_of_authors,Label) %>%
+  summarise(
+    num_papers = n_distinct(PMID),
+    lat = first(lat),   # Retain the first value of latitude for the city
+    long = first(long),  # Retain the first value of longitude for the city
+    group = first(group) # Retain the group value from the world map dataset
+  ) %>%
+  filter(!is.na(cities_of_authors)) %>% # Remove rows where we can't get the city
+    arrange(desc(num_papers)) %>%  # Just for easier viewing
+   # Tidy the behavioural addiction labels:
+    mutate(Label = str_replace_all(Label, "_", " ") %>%
+                 str_to_title()) %>%
+  # Add Categories for behavioural addictions:
+    mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
+                                       Label == "Gaming" ~ "Gaming addiction",
+                                       Label == "Smart Phone" ~ "Smart Phone addiction",
+                                       Label == "Exercise" ~ "Exercise addiction",
+                                       Label == "Social Media" ~ "Social Media addiction",
+                                       Label == "Tanning" |
+                                       Label == "Selfie" |
+                                       Label == "Crime" |
+                                       Label == "Dance" |
+                                       Label == "Joyriding" |
+                                       Label == "Polysurgical" |
+                                       Label == "Death" |
+                                         Label == "Near Death" |
+                                         Label == "Fortune Telling" |
+                                         Label == "Love"
+                                         ~ "The more obscure \"addiction\"",
+                                       TRUE ~ "REMOVE")) %>%
+  filter(labels_filter != "REMOVE")  %>%
+  mutate(labels_filter = as.factor(labels_filter)) %>%
+  ungroup()
+
+
+
+# Now we need to create descriptive labels to appear with each addiction:
+# Before proceeding, let's create a simple dataset to use that contains our  behavioural addiction categories that we can use for grouping:
+
+location_grouping_data<- data_locations_with_full_geo_location_WORLD %>% # We need to use the earlier dataset and recreate our grouping labels, as in the dataset we created above we removed papers we couldn't locate them/ get a city
+  # Add Categories for behavioural addictions:
+    mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
+                                       Label == "Gaming" ~ "Gaming addiction",
+                                       Label == "Smart Phone" ~ "Smart Phone addiction",
+                                       Label == "Exercise" ~ "Exercise addiction",
+                                       Label == "Social Media" ~ "Social Media addiction",
+                                       Label == "Tanning" |
+                                       Label == "Selfie" |
+                                       Label == "Crime" |
+                                       Label == "Dance" |
+                                       Label == "Joyriding" |
+                                       Label == "Polysurgical" |
+                                       Label == "Death" |
+                                         Label == "Near Death" |
+                                         Label == "Fortune Telling" |
+                                         Label == "Love"
+                                         ~ "The more obscure \"addictions\"",
+                                       TRUE ~ "REMOVE"))
+
+# First create a dataset that tells us the number of **papers per addiction**:
+location_grouping_data %>%
+  group_by(labels_filter) %>% 
+  summarise(
+    papers_per_addiction = n_distinct(PMID),
+    cities_per_addiction = n_distinct(cities_of_authors),
+    countries_per_addiction = n_distinct(country.etc)
+    ) %>%
+ mutate(description = paste(papers_per_addiction, "unique papers"
+                                ))
+
+
+   mutate(gambling_addiction = case_when(labels_filter == "Gambling addiction" ~ sprintf("1961  \nFirst available study: \n\"Compulsive gambling\""),
+                               TRUE ~ "")) %>%
+    
+     
+# Get palette colors:
+num_labels <- length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter))
+palette
+
+
+colors_viridis<- viridis(n = length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter)), option = "plasma", direction = -1)
+          
+labels<- unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter)
+
+color_map_df <- tibble(
+  label = labels,
+  color = colors_viridis
+)
+
+color_map <- setNames(color_map_df$color, color_map_df$label)
+
+
+# Plot data:
+filtered_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill = "#289998", colour = "#289998") +
+  geom_point(data = data_locations_with_full_geo_location_WORLD_city_label_aggregate,
+             aes(x = long, y = lat,
+                 size = sqrt(num_papers),
+                  colour = labels_filter,
+                 fill = labels_filter),
+             alpha = 1,
+             shape = 21) +
+  # Removal guides
+  scale_size_continuous(guide = "none") +
+  scale_color_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1)+
+  scale_fill_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1) +
+  # scale_fill_manual(values = palette_colors, guide = FALSE) +
+  # scale_color_manual(values = palette_colors,
+  #                       # rep("#F5F7F0",num_labels),
+  #                     guide = FALSE) +
+  # guides(fill = "none", color = "none") +
+  scale_x_continuous(expand = c(0.001, 0.001)) +
+  scale_y_continuous(expand = c(0.001, 0.001)) +
+  plot_theme +
+  theme(
+    axis.text = element_blank(),
+    axis.title = element_blank(),
+     plot.title = element_text(margin = margin(b = 20))
+    ) +
+  labs(
+    title = "{closest_state} papers",
+    caption = "Rob Heirene (@rheirene)"
+  ) +
+  transition_states( ### NOT FILTER!
+     labels_filter,
+     transition_length = 2,
+     state_length = 6,
+     wrap = FALSE
+   ) +
+  enter_fade() +
+  exit_fade()
+
+
+
 # Animate plot in GIF format:
-# animate(filtered_publications_map,
-#         fps = 20,
-#         end_pause = 70,
-#         duration = 30,
-#         width = 800, height = 520,
-#         type = "cairo")
+animate(filtered_publications_map,
+        fps = 20,
+        end_pause = 70,
+        duration = 30,
+        width = 800, height = 540,
+        type = "cairo")
 
 # The more obscure addictions referred to include turning, selfie, crime, dance, joyriding, polysurgical,  death, near death, fortune telling, and love addictions.
 ```
