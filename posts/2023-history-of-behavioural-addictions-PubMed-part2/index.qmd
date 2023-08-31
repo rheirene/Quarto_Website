@@ -207,10 +207,10 @@ world_cities_filtered <- as_tibble(world_cities_filtered) %>%
   distinct(cities_of_authors, .keep_all = TRUE)
 
 #Join the world.cities dataset with our paper data so we have latitude and longitude for each city:
-data_locations_with_full_geo_location<- left_join(data_locations_with_city_country,
+data_locations_with_full_geo_location<- 
+  left_join(data_locations_with_city_country,
            world_cities_filtered,
-           join_by(cities_of_authors)
-           ) 
+           by = join_by(cities_of_authors)) 
 
 
 # PRIORITSE matched country over linked one as it can't really make a mistake with the matched one as it's simple text extraction, whereas the link from city to country can be fallible as there are multiple cities with the same name.
