@@ -115,20 +115,28 @@ I want to to visualise this information, but it's going to be quite tricky as ea
  data_id <-data %>%
   rowid_to_column(var = "id")
  
+ pad_vector <- function(vec, len) {
+  length(vec) <- len
+  return(vec)
+ }
+ 
 # Now split the author and address strings and then  unnest it into multiple rows, and finally re-join with the main dataset
 data_locations <- data_id %>%
     mutate(
-    institution = str_split(Author_Address, ";"), # Split author address column into separate strings For each address
+     institution = str_split(Author_Address, ";"), # Split author address column into separate strings For each address
     author_names = str_split(Full_Author_Name, ";") # Split author name column into separate strings For each Name
   ) %>%
   # The below code matches the number of author institutions and author names where discrepancies exist, so the unnest further below works:
- mutate(
+   mutate(
     max_length = pmax(map_int(institution, length), map_int(author_names, length)),
-    institution = map2(institution, max_length, ~ replace(., seq_along(.) + 1 > .y, NA_character_)),
-    author_names = map2(author_names, max_length, ~ replace(., seq_along(.) + 1 > .y, NA_character_))
+    institution = map2(institution, max_length, ~ pad_vector(., .y)),
+    author_names = map2(author_names, max_length, ~ pad_vector(., .y))
   ) %>%
   select(id, institution, author_names) %>%
   unnest(c(institution, author_names)) %>%
+  # Looking at the data at this point, there's a lot of white space around the institutions and author names. Let's remember that now:
+  mutate(institution = str_trim(institution, side = "both"),
+         author_names = str_trim(author_names, side = "both")) %>%
   full_join(data_id, by = "id") %>%
   # Whilst we're doing this, we'll also create a counter/number for each institution per paper
   group_by(id) %>%
@@ -163,23 +171,58 @@ city_names_from_world <- world_cities_filtered$name
 # Create a pattern of city names for matching with word boundaries:
 city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
 
-# Extract city namesusing stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match you're looking for)
+# Extract city names using stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match we're looking for)
 cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
 
-# Add the extracted city names to our dataset:
-data_locations_with_city<- data_locations %>%
-  bind_cols(cities_of_authors) %>%
-  rename(cities_of_authors = 18)
 
-# Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy erros when joining (I checked this doesn't results in mismatches):
+
+# Before we join this to our dataset, let's now do the same thing for countries, using the world dataset. We could just link countries to the existing cities we identified, but this won't give us the richest overall data, as in some cases it might find a country name but no city name and vice versa.
+
+# Extract just the Country names so we can try and match author locations using these:
+country_names <- world.cities$country.etc 
+
+# Create a pattern of Country names for matching with word boundaries:
+country_names_pattern <- paste("\\b(", paste(country_names, collapse = "|"), ")\\b", sep = "")
+
+# Extract country names using stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match we're looking for)
+countries_of_authors <- str_extract(data_locations$institution, country_names_pattern)
+
+
+
+# Add the extracted city and country names to our dataset:
+data_locations_with_city_country<- data_locations %>%
+  bind_cols(cities_of_authors,
+            countries_of_authors) %>%
+  rename(cities_of_authors = 19,
+         countries_of_authors = 20)
+# Check everything looks okay:
+#  select(author_names, 
+#         cities_of_authors,
+#         countries_of_authors) %>%  
+#  print(n=150)
+
+# Make the city name column consistent with paper dataset and remove any duplicates to avoid crazy errors when joining (I checked this doesn't result in mismatches):
 world_cities_filtered <- as_tibble(world_cities_filtered) %>%
   rename(cities_of_authors = 1) %>%
   distinct(cities_of_authors, .keep_all = TRUE)
 
 #Join the world.cities dataset with our paper data so we have latitude and longitude for each city:
-data_locations_with_full_geo_location<- left_join(data_locations_with_city,
-           world_cities_filtered
-           )
+data_locations_with_full_geo_location<- left_join(data_locations_with_city_country,
+           world_cities_filtered,
+           join_by(cities_of_authors)
+           ) 
+
+
+# PRIORITSE matched country over linked one as it can't really make a mistake with the matched one as it's simple text extraction, whereas the link from city to country can be fallible as there are multiple cities with the same name.
+
+# need to try and linkj long and lat to the combination of city and country where possible
+
+
+
+
+
+
+
 
 # Now, Save this to a CSV file because this took forever to extract the data we don't want to have to do this every time I render this page!!
 write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
