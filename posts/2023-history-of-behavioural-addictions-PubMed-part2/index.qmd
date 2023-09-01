@@ -156,10 +156,8 @@ data_locations <- data_id %>%
 ## Loading country data from package maps
 data(world.cities)
 
-
+ # The way the matching process works below is by picking the first match in the string, so removing all of the cities below actually leads to an increase in proper matches as the wrong matches are skipped over:
 world_cities_filtered <-  world.cities %>%
-  mutate(city_country = paste0(name,", ", country.etc)) %>% 
-  # The way the matching process works below is by picking the first match in the string, so removing all of the cities below actually leads to an increase in proper matches as the wrong matches are skipped over:
   filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
                         "India", # Same sort of issue (City in Africa)
                         "San",  # Same sort of issue (City in Africa, again)
@@ -168,7 +166,6 @@ world_cities_filtered <-  world.cities %>%
                       "God", # This is picked up as the name of a city in the Hungary, when in fact is just  part of the name of a hospital in Ireland
                       "Normal", # This is picked up as a city in the US  when in fact it's part of a university name in China
                       "Bar", # This is picked up as a city in Ukraine, when in fact it's just the name of the University in Israel
-                      "Columbia", #  This leads to confusion between British Columbia and Colombia in the US. Easier just to remove rather than be inaccurate. Will also lead to the actual city, Vancouver typically, being picked up
                       "Victoria", #  This leads to confusion between Victoria in Canada and the state in Australia. Easier just to remove rather than be inaccurate
                       "Cardinal",
                       "Villanueva", # This is actually a university in Spain, but it's picked up as a city in Honduras
@@ -226,17 +223,38 @@ world_cities_filtered <-  world.cities %>%
                      "Al", # Part of the name of places in Saudi Arabia and other countries that gets picked up as a city in Norway
                      "San Agustin", # Part of the name of a place in Peru that getting linked to Mexico
                      "Asia", # A city name in the Philippines that is obviously going to give problems
-                     "Jordan", #  country name acts incorrectly linked to the Philippines
-                     
+                     "Jordan", #  country name acts incorrectly linked to the Philippines city
+                     "Kota", # Location in Malaysia that gets linked to India incorrectly
+                     "Ribera", # Part of an institution name in Spain gets linked to Italy
+                     "Pilar", # Name of a Institute in Croatia that gets linked to Brazil incorrectly
+                      "Greenwich", # Causes various problems due to being linked to the US and UK
+                      "George Town", #In Malaysia, baguettes linked to the Cayman Islands
+                     "Worth", # Should the Fort Worth in America, baguettes link to Germany
+                     "Santa Lucia", # Name of a institution in Italy that gets confused at the Canary Islands
+                     "Sainte Anne", # Name of an institution in France that gets confused with the city in Canada
+                     "Douglas", # Part of a university name inCanada gets confused with the Isle of Man
+                     "Arizona", # State name gets confused for a city in Honduras
+                     "Potsdam", # In New York gets confused with Germany
+                     "Kita", # In the name of an Indonesian institution that gets confused with the city in Mali
+                     "Concordia", # US university name gets confused with a town in Argentina
+                     "Bay", # Monterey Bay gets confused with a town in the Philippines
+                     "Parana", # Part of an institution name in Brazil gets linked to Argentina
+                     "Gazi", # Incorrectly gets linked to Ken year when it should be part of a name of a university in Turkey
+                     "Wufeng",# incorrectly linked to China when it should be in Taiwan
+                     "Loo", # Getting correctly linked to Estonia when it's actually part of a institution name in Singapore
+                     "Police" # Police college accidentally linked to city in Poland
                      )) %>% 
-  # .A combination of city trailers is to keep the city where it seems like it can be saved:
+  # A combination of city names and country names can be used to keep the city where it seems like it can be saved:
+    mutate(city_country = paste0(name,", ", country.etc)) %>% 
   filter(!city_country %in% c("Sussex, Canada",# Only the UK one appears and this gets confused
                               "Milton, Canada", #  should be Milton Keynes in the UK
+                              "Bathurst, Canada", # Location in Australia they get confused Canada
                               "Milton, New Zealand", #  should be Milton Keynes in the UK
                               "Orleans, France", #  incorrectly linked to France, not Canada
                               "Bergen, Norway", # teams to be linked consistently to the US,  but mistaken for Norway
                               "Penrith, UK", # Should be the Australian city near Sydney
-                              "Bedford, UK", #  location in Australia gets thanks to the UK incorrectly
+                              "Bedford, UK", #  location in Australia gets Linked to the UK incorrectly
+                              "Bedford, USA", #  location in Australia gets Linked to the US incorrectly
                               "Salt, Spain", # Should be Salt Lake City, US,  but gets picked up as the Spanish city
                               "Lancaster, USA", #  should be the UK
                               "Ho, Ghana", # Part of an address in Taiwan that's getting linked to Ghana
@@ -249,13 +267,22 @@ world_cities_filtered <-  world.cities %>%
                              "Brest, Belarus", # Refers to France not Belarus
                              "Warwick, USA", #  Always seems to refer to the UK university, but the Use of the US city
                              "Belmont, Canada", #  Always seems to refer to the US,  but confused for the Canadian city
+                             "Beaufort, Malaysia", # Should be the American city
                              "Mackay, Australia", #  should always be the location in Taiwan
                              "Alicante, Philippines", #  should always be in Spain
+                             "Malaya, Philippines", # Should be in Malaysia
                            "Claremont, Jamaica", #  Australian location that gets sent to Jamaica, incorrectly
-                            ""
+                           
+                           "Colombia, Cuba", # Get confused with the country
+                           "Carlton, UK", #Street name in Canada gets confused with the UK
+                           "Costa Rica, Mexico", # Obviously get complete. The country
+                           "Notre Dame, Mauritius", #  actually the Australian University!
+                            "Baja, Hungary", # University namely Mexico
+                           "Palmerston, Australia", # Incredibly links to the northern Australian city, rather than  New Zealand
+                           "Waterloo, USA" # Always the Canadian university
          )) %>% 
    group_by(name) %>%
-  filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated that I haven't accounted for above, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map with, for example, putting "Cambridge" in the Caribbean as one of the most actively publishing cities on behavioural addictions in the world....
+  filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated that I haven't accounted for above, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map.
   ungroup() 
 
 # Extract just the city names so we can try and match author locations using these:
@@ -322,6 +349,9 @@ data_locations_with_full_geo_location <- read_csv(url_geo_loc_data_link) %>%
 
 # Looking for mismatches betweencountries matched to cities I extracted and countries matched by text (as I do below) is how I spotted most of the problematic cities.
 
+# names(data_locations_with_full_geo_location)
+
+
 # Let's explore this data to see any mismatches
  data_locations_with_full_geo_location %>% 
 filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatches
@@ -330,16 +360,36 @@ filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatche
          cities_of_authors,
          countries_of_authors,
        country.etc) %>%
-  print(n=350)
+  print(n=350) # Started with several thousand
  
 # Looking at the results above, it's clear we need to prioritise matched country (i.e., the one we extracted from the text) over the linked one (linked to city name from database) as mistake are rate with the matched one as it's simple text extraction, whereas the link from city to country can be fallible as there are multiple cities with the same nameand it could have matched with the wrong city.
 
-# There is one important caveat to the above, and that is Georgia USA. This gets extracted as the country, but it's obviously the state in the US! Also, the city in Georgia, Athens gets links to Greece incorrectly.  As such, we directly recode these below.
+# There are a few important caveats to the above that we will need to directly recode for accuracy:
+# Georgia USA. This gets extracted as the country, but it's obviously the state in the US! Also, the city in Georgia, Athens gets links to Greece incorrectly. 
+# Mongolia.  Inner Mongolia normal University appears to be in China, but gets extracted as in Mongolia 
+# Mexico. The University of New Mexico often gets linked to the country Mexico when it should be the US
+# Jersey. Gets linked to the small country south of the UK, instead of the University of New Jersey!
  
-# There are also a few key cities that are duplicated that I didn't select in the filtering above that will need directly linking via code to the right city and country, including Cambridge, New York, London, Oxford, Bristol, and Newport
+# There are also a few key cities that are duplicated that I didn't remove in the filtering above that will need directly linking via code to the right city and country, including Cambridge, New York, London, Oxford, Liverpool, Bristol, Reading, Columbia, Northampton, Stirling, Aberdeen and Newport
 
+ # Check allpotential problematic locations:
  data_locations_with_full_geo_location %>%
-   filter(countries_of_authors  == "Georgia") %>% 
+   # filter(countries_of_authors  == "Georgia") %>% 
+   # filter(countries_of_authors  == "Mongolia") %>% 
+   # filter(countries_of_authors  == "Mexico") %>% 
+  # filter(countries_of_authors  == "Jersey") %>% 
+   # filter(countries_of_authors  == "Jersey") %>% 
+   # filter(str_detect(institution, "Columbia")) %>% # Check anywhere for this one!
+  #  filter(str_detect(institution, "Colombia")) %>% # Check anywhere for this one!
+  # filter(str_detect(cities_of_authors, "Marietta")) %>% 
+   # filter(str_detect(cities_of_authors, "Liverpool")) %>%
+   # filter(str_detect(cities_of_authors, "Reading")) %>%
+   # filter(str_detect(cities_of_authors, "Northampton")) %>%
+   # filter(str_detect(cities_of_authors, "Stirling")) %>%
+   # filter(str_detect(cities_of_authors, "Cambridge")) %>% 
+ # filter(str_detect(cities_of_authors, "Aberdeen")) %>%
+ # filter(str_detect(cities_of_authors, "Newport")) %>%
+  filter(str_detect(cities_of_authors, "Oxford")) %>%
     select(institution,
        author_names,
          cities_of_authors,
@@ -347,25 +397,108 @@ filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatche
        country.etc) %>%
   print(n=350)
  
+data_locations_with_full_geo_location_cleaned <- 
+ data_locations_with_full_geo_location %>%
+  mutate(cities_of_authors = case_when(
+    # Sort Georgia country/Athens city issues:
+    str_detect(institution, "Georgia State") ~ "Atlanta",
+    str_detect(institution, "University of Georgia") ~ "Athens",
+    str_detect(institution, "Georgia College") ~ "Milledgeville",
+    #  Mongolia city issues:
+    str_detect(institution, "Inner Mongolia") ~ "Hothot",
+    # Mexico City issues:
+    str_detect(institution, "University of New Mexico") ~ "Albuquerque",
+    # Jersey issues:
+    str_detect(institution, "Rutgers") &
+    !str_detect(institution, "Camden") &
+    !str_detect(institution, "New York") ~ "New Brunswick", # this isn't perfect, but cities are often missing for Rutgers
+     # Sort Columbia issues:
+    str_detect(institution, "Vancouver") ~ "Vancouver",
+    str_detect(institution, "Columbia University") ~ "New York",
+    # Sort Colombia issues:
+    str_detect(institution, "Bogota") ~ "Bogota",
+    str_detect(institution, "Barranquilla") ~ "Barranquilla",
+    str_detect(institution, "Pasto") ~ "Pasto",
+    str_detect(institution, "Campus Robledo") ~ "Medellin",
+    # Aberdeen issues:
+   str_detect(institution, "Hong kong") ~ "Hong Kong",
+   # Newport issues:
+   str_detect(institution, "Christopher Newport University") ~ "Newport News",
+    TRUE ~ as.character(cities_of_authors)  # Default if none of the above matches
+  )) %>%
+  mutate(countries_of_authors = case_when(
+    # Sort Georgia country issues:
+    str_detect(institution, "Georgia State University") ~ "USA",
+    str_detect(institution, "University of Georgia") ~ "USA",
+    str_detect(institution, "Georgia College") ~ "USA",
+    str_detect(cities_of_authors, "Mariette") ~ "USA",
+    # Mongolia country issues:
+    str_detect(institution, "Inner Mongolia") ~ "China",
+    # Mexico Country issues:
+    str_detect(institution, "University of New Mexico") ~ "USA",
+    # Jersey country issues:
+    str_detect(institution, "New Jersey") ~ "USA",
+    # Cambridge city issues:
+    str_detect(institution, "Harvard") ~ "USA",
+    str_detect(institution, "University of Cambridge") ~ "UK",
+    str_detect(institution, "Cambridge Health Alliance") ~ "USA",
+    str_detect(institution, "Anglia Ruskin University") ~ "UK",
+    # London city issues
+    str_detect(institution, "London")  &
+    !str_detect(institution, "Canada") ~ "UK",
+    # Sort Columbia issues:
+    str_detect(institution, "University of British Columbia") ~ "Canada",
+    str_detect(institution, "Columbia University") ~ "USA",
+    str_detect(institution, "United States of America") ~ "USA",
+    str_detect(institution, "Missouri") ~ "USA",
+     str_detect(institution, "New York") ~ "USA",
+    str_detect(institution, "British Columbia") ~ "Canada",
+    str_detect(institution, "Chilliwack") ~ "Canada",
+    # Sort Colombia issues:
+     str_detect(institution, "Barranquilla") ~ "Colombia",
+    # Sort Liverpool issues: 
+  str_detect(institution, "John Moores") ~ "UK",
+  str_detect(institution, "University of Liverpool") ~ "UK",
+  str_detect(institution, "LiMRIC") ~ "UK",
+  str_detect(institution, "Liverpool, England") ~ "UK",
+   str_detect(institution, "Liverpool John") ~ "UK",
+  # Reading issues:
+  str_detect(institution, "University of Reading") ~ "UK",
+   str_detect(institution, "USA") ~ "USA",
+  str_detect(institution, "United States") ~ "USA",
+  # Northampton issues:
+  str_detect(institution, "University of Northampton") ~ "UK",
+  str_detect(institution, "Gemini Research") ~ "USA",
+  # Sterling issues:
+   str_detect(institution, "Australia") ~ "Australia",
+   # Aberdeen issues:
+   str_detect(institution, "Hong kong") ~ "China",
+     # Newport issues:
+   str_detect(institution, "Christopher Newport University") ~ "USA",
+  # Oxford issues:
+   str_detect(institution, "University of Oxford") ~ "UK", 
+  str_detect(institution, "Oxford, UK") ~ "UK", 
+  str_detect(institution, "Oxford Centre for") ~ "UK", 
+    TRUE ~ as.character(countries_of_authors)  # Default if none of the above matches
+  ))
+ 
+# Now look to see what#s left and see if it matters now if we assume our created city and country names are correct and the link is an error:
+ data_locations_with_full_geo_location_cleaned %>% 
+filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatches
+  select(institution,
+       author_names,
+         cities_of_authors,
+         countries_of_authors,
+       country.etc) %>%
+  print(n = 340)
+
+ 
 # need to try and linkj long and lat to the combination of city and country where possible
 
-# mutate(cities_of_authors  = casewhen(institution = contains("Georgia State") ~ "Atlanta",
-#                                      institution = contains("University of Georgia") ~ "Athens"),
-#        institution = contains("Georgia College") ~ "Milledgeville"))  %>% 
-#     mutate(countries_of_authors   = casewhen(institution = 
-#                                                    contains("Georgia State University") ~ "USA",
-#                                              institution = 
-#                                                                                  contains("University of Georgia") ~ "USA"
-#                                              institution = contains("Georgia College") ~ "USA"))
+
 
  # Other problematic  Cities we need to directly code:
- # New york
- # London
- # Cambridge
  # Athens
- # Check Oxford
- # Bristol
- # Check Newport
  # Nottingham
 ```
 
