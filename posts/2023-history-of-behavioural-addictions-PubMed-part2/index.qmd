@@ -245,6 +245,8 @@ world_cities_filtered <-  world.cities %>%
                      "Police", # Police college accidentally linked to city in Poland
                      "Long", # Thia city and in the name of yale uni address
                      "David", # City in Panama that causes obivous issues
+                     "Naval", # City in the Philippines that causes obvious issues
+                     "Hall", # City in the Philippines that causes obvious issues
                      "Trinity" # Irish uni name but gets mistaken to Jersey city
                      )) %>% 
   # A combination of city names and country names can be used to keep the city where it seems like it can be saved:
@@ -355,7 +357,12 @@ data_locations_with_full_geo_location <- read_csv(url_geo_loc_data_link) %>%
 
 # names(data_locations_with_full_geo_location)
 
+# Install proper  spelling of names in world cities dataset:
 
+world.cities %>%
+  # filter(name == "Turin")
+  filter(country.etc == "Canary Islands")
+  
 # Let's explore this data to see any mismatches
  data_locations_with_full_geo_location %>% 
 filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatches
@@ -394,7 +401,7 @@ filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatche
  # filter(str_detect(cities_of_authors, "Aberdeen")) %>%
  # filter(str_detect(cities_of_authors, "Newport")) %>%
   # filter(str_detect(cities_of_authors, "Oxford")) %>%
-   filter(str_detect(institution, "Namur")) %>%
+   filter(str_detect(institution, "Kfar-Saba")) %>%
     select(institution,
        author_names,
          cities_of_authors,
@@ -434,6 +441,11 @@ data_locations_with_full_geo_location_cleaned <-
    # UBC & Canada other:
     str_detect(institution, "University of British Columbia") ~ "Vancouver",
    str_detect(institution, "Toronto, Canada") ~ "Toronto",
+  str_detect(institution, "Department of Education, Centre for Addiction and Mental Health") ~ "Toronto",
+    str_detect(institution, "Morton and Gloria Shulman Movement Disorders Clinic") ~ "Toronto",
+          str_detect(institution, "University of New Brunswick") ~ "Fredericton",
+  str_detect(institution, "Addiction & Mental Health Services-Kingston") ~ "Kingston",
+  
    # Aberdeen issues:
    str_detect(institution, "Hong Kong") ~ "Hong Kong", # CHECK 312 and lower
    # Newport issues:
@@ -449,6 +461,12 @@ data_locations_with_full_geo_location_cleaned <-
    # Paris:
     str_detect(institution, "Pole paris 12") ~ "Paris",
    str_detect(institution, "Paris, France") ~ "Paris",
+  str_detect(institution, "Centre Pierre Nicole") ~ "Paris",
+    str_detect(institution, "centre hospitalier Sainte-Anne") ~ "Paris",
+  
+  
+  # Providence:
+      str_detect(institution, "Brown University") ~ "Providence",
   # North Kingston, RI, USA
       str_detect(institution, "North Kingston") ~ "Providence",
   # Essesx uni campus:
@@ -462,39 +480,72 @@ data_locations_with_full_geo_location_cleaned <-
    str_detect(institution, "University of Missouri") ~ "Columbia",
   # Rochester:
    str_detect(institution, "Rochester") ~ "Rochester",
+  # Bedford, USA:
+  str_detect(institution, "Edith Nourse Rogers Memorial Hospital") ~ "Bedford",
 # Yale:
   str_detect(institution, "New Haven, CT") ~ "New Haven",
+  str_detect(institution, "Yale University") ~ "New Haven",
 # Auckland & Newzeland:
   str_detect(institution, "Auckland") ~ "Auckland",
  str_detect(institution, "Palmerston North, Manawatu") ~ "Palmerston North",
 # Lausanne:
   str_detect(institution, "Lausanne") ~ "Lausanne",
-# Boston Issues:
+# Boston issues:
   str_detect(institution, "Boston, MA") ~ "Boston",
   str_detect(institution, "Veteran's MH and Addiction Program, VA") ~ "Boston",
-
+  str_detect(institution, "Berenson-Allen Center for Noninvasive") ~ "Boston",
 # New york:
    str_detect(institution, "Nassau Community College") ~ "New York",
 str_detect(institution, "St Bonaventure University") ~ "New York",
+str_detect(institution, "Elmhurst Hospital Center") ~ "New York",
+str_detect(institution, "Cure Huntington's Disease Initiative") ~ "New York",
+
+
+# Amityville
+str_detect(institution, "Amityville") ~ "Amityville",
 # German city:
    str_detect(institution, "Villingen-Schwenningen") ~ "Villingen-Schwenningen",
   str_detect(institution, "Hurth, Germany") ~ "Hurth",
+str_detect(institution, "Martin-Luther-University") ~ "Halle",
 # Iraninan city:
   str_detect(institution, "Isfahan, Iran") ~ "Isfahan",
+# Israel:
+str_detect(institution, "Kfar-Saba") ~ "Tel Aviv",
+str_detect(institution, "Leslie and Susan Gonda") ~ "Tel Aviv",	
+
+# South Korea:
+str_detect(institution, "Hanyang University") ~ "Seoul",
+str_detect(institution, "Chungmugong Leadership Center") ~ "Changwon",
+str_detect(institution, "Korea Institute on Behavioral Addictions") ~ "Seoul",
+str_detect(institution, "hallym University") ~ "Anyang",
+# Christiana Care Hospital:  
+str_detect(institution, "Christiana Care Hospital") ~ "Wilmington", 
+# Rush University Medical Center:
+str_detect(institution, "Rush University Medical Center") ~ "Chicago",
  # Jordan city:
  str_detect(institution, "Amman 19392, Jordan") ~ "Amman", 
-# Perth Aus:
+# Perth/Aus:
  str_detect(institution, "Perth, Australia") ~ "Perth", 
+ str_detect(institution, "Adelaide") ~ "Adelaide", 
+str_detect(institution, " CQUniversity, 400 Kent St, Sydney") ~ "Sydney", 
 # Oxford Uni:
  str_detect(institution, "Oxford, United Kingdom") ~ "Oxford", 
+# Salford Uni:
+ str_detect(institution, "Frederick Road Campus") ~ "Salford", 
  # Italian cities:
  str_detect(institution, "Portici, Italy") ~ "Naples", 
+str_detect(institution, "Betania Evangelical Hospital") ~ "Naples", 
  str_detect(institution, "Genoa, Italy") ~ "Genoa", 
  str_detect(institution, "Lecco, Italy") ~ "Lecco", 
 str_detect(institution, "University of Genova") ~ "Genoa", 
 str_detect(institution, "Terni, Italy") ~ "Terni", 
 str_detect(institution, "Telese Terme") ~ "Telese",
 str_detect(institution, "Urbino") ~ "Urbino", 
+str_detect(institution, "Universita Cattolica") ~ "Rome", 
+str_detect(institution, "University of Turin, Torino") ~ "Turin", 
+str_detect(institution, "Alma Mater Studiorum") ~ "Bologna", 
+
+
   # barcelona & other spanish city issues:
   str_detect(institution, "Barcelona, Spain") ~ "Barcelona",
   str_detect(institution, "Universitat Rovira i Virgili") ~ "Tarragona",
@@ -502,7 +553,24 @@ str_detect(institution, "Urbino") ~ "Urbino",
   str_detect(institution, "Bormujos, Spain") ~ "Bormujos",
 str_detect(institution, "Ciencies d'Alimentacio") ~ "Barcelona",
 str_detect(institution, "Jimenez Diaz University Hospital") ~ "Mardrid",
+str_detect(institution, "Centro Universitario Cardenal Cisneros") ~ "Madrid", 
+str_detect(institution, "Santiago de Compostela") ~ "Santiago de Compostela", 
+str_detect(institution, "Consumer and User Psychology Unit, Faculty of Psychology, University of Santiago") ~ "Santiago de Compostela", 
+str_detect(institution, "Department of Physiology, School of Medicine, University of Santiago de") ~ "Santiago de Compostela", # Confirmed by searching original paper
+str_detect(institution, "Serra Hunter Programme") ~ "Barcelona",
+str_detect(institution, "Hospital Universitario de Canarias") ~ "Santa Cruz de Tenerife",
+str_detect(institution, "Universitat Pompeu Fabra") ~ "Barcelona",
+str_detect(institution, "Universidad Loyola Andalucia") ~ "Cordoba",
 
+
+
+
+# Nottingham:
+ str_detect(institution, "Newark Beacon Innovation Centre") ~ "Nottingham",
+
+# Portugal:
+str_detect(institution, "Unity in Multidisciplinary Research on Biomedicine (UMIB)") ~ "Porto"
+str_detect(institution, "IAJ (Gambling Support Institute)") ~ "Lisbon"
 
   # Porto Alegre issue:
   str_detect(institution, "Porto Alegre") ~ "Porto Alegre",
@@ -533,12 +601,28 @@ str_detect(institution, "Jimenez Diaz University Hospital") ~ "Mardrid",
 str_detect(institution, "Auburn University") ~ "Montgomery",
 #  University of Manitoba:
 str_detect(institution, "University of Manitoba") ~ "Winnipeg",
+# University of South Dakota:
+str_detect(institution, "University of South Dakota") ~ "Vermillion",
+# University of Antwerpen:
+str_detect(institution, "Institute Born-Bunge") ~ "Antwerp",
 # University of Kansas:
 str_detect(institution,  "University of Kansas") ~ "Lawrence",
-# Washington University:
-str_detect(institution,  "Washington University") ~ "St. Louis",
+# Vanderbilt University:
+str_detect(institution,  "Vanderbilt") ~ "Nashville",
+# Wayne state university:
+str_detect(institution,  "Wayne State University") ~ "Detroit",
+# University  Michigan:
+str_detect(institution,  "University of Michigan") ~ "Ann Arbor",
+# Carson College of Business:
+str_detect(institution,  "Carson College of Business") ~ "Pullman",
+# Universidad de San Martin de Porres
+str_detect(institution,  "Universidad de San Martin de Porres") ~ "Lima",
 # The Center for Internet and Technology Addiction
 str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "Hartford",
+  # Meridian Behavioral Health Services (I can't find a full address for this, despite searching the people manually, But it doesn't appear to be in the US):
+  str_detect(institution,  "Meridian Behavioral Health Services") ~ "",
+  # Brazilian hospital:
+     str_detect(institution, "Belo Horizonte") ~ "Brazil",
   # Nashville:
     str_detect(institution, "Nashville, TN") ~ "Nashville",
     # Fort Lauderdale:
@@ -547,8 +631,18 @@ str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "
     str_detect(institution, "Byblos, Lebanon") ~ "Byblos",
  # Belgium city:
     str_detect(institution, "Hasselt, Belgium") ~ "Hasselt",
+# Poland:
+ str_detect(institution, "Uniwersytet Jagiellonski Collegium Medicum") ~ "Krakow",
  # Peru:
   str_detect(institution, "Lima, Peru") ~ "Lima",
+#Japan:
+str_detect(institution, "Konan Women's University") ~ "Kobe",
+str_detect(institution, "Tokai Gakuen University") ~ "Tokai Gakuen University",
+str_detect(institution, "University of Hokkaido") ~ "Hokkaido",
+str_detect(institution, "Tama-ku, Kawasaki") ~ "Kawasaki",
+
+
+
 # Virginia:
  str_detect(institution, "Virginia Institute for Psychiatry and Behavioral Genetics") ~ "Richmond",
 # Kuala Lumpur:
@@ -557,8 +651,11 @@ str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "
  str_detect(institution, "Nguyen Tat Thanh University") ~ "Ho Chi Minh City",
    # Santo André:
     str_detect(institution, "Santo Andre, SP, Brazil") ~ "Santo Andre",
-
+# author not institution:
+str_detect(institution, "Maya Sahu, RN, RM,") ~ "",
     TRUE ~ as.character(cities_of_authors)  # Default if none of the above matches
+
+
 
  # COUNTRY CHANGES:
  )) %>%
@@ -572,6 +669,8 @@ str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "
     str_detect(institution, "Inner Mongolia") ~ "China",
   # Mexico Country issues:
     str_detect(institution, "University of New Mexico") ~ "USA",
+  # Germany issues:
+  str_detect(institution, "Martin-Luther-University") ~ "Germany",
   # Jersey country issues:
     str_detect(institution, "New Jersey") ~ "USA",
   # Cambridge city issues:
@@ -581,7 +680,6 @@ str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "
     str_detect(institution, "Anglia Ruskin University") ~ "UK",
   # Boston issue:
     str_detect(institution, "Boston, MA") ~ "USA",
-  str_detect(institution, "Veteran's MH and Addiction Program, VA") ~ "USA",
   # London city issues
     str_detect(institution, "London")  &
     !str_detect(institution, "Canada") ~ "UK",
@@ -593,8 +691,40 @@ str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "
     str_detect(institution, "New York") ~ "USA",
     str_detect(institution, "British Columbia") ~ "Canada",
     str_detect(institution, "Chilliwack") ~ "Canada",
+  str_detect(institution, "Centro Universitario Cardenal Cisneros") ~ "Spain",
+  
+  # Australia:
+  str_detect(institution, "Adelaide") ~ "Australia",
+  str_detect(institution, " CQUniversity, 400 Kent St, Sydney") ~ "Australia",
+  str_detect(institution, " CQUniversity") ~ "Australia",
    # Sort Colombia issues:
      str_detect(institution, "Barranquilla") ~ "Colombia",
+  # Canada:
+    str_detect(institution, "Department of Education, Centre for Addiction and Mental Health") ~ "Canada",
+      str_detect(institution, "Morton and Gloria Shulman Movement Disorders Clinic") ~ "Canada",
+        str_detect(institution, "University of New Brunswick") ~ "Canada",
+    str_detect(institution, "Addiction & Mental Health Services-Kingston") ~ "Canada",
+  str_detect(institution, "Toronto, ON") ~ "Canada",
+  str_detect(institution, "Social and Economic Impacts of Gambling in Massachusetts project,") ~ "USA", # Was originally Canada
+  
+  
+  # South Korea:
+str_detect(institution, "Hanyang University") ~ "South Korea",
+str_detect(institution, "Chungmugong Leadership Center") ~ "South Korea",
+str_detect(institution, "Korea Institute on Behavioral Addictions") ~ "South Korea",
+str_detect(institution, "hallym University") ~ "South Korea",
+
+# Portugal:
+str_detect(institution, "Unity in Multidisciplinary Research on Biomedicine (UMIB)") ~ "Portugal",
+  # China:
+    str_detect(institution, "The Chinese University of Hong Kong") ~ "China",
+
+# South Africa:
+str_detect(institution, "Christiana Care Hospital") ~ "USA", 
+
+# Newark Beacon Innovation Centre:
+ str_detect(institution, "Newark Beacon Innovation Centre") ~ "UK",
+
   # Sort Liverpool issues: 
   str_detect(institution, "John Moores") ~ "UK",
   str_detect(institution, "University of Liverpool") ~ "UK",
@@ -612,12 +742,18 @@ str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "
  str_detect(institution, "Virginia Institute for Psychiatry and Behavioral Genetics") ~ "USA",
  # University of Alabama:
    str_detect(institution, "University of Alabama") ~ "USA",
+# University  Michigan:
+str_detect(institution,  "University of Michigan") ~ "USAr",
  # The Center for Internet and Technology Addiction
 str_detect(institution,  "The Center for Internet and Technology Addiction") ~ "USA",
 #  University of Southern  California:
 str_detect(institution,  "University of Southern California") ~ "USA",
+# Salford Uni:
+ str_detect(institution, "Frederick Road Campus") ~ "UK", 
   # Sterling issues:
    str_detect(institution, "Australia") ~ "Australia",
+   # Palo Alto
+   str_detect(institution, "Palo Alto") ~ "USA",
    # Aberdeen issues:
    str_detect(institution, "Hong kong") ~ "China",
   # Newport issues:
@@ -626,21 +762,50 @@ str_detect(institution,  "University of Southern California") ~ "USA",
    str_detect(institution, "University of Oxford") ~ "UK", 
   str_detect(institution, "Oxford, UK") ~ "UK", 
   str_detect(institution, "Oxford Centre for") ~ "UK",
-  # Weird barcelona uni issue:
+  # Weird barcelona uni & spain issue:
   str_detect(institution, "University of Barcelona, Barcelona") ~ "Spain",
   str_detect(institution, "Jimenez Diaz University Hospital") ~ "Spain",
+str_detect(institution, "Santiago de Compostela") ~ "Spain", 
+str_detect(institution, "Consumer and User Psychology Unit, Faculty of Psychology, University of Santiago") ~ "Spain", 
+str_detect(institution, "Serra Hunter Programme") ~ "Spain",
+str_detect(institution, "Hospital Universitario de Canarias") ~ "Spain",
+str_detect(institution, "Universitat Pompeu Fabra") ~ "Spain",
+str_detect(institution, "Universidad Loyola Andalucia") ~ "Spain",
 # Italy:
 str_detect(institution, "Urbino") ~ "Italy", 
+str_detect(institution, "Betania Evangelical Hospital") ~ "Italy", 
+str_detect(institution, "University of Turin, Torino") ~ "Italy", 
+str_detect(institution, "Alma Mater Studiorum") ~ "Italy", 
+
+# Brazil:
+str_detect(institution, "Porto Alegre") ~ "Brazil", 
+
+
   # Lausanne issues:
  str_detect(institution, "Lausanne") ~ "Switzerland",
  # West Chester University:
    str_detect(institution, "West Chester University") ~ "USA",
+#Rede SARAH de Hospitais de Reabilitacao:
+   str_detect(institution, "Rede SARAH de Hospitais de Reabilitacao") ~ "Brazil",
  # Taiwan:
     str_detect(institution, "Taichung") ~ "Taiwan",
   # Vietnam:
  str_detect(institution, "Nguyen Tat Thanh University") ~ "Vietnam",
  # Spain:
  str_detect(institution, "Ciencies d'Alimentacio") ~ "Spain",
+# Rush University Medical Center:
+str_detect(institution, "Rush University Medical Center") ~ "USA",
+# Belgium:
+str_detect(institution, "Institute Born-Bunge") ~ "Belgium",
+# Peru:
+# Universidad de San Martin de Porres
+str_detect(institution,  "Universidad de San Martin de Porres") ~ "Peru",
+# Israel:
+ str_detect(institution, "Beit-Berl College") ~ "Israel",
+str_detect(institution, "Leslie and Susan Gonda") ~ "Israel",
+
+# author not institution:
+str_detect(institution, "Maya Sahu, RN, RM,") ~ "",
     TRUE ~ as.character(countries_of_authors)  # Default if none of the above matches
   ))
  
@@ -666,6 +831,10 @@ filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatche
     View()
   print(n = 340) 
 
+  
+  data_locations_with_full_geo_location_cleaned %>% 
+    filter(str_detect(institution, "arson College of Business")
+           ) %>% View()
 # Okay,  et's correct any country mismatches found in the above output:
 data_locations_with_full_geo_location_cleaned %>% 
   mutate(country.etc = case_when(
