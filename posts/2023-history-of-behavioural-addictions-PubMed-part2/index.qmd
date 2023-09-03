@@ -161,8 +161,8 @@ world_cities_filtered <-  world.cities %>%
   filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
                         "India", # Same sort of issue (City in Africa)
                         "San",  # Same sort of issue (City in Africa, again)
-                        "Institut", # This appears to be act somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
-                       "Santa", # This is picked up as a city In Peru, when in fact  with just part of the name of the hospital
+                        "Institut", # This appears to be a City somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
+                       "Santa", # This is picked up as a city In Peru, when in fact  with just part of the name of many different institutions
                       "God", # This is picked up as the name of a city in the Hungary, when in fact is just  part of the name of a hospital in Ireland
                       "Normal", # This is picked up as a city in the US  when in fact it's part of a university name in China
                       "Bar", # This is picked up as a city in Ukraine, when in fact it's just the name of the University in Israel
@@ -264,8 +264,6 @@ world_cities_filtered <-  world.cities %>%
                               "Lancaster, USA", #  should be the UK
                               "Ho, Ghana", # Part of an address in Taiwan that's getting linked to Ghana
                               "Laguna, USA", # Should be the canary islands, surprisingly
-                              "Castello, Spain", #  Italian university name
-                              "Ulm, Germany", #  address in France that should always be linked to it and not germany
                               "Albert, France",
                               "Hong, Denmark",# Leads to this being picked up and said of Hong Kong
                              "Durham, USA", # Should be the UK one
@@ -283,7 +281,7 @@ world_cities_filtered <-  world.cities %>%
                            "Costa Rica, Mexico", # Obviously get complete. The country
                            "Notre Dame, Mauritius", #  actually the Australian University!
                             "Baja, Hungary", # University namely Mexico
-                           "Palmerston, Australia", # Incredibly links to the northern Australian city, rather than  New Zealand
+                           "Palmerston, Australia", #  links to the northern Australian city, rather than New Zealand
                            "Waterloo, USA" # Always the Canadian university
          )) %>% 
    group_by(name) %>%
@@ -569,8 +567,8 @@ str_detect(institution, "Universidad Loyola Andalucia") ~ "Cordoba",
  str_detect(institution, "Newark Beacon Innovation Centre") ~ "Nottingham",
 
 # Portugal:
-str_detect(institution, "Unity in Multidisciplinary Research on Biomedicine (UMIB)") ~ "Porto"
-str_detect(institution, "IAJ (Gambling Support Institute)") ~ "Lisbon"
+str_detect(institution, "Unity in Multidisciplinary Research on Biomedicine (UMIB)") ~ "Porto",
+str_detect(institution, "IAJ (Gambling Support Institute)") ~ "Lisbon",
 
   # Porto Alegre issue:
   str_detect(institution, "Porto Alegre") ~ "Porto Alegre",
@@ -682,8 +680,11 @@ str_detect(institution, "Maya Sahu, RN, RM,") ~ "",
     str_detect(institution, "Boston, MA") ~ "USA",
   # London city issues
     str_detect(institution, "London")  &
+    !str_detect(institution, "Ontario") &
     !str_detect(institution, "Canada") ~ "UK",
+     str_detect(institution, "Ontario") ~ "Canada",
   # Sort Columbia issues:
+  
     str_detect(institution, "University of British Columbia") ~ "Canada",
     str_detect(institution, "Columbia University") ~ "USA",
     str_detect(institution, "United States of America") ~ "USA",
@@ -870,7 +871,7 @@ world_map <- map_data("world") %>%
   filter(region != "Antarctica")
 
 # Join the world map data with our paper data:
-data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location, world_map) %>%
+data_locations_with_full_geo_location_WORLD<- left_join(data_locations_with_full_geo_location_cleaned, world_map) %>%
   # Tidy the behavioural addiction labels:
     mutate(Label = str_replace_all(Label, "_", " ") %>%
                  str_to_title())
@@ -892,80 +893,81 @@ data_locations_with_full_geo_location_WORLD_city_aggregate<- data_locations_with
 # It takes quite a long time to produce the interactive plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment out all of the code below to create the plot.
 
 
-# # Create plot:
-# all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
-#   geom_polygon(fill="#289998", colour = "#289998") +
-#    geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate,
-#               aes(x = long, y = lat,
-#               size = sqrt(num_papers),
-#               text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),
-#               colour = "#50B5C8",
-#               fill = "#F5F7F0",
-#               alpha = 1,
-#               shape = 21) +  # Use shape 21 for filled circles
-#   scale_size_continuous(guide="none") +
-#   scale_x_continuous(expand = c(.001, .001)) +
-#   # scale_y_continuous(expand = c(.001, .001)) +
-#   plot_theme +
-#   theme(
-#     axis.text = element_blank(),
-#     axis.title = element_blank()) +
-#   labs(
-#     title = "Institutions of authors publishing behavioural addictions research",
-#     subtitle = "Each circle represents a city and its size corresponds to the number of papers can be linked to it",
-#     caption = "Rob Heirene (@rheirene)"
-#   )
-# 
-# # Save this now as a basic plot:
-# ggsave("posts/2023-history-of-behavioural-addictions-PubMed-part2/all_publications_map.svg",
-#        plot = all_publications_map,
-#        width = 9,
-#        height = 6,
-#        dpi = 600)
-# 
-# 
-# # We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
-# 
-# # Get the URL for the "Reem Kufi" font from Google Fonts:
-# reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url
-# 
-# # Create custom CSS:
-# reem_kufi_css <- paste0(
-#   "<style type = 'text/css'>",
-#     "@font-face { ",
-#       "font-family: 'Reem Kufi'; ",
-#       "src: url('", reem_kufi_file, "'); ",
-#     "}",
-#   "</style>"
-# )
-# 
-# # Convert static plot to ggplotly format and adjust theme settings where required:
-#  all_publications_map_ggplotly <-ggplotly(all_publications_map,
-#                                               tooltip = 'text') %>%
-#   hide_legend() %>%
-#   plotly::layout(annotations =
-#  list(x = 1, y = -0.1, text = "Rob Heirene (@rheirene)",
-#       showarrow = F, xref='paper', yref='paper',
-#       xanchor='right', yanchor='auto', xshift=0, yshift=25,
-#       font=list(size=12, color="#50B5C8")),
-#        margin = list(t = 70), # Increase top margin
-#                  font = list(family = "Reem Kufi"),
-#                  title = list(x = 0, y = 0.945),
-#     hoverlabel = list(font = list(family = "Reem Kufi")
-# ))
-# 
-# # Add the CSS as a dependency for the plotly plot:
-# all_publications_map_ggplotly$dependencies <- c(
-#   all_publications_map_ggplotly$dependencies,
-#   list(
-#     htmltools::htmlDependency(
-#       name = "reem-kufi-font",
-#       version = "0",
-#       src = "",
-#       head = reem_kufi_css)))
-# 
-# # Display plot:
-# saveWidget(all_publications_map_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part2/all_pubs_map.html')
+# Create plot:
+all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+  geom_polygon(fill="#289998", colour = "#289998") +
+   geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate,
+              aes(x = long, y = lat,
+            #  size = sqrt(num_papers),
+              size = num_papers,
+              text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),
+              colour = "#50B5C8",
+              fill = "#F5F7F0",
+              alpha = 1,
+              shape = 21) +  # Use shape 21 for filled circles
+  scale_size_continuous(guide="none") +
+  scale_x_continuous(expand = c(.001, .001)) +
+  # scale_y_continuous(expand = c(.001, .001)) +
+  plot_theme +
+  theme(
+    axis.text = element_blank(),
+    axis.title = element_blank()) +
+  labs(
+    title = "Institutions of authors publishing behavioural addictions research",
+    subtitle = "Each circle represents a city and its size corresponds to the number of papers can be linked to it",
+    caption = "Rob Heirene (@rheirene)"
+  )
+
+# Save this now as a basic plot:
+ggsave("posts/2023-history-of-behavioural-addictions-PubMed-part2/all_publications_map.svg",
+       plot = all_publications_map,
+       width = 9,
+       height = 6,
+       dpi = 600)
+
+
+# We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
+
+# Get the URL for the "Reem Kufi" font from Google Fonts:
+reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url
+
+# Create custom CSS:
+reem_kufi_css <- paste0(
+  "<style type = 'text/css'>",
+    "@font-face { ",
+      "font-family: 'Reem Kufi'; ",
+      "src: url('", reem_kufi_file, "'); ",
+    "}",
+  "</style>"
+)
+
+# Convert static plot to ggplotly format and adjust theme settings where required:
+ all_publications_map_ggplotly <-ggplotly(all_publications_map,
+                                              tooltip = 'text') %>%
+  hide_legend() %>%
+  plotly::layout(annotations =
+ list(x = 1, y = -0.1, text = "Rob Heirene (@rheirene)",
+      showarrow = F, xref='paper', yref='paper',
+      xanchor='right', yanchor='auto', xshift=0, yshift=25,
+      font=list(size=12, color="#50B5C8")),
+       margin = list(t = 70), # Increase top margin
+                 font = list(family = "Reem Kufi"),
+                 title = list(x = 0, y = 0.945),
+    hoverlabel = list(font = list(family = "Reem Kufi")
+))
+
+# Add the CSS as a dependency for the plotly plot:
+all_publications_map_ggplotly$dependencies <- c(
+  all_publications_map_ggplotly$dependencies,
+  list(
+    htmltools::htmlDependency(
+      name = "reem-kufi-font",
+      version = "0",
+      src = "",
+      head = reem_kufi_css)))
+
+# Display plot:
+saveWidget(all_publications_map_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part2/all_pubs_map.html')
 ```
 
 ```{=html}
