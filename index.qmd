@@ -30,7 +30,7 @@ I recently contributed to a conceptual paper discussing the landscape of open sc
 
 I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below chart of prevention strategies for problem gambling.
 
-[Click on the bars to see more]{style="color: #289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet, not on mobile (if you are on mobile, turn it to landscape mode).
+[**Click on the bars to see more**]{style="color: #289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet (if you are on mobile, turn it to landscape mode).
 :::
 
 ```{r echo =FALSE, results=FALSE, warning=FALSE, message=FALSE}
