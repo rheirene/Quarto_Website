@@ -13,7 +13,9 @@ twitter-card:
 draft: false 
 ---
 
-### Athat adds real value to the world.
+### Planning ahead
+
+I (hopefully) have a long career ahead of me in addiction research, and I don't want it to be guided solely by the ever-increasing pressure to publish. I want to do research that adds real value to the world.
 
 With this in mind, I'm thinking about problem gambling prevention a lot at the moment and where to place my focus. To help with this, I've started mapping all the existing harm prevention strategies used in practice or proposed in the gambling literature.
 
@@ -115,7 +117,7 @@ gam_prevention_sunburst$dependencies <- c(
 
 # ****Uncomment to update****
 # Save plot as a HTML file (it doesn't render well with quarto otherwise):
-saveWidget(gam_prevention_sunburst, '/posts/2023-gambling-harms-chart/sunburst_fig.html')
+# saveWidget(gam_prevention_sunburst, '/posts/2023-gambling-harms-chart/sunburst_fig.html')
 
 ```
 

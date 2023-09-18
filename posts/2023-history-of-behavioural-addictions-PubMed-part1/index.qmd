@@ -9,7 +9,11 @@ image: total_year_gganimate.gif
 draft: true 
 ---
 
-The world of behavioural addictions research is a strange place.
+The term "behavioural addiction" starts to appear in academic articles around 1990 (). Very quickly, Jaffe (1990) made the argument that the term "addiction" was was being used too liberally by researcher---they were "trivializing dependence".
+
+Still bemoaned today.
+
+world of behavioural addictions research is a strange place.
 
 FIX UP ALL THE PLOT TITLES TO BE CONSITENT
 
@@ -652,6 +656,19 @@ Well, that's probably enough for this first post. If you have any thoughts on my
 
 In the next post, I look at how this work is distributed geographically in terms of author locations, the journals these papers are published in, and the frequency of article types (review, meta-analysis, letters etc.). You can read it here.
 
+Last updated: 01/07/2023
+
+### References
+
+::: {.callout-tip collapse="true" appearance="simple" icon="false"}
+
+## Expand to see the list of references used in this post
+
+Jaffe J. H. (1990). Trivializing dependence. British journal of addiction, 85(11), 1425--1431. https://doi.org/10.1111/j.1360-0443.1990.tb01624.x
+:::
+
+------------------------------------------------------------------------
+
 ::: {.callout-tip collapse="true" appearance="minimal" icon="false"}
 ## Expand for session information
 
@@ -662,8 +679,6 @@ In the next post, I look at how this work is distributed geographically in terms
 session_info(pkgs = "attached")
 ```
 :::
-
-------------------------------------------------------------------------
 
 ```{=html}
 <script src="https://giscus.app/client.js"
