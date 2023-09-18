@@ -383,7 +383,7 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
 
 ```
 
-```{r  warning=FALSE, message=FALSE}
+```{r  warning=FALSE, message=FALSE}}
 #| fig-align: center
 #| code-fold: true
 #| code-summary: "Code: Bar chart race (publications by addiction)"
@@ -526,7 +526,7 @@ anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part2/bar_chart_p
 
 Well that was fun, but it's actually quite difficult to see exactly what's going on at every year given how many different supposed addictions there are. Let's try another approach (this plot really doesn't play well with mobile, so it's best viewed on a PC/tablet):
 
-```{r warning=FALSE,  message=FALSE}
+```{r warning=FALSE,  message=FALSE}}
 #| fig-align: center
 #| code-fold: true
 #| code-summary: "Code: Dumbbell plot (publications by addiction)"

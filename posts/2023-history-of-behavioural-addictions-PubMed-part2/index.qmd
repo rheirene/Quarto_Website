@@ -14,7 +14,7 @@ Just like in Part 1, I'll first load all the required packages and fonts for fig
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
-#| code-summary: "Code: set-up"
+#| code-summary: "Code: load packages"
 
 # Install and load the groundhog package to ensure consistency of the package versions used here:
 # install.packages("groundhog") # Install
@@ -48,6 +48,13 @@ packages <- c('readr', # Load dataset from GitHib
 # Load desired package with versions specific to project start date:
 groundhog.library(packages, "2023-08-01") 
 
+
+```
+
+```{r results=FALSE, warning=FALSE, message=FALSE}
+#| code-fold: true
+#| code-summary: "Code: fonts & themes"
+#| 
 # Load new font for figures/graphs
 font_add_google("Poppins", "Poppins")
 font_add_google("Reem Kufi", "Reem Kufi")
@@ -104,239 +111,239 @@ I want to to visualise this information, but it's going to be quite tricky as ea
 
 # ***********************The below code is almost all commented out on purpose as the process of extracting and matching city names from the author address column is so computationally taxing that it takes a long time to process.  I've left the code here so that anyone can see how I did it, but I saved the results as a .csv file and now load the data like that***********************
 
-# as_tibble(data$Author_Address) # Take a look at how the author addresses are structured
-
-# Okay, so we're going to need to create an ID variable for each paper (this makes the string split and a nest below work bettter than relying on titles), then split the author_address strings into separate addresses, then unnest these into new rows. 
-
-# Whilst I'm splitting and unnesting the author address: I'm going to simultaneously do this for the authors name column.
-
-
-# The un-nest doesn't seem to work well when we retain all of the columns in the dataset, so I do it with only id and institution (address) in the data, then join all of the rest of the data set to the unnested rows after this. For this to work, we need to create a dataset that has the ID variable in before splitting the string and and unnesting. Let's do that:
- data_id <-data %>%
-  rowid_to_column(var = "id")
-
- pad_vector <- function(vec, len) {
-  length(vec) <- len
-  return(vec)
- }
-
-# Now split the author and address strings and then  unnest it into multiple rows, and finally re-join with the main dataset
-data_locations <- data_id %>%
-    mutate(
-     institution = str_split(Author_Address, ";"), # Split author address column into separate strings For each address
-    author_names = str_split(Full_Author_Name, ";") # Split author name column into separate strings For each Name
-  ) %>%
-  # The below code matches the number of author institutions and author names where discrepancies exist, so the unnest further below works:
-   mutate(
-    max_length = pmax(map_int(institution, length), map_int(author_names, length)),
-    institution = map2(institution, max_length, ~ pad_vector(., .y)),
-    author_names = map2(author_names, max_length, ~ pad_vector(., .y))
-  ) %>%
-  select(id, institution, author_names) %>%
-  unnest(c(institution, author_names)) %>%
-  # Looking at the data at this point, there's a lot of white space around the institutions and author names. Let's remember that now:
-  mutate(institution = str_trim(institution, side = "both"),
-         author_names = str_trim(author_names, side = "both")) %>%
-  full_join(data_id, by = "id") %>%
-  # Whilst we're doing this, we'll also create a counter/number for each institution per paper
-  group_by(id) %>%
-  mutate(author_num = row_number()) %>%
-  ungroup()
-  # We can also pivot to wide format if that makes sense at any point:
-  # pivot_wider(names_from = author_num,
-  #             values_from = institution,
-  #             names_prefix = "author_",
-  #             values_fill = NA_character_)
-
-# View(data_locations) # Looks good!
-
-# Uncomment from below this line
-
-# Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
-## Loading country data from package maps
-data(world.cities)
-
- # The way the matching process works below is by picking the first match in the string, so removing all of the cities below actually leads to an increase in proper matches as the wrong matches are skipped over:
-world_cities_filtered <-  world.cities %>%
-  filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
-                        "India", # Same sort of issue (City in Africa)
-                        "San",  # Same sort of issue (City in Africa, again)
-                        "Institut", # This appears to be a City somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
-                       "Santa", # This is picked up as a city In Peru, when in fact  with just part of the name of many different institutions
-                      "God", # This is picked up as the name of a city in the Hungary, when in fact is just  part of the name of a hospital in Ireland
-                      "Normal", # This is picked up as a city in the US  when in fact it's part of a university name in China
-                      "Bar", # This is picked up as a city in Ukraine, when in fact it's just the name of the University in Israel
-                      "Victoria", #  This leads to confusion between Victoria in Canada and the state in Australia. Easier just to remove rather than be inaccurate
-                      "Cardinal",
-                      "Villanueva", # This is actually a university in Spain, but it's picked up as a city in Honduras
-
-                      "Beira", # This is picked up as a city of Mozambique, but eventually the University Hospital name in Portugal
-                      "Cardinal",
-                      "Young", # This is picked up as a city in Uruguay, when is just part of the name of a young adult hospital in France
-          
-                      "Cornwall", # Get picked up as a city in Canada and not the area of the UK
-                       "George", #  A street name in the US,  confused for the South African city
-                       "Imperial", #  part of a UK university name but picked up as a city in Peru
-                      "Laval", # Part of a university name in Canada but gets picked up as the city in France
-                      "Villa", # Part of the name of a institution in Italy, but picked up as the Estonian city.
-                      "Aidu", # Part of the name of a Japanese hospital, but picked up as a Estonian city
-                     "Carolina", # Part of the US state name in the data, but picked up as a city in Peurto Rico
-                       "Carmel", # Get confused with the US city, but always Israel in the dataset
-                              "U",#  seems like shorthand for an address in France, but has picked up as a city in Micronesia and the French city is missed
-                              "Ramon",  # Part of the name of a hospital in Spain, but picked up as the city in the Philippines
-                             "Fundacion", #  Part of the name of a institution in Spain, but picked up as a city in Colombia
-                             "Trinidad", # Part of a institution name in Argentina, were picked up as a city in Bolivia
-                             "Liege",# Picked up as a city in Belgium, but it's actually part of a name of a place in France
-                             "East London", # Refers to the UK University, picked up as a city in South Africa
-                             "Florida", # University name picked up as a city in Cuba
-                             "Ita", # Part of the name of a institution in Finland picked up as the city in Paraguay
-                     "Princeton", #  University name confused for the city in Canada
-                     "Humboldt", # Confused for the Canadian city, but actually a University in Germany
-                      "Alcala", # Confused for the Colombian city, but actually part of a university name in Spain)
-                            "York", # UK Canada confusion. Easier to remove
-                     "Union", # Typically refers to the European Union, but confuse for the US city
-                      "La Rioja", # Part of a Spanish University but computer the city in Argentina
-                     "Concord", # Area in Australia that ends up being linked to a US city rather
-                      "Nanyang", # Part of a Singapore university name that gets linked to a city in China
-                      "Patan", # Part of a Napoleon University name that gets linked to a cityin India
-                      "Saint-Joseph", # University name in Lebanon on that gets linked to a city in Reunion
-                     "Valencia", # University in Spain that gets linked to Venezuela
-                      "Ingenio", # Institution in Spain that gets linked to the Canary Islands
-                     "Lincoln", # UK university name that gets linked to the US
-                     "Roma", # Italian street name that gets linked to Australia
-                     "Leon", # Institution name in France forgets links to Mexico
-                     "Pau", # Part of a hospital name in Spain that Gets linked to France
-                     "Ilan", # Part of a university name in Israel that gets linked to Taiwan
-                     "Street", #  an obvious issue. Linked to the UK incorrectly
-                     "Alle",  # Incorrectly linked to Switzerland when it's an address in Denmark'Hashtag
-                     "San Ignacio", # Location improved its link to Bolivia
-                     "Carnot", # Street in France that gets linked to central Africa
-                      "Mexico", #  country gets incorrectly linked to the Philippines city
-                      "Mobile", #  Institution in Canada that gets incorrectly linked to the US
-                      "Hebron", # Location in Spain gets mixed up with Palestine
-                     "Liban", #  hospital in France that gets linked to Czech Republic
-                     
-                     "Bayonne", # Addiction clinic in France linked to the US incorrectly
-                     "Apartado", # Confusion between Spain and Colombia. Better to just remove
-                     "Rioja", # Appears in a few different places and can be linked to Spain or Peru
-                      "Li", #  part of a university name in China can be linked to Norway incorrectly
-                     "Al", # Part of the name of places in Saudi Arabia and other countries that gets picked up as a city in Norway
-                     "San Agustin", # Part of the name of a place in Peru that getting linked to Mexico
-                     "Asia", # A city name in the Philippines that is obviously going to give problems
-                     "Jordan", #  country name acts incorrectly linked to the Philippines city
-                     "Kota", # Location in Malaysia that gets linked to India incorrectly
-                     "Ribera", # Part of an institution name in Spain gets linked to Italy
-                     "Pilar", # Name of a Institute in Croatia that gets linked to Brazil incorrectly
-                      "Greenwich", # Causes various problems due to being linked to the US and UK
-                      "George Town", #In Malaysia, baguettes linked to the Cayman Islands
-                     "Worth", # Should the Fort Worth in America, baguettes link to Germany
-                     "Santa Lucia", # Name of a institution in Italy that gets confused at the Canary Islands
-                     "Sainte Anne", # Name of an institution in France that gets confused with the city in Canada
-                     "Douglas", # Part of a university name inCanada gets confused with the Isle of Man
-                     "Arizona", # State name gets confused for a city in Honduras
-                     "Potsdam", # In New York gets confused with Germany
-                     "Kita", # In the name of an Indonesian institution that gets confused with the city in Mali
-                     "Concordia", # US university name gets confused with a town in Argentina
-                     "Bay", # Monterey Bay gets confused with a town in the Philippines
-                     "Parana", # Part of an institution name in Brazil gets linked to Argentina
-                     "Gazi", # Incorrectly gets linked to Ken year when it should be part of a name of a university in Turkey
-                     "Wufeng",# incorrectly linked to China when it should be in Taiwan
-                     "Loo", # Getting correctly linked to Estonia when it's actually part of a institution name in Singapore
-                     "Police", # Police college accidentally linked to city in Poland
-                     "Long", # Thia city and in the name of yale uni address
-                     "David", # City in Panama that causes obivous issues
-                     "Naval", # City in the Philippines that causes obvious issues
-                     "Hall", # City in the Philippines that causes obvious issues
-                     "Trinity" # Irish uni name but gets mistaken to Jersey city
-                     )) %>% 
-  # A combination of city names and country names can be used to keep the city where it seems like it can be saved:
-    mutate(city_country = paste0(name,", ", country.etc)) %>% 
-  filter(!city_country %in% c("Sussex, Canada",# Only the UK one appears and this gets confused
-                              "Milton, Canada", #  should be Milton Keynes in the UK
-                              "Bathurst, Canada", # Location in Australia they get confused Canada
-                              "Milton, New Zealand", #  should be Milton Keynes in the UK
-                              "Orleans, France", #  incorrectly linked to France, not Canada
-                              "Bergen, Norway", # teams to be linked consistently to the US,  but mistaken for Norway
-                              "Penrith, UK", # Should be the Australian city near Sydney
-                              "Bedford, UK", #  location in Australia gets Linked to the UK incorrectly
-                              "Bedford, USA", #  location in Australia gets Linked to the US incorrectly
-                              "Salt, Spain", # Should be Salt Lake City, US,  but gets picked up as the Spanish city
-                              "Lancaster, USA", #  should be the UK
-                              "Ho, Ghana", # Part of an address in Taiwan that's getting linked to Ghana
-                              "Laguna, USA", # Should be the canary islands, surprisingly
-                              "Albert, France",
-                              "Hong, Denmark",# Leads to this being picked up and said of Hong Kong
-                             "Durham, USA", # Should be the UK one
-                             "Brest, Belarus", # Refers to France not Belarus
-                             "Warwick, USA", #  Always seems to refer to the UK university, but the Use of the US city
-                             "Belmont, Canada", #  Always seems to refer to the US,  but confused for the Canadian city
-                             "Beaufort, Malaysia", # Should be the American city
-                             "Mackay, Australia", #  should always be the location in Taiwan
-                             "Alicante, Philippines", #  should always be in Spain
-                             "Malaya, Philippines", # Should be in Malaysia
-                           "Claremont, Jamaica", #  Australian location that gets sent to Jamaica, incorrectly
-                           
-                           "Colombia, Cuba", # Get confused with the country
-                           "Carlton, UK", #Street name in Canada gets confused with the UK
-                           "Costa Rica, Mexico", # Obviously get complete. The country
-                           "Notre Dame, Mauritius", #  actually the Australian University!
-                            "Baja, Hungary", # University namely Mexico
-                           "Palmerston, Australia", #  links to the northern Australian city, rather than New Zealand
-                           "Waterloo, USA" # Always the Canadian university
-         )) %>% 
-   group_by(name) %>%
-  filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated that I haven't accounted for above, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map.
-  ungroup() 
-
-# Extract just the city names so we can try and match author locations using these:
-city_names_from_world <- world_cities_filtered$name
-
-# Create a pattern of city names for matching with word boundaries:
-city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
-
-# Extract city names using stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match we're looking for)
-cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
-
-
-
-# Before we join this to our dataset, let's now do the same thing for countries, using the world dataset. We could just link countries to the existing cities we identified, but this won't give us the richest overall data, as in some cases it might find a country name but no city name and vice versa.
-
-# Extract just the Country names so we can try and match author locations using these:
-country_names <- world.cities$country.etc
-
-# Create a pattern of Country names for matching with word boundaries:
-country_names_pattern <- paste("\\b(", paste(country_names, collapse = "|"), ")\\b", sep = "")
-
-# Extract country names using stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match we're looking for)
-countries_of_authors <- str_extract(data_locations$institution, country_names_pattern)
-
-
-
-# Add the extracted city and country names to our dataset:
-data_locations_with_city_country<- data_locations %>%
-  bind_cols(cities_of_authors,
-            countries_of_authors) %>%
-  rename(cities_of_authors = 19,
-         countries_of_authors = 20)
-# Check everything looks okay:
-#  select(author_names,
-#         cities_of_authors,
-#         countries_of_authors) %>%
-#  print(n=150)
-
-# Make the city name column consistent with paper dataset:
-world_cities_filtered <- as_tibble(world_cities_filtered) %>%
-  rename(cities_of_authors = name)
-
-#Join the world.cities dataset with our paper data so we have latitude and longitude for each city:
-data_locations_with_full_geo_location<-
-  left_join(data_locations_with_city_country,
-           world_cities_filtered,
-           by = join_by(cities_of_authors) # This is done purposely, as I want to check whether the country names matched in text above match with the country names linked to the city names. Any mismatches tell us a lot about whether it got the right city are not and how I filtered out most of the problematic cities above!
-           )
-
-# Now, Save this to a CSV file because this took forever to extract the data we don't want to have to do this every time I render this page!!
-write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
+# # as_tibble(data$Author_Address) # Take a look at how the author addresses are structured
+# 
+# # Okay, so we're going to need to create an ID variable for each paper (this makes the string split and a nest below work bettter than relying on titles), then split the author_address strings into separate addresses, then unnest these into new rows. 
+# 
+# # Whilst I'm splitting and unnesting the author address: I'm going to simultaneously do this for the authors name column.
+# 
+# 
+# # The un-nest doesn't seem to work well when we retain all of the columns in the dataset, so I do it with only id and institution (address) in the data, then join all of the rest of the data set to the unnested rows after this. For this to work, we need to create a dataset that has the ID variable in before splitting the string and and unnesting. Let's do that:
+#  data_id <-data %>%
+#   rowid_to_column(var = "id")
+# 
+#  pad_vector <- function(vec, len) {
+#   length(vec) <- len
+#   return(vec)
+#  }
+# 
+# # Now split the author and address strings and then  unnest it into multiple rows, and finally re-join with the main dataset
+# data_locations <- data_id %>%
+#     mutate(
+#      institution = str_split(Author_Address, ";"), # Split author address column into separate strings For each address
+#     author_names = str_split(Full_Author_Name, ";") # Split author name column into separate strings For each Name
+#   ) %>%
+#   # The below code matches the number of author institutions and author names where discrepancies exist, so the unnest further below works:
+#    mutate(
+#     max_length = pmax(map_int(institution, length), map_int(author_names, length)),
+#     institution = map2(institution, max_length, ~ pad_vector(., .y)),
+#     author_names = map2(author_names, max_length, ~ pad_vector(., .y))
+#   ) %>%
+#   select(id, institution, author_names) %>%
+#   unnest(c(institution, author_names)) %>%
+#   # Looking at the data at this point, there's a lot of white space around the institutions and author names. Let's remember that now:
+#   mutate(institution = str_trim(institution, side = "both"),
+#          author_names = str_trim(author_names, side = "both")) %>%
+#   full_join(data_id, by = "id") %>%
+#   # Whilst we're doing this, we'll also create a counter/number for each institution per paper
+#   group_by(id) %>%
+#   mutate(author_num = row_number()) %>%
+#   ungroup()
+#   # We can also pivot to wide format if that makes sense at any point:
+#   # pivot_wider(names_from = author_num,
+#   #             values_from = institution,
+#   #             names_prefix = "author_",
+#   #             values_fill = NA_character_)
+# 
+# # View(data_locations) # Looks good!
+# 
+# # Uncomment from below this line
+# 
+# # Fortunately, the "maps"  package contains a list of city names that we can use to match with our author institutions. Let's load the relevant data:
+# ## Loading country data from package maps
+# data(world.cities)
+# 
+#  # The way the matching process works below is by picking the first match in the string, so removing all of the cities below actually leads to an increase in proper matches as the wrong matches are skipped over:
+# world_cities_filtered <-  world.cities %>%
+#   filter(!name %in% c("China", # There is a city in Mexico called China, and including this in the dataset needed to pick up any papers published in China and link them to this city!
+#                         "India", # Same sort of issue (City in Africa)
+#                         "San",  # Same sort of issue (City in Africa, again)
+#                         "Institut", # This appears to be a City somewhere around Azerbaijan, but I think it's getting picked up as a city when in fact it just is a string in the author address referring to a university!
+#                        "Santa", # This is picked up as a city In Peru, when in fact  with just part of the name of many different institutions
+#                       "God", # This is picked up as the name of a city in the Hungary, when in fact is just  part of the name of a hospital in Ireland
+#                       "Normal", # This is picked up as a city in the US  when in fact it's part of a university name in China
+#                       "Bar", # This is picked up as a city in Ukraine, when in fact it's just the name of the University in Israel
+#                       "Victoria", #  This leads to confusion between Victoria in Canada and the state in Australia. Easier just to remove rather than be inaccurate
+#                       "Cardinal",
+#                       "Villanueva", # This is actually a university in Spain, but it's picked up as a city in Honduras
+# 
+#                       "Beira", # This is picked up as a city of Mozambique, but eventually the University Hospital name in Portugal
+#                       "Cardinal",
+#                       "Young", # This is picked up as a city in Uruguay, when is just part of the name of a young adult hospital in France
+#           
+#                       "Cornwall", # Get picked up as a city in Canada and not the area of the UK
+#                        "George", #  A street name in the US,  confused for the South African city
+#                        "Imperial", #  part of a UK university name but picked up as a city in Peru
+#                       "Laval", # Part of a university name in Canada but gets picked up as the city in France
+#                       "Villa", # Part of the name of a institution in Italy, but picked up as the Estonian city.
+#                       "Aidu", # Part of the name of a Japanese hospital, but picked up as a Estonian city
+#                      "Carolina", # Part of the US state name in the data, but picked up as a city in Peurto Rico
+#                        "Carmel", # Get confused with the US city, but always Israel in the dataset
+#                               "U",#  seems like shorthand for an address in France, but has picked up as a city in Micronesia and the French city is missed
+#                               "Ramon",  # Part of the name of a hospital in Spain, but picked up as the city in the Philippines
+#                              "Fundacion", #  Part of the name of a institution in Spain, but picked up as a city in Colombia
+#                              "Trinidad", # Part of a institution name in Argentina, were picked up as a city in Bolivia
+#                              "Liege",# Picked up as a city in Belgium, but it's actually part of a name of a place in France
+#                              "East London", # Refers to the UK University, picked up as a city in South Africa
+#                              "Florida", # University name picked up as a city in Cuba
+#                              "Ita", # Part of the name of a institution in Finland picked up as the city in Paraguay
+#                      "Princeton", #  University name confused for the city in Canada
+#                      "Humboldt", # Confused for the Canadian city, but actually a University in Germany
+#                       "Alcala", # Confused for the Colombian city, but actually part of a university name in Spain)
+#                             "York", # UK Canada confusion. Easier to remove
+#                      "Union", # Typically refers to the European Union, but confuse for the US city
+#                       "La Rioja", # Part of a Spanish University but computer the city in Argentina
+#                      "Concord", # Area in Australia that ends up being linked to a US city rather
+#                       "Nanyang", # Part of a Singapore university name that gets linked to a city in China
+#                       "Patan", # Part of a Napoleon University name that gets linked to a cityin India
+#                       "Saint-Joseph", # University name in Lebanon on that gets linked to a city in Reunion
+#                      "Valencia", # University in Spain that gets linked to Venezuela
+#                       "Ingenio", # Institution in Spain that gets linked to the Canary Islands
+#                      "Lincoln", # UK university name that gets linked to the US
+#                      "Roma", # Italian street name that gets linked to Australia
+#                      "Leon", # Institution name in France forgets links to Mexico
+#                      "Pau", # Part of a hospital name in Spain that Gets linked to France
+#                      "Ilan", # Part of a university name in Israel that gets linked to Taiwan
+#                      "Street", #  an obvious issue. Linked to the UK incorrectly
+#                      "Alle",  # Incorrectly linked to Switzerland when it's an address in Denmark'Hashtag
+#                      "San Ignacio", # Location improved its link to Bolivia
+#                      "Carnot", # Street in France that gets linked to central Africa
+#                       "Mexico", #  country gets incorrectly linked to the Philippines city
+#                       "Mobile", #  Institution in Canada that gets incorrectly linked to the US
+#                       "Hebron", # Location in Spain gets mixed up with Palestine
+#                      "Liban", #  hospital in France that gets linked to Czech Republic
+#                      
+#                      "Bayonne", # Addiction clinic in France linked to the US incorrectly
+#                      "Apartado", # Confusion between Spain and Colombia. Better to just remove
+#                      "Rioja", # Appears in a few different places and can be linked to Spain or Peru
+#                       "Li", #  part of a university name in China can be linked to Norway incorrectly
+#                      "Al", # Part of the name of places in Saudi Arabia and other countries that gets picked up as a city in Norway
+#                      "San Agustin", # Part of the name of a place in Peru that getting linked to Mexico
+#                      "Asia", # A city name in the Philippines that is obviously going to give problems
+#                      "Jordan", #  country name acts incorrectly linked to the Philippines city
+#                      "Kota", # Location in Malaysia that gets linked to India incorrectly
+#                      "Ribera", # Part of an institution name in Spain gets linked to Italy
+#                      "Pilar", # Name of a Institute in Croatia that gets linked to Brazil incorrectly
+#                       "Greenwich", # Causes various problems due to being linked to the US and UK
+#                       "George Town", #In Malaysia, baguettes linked to the Cayman Islands
+#                      "Worth", # Should the Fort Worth in America, baguettes link to Germany
+#                      "Santa Lucia", # Name of a institution in Italy that gets confused at the Canary Islands
+#                      "Sainte Anne", # Name of an institution in France that gets confused with the city in Canada
+#                      "Douglas", # Part of a university name inCanada gets confused with the Isle of Man
+#                      "Arizona", # State name gets confused for a city in Honduras
+#                      "Potsdam", # In New York gets confused with Germany
+#                      "Kita", # In the name of an Indonesian institution that gets confused with the city in Mali
+#                      "Concordia", # US university name gets confused with a town in Argentina
+#                      "Bay", # Monterey Bay gets confused with a town in the Philippines
+#                      "Parana", # Part of an institution name in Brazil gets linked to Argentina
+#                      "Gazi", # Incorrectly gets linked to Ken year when it should be part of a name of a university in Turkey
+#                      "Wufeng",# incorrectly linked to China when it should be in Taiwan
+#                      "Loo", # Getting correctly linked to Estonia when it's actually part of a institution name in Singapore
+#                      "Police", # Police college accidentally linked to city in Poland
+#                      "Long", # Thia city and in the name of yale uni address
+#                      "David", # City in Panama that causes obivous issues
+#                      "Naval", # City in the Philippines that causes obvious issues
+#                      "Hall", # City in the Philippines that causes obvious issues
+#                      "Trinity" # Irish uni name but gets mistaken to Jersey city
+#                      )) %>% 
+#   # A combination of city names and country names can be used to keep the city where it seems like it can be saved:
+#     mutate(city_country = paste0(name,", ", country.etc)) %>% 
+#   filter(!city_country %in% c("Sussex, Canada",# Only the UK one appears and this gets confused
+#                               "Milton, Canada", #  should be Milton Keynes in the UK
+#                               "Bathurst, Canada", # Location in Australia they get confused Canada
+#                               "Milton, New Zealand", #  should be Milton Keynes in the UK
+#                               "Orleans, France", #  incorrectly linked to France, not Canada
+#                               "Bergen, Norway", # teams to be linked consistently to the US,  but mistaken for Norway
+#                               "Penrith, UK", # Should be the Australian city near Sydney
+#                               "Bedford, UK", #  location in Australia gets Linked to the UK incorrectly
+#                               "Bedford, USA", #  location in Australia gets Linked to the US incorrectly
+#                               "Salt, Spain", # Should be Salt Lake City, US,  but gets picked up as the Spanish city
+#                               "Lancaster, USA", #  should be the UK
+#                               "Ho, Ghana", # Part of an address in Taiwan that's getting linked to Ghana
+#                               "Laguna, USA", # Should be the canary islands, surprisingly
+#                               "Albert, France",
+#                               "Hong, Denmark",# Leads to this being picked up and said of Hong Kong
+#                              "Durham, USA", # Should be the UK one
+#                              "Brest, Belarus", # Refers to France not Belarus
+#                              "Warwick, USA", #  Always seems to refer to the UK university, but the Use of the US city
+#                              "Belmont, Canada", #  Always seems to refer to the US,  but confused for the Canadian city
+#                              "Beaufort, Malaysia", # Should be the American city
+#                              "Mackay, Australia", #  should always be the location in Taiwan
+#                              "Alicante, Philippines", #  should always be in Spain
+#                              "Malaya, Philippines", # Should be in Malaysia
+#                            "Claremont, Jamaica", #  Australian location that gets sent to Jamaica, incorrectly
+#                            
+#                            "Colombia, Cuba", # Get confused with the country
+#                            "Carlton, UK", #Street name in Canada gets confused with the UK
+#                            "Costa Rica, Mexico", # Obviously get complete. The country
+#                            "Notre Dame, Mauritius", #  actually the Australian University!
+#                             "Baja, Hungary", # University namely Mexico
+#                            "Palmerston, Australia", #  links to the northern Australian city, rather than New Zealand
+#                            "Waterloo, USA" # Always the Canadian university
+#          )) %>% 
+#    group_by(name) %>%
+#   filter(pop == max(pop)) %>% # Okay, so this is imperfect, but when a city name is duplicated that I haven't accounted for above, this will filter to select only the one with the highest population. This is based on the assumption that papers are likely to come from more populated cities (i.e. those with universities). This may seem crude, but it solved many, many issues in the map.
+#   ungroup() 
+# 
+# # Extract just the city names so we can try and match author locations using these:
+# city_names_from_world <- world_cities_filtered$name
+# 
+# # Create a pattern of city names for matching with word boundaries:
+# city_names_pattern <- paste("\\b(", paste(city_names_from_world, collapse = "|"), ")\\b", sep = "")
+# 
+# # Extract city names using stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match we're looking for)
+# cities_of_authors <- str_extract(data_locations$institution, city_names_pattern)
+# 
+# 
+# 
+# # Before we join this to our dataset, let's now do the same thing for countries, using the world dataset. We could just link countries to the existing cities we identified, but this won't give us the richest overall data, as in some cases it might find a country name but no city name and vice versa.
+# 
+# # Extract just the Country names so we can try and match author locations using these:
+# country_names <- world.cities$country.etc
+# 
+# # Create a pattern of Country names for matching with word boundaries:
+# country_names_pattern <- paste("\\b(", paste(country_names, collapse = "|"), ")\\b", sep = "")
+# 
+# # Extract country names using stringr (the str_exact function extracts the first complete match from a string; the arguments are the string and then the match we're looking for)
+# countries_of_authors <- str_extract(data_locations$institution, country_names_pattern)
+# 
+# 
+# 
+# # Add the extracted city and country names to our dataset:
+# data_locations_with_city_country<- data_locations %>%
+#   bind_cols(cities_of_authors,
+#             countries_of_authors) %>%
+#   rename(cities_of_authors = 19,
+#          countries_of_authors = 20)
+# # Check everything looks okay:
+# #  select(author_names,
+# #         cities_of_authors,
+# #         countries_of_authors) %>%
+# #  print(n=150)
+# 
+# # Make the city name column consistent with paper dataset:
+# world_cities_filtered <- as_tibble(world_cities_filtered) %>%
+#   rename(cities_of_authors = name)
+# 
+# #Join the world.cities dataset with our paper data so we have latitude and longitude for each city:
+# data_locations_with_full_geo_location<-
+#   left_join(data_locations_with_city_country,
+#            world_cities_filtered,
+#            by = join_by(cities_of_authors) # This is done purposely, as I want to check whether the country names matched in text above match with the country names linked to the city names. Any mismatches tell us a lot about whether it got the right city are not and how I filtered out most of the problematic cities above!
+#            )
+# 
+# # Now, Save this to a CSV file because this took forever to extract the data we don't want to have to do this every time I render this page!!
+# write.csv(data_locations_with_full_geo_location, "posts/2023-history-of-behavioural-addictions-PubMed-part2/data_locations_with_full_geo_location.csv")
 
 ```
 
@@ -829,32 +836,21 @@ filter(countries_of_authors != country.etc) %>% # Identify and isolate mismatche
          cities_of_authors,
          countries_of_authors,
        country.etc) %>%
-    View()
+    # View()
   print(n = 340) 
 
   
-  data_locations_with_full_geo_location_cleaned %>% 
-    filter(str_detect(institution, "arson College of Business")
-           ) %>% View()
-# Okay,  et's correct any country mismatches found in the above output:
-data_locations_with_full_geo_location_cleaned %>% 
-  mutate(country.etc = case_when(
-    str_detect(institution, "") ~ "",
-    str_detect(institution, "") ~ "",
-    str_detect(institution, "") ~ "",
-    str_detect(institution, "") ~ "",
-    str_detect(institution, "") ~ "",
-    str_detect(institution, "") ~ "",
-    str_detect(institution, "") ~ "",
-    
-    TRUE ~ as.character(country.etc) 
-  ))
+ # data_locations_with_full_geo_location_cleaned %>% 
+#    filter(str_detect(institution, "arson College of Business")
+ #          ) %>% 
+    # View()
+# Okay,  I've gone back to the above recording section to correct any country mismatches found in the above output:
+
     
 # need to try and linkj long and lat to the combination of city and country where possible
 
  
  # MAKE GIT FILE SMALLER FOR STORAGE
-
 
  # Other problematic  Cities we need to directly code:
  # Athens
@@ -893,81 +889,81 @@ data_locations_with_full_geo_location_WORLD_city_aggregate<- data_locations_with
 # It takes quite a long time to produce the interactive plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment out all of the code below to create the plot.
 
 
-# Create plot:
-all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
-  geom_polygon(fill="#289998", colour = "#289998") +
-   geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate,
-              aes(x = long, y = lat,
-            #  size = sqrt(num_papers),
-              size = num_papers,
-              text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),
-              colour = "#50B5C8",
-              fill = "#F5F7F0",
-              alpha = 1,
-              shape = 21) +  # Use shape 21 for filled circles
-  scale_size_continuous(guide="none") +
-  scale_x_continuous(expand = c(.001, .001)) +
-  # scale_y_continuous(expand = c(.001, .001)) +
-  plot_theme +
-  theme(
-    axis.text = element_blank(),
-    axis.title = element_blank()) +
-  labs(
-    title = "Institutions of authors publishing behavioural addictions research",
-    subtitle = "Each circle represents a city and its size corresponds to the number of papers can be linked to it",
-    caption = "Rob Heirene (@rheirene)"
-  )
-
-# Save this now as a basic plot:
-ggsave("posts/2023-history-of-behavioural-addictions-PubMed-part2/all_publications_map.svg",
-       plot = all_publications_map,
-       width = 9,
-       height = 6,
-       dpi = 600)
-
-
-# We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
-
-# Get the URL for the "Reem Kufi" font from Google Fonts:
-reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url
-
-# Create custom CSS:
-reem_kufi_css <- paste0(
-  "<style type = 'text/css'>",
-    "@font-face { ",
-      "font-family: 'Reem Kufi'; ",
-      "src: url('", reem_kufi_file, "'); ",
-    "}",
-  "</style>"
-)
-
-# Convert static plot to ggplotly format and adjust theme settings where required:
- all_publications_map_ggplotly <-ggplotly(all_publications_map,
-                                              tooltip = 'text') %>%
-  hide_legend() %>%
-  plotly::layout(annotations =
- list(x = 1, y = -0.1, text = "Rob Heirene (@rheirene)",
-      showarrow = F, xref='paper', yref='paper',
-      xanchor='right', yanchor='auto', xshift=0, yshift=25,
-      font=list(size=12, color="#50B5C8")),
-       margin = list(t = 70), # Increase top margin
-                 font = list(family = "Reem Kufi"),
-                 title = list(x = 0, y = 0.945),
-    hoverlabel = list(font = list(family = "Reem Kufi")
-))
-
-# Add the CSS as a dependency for the plotly plot:
-all_publications_map_ggplotly$dependencies <- c(
-  all_publications_map_ggplotly$dependencies,
-  list(
-    htmltools::htmlDependency(
-      name = "reem-kufi-font",
-      version = "0",
-      src = "",
-      head = reem_kufi_css)))
-
-# Display plot:
-saveWidget(all_publications_map_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part2/all_pubs_map.html')
+# # Create plot:
+# all_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+#   geom_polygon(fill="#289998", colour = "#289998") +
+#    geom_point(data = data_locations_with_full_geo_location_WORLD_city_aggregate,
+#               aes(x = long, y = lat,
+#             #  size = sqrt(num_papers),
+#               size = num_papers,
+#               text = paste("City:", cities_of_authors, "\nNo. of publications:", num_papers)),
+#               colour = "#50B5C8",
+#               fill = "#F5F7F0",
+#               alpha = 1,
+#               shape = 21) +  # Use shape 21 for filled circles
+#   scale_size_continuous(guide="none") +
+#   scale_x_continuous(expand = c(.001, .001)) +
+#   # scale_y_continuous(expand = c(.001, .001)) +
+#   plot_theme +
+#   theme(
+#     axis.text = element_blank(),
+#     axis.title = element_blank()) +
+#   labs(
+#     title = "Institutions of authors publishing behavioural addictions research",
+#     subtitle = "Each circle represents a city and its size corresponds to the number of papers can be linked to it",
+#     caption = "Rob Heirene (@rheirene)"
+#   )
+# 
+# # Save this now as a basic plot:
+# ggsave("posts/2023-history-of-behavioural-addictions-PubMed-part2/all_publications_map.svg",
+#        plot = all_publications_map,
+#        width = 9,
+#        height = 6,
+#        dpi = 600)
+# 
+# 
+# # We're going to turn this into an interactive plot now using ggplotly, but this removes some of our existing theme settings, especially the fonts. The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font once this becomes a ggplotly:
+# 
+# # Get the URL for the "Reem Kufi" font from Google Fonts:
+# reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url
+# 
+# # Create custom CSS:
+# reem_kufi_css <- paste0(
+#   "<style type = 'text/css'>",
+#     "@font-face { ",
+#       "font-family: 'Reem Kufi'; ",
+#       "src: url('", reem_kufi_file, "'); ",
+#     "}",
+#   "</style>"
+# )
+# 
+# # Convert static plot to ggplotly format and adjust theme settings where required:
+#  all_publications_map_ggplotly <-ggplotly(all_publications_map,
+#                                               tooltip = 'text') %>%
+#   hide_legend() %>%
+#   plotly::layout(annotations =
+#  list(x = 1, y = -0.1, text = "Rob Heirene (@rheirene)",
+#       showarrow = F, xref='paper', yref='paper',
+#       xanchor='right', yanchor='auto', xshift=0, yshift=25,
+#       font=list(size=12, color="#50B5C8")),
+#        margin = list(t = 70), # Increase top margin
+#                  font = list(family = "Reem Kufi"),
+#                  title = list(x = 0, y = 0.945),
+#     hoverlabel = list(font = list(family = "Reem Kufi")
+# ))
+# 
+# # Add the CSS as a dependency for the plotly plot:
+# all_publications_map_ggplotly$dependencies <- c(
+#   all_publications_map_ggplotly$dependencies,
+#   list(
+#     htmltools::htmlDependency(
+#       name = "reem-kufi-font",
+#       version = "0",
+#       src = "",
+#       head = reem_kufi_css)))
+# 
+# # Display plot:
+# saveWidget(all_publications_map_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part2/all_pubs_map.html')
 ```
 
 ```{=html}
@@ -991,153 +987,153 @@ L
 # It takes quite a long time to produce the animated plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment all of the code below to Cceate the plot.
 
 
-# Wrangle data for plot:
-data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_locations_with_full_geo_location_WORLD %>%
- left_join(world_map) %>%
-   # Calculate the unique number of papers PER ADDICTION that can be linked to each city:
-   group_by(cities_of_authors,Label) %>%
-  summarise(
-    num_papers = n_distinct(PMID),
-    lat = first(lat),   # Retain the first value of latitude for the city
-    long = first(long),  # Retain the first value of longitude for the city
-    group = first(group) # Retain the group value from the world map dataset
-  ) %>%
-  filter(!is.na(cities_of_authors)) %>% # Remove rows where we can't get the city
-    arrange(desc(num_papers)) %>%  # Just for easier viewing
-   # Tidy the behavioural addiction labels:
-    mutate(Label = str_replace_all(Label, "_", " ") %>%
-                 str_to_title()) %>%
-  # Add Categories for behavioural addictions:
-    mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
-                                       Label == "Gaming" ~ "Gaming addiction",
-                                       Label == "Smart Phone" ~ "Smart Phone addiction",
-                                       Label == "Exercise" ~ "Exercise addiction",
-                                       Label == "Social Media" ~ "Social Media addiction",
-                                       Label == "Tanning" |
-                                       Label == "Selfie" |
-                                       Label == "Crime" |
-                                       Label == "Dance" |
-                                       Label == "Joyriding" |
-                                       Label == "Polysurgical" |
-                                       Label == "Death" |
-                                         Label == "Near Death" |
-                                         Label == "Fortune Telling" |
-                                         Label == "Love"
-                                         ~ "The more obscure \"addiction\"",
-                                       TRUE ~ "REMOVE")) %>%
-  filter(labels_filter != "REMOVE")  %>%
-  mutate(labels_filter = as.factor(labels_filter)) %>%
-  ungroup()
-
-
-
-# Now we need to create descriptive labels to appear with each addiction:
-# Before proceeding, let's create a simple dataset to use that contains our  behavioural addiction categories that we can use for grouping:
-
-location_grouping_data<- data_locations_with_full_geo_location_WORLD %>% # We need to use the earlier dataset and recreate our grouping labels, as in the dataset we created above we removed papers we couldn't locate them/ get a city
-  # Add Categories for behavioural addictions:
-    mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
-                                       Label == "Gaming" ~ "Gaming addiction",
-                                       Label == "Smart Phone" ~ "Smart Phone addiction",
-                                       Label == "Exercise" ~ "Exercise addiction",
-                                       Label == "Social Media" ~ "Social Media addiction",
-                                       Label == "Tanning" |
-                                       Label == "Selfie" |
-                                       Label == "Crime" |
-                                       Label == "Dance" |
-                                       Label == "Joyriding" |
-                                       Label == "Polysurgical" |
-                                       Label == "Death" |
-                                         Label == "Near Death" |
-                                         Label == "Fortune Telling" |
-                                         Label == "Love"
-                                         ~ "The more obscure \"addictions\"",
-                                       TRUE ~ "REMOVE"))
-
-# First create a dataset that tells us the number of **papers per addiction**:
-location_grouping_data %>%
-  group_by(labels_filter) %>% 
-  summarise(
-    papers_per_addiction = n_distinct(PMID),
-    cities_per_addiction = n_distinct(cities_of_authors),
-    countries_per_addiction = n_distinct(country.etc)
-    ) %>%
- mutate(description = paste(papers_per_addiction, "unique papers"
-                                ))
-
-
-   mutate(gambling_addiction = case_when(labels_filter == "Gambling addiction" ~ sprintf("1961  \nFirst available study: \n\"Compulsive gambling\""),
-                               TRUE ~ "")) %>%
-    
-     
-# Get palette colors:
-num_labels <- length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter))
-palette
-
-
-colors_viridis<- viridis(n = length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter)), option = "plasma", direction = -1)
-          
-labels<- unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter)
-
-color_map_df <- tibble(
-  label = labels,
-  color = colors_viridis
-)
-
-color_map <- setNames(color_map_df$color, color_map_df$label)
-
-
-# Plot data:
-filtered_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
-  geom_polygon(fill = "#289998", colour = "#289998") +
-  geom_point(data = data_locations_with_full_geo_location_WORLD_city_label_aggregate,
-             aes(x = long, y = lat,
-                 size = sqrt(num_papers),
-                  colour = labels_filter,
-                 fill = labels_filter),
-             alpha = 1,
-             shape = 21) +
-  # Removal guides
-  scale_size_continuous(guide = "none") +
-  scale_color_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1)+
-  scale_fill_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1) +
-  # scale_fill_manual(values = palette_colors, guide = FALSE) +
-  # scale_color_manual(values = palette_colors,
-  #                       # rep("#F5F7F0",num_labels),
-  #                     guide = FALSE) +
-  # guides(fill = "none", color = "none") +
-  scale_x_continuous(expand = c(0.001, 0.001)) +
-  scale_y_continuous(expand = c(0.001, 0.001)) +
-  plot_theme +
-  theme(
-    axis.text = element_blank(),
-    axis.title = element_blank(),
-     plot.title = element_text(margin = margin(b = 20))
-    ) +
-  labs(
-    title = "{closest_state} papers",
-    caption = "Rob Heirene (@rheirene)"
-  ) +
-  transition_states( ### NOT FILTER!
-     labels_filter,
-     transition_length = 2,
-     state_length = 6,
-     wrap = FALSE
-   ) +
-  enter_fade() +
-  exit_fade()
-
-
-
-# Animate plot in GIF format:
-animate(filtered_publications_map,
-        fps = 20,
-        end_pause = 70,
-        duration = 30,
-        width = 800, height = 540,
-        type = "cairo")
-
-# The more obscure addictions referred to include turning, selfie, crime, dance, joyriding, polysurgical,  death, near death, fortune telling, and love addictions.
+# # Wrangle data for plot:
+# data_locations_with_full_geo_location_WORLD_city_label_aggregate<- data_locations_with_full_geo_location_WORLD %>%
+#  left_join(world_map) %>%
+#    # Calculate the unique number of papers PER ADDICTION that can be linked to each city:
+#    group_by(cities_of_authors,Label) %>%
+#   summarise(
+#     num_papers = n_distinct(PMID),
+#     lat = first(lat),   # Retain the first value of latitude for the city
+#     long = first(long),  # Retain the first value of longitude for the city
+#     group = first(group) # Retain the group value from the world map dataset
+#   ) %>%
+#   filter(!is.na(cities_of_authors)) %>% # Remove rows where we can't get the city
+#     arrange(desc(num_papers)) %>%  # Just for easier viewing
+#    # Tidy the behavioural addiction labels:
+#     mutate(Label = str_replace_all(Label, "_", " ") %>%
+#                  str_to_title()) %>%
+#   # Add Categories for behavioural addictions:
+#     mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
+#                                        Label == "Gaming" ~ "Gaming addiction",
+#                                        Label == "Smart Phone" ~ "Smart Phone addiction",
+#                                        Label == "Exercise" ~ "Exercise addiction",
+#                                        Label == "Social Media" ~ "Social Media addiction",
+#                                        Label == "Tanning" |
+#                                        Label == "Selfie" |
+#                                        Label == "Crime" |
+#                                        Label == "Dance" |
+#                                        Label == "Joyriding" |
+#                                        Label == "Polysurgical" |
+#                                        Label == "Death" |
+#                                          Label == "Near Death" |
+#                                          Label == "Fortune Telling" |
+#                                          Label == "Love"
+#                                          ~ "The more obscure \"addiction\"",
+#                                        TRUE ~ "REMOVE")) %>%
+#   filter(labels_filter != "REMOVE")  %>%
+#   mutate(labels_filter = as.factor(labels_filter)) %>%
+#   ungroup()
+# 
+# 
+# 
+# # Now we need to create descriptive labels to appear with each addiction:
+# # Before proceeding, let's create a simple dataset to use that contains our  behavioural addiction categories that we can use for grouping:
+# 
+# location_grouping_data<- data_locations_with_full_geo_location_WORLD %>% # We need to use the earlier dataset and recreate our grouping labels, as in the dataset we created above we removed papers we couldn't locate them/ get a city
+#   # Add Categories for behavioural addictions:
+#     mutate(labels_filter = case_when(Label == "Gambling" ~ "Gambling addiction",
+#                                        Label == "Gaming" ~ "Gaming addiction",
+#                                        Label == "Smart Phone" ~ "Smart Phone addiction",
+#                                        Label == "Exercise" ~ "Exercise addiction",
+#                                        Label == "Social Media" ~ "Social Media addiction",
+#                                        Label == "Tanning" |
+#                                        Label == "Selfie" |
+#                                        Label == "Crime" |
+#                                        Label == "Dance" |
+#                                        Label == "Joyriding" |
+#                                        Label == "Polysurgical" |
+#                                        Label == "Death" |
+#                                          Label == "Near Death" |
+#                                          Label == "Fortune Telling" |
+#                                          Label == "Love"
+#                                          ~ "The more obscure \"addictions\"",
+#                                        TRUE ~ "REMOVE"))
+# 
+# # First create a dataset that tells us the number of **papers per addiction**:
+# location_grouping_data %>%
+#   group_by(labels_filter) %>% 
+#   summarise(
+#     papers_per_addiction = n_distinct(PMID),
+#     cities_per_addiction = n_distinct(cities_of_authors),
+#     countries_per_addiction = n_distinct(country.etc)
+#     ) %>%
+#  mutate(description = paste(papers_per_addiction, "unique papers"
+#                                 ))
+# 
+# 
+#    mutate(gambling_addiction = case_when(labels_filter == "Gambling addiction" ~ sprintf("1961  \nFirst available study: \n\"Compulsive gambling\""),
+#                                TRUE ~ "")) %>%
+#     
+#      
+# # Get palette colors:
+# num_labels <- length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter))
+# palette
+# 
+# 
+# colors_viridis<- viridis(n = length(unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter)), option = "plasma", direction = -1)
+#           
+# labels<- unique(data_locations_with_full_geo_location_WORLD_city_label_aggregate$labels_filter)
+# 
+# color_map_df <- tibble(
+#   label = labels,
+#   color = colors_viridis
+# )
+# 
+# color_map <- setNames(color_map_df$color, color_map_df$label)
+# 
+# 
+# # Plot data:
+# filtered_publications_map <- ggplot(world_map, aes(x = long, y = lat, group = group)) +
+#   geom_polygon(fill = "#289998", colour = "#289998") +
+#   geom_point(data = data_locations_with_full_geo_location_WORLD_city_label_aggregate,
+#              aes(x = long, y = lat,
+#                  size = sqrt(num_papers),
+#                   colour = labels_filter,
+#                  fill = labels_filter),
+#              alpha = 1,
+#              shape = 21) +
+#   # Removal guides
+#   scale_size_continuous(guide = "none") +
+#   scale_color_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1)+
+#   scale_fill_viridis(discrete = TRUE, option = "plasma", guide = FALSE, direction = -1) +
+#   # scale_fill_manual(values = palette_colors, guide = FALSE) +
+#   # scale_color_manual(values = palette_colors,
+#   #                       # rep("#F5F7F0",num_labels),
+#   #                     guide = FALSE) +
+#   # guides(fill = "none", color = "none") +
+#   scale_x_continuous(expand = c(0.001, 0.001)) +
+#   scale_y_continuous(expand = c(0.001, 0.001)) +
+#   plot_theme +
+#   theme(
+#     axis.text = element_blank(),
+#     axis.title = element_blank(),
+#      plot.title = element_text(margin = margin(b = 20))
+#     ) +
+#   labs(
+#     title = "{closest_state} papers",
+#     caption = "Rob Heirene (@rheirene)"
+#   ) +
+#   transition_states( ### NOT FILTER!
+#      labels_filter,
+#      transition_length = 2,
+#      state_length = 6,
+#      wrap = FALSE
+#    ) +
+#   enter_fade() +
+#   exit_fade()
+# 
+# 
+# 
+# # Animate plot in GIF format:
+# animate(filtered_publications_map,
+#         fps = 20,
+#         end_pause = 70,
+#         duration = 30,
+#         width = 800, height = 540,
+#         type = "cairo")
+# 
+# # The more obscure addictions referred to include turning, selfie, crime, dance, joyriding, polysurgical,  death, near death, fortune telling, and love addictions.
 ```
 
 ```{r include=FALSE}

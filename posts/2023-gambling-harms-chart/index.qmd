@@ -111,13 +111,14 @@ gam_prevention_sunburst$dependencies <- c(
       src = "",
       head = reem_kufi_css)))
 
+# ****Uncomment to update****
 # Save plot as a HTML file (it doesn't render well with quarto otherwise):
-saveWidget(gam_prevention_sunburst, 'fig.html')
+# saveWidget(gam_prevention_sunburst, 'rheirene/posts/2023-gambling-harms-chart/sunburst_fig.html')
 
 ```
 
 ```{=html}
-<iframe src="fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
+<iframe src="sunburst_fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
 ```
 ::: {.callout-tip appearance="simple" icon="false"}
 ## Recreating the chart

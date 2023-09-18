@@ -59,7 +59,7 @@ I'm currently thinking about how to progress gambling harm prevention in my rese
 ```
 
 ```{=html}
-<iframe src="posts/2023-gambling-harms-chart/fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
+<iframe src="posts/2023-gambling-harms-chart/sunburst_fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
 ```
 ::: fade-in
 It's very much a work in progress (*I still need to add many strategies and labels for those I have*), but you can find out more about my plans for this [here](https://robheirene.netlify.app/posts/2023-gambling-harms-chart).
