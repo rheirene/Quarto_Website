@@ -5,6 +5,7 @@ website:
   title: "Rob Heirene" 
   open-graph: true
   twitter-card: true
+  image: "headshot.svg"
   favicon: files/logo.svg
   navbar:
     pinned: true

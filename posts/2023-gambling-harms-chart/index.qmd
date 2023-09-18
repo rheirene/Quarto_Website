@@ -7,7 +7,9 @@ categories: [Gambling]
 date: 2023-08-21
 citation: 
   url: https://robheirene.netlify.app/posts/2023-gambling-harms-chart
-image: sunburst.png
+image: "sunburst.png"
+twitter-card:
+  image: "sunburst.png"
 draft: false 
 ---
 
@@ -113,7 +115,7 @@ gam_prevention_sunburst$dependencies <- c(
 
 # ****Uncomment to update****
 # Save plot as a HTML file (it doesn't render well with quarto otherwise):
-# saveWidget(gam_prevention_sunburst, 'rheirene/posts/2023-gambling-harms-chart/sunburst_fig.html')
+saveWidget(gam_prevention_sunburst, '/posts/2023-gambling-harms-chart/sunburst_fig.html')
 
 ```
 
@@ -216,6 +218,8 @@ This [2023 report](https://d1ygf46rsya1tb.cloudfront.net/prod/uploads/2023/06/GR
 
 ::: {.callout-note collapse="true" appearance="minimal" icon="false"}
 ## Friction based strategies
+
+Coming soon!
 :::
 
 ------------------------------------------------------------------------
