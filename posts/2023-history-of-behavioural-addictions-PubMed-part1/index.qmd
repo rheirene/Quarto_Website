@@ -4,22 +4,35 @@ description: ""
 author:
   - name: Rob Heirene
 categories: [Gambling] 
-date: 2023-08-25
+date: 2023-10-30
 image: total_year_gganimate.gif
 draft: true 
 ---
 
-The term "behavioural addiction" starts to appear in academic articles around 1990 (). Very quickly, Jaffe (1990) made the argument that the term "addiction" was was being used too liberally by researcher---they were "trivializing dependence".
+The phrase "behavioural addiction" starts to appear in academic articles in the late 80s and early 90s (). Soon after, Jaffe (1990) made the argument that "addiction" was was being used too liberally---it was being applied to too many non-drug-related behaviours and we were at risk of "*trivializing dependence*".
 
-Still bemoaned today.
+As we'll see, these concerns didn't do much to stem the expansion of addiction's definition. Since the 1990s the net of addiction has been cast wider and wider, capturing more and more repetitive and/or compulsive behaviour patterns.
 
-world of behavioural addictions research is a strange place.
+Fears that the term will lose all meaning remain heightened in academic and medical circles (). And for good reason --- individuals who experience addictions to opioid-based drugs or alcohol can suffer serious, life-threatening harm and truly awful withdrawal episodes. Assigning the same label to describe their experience and someone who has a largely inconsequential difficulty controlling their spending or screen use could indeed trivialise the former's condition.
 
-FIX UP ALL THE PLOT TITLES TO BE CONSITENT
+Such concerns are not unique to addiction. "Psychiatrization" and "concept creep" have been used to describe the seemingly ever-widening definitions mental health disorders, abuse, and trauma, as well as the "medicalisation" of these in the form of over-diagnosis and treatment (Haslam, 2016; Haslam et al., 2021).
 
-MAKE BAR CHART RACE A LITTLE WIDER
+Whilst I'm aware of some bizzare publications on this topic (e.g., [this 2015 study](https://doi.org/10.1556/jba.4.2015.1.7) on fortune telling addiction), I've always been curious about the extent to which this is really occurring in the addictions field. **How many behaviours really are being labelled as "addictions" in the peer-reviewed literature? And how many studies are there on these "new" addictions?**
 
-Don't always focus on the "addiction" but mention it
+These are some the questons I hope to answer in this series of posts.
+
+### My approach
+
+Okay, so my goal here was to try and find every peer-reviewed paper that has ever discussed a behaviour (e.g., gaming, social media use etc.) as a form of addiction. Well, every paper published on the PubMed database. I chose PubMed for two reasons:
+
+1.  it indexes around 30,000 different journals/outlets, including most of the journals that I know publish research in this area
+2.  the search results and article data can be automatically downloaded using the `rentrez` R package (trying to manually download summary data for every study ever published on behavioural addictions would be unmanageably time consuming!).
+
+So, I first developed and trialled a PubMed search string to try and identify relavent papers on each behavioural addiction (e.g., "social-network-use disorder" OR "social media addiction"). After trialling and refining each search string on the PubMed site, I used `rentrez` to pull the results from the search string for every "addiction" I could find, individually screening the results for duplicates or irrelevant articles (e.g., errata).
+
+I used a combination of personal knowledge of this area, results from PubMed searches for other addictions, and Google searches for phrases akin to "bizzare addictions" (a very systematic approach) to identify the different types of "addiction" to search for.
+
+The basic criteria for inclusion was
 
 ### Data & code set-up
 
@@ -27,7 +40,7 @@ Okay, so let's get started with exploring the data. I'll first load all the requ
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
-#| code-summary: "Code: set-up"
+#| code-summary: "Code: load packages"
 
 # Install and load the groundhog package to ensure consistency of the package versions used here:
 # install.packages("groundhog") # Install
@@ -57,7 +70,12 @@ packages <- c('readr', # Load dataset from GitHib
 
 # Load desired package with versions specific to project start date:
 groundhog.library(packages, "2023-08-01") 
+```
 
+```{r}
+#| code-fold: true
+#| code-summary: "Code: fonts & themes"
+#| 
 # Load new font for figures/graphs
 font_add_google("Poppins", "Poppins")
 font_add_google("Reem Kufi", "Reem Kufi")
@@ -387,7 +405,7 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
 
 ```
 
-```{r  warning=FALSE, message=FALSE}}
+```{r  warning=FALSE, message=FALSE}
 #| fig-align: center
 #| code-fold: true
 #| code-summary: "Code: Bar chart race (publications by addiction)"
@@ -530,7 +548,7 @@ anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part2/bar_chart_p
 
 Well that was fun, but it's actually quite difficult to see exactly what's going on at every year given how many different supposed addictions there are. Let's try another approach (this plot really doesn't play well with mobile, so it's best viewed on a PC/tablet):
 
-```{r warning=FALSE,  message=FALSE}}
+```{r warning=FALSE,  message=FALSE}
 #| fig-align: center
 #| code-fold: true
 #| code-summary: "Code: Dumbbell plot (publications by addiction)"
@@ -656,15 +674,20 @@ Well, that's probably enough for this first post. If you have any thoughts on my
 
 In the next post, I look at how this work is distributed geographically in terms of author locations, the journals these papers are published in, and the frequency of article types (review, meta-analysis, letters etc.). You can read it here.
 
-Last updated: 01/07/2023
+Last updated:
 
 ### References
 
 ::: {.callout-tip collapse="true" appearance="simple" icon="false"}
-
 ## Expand to see the list of references used in this post
 
-Jaffe J. H. (1990). Trivializing dependence. British journal of addiction, 85(11), 1425--1431. https://doi.org/10.1111/j.1360-0443.1990.tb01624.x
+-   Alexander, B. K., & Schweighofer, A. R. F. (1988). Behavioural Addictions. *Canadian Journal of Psychology*, 29, 151-163.
+
+-   Grall-Bronnec, M., Bulteau, S., Victorri-Vigneau, C., Bouju, G., & Sauvaget, A. (2015). Fortune telling addiction: Unfortunately a serious topic about a case report. *Journal of Behavioral Addictions*, *4*(1), 27-31. <https://doi.org/10.1556/jba.4.2015.1.7>
+
+-   Haslam, N. (2016). Concept creep: Psychology's expanding concepts of harm and pathology. *Psychological Inquiry, 27*(1), 1--17. [https://doi.org/10.1080/1047840X.2016.1082418](https://psycnet.apa.org/doi/10.1080/1047840X.2016.1082418)
+
+-   Jaffe J. H. (1990). Trivializing dependence. British journal of addiction, 85(11), 1425--1431. <https://doi.org/10.1111/j.1360-0443.1990.tb01624.x>
 :::
 
 ------------------------------------------------------------------------

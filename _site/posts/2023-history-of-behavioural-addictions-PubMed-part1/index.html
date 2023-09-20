@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rob Heirene">
-<meta name="dcterms.date" content="2023-08-25">
+<meta name="dcterms.date" content="2023-10-30">
 
 <title>Rob Heirene - The history of behavioural addictions research (according to PubMed): Part 1</title>
 <style>
@@ -173,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">August 25, 2023</p>
+        <p class="date">October 30, 2023</p>
       </div>
     </div>
     
@@ -189,10 +189,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#data-code-set-up" id="toc-data-code-set-up" class="nav-link active" data-scroll-target="#data-code-set-up">Data &amp; code set-up</a></li>
+  <li><a href="#my-approach" id="toc-my-approach" class="nav-link active" data-scroll-target="#my-approach">My approach</a></li>
+  <li><a href="#data-code-set-up" id="toc-data-code-set-up" class="nav-link" data-scroll-target="#data-code-set-up">Data &amp; code set-up</a></li>
   <li><a href="#all-addictions-found" id="toc-all-addictions-found" class="nav-link" data-scroll-target="#all-addictions-found">All “addictions” found</a></li>
   <li><a href="#patterns-over-time" id="toc-patterns-over-time" class="nav-link" data-scroll-target="#patterns-over-time">Patterns over time</a></li>
   <li><a href="#next-up" id="toc-next-up" class="nav-link" data-scroll-target="#next-up">Next up</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
   </ul>
 </nav>
     </div>
@@ -202,10 +204,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
-<p>The world of behavioural addictions research is a strange place.</p>
-<p>FIX UP ALL THE PLOT TITLES TO BE CONSITENT</p>
-<p>MAKE BAR CHART RACE A LITTLE WIDER</p>
-<p>Don’t always focus on the “addiction” but mention it</p>
+<p>The phrase “behavioural addiction” starts to appear in academic articles in the late 80s and early 90s (). Soon after, Jaffe (1990) made the argument that “addiction” was was being used too liberally—it was being applied to too many non-drug-related behaviours and we were at risk of “<em>trivializing dependence</em>”.</p>
+<p>As we’ll see, these concerns didn’t do much to stem the expansion of addiction’s definition. Since the 1990s the net of addiction has been cast wider and wider, capturing more and more repetitive and/or compulsive behaviour patterns.</p>
+<p>Fears that the term will lose all meaning remain heightened in academic and medical circles (). And for good reason — individuals who experience addictions to opioid-based drugs or alcohol can suffer serious, life-threatening harm and truly awful withdrawal episodes. Assigning the same label to describe their experience and someone who has a largely inconsequential difficulty controlling their spending or screen use could indeed trivialise the former’s condition.</p>
+<p>Such concerns are not unique to addiction. “Psychiatrization” and “concept creep” have been used to describe the seemingly ever-widening definitions mental health disorders, abuse, and trauma, as well as the “medicalisation” of these in the form of over-diagnosis and treatment (Haslam, 2016; Haslam et al., 2021).</p>
+<p>Whilst I’m aware of some bizzare publications on this topic (e.g., <a href="https://doi.org/10.1556/jba.4.2015.1.7">this 2015 study</a> on fortune telling addiction), I’ve always been curious about the extent to which this is really occurring in the addictions field. <strong>How many behaviours really are being labelled as “addictions” in the peer-reviewed literature? And how many studies are there on these “new” addictions?</strong></p>
+<p>These are some the questons I hope to answer in this series of posts.</p>
+<section id="my-approach" class="level3">
+<h3 class="anchored" data-anchor-id="my-approach">My approach</h3>
+<p>Okay, so my goal here was to try and find every peer-reviewed paper that has ever discussed a behaviour (e.g., gaming, social media use etc.) as a form of addiction. Well, every paper published on the PubMed database. I chose PubMed for two reasons:</p>
+<ol type="1">
+<li>it indexes around 30,000 different journals/outlets, including most of the journals that I know publish research in this area</li>
+<li>the search results and article data can be automatically downloaded using the <code>rentrez</code> R package (trying to manually download summary data for every study ever published on behavioural addictions would be unmanageably time consuming!).</li>
+</ol>
+<p>So, I first developed and trialled a PubMed search string to try and identify relavent papers on each behavioural addiction (e.g., “social-network-use disorder” OR “social media addiction”). After trialling and refining each search string on the PubMed site, I used <code>rentrez</code> to pull the results from the search string for every “addiction” I could find, individually screening the results for duplicates or irrelevant articles (e.g., errata).</p>
+<p>I used a combination of personal knowledge of this area, results from PubMed searches for other addictions, and Google searches for phrases akin to “bizzare addictions” (a very systematic approach) to identify the different types of “addiction” to search for.</p>
+<p>The basic criteria for inclusion was</p>
+</section>
 <section id="data-code-set-up" class="level3">
 <h3 class="anchored" data-anchor-id="data-code-set-up">Data &amp; code set-up</h3>
 <p>Okay, so let’s get started with exploring the data. I’ll first load all the required packages and fonts for figures.</p>
@@ -371,24 +386,24 @@ Are these all “true” addictions?
 </details>
 <div class="cell-output-display">
 
-<div id="fbvuhpneli" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<div id="entrfvvhpd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>@import url("https://fonts.googleapis.com/css2?family=Reem+Kufi:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-#fbvuhpneli table {
+#entrfvvhpd table {
   font-family: 'Reem Kufi', system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#fbvuhpneli thead, #fbvuhpneli tbody, #fbvuhpneli tfoot, #fbvuhpneli tr, #fbvuhpneli td, #fbvuhpneli th {
+#entrfvvhpd thead, #entrfvvhpd tbody, #entrfvvhpd tfoot, #entrfvvhpd tr, #entrfvvhpd td, #entrfvvhpd th {
   border-style: none;
 }
 
-#fbvuhpneli p {
+#entrfvvhpd p {
   margin: 0;
   padding: 0;
 }
 
-#fbvuhpneli .gt_table {
+#entrfvvhpd .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -414,12 +429,12 @@ Are these all “true” addictions?
   border-left-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_caption {
+#entrfvvhpd .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#fbvuhpneli .gt_title {
+#entrfvvhpd .gt_title {
   color: #FFFFFF;
   font-size: 125%;
   font-weight: initial;
@@ -431,7 +446,7 @@ Are these all “true” addictions?
   border-bottom-width: 0;
 }
 
-#fbvuhpneli .gt_subtitle {
+#entrfvvhpd .gt_subtitle {
   color: #FFFFFF;
   font-size: 85%;
   font-weight: initial;
@@ -443,7 +458,7 @@ Are these all “true” addictions?
   border-top-width: 0;
 }
 
-#fbvuhpneli .gt_heading {
+#entrfvvhpd .gt_heading {
   background-color: #002B36;
   text-align: center;
   border-bottom-color: #002B36;
@@ -455,13 +470,13 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_bottom_border {
+#entrfvvhpd .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_col_headings {
+#entrfvvhpd .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -476,7 +491,7 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_col_heading {
+#entrfvvhpd .gt_col_heading {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -496,7 +511,7 @@ Are these all “true” addictions?
   overflow-x: hidden;
 }
 
-#fbvuhpneli .gt_column_spanner_outer {
+#entrfvvhpd .gt_column_spanner_outer {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -508,15 +523,15 @@ Are these all “true” addictions?
   padding-right: 4px;
 }
 
-#fbvuhpneli .gt_column_spanner_outer:first-child {
+#entrfvvhpd .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#fbvuhpneli .gt_column_spanner_outer:last-child {
+#entrfvvhpd .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#fbvuhpneli .gt_column_spanner {
+#entrfvvhpd .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -528,11 +543,11 @@ Are these all “true” addictions?
   width: 100%;
 }
 
-#fbvuhpneli .gt_spanner_row {
+#entrfvvhpd .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#fbvuhpneli .gt_group_heading {
+#entrfvvhpd .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -558,7 +573,7 @@ Are these all “true” addictions?
   text-align: left;
 }
 
-#fbvuhpneli .gt_empty_group_heading {
+#entrfvvhpd .gt_empty_group_heading {
   padding: 0.5px;
   color: #FFFFFF;
   background-color: #002B36;
@@ -573,15 +588,15 @@ Are these all “true” addictions?
   vertical-align: middle;
 }
 
-#fbvuhpneli .gt_from_md > :first-child {
+#entrfvvhpd .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fbvuhpneli .gt_from_md > :last-child {
+#entrfvvhpd .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fbvuhpneli .gt_row {
+#entrfvvhpd .gt_row {
   padding-top: 1.6px;
   padding-bottom: 1.6px;
   padding-left: 5px;
@@ -600,7 +615,7 @@ Are these all “true” addictions?
   overflow-x: hidden;
 }
 
-#fbvuhpneli .gt_stub {
+#entrfvvhpd .gt_stub {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -613,7 +628,7 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#fbvuhpneli .gt_stub_row_group {
+#entrfvvhpd .gt_stub_row_group {
   color: #FFFFFF;
   background-color: #002B36;
   font-size: 100%;
@@ -627,15 +642,15 @@ Are these all “true” addictions?
   vertical-align: top;
 }
 
-#fbvuhpneli .gt_row_group_first td {
+#entrfvvhpd .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#fbvuhpneli .gt_row_group_first th {
+#entrfvvhpd .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#fbvuhpneli .gt_summary_row {
+#entrfvvhpd .gt_summary_row {
   color: #FFFFFF;
   background-color: #002B36;
   text-transform: inherit;
@@ -645,16 +660,16 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#fbvuhpneli .gt_first_summary_row {
+#entrfvvhpd .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_first_summary_row.thick {
+#entrfvvhpd .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#fbvuhpneli .gt_last_summary_row {
+#entrfvvhpd .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -664,7 +679,7 @@ Are these all “true” addictions?
   border-bottom-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_grand_summary_row {
+#entrfvvhpd .gt_grand_summary_row {
   color: #FFFFFF;
   background-color: #002B36;
   text-transform: inherit;
@@ -674,7 +689,7 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#fbvuhpneli .gt_first_grand_summary_row {
+#entrfvvhpd .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -684,7 +699,7 @@ Are these all “true” addictions?
   border-top-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_last_grand_summary_row_top {
+#entrfvvhpd .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -694,11 +709,11 @@ Are these all “true” addictions?
   border-bottom-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_striped {
+#entrfvvhpd .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#fbvuhpneli .gt_table_body {
+#entrfvvhpd .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -707,7 +722,7 @@ Are these all “true” addictions?
   border-bottom-color: #289998;
 }
 
-#fbvuhpneli .gt_footnotes {
+#entrfvvhpd .gt_footnotes {
   color: #FFFFFF;
   background-color: #002B36;
   border-bottom-style: none;
@@ -721,7 +736,7 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_footnote {
+#entrfvvhpd .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -730,7 +745,7 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#fbvuhpneli .gt_sourcenotes {
+#entrfvvhpd .gt_sourcenotes {
   color: #FFFFFF;
   background-color: #002B36;
   border-bottom-style: none;
@@ -744,7 +759,7 @@ Are these all “true” addictions?
   border-right-color: #D3D3D3;
 }
 
-#fbvuhpneli .gt_sourcenote {
+#entrfvvhpd .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -752,63 +767,63 @@ Are these all “true” addictions?
   padding-right: 5px;
 }
 
-#fbvuhpneli .gt_left {
+#entrfvvhpd .gt_left {
   text-align: left;
 }
 
-#fbvuhpneli .gt_center {
+#entrfvvhpd .gt_center {
   text-align: center;
 }
 
-#fbvuhpneli .gt_right {
+#entrfvvhpd .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fbvuhpneli .gt_font_normal {
+#entrfvvhpd .gt_font_normal {
   font-weight: normal;
 }
 
-#fbvuhpneli .gt_font_bold {
+#entrfvvhpd .gt_font_bold {
   font-weight: bold;
 }
 
-#fbvuhpneli .gt_font_italic {
+#entrfvvhpd .gt_font_italic {
   font-style: italic;
 }
 
-#fbvuhpneli .gt_super {
+#entrfvvhpd .gt_super {
   font-size: 65%;
 }
 
-#fbvuhpneli .gt_footnote_marks {
+#entrfvvhpd .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#fbvuhpneli .gt_asterisk {
+#entrfvvhpd .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#fbvuhpneli .gt_indent_1 {
+#entrfvvhpd .gt_indent_1 {
   text-indent: 5px;
 }
 
-#fbvuhpneli .gt_indent_2 {
+#entrfvvhpd .gt_indent_2 {
   text-indent: 10px;
 }
 
-#fbvuhpneli .gt_indent_3 {
+#entrfvvhpd .gt_indent_3 {
   text-indent: 15px;
 }
 
-#fbvuhpneli .gt_indent_4 {
+#entrfvvhpd .gt_indent_4 {
   text-indent: 20px;
 }
 
-#fbvuhpneli .gt_indent_5 {
+#entrfvvhpd .gt_indent_5 {
   text-indent: 25px;
 }
 </style>
@@ -824,73 +839,79 @@ Are these all “true” addictions?
   <tbody class="gt_table_body">
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Gambling</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #289998; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3372</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #289998; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">44.11</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #289998; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">32.45</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Internet</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #186F73; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2154</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #186F73; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">20.73</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Gaming</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #0E565D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1401</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #0E565D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">18.33</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #0E565D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">13.48</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Behavioural Addictions</td>
-<td headers="n" class="gt_row gt_center" style="background-color: #06434C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">795</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #06434C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">10.40</td></tr>
+<td headers="n" class="gt_row gt_center" style="background-color: #0D535A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1320</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #0D535A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">12.70</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Smart Phone</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #06414A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">753</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #06414A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">9.85</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #06414A; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">7.25</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Exercise</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #02353F; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">351</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #02353F; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">4.59</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #02353F; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.38</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Work</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #02333D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">262</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #02333D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.43</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #02333D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2.52</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Sex</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #02323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">255</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #02323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.34</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #02323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2.45</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Social Media</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #01323C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">245</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #01323D; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3.21</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #01323C; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2.36</td></tr>
+    <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Shopping</td>
+<td headers="n" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">67</td>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.64</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Pornography</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">61</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.80</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002D38; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.59</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Study</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">33</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.43</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.32</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Tanning</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">29</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.38</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.28</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Cybersex</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">26</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.34</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002C37; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.25</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Hair Pulling</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">13</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.17</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.13</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Running</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">10</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.13</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.10</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Love</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">9</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.12</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.09</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Selfie</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">8</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.10</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.08</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Extreme Sport</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">6</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.08</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.06</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Fortune Telling</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">3</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.04</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Youtube</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.02</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Crime</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.02</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Dance</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.02</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Joyriding</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.02</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Polysurgical</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">2</td>
-<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.03</td></tr>
+<td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.02</td></tr>
     <tr><td headers="Label" class="gt_row gt_right" style="border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36; background-color: #002B36; color: #F5F7F0;">Death</td>
 <td headers="n" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">1</td>
 <td headers="percent" class="gt_row gt_center" style="background-color: #002B36; color: #FFFFFF; border-top-width: 1.8px; border-top-style: solid; border-top-color: #002B36; border-bottom-width: 1.8px; border-bottom-style: solid; border-bottom-color: #002B36;">0.01</td></tr>
@@ -1164,7 +1185,7 @@ Are these all “true” addictions?
 </div>
 </div>
 <p>&nbsp;</p>
-<p>Well that was fun, but it’s actually quite difficult to see exactly what’s going on at every year given how many different supposed addictions there are. Let’s try another approach:</p>
+<p>Well that was fun, but it’s actually quite difficult to see exactly what’s going on at every year given how many different supposed addictions there are. Let’s try another approach (this plot really doesn’t play well with mobile, so it’s best viewed on a PC/tablet):</p>
 <div class="cell" data-layout-align="center">
 <details>
 <summary>Code: Dumbbell plot (publications by addiction)</summary>
@@ -1283,8 +1304,34 @@ Are these all “true” addictions?
 <h3 class="anchored" data-anchor-id="next-up">Next up</h3>
 <p>Well, that’s probably enough for this first post. If you have any thoughts on my analyses so far, or if you know of some strange addiction that I didn’t find, then I’d love to hear from you – you can use the comments section below or get in touch using any of the links in the navigation bar at the top of this page :)</p>
 <p>In the next post, I look at how this work is distributed geographically in terms of author locations, the journals these papers are published in, and the frequency of article types (review, meta-analysis, letters etc.). You can read it here.</p>
+<p>Last updated:</p>
+</section>
+<section id="references" class="level3">
+<h3 class="anchored" data-anchor-id="references">References</h3>
 <div class="callout callout-style-simple callout-tip no-icon callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Expand to see the list of references used in this post
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div class="callout-body-container callout-body">
+<ul>
+<li><p>Alexander, B. K., &amp; Schweighofer, A. R. F. (1988). Behavioural Addictions. <em>Canadian Journal of Psychology</em>, 29, 151-163.</p></li>
+<li><p>Grall-Bronnec, M., Bulteau, S., Victorri-Vigneau, C., Bouju, G., &amp; Sauvaget, A. (2015). Fortune telling addiction: Unfortunately a serious topic about a case report.&nbsp;<em>Journal of Behavioral Addictions</em>,&nbsp;<em>4</em>(1), 27-31.&nbsp;<a href="https://doi.org/10.1556/jba.4.2015.1.7" class="uri">https://doi.org/10.1556/jba.4.2015.1.7</a></p></li>
+<li><p>Haslam, N. (2016). Concept creep: Psychology’s expanding concepts of harm and pathology.&nbsp;<em>Psychological Inquiry, 27</em>(1), 1–17.&nbsp;<a href="https://psycnet.apa.org/doi/10.1080/1047840X.2016.1082418">https://doi.org/10.1080/1047840X.2016.1082418</a></p></li>
+<li><p>Jaffe J. H. (1990). Trivializing dependence.&nbsp;British journal of addiction,&nbsp;85(11), 1425–1431. <a href="https://doi.org/10.1111/j.1360-0443.1990.tb01624.x" class="uri">https://doi.org/10.1111/j.1360-0443.1990.tb01624.x</a></p></li>
+</ul>
+</div>
+</div>
+</div>
+<hr>
+<div class="callout callout-style-simple callout-tip no-icon callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -1293,7 +1340,7 @@ Expand for session information
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-2" class="callout-2-contents callout-collapse collapse">
+<div id="callout-3" class="callout-3-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
 <details>
@@ -1311,7 +1358,7 @@ Expand for session information
  collate  English_United Kingdom.utf8
  ctype    English_United Kingdom.utf8
  tz       Europe/London
- date     2023-08-29
+ date     2023-09-19
  pandoc   3.1.1 @ C:/Program Files/RStudio/resources/app/bin/quarto/bin/tools/ (via rmarkdown)
 
 ─ Packages ───────────────────────────────────────────────────────────────────
@@ -1355,7 +1402,6 @@ Expand for session information
 </div>
 </div>
 </div>
-<hr>
 <script src="https://giscus.app/client.js" data-repo="rheirene/Quarto_Website" data-repo-id="R_kgDOJ0d4fA" data-category-id="DIC_kwDOJ0d4fM4CXv7I" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark_dimmed" data-lang="en" crossorigin="anonymous" async="">
 </script>
 <p><span class="hidden" data-render-id="quarto-int-sidebar-title">Rob Heirene</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Rob Heirene</span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/about.html">/about.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Addiction Science Blog">Addiction Science Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/posts.html">/posts.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Publications">Publications</span> <span class="hidden" data-render-id="quarto-int-navbar:/publication.html">/publication.html</span> <span class="hidden" data-render-id="quarto-navbar-tools:mailto:robheirene@gmail.com">mailto:robheirene@gmail.com</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://github.com/rheirene">https://github.com/rheirene</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en">https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://osf.io/atwg5/">https://osf.io/atwg5/</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://twitter.com/RHeirene">https://twitter.com/RHeirene</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://www.linkedin.com/in/robert-heirene/">https://www.linkedin.com/in/robert-heirene/</span> <span class="hidden" data-render-id="footer-left">Copyright 2023, Rob Heirene (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span> <span class="hidden" data-render-id="footer-right">View source code on <a href="https://github.com/rheirene/Quarto_Website">Github</a></span></p>

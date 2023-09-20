@@ -62,61 +62,61 @@ showtext_auto(enable = TRUE)
 #| code-fold: true
 #| code-summary: "Show code used to create chart"
 
-# Load manually input data:
-gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>% select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
-
-# gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description) # Load in session
-
-
-# Make sunburst chart:
- gam_prevention_sunburst<- plot_ly(gam_prevention_data,
-                                   ids = ~IDs,
-                                   labels = ~Label,
-                                   parents = ~Parents,
-                                   hoverinfo = "text",  # Needed for below argument to work
-                                   hovertext = ~Description,
-                                   type = 'sunburst',
-                                   maxdepth = 3,
-                                   insidetextorientation = 'radial',
-                                   marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color
-                                   sort = TRUE) %>%
-   plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),
-         font = list(
-           size = 14,
-           family = "Reem Kufi", # change main font
-                     color = "#FFF7E7"), # Set main font so the central layer text can be seen
-         paper_bgcolor = '#002B36', # background consistent with site
-         plot_bgcolor = '#002B36',
-         hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size and family for hover text)
- 
-# The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:
-
-# Get the URL for the "Reem Kufi" font from Google Fonts:
-reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
-
-# Create custom CSS:
-reem_kufi_css <- paste0(
-  "<style type = 'text/css'>",
-    "@font-face { ",
-      "font-family: 'Reem Kufi'; ", 
-      "src: url('", reem_kufi_file, "'); ",
-    "}",
-  "</style>"
-)
-
-
-# Add the CSS as a dependency for the plotly plot:
-gam_prevention_sunburst$dependencies <- c(
-  gam_prevention_sunburst$dependencies,
-  list(
-    htmltools::htmlDependency(
-      name = "reem-kufi-font", 
-      version = "0",  
-      src = "",
-      head = reem_kufi_css)))
-
-# ****Uncomment to update****
-# Save plot as a HTML file (it doesn't render well with quarto otherwise):
+# # Load manually input data:
+# gam_prevention_data<- read.csv("gamb_prevention_data.csv") %>% select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice
+# 
+# # gam_prevention_data<- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %>% select(Layer:Description) # Load in session
+# 
+# 
+# # Make sunburst chart:
+#  gam_prevention_sunburst<- plot_ly(gam_prevention_data,
+#                                    ids = ~IDs,
+#                                    labels = ~Label,
+#                                    parents = ~Parents,
+#                                    hoverinfo = "text",  # Needed for below argument to work
+#                                    hovertext = ~Description,
+#                                    type = 'sunburst',
+#                                    maxdepth = 3,
+#                                    insidetextorientation = 'radial',
+#                                    marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color
+#                                    sort = TRUE) %>%
+#    plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),
+#          font = list(
+#            size = 14,
+#            family = "Reem Kufi", # change main font
+#                      color = "#FFF7E7"), # Set main font so the central layer text can be seen
+#          paper_bgcolor = '#002B36', # background consistent with site
+#          plot_bgcolor = '#002B36',
+#          hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size and family for hover text)
+#  
+# # The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:
+# 
+# # Get the URL for the "Reem Kufi" font from Google Fonts:
+# reem_kufi_file <- showtextdb::google_fonts("Reem Kufi")$regular_url 
+# 
+# # Create custom CSS:
+# reem_kufi_css <- paste0(
+#   "<style type = 'text/css'>",
+#     "@font-face { ",
+#       "font-family: 'Reem Kufi'; ", 
+#       "src: url('", reem_kufi_file, "'); ",
+#     "}",
+#   "</style>"
+# )
+# 
+# 
+# # Add the CSS as a dependency for the plotly plot:
+# gam_prevention_sunburst$dependencies <- c(
+#   gam_prevention_sunburst$dependencies,
+#   list(
+#     htmltools::htmlDependency(
+#       name = "reem-kufi-font", 
+#       version = "0",  
+#       src = "",
+#       head = reem_kufi_css)))
+# 
+# # ****Uncomment to update****
+# # Save plot as a HTML file (it doesn't render well with quarto otherwise):
 # saveWidget(gam_prevention_sunburst, '/posts/2023-gambling-harms-chart/sunburst_fig.html')
 
 ```
@@ -182,6 +182,14 @@ There will eventually be a lot of information presented here, so I've hidden the
 -   This [2023 study](https://doi.org/10.1111/add.16179) collected PGSI responses from nearly 10,000 Canadians who held anaccount with Loto-Québec (a provincial Crown Corporation) in Quebec, Canada. They also collected their preceding 12 months of behavioural account data from Loto-Québec and used this data to try and predict PGSI scores (5+ or 8+) using six different machine learning models: Decision trees, K-nearest neighbours, Support vector machines, logistic regression, artificial neural networks, Random forests. The Random Forest model had the highest predictive accuracy (AUC = 84.3% for 5+; 82.5% for 8+). Unlike most studies that try to do something similar, this one actually shares the underlying code and a wealth of [supplemental detail](https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fadd.16179&file=add16179-sup-0001-LQ+Paper+Supplementary+Materials+V5.0_R2.pdf) regarding methods and results (well done to the authors!).
 
     -   Murch, WS, Kairouz, S, Dauphinais, S, Picard, E, Costes, J-M, French, M. Using machine learning to retrospectively predict self-reported gambling problems in Quebec. *Addiction*. 2023; 118( 8): 1569-- 1578. [https://doi.org/10.1111/add.16179](https://doi.org/10.1111/add.16179%20https://doi.org/10.1111/add.16179)
+:::
+
+::: {.callout-note appearance="minimal" icon="false"}
+## Affordability checks
+
+I can't find any published research on this topic (let me know if you know of something!), but this letter from the UK Gambling Commission clarifies what affordability checks would look like in practice in the UK after they were recommended in the [2023 Gambling White Paper](https://www.gov.uk/government/publications/high-stakes-gambling-reform-for-the-digital-age):
+
+-   Rhodes, A. (2023). Financial risk check proposals -- open letter to Recent Post readers. <https://www.gamblingcommission.gov.uk/news/article/financial-risk-check-proposals-open-letter-to-racing-post-readers>
 :::
 
 #### Public health campaigns

@@ -257,61 +257,61 @@ Work in progress
 <div class="cell">
 <details>
 <summary>Show code used to create chart</summary>
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load manually input data:</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>gam_prevention_data<span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"gamb_prevention_data.csv"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Layer<span class="sc">:</span>Description) <span class="co"># Warning, something as simple as an apostrophe and this dataset can cause it to not play nice</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_data&lt;- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %&gt;% select(Layer:Description) # Load in session</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Make sunburst chart:</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a> gam_prevention_sunburst<span class="ot">&lt;-</span> <span class="fu">plot_ly</span>(gam_prevention_data,</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">ids =</span> <span class="sc">~</span>IDs,</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">labels =</span> <span class="sc">~</span>Label,</span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">parents =</span> <span class="sc">~</span>Parents,</span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hoverinfo =</span> <span class="st">"text"</span>,  <span class="co"># Needed for below argument to work</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">hovertext =</span> <span class="sc">~</span>Description,</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">type =</span> <span class="st">'sunburst'</span>,</span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">maxdepth =</span> <span class="dv">3</span>,</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">insidetextorientation =</span> <span class="st">'radial'</span>,</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">marker =</span> <span class="fu">list</span>(<span class="at">line =</span> <span class="fu">list</span>(<span class="at">width =</span> <span class="dv">5</span>, <span class="at">color =</span> <span class="st">'#002B36'</span>)),  <span class="co"># Adjust border size + color</span></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>                                   <span class="at">sort =</span> <span class="cn">TRUE</span>) <span class="sc">%&gt;%</span></span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>   plotly<span class="sc">::</span><span class="fu">layout</span>(<span class="at">colorway =</span> <span class="fu">c</span>(<span class="st">"#289998"</span>, <span class="st">"#288D98"</span>, <span class="st">"#287699"</span>, <span class="st">"#7E6F98"</span>, <span class="st">"#BFB3C0"</span>, <span class="st">"#FFF7E7"</span>, <span class="st">"#E6C97F"</span>, <span class="st">"#8C8033"</span>, <span class="st">"#7E9F6E"</span>, <span class="st">"#65BBA3"</span>, <span class="st">"#94C8C0"</span>, <span class="st">"#998F28"</span>, <span class="st">"#62A899"</span>, <span class="st">"#986289"</span>, <span class="st">"#289970"</span>),</span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>         <span class="at">font =</span> <span class="fu">list</span>(</span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>           <span class="at">size =</span> <span class="dv">14</span>,</span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>           <span class="at">family =</span> <span class="st">"Reem Kufi"</span>, <span class="co"># change main font</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>                     <span class="at">color =</span> <span class="st">"#FFF7E7"</span>), <span class="co"># Set main font so the central layer text can be seen</span></span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>         <span class="at">paper_bgcolor =</span> <span class="st">'#002B36'</span>, <span class="co"># background consistent with site</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>         <span class="at">plot_bgcolor =</span> <span class="st">'#002B36'</span>,</span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>         <span class="at">hoverlabel =</span> <span class="fu">list</span>(<span class="at">font =</span> <span class="fu">list</span>(<span class="at">size =</span> <span class="dv">12</span>, <span class="at">family =</span> <span class="st">"Reem Kufi"</span>)))  <span class="co"># Increase the font size and family for hover text)</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a> </span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:</span></span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the URL for the "Reem Kufi" font from Google Fonts:</span></span>
-<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a>reem_kufi_file <span class="ot">&lt;-</span> showtextdb<span class="sc">::</span><span class="fu">google_fonts</span>(<span class="st">"Reem Kufi"</span>)<span class="sc">$</span>regular_url </span>
-<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># Create custom CSS:</span></span>
-<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a>reem_kufi_css <span class="ot">&lt;-</span> <span class="fu">paste0</span>(</span>
-<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a>  <span class="st">"&lt;style type = 'text/css'&gt;"</span>,</span>
-<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a>    <span class="st">"@font-face { "</span>,</span>
-<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a>      <span class="st">"font-family: 'Reem Kufi'; "</span>, </span>
-<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a>      <span class="st">"src: url('"</span>, reem_kufi_file, <span class="st">"'); "</span>,</span>
-<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a>    <span class="st">"}"</span>,</span>
-<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a>  <span class="st">"&lt;/style&gt;"</span></span>
-<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># Add the CSS as a dependency for the plotly plot:</span></span>
-<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a>gam_prevention_sunburst<span class="sc">$</span>dependencies <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
-<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a>  gam_prevention_sunburst<span class="sc">$</span>dependencies,</span>
-<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">list</span>(</span>
-<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a>    htmltools<span class="sc">::</span><span class="fu">htmlDependency</span>(</span>
-<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a>      <span class="at">name =</span> <span class="st">"reem-kufi-font"</span>, </span>
-<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a>      <span class="at">version =</span> <span class="st">"0"</span>,  </span>
-<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a>      <span class="at">src =</span> <span class="st">""</span>,</span>
-<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a>      <span class="at">head =</span> reem_kufi_css)))</span>
-<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># ****Uncomment to update****</span></span>
-<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot as a HTML file (it doesn't render well with quarto otherwise):</span></span>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># # Load manually input data:</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_data&lt;- read.csv("gamb_prevention_data.csv") %&gt;% select(Layer:Description) # Warning, something as simple as an apostrophe and this dataset can cause it to not play nice</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># # gam_prevention_data&lt;- read.csv("posts/2023-gambling-harms-chart/gamb_prevention_data.csv") %&gt;% select(Layer:Description) # Load in session</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># # Make sunburst chart:</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="co">#  gam_prevention_sunburst&lt;- plot_ly(gam_prevention_data,</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    ids = ~IDs,</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    labels = ~Label,</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    parents = ~Parents,</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    hoverinfo = "text",  # Needed for below argument to work</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    hovertext = ~Description,</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    type = 'sunburst',</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    maxdepth = 3,</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    insidetextorientation = 'radial',</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    marker = list(line = list(width = 5, color = '#002B36')),  # Adjust border size + color</span></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co">#                                    sort = TRUE) %&gt;%</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a><span class="co">#    plotly::layout(colorway = c("#289998", "#288D98", "#287699", "#7E6F98", "#BFB3C0", "#FFF7E7", "#E6C97F", "#8C8033", "#7E9F6E", "#65BBA3", "#94C8C0", "#998F28", "#62A899", "#986289", "#289970"),</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co">#          font = list(</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co">#            size = 14,</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a><span class="co">#            family = "Reem Kufi", # change main font</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a><span class="co">#                      color = "#FFF7E7"), # Set main font so the central layer text can be seen</span></span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a><span class="co">#          paper_bgcolor = '#002B36', # background consistent with site</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a><span class="co">#          plot_bgcolor = '#002B36',</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a><span class="co">#          hoverlabel = list(font = list(size = 12, family = "Reem Kufi")))  # Increase the font size and family for hover text)</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a><span class="co">#  </span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a><span class="co"># # The standard way of changing the font in ggplotly doesn't seem to work for me, and it seems like other people having the same issue. I found this workaround online (https://github.com/plotly/plotly.R/issues/2117) which I now use below to load and use the correct font in our ggplotly:</span></span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a><span class="co"># # Get the URL for the "Reem Kufi" font from Google Fonts:</span></span>
+<span id="cb2-31"><a href="#cb2-31" aria-hidden="true" tabindex="-1"></a><span class="co"># reem_kufi_file &lt;- showtextdb::google_fonts("Reem Kufi")$regular_url </span></span>
+<span id="cb2-32"><a href="#cb2-32" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-33"><a href="#cb2-33" aria-hidden="true" tabindex="-1"></a><span class="co"># # Create custom CSS:</span></span>
+<span id="cb2-34"><a href="#cb2-34" aria-hidden="true" tabindex="-1"></a><span class="co"># reem_kufi_css &lt;- paste0(</span></span>
+<span id="cb2-35"><a href="#cb2-35" aria-hidden="true" tabindex="-1"></a><span class="co">#   "&lt;style type = 'text/css'&gt;",</span></span>
+<span id="cb2-36"><a href="#cb2-36" aria-hidden="true" tabindex="-1"></a><span class="co">#     "@font-face { ",</span></span>
+<span id="cb2-37"><a href="#cb2-37" aria-hidden="true" tabindex="-1"></a><span class="co">#       "font-family: 'Reem Kufi'; ", </span></span>
+<span id="cb2-38"><a href="#cb2-38" aria-hidden="true" tabindex="-1"></a><span class="co">#       "src: url('", reem_kufi_file, "'); ",</span></span>
+<span id="cb2-39"><a href="#cb2-39" aria-hidden="true" tabindex="-1"></a><span class="co">#     "}",</span></span>
+<span id="cb2-40"><a href="#cb2-40" aria-hidden="true" tabindex="-1"></a><span class="co">#   "&lt;/style&gt;"</span></span>
+<span id="cb2-41"><a href="#cb2-41" aria-hidden="true" tabindex="-1"></a><span class="co"># )</span></span>
+<span id="cb2-42"><a href="#cb2-42" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-43"><a href="#cb2-43" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-44"><a href="#cb2-44" aria-hidden="true" tabindex="-1"></a><span class="co"># # Add the CSS as a dependency for the plotly plot:</span></span>
+<span id="cb2-45"><a href="#cb2-45" aria-hidden="true" tabindex="-1"></a><span class="co"># gam_prevention_sunburst$dependencies &lt;- c(</span></span>
+<span id="cb2-46"><a href="#cb2-46" aria-hidden="true" tabindex="-1"></a><span class="co">#   gam_prevention_sunburst$dependencies,</span></span>
+<span id="cb2-47"><a href="#cb2-47" aria-hidden="true" tabindex="-1"></a><span class="co">#   list(</span></span>
+<span id="cb2-48"><a href="#cb2-48" aria-hidden="true" tabindex="-1"></a><span class="co">#     htmltools::htmlDependency(</span></span>
+<span id="cb2-49"><a href="#cb2-49" aria-hidden="true" tabindex="-1"></a><span class="co">#       name = "reem-kufi-font", </span></span>
+<span id="cb2-50"><a href="#cb2-50" aria-hidden="true" tabindex="-1"></a><span class="co">#       version = "0",  </span></span>
+<span id="cb2-51"><a href="#cb2-51" aria-hidden="true" tabindex="-1"></a><span class="co">#       src = "",</span></span>
+<span id="cb2-52"><a href="#cb2-52" aria-hidden="true" tabindex="-1"></a><span class="co">#       head = reem_kufi_css)))</span></span>
+<span id="cb2-53"><a href="#cb2-53" aria-hidden="true" tabindex="-1"></a><span class="co"># </span></span>
+<span id="cb2-54"><a href="#cb2-54" aria-hidden="true" tabindex="-1"></a><span class="co"># # ****Uncomment to update****</span></span>
+<span id="cb2-55"><a href="#cb2-55" aria-hidden="true" tabindex="-1"></a><span class="co"># # Save plot as a HTML file (it doesn't render well with quarto otherwise):</span></span>
 <span id="cb2-56"><a href="#cb2-56" aria-hidden="true" tabindex="-1"></a><span class="co"># saveWidget(gam_prevention_sunburst, '/posts/2023-gambling-harms-chart/sunburst_fig.html')</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 </div>
@@ -446,11 +446,27 @@ Player monitoring
 </div>
 </div>
 </div>
+<div class="callout callout-style-simple callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Affordability checks
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>I can’t find any published research on this topic (let me know if you know of something!), but this letter from the UK Gambling Commission clarifies what affordability checks would look like in practice in the UK after they were recommended in the <a href="https://www.gov.uk/government/publications/high-stakes-gambling-reform-for-the-digital-age">2023 Gambling White Paper</a>:</p>
+<ul>
+<li>Rhodes, A. (2023). Financial risk check proposals – open letter to Recent Post readers. <a href="https://www.gamblingcommission.gov.uk/news/article/financial-risk-check-proposals-open-letter-to-racing-post-readers" class="uri">https://www.gamblingcommission.gov.uk/news/article/financial-risk-check-proposals-open-letter-to-racing-post-readers</a></li>
+</ul>
+</div>
+</div>
 </section>
 <section id="public-health-campaigns" class="level4">
 <h4 class="anchored" data-anchor-id="public-health-campaigns">Public health campaigns</h4>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-8-contents" aria-controls="callout-8" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -459,7 +475,7 @@ Advertising campaigns
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-8" class="callout-8-contents callout-collapse collapse">
+<div id="callout-9" class="callout-9-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li><p>This <a href="https://doi.org/10.1016/j.puhe.2023.08.009">2023 study</a> discusses the ‘Odds Are: They Win’ messaging campaign implemented in the UK (Manchester) towards the end of 2022 ( to coincide with the Football World Cup). The authors call this campaign a “disruptive innovation”, given the focus of messages on the gambling industry, rather than individual responsibility. Several different advertisements were displayed over a three-month period on social media and in Greater Manchester’s tram system and coffee shops. Look at the paper to see how the advertisements were displayed, but they included things like “<em>Gambling harm is not only financial, it can impact your health, well-being, and relationships</em>” and “<em>The main purpose of gambling companies to maximise profit, generated through customer losse</em>s”. A service evaluation of the programme (the results of which can be found <a href="https://greatermanchester-ca.gov.uk/media/7896/odds-are-they-win-campaign-report-summary.pdf">here</a>) suggested the campaign had a wide reach (16,000+ unique clicks to landing page). This all sounds great and I support such messages, but there’s no comparison/control so we can’t draw much from this article about this type of messaging just yet.</p>
@@ -474,7 +490,7 @@ Advertising campaigns
 <section id="blocking-tools" class="level4">
 <h4 class="anchored" data-anchor-id="blocking-tools">Blocking tools</h4>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-9-contents" aria-controls="callout-9" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -483,7 +499,7 @@ Bank gambling blocks
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-9" class="callout-9-contents callout-collapse collapse">
+<div id="callout-10" class="callout-10-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>This <a href="https://d1ygf46rsya1tb.cloudfront.net/prod/uploads/2023/06/GRFH_Bank_Gambling_Blocks_Workshop_Summary.pdf">2023 report</a> from GamCare summarises the outcomes and recommendations from a virtual workshop on bank gambling block involving researchers, representatives from the financial and gambling industries, gambling support services, debt and money advice services, and individuals with lived experience. They make a number of recommendations for how banks can improve their blocking tools not discussed here. Key findings:</p>
 <ul>
@@ -499,7 +515,7 @@ Bank gambling blocks
 <section id="product-design" class="level4">
 <h4 class="anchored" data-anchor-id="product-design">Product design</h4>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-10-contents" aria-controls="callout-10" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -508,7 +524,7 @@ Limit anchors
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-10" class="callout-10-contents callout-collapse collapse">
+<div id="callout-11" class="callout-11-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <ul>
 <li>This <a href="https://www.bi.team/publications/applying-behavioural-insights-to-design-safer-gambling-tools/">2021 report</a> by the UK Behavioural Insights Team involved a trial of different deposit limit anchors (i.e., potential limit values presented in a dropdown menu to consumers when first setting their limit) with three arms: [1] a business as usual condition (with anchors ranging from £5 to £100,000), [2] anchors only as high as £250, and [3] a free text box to enter a desired limit with no visible anchors. Existing bet 365 customers about deposit limits were randomly selected to be sent prompts encouraging them to set limits between January–April 2020. 1,731 participants split roughly evenly across the 3 arms set limits. Customers in the control (arm 1) group set the highest limits (Mdn = £14.3, M = £1601), followed by those in the reduced anchor group (arm 2; Mdn = £8.3, M = £230.8), and the free-text box group (arm 3; Mdn = £7.1, M = £308.78). Customers in the 2nd and 3rd arm were slightly more likely to remove their limit in the trial period, but the difference was not statistically significant.</li>
@@ -517,7 +533,7 @@ Limit anchors
 </div>
 </div>
 <div class="callout callout-style-simple callout-note no-icon callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-12-contents" aria-controls="callout-12" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
@@ -526,7 +542,7 @@ Friction based strategies
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
-<div id="callout-11" class="callout-11-contents callout-collapse collapse">
+<div id="callout-12" class="callout-12-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <p>Coming soon!</p>
 </div>
