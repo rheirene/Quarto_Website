@@ -114,9 +114,8 @@ showtext_auto(enable = TRUE)
 #       version = "0",  
 #       src = "",
 #       head = reem_kufi_css)))
-# 
-# # ****Uncomment to update****
-# # Save plot as a HTML file (it doesn't render well with quarto otherwise):
+# ****Uncomment to update****
+# Save plot as a HTML file (it doesn't render well with quarto otherwise):
 # saveWidget(gam_prevention_sunburst, '/posts/2023-gambling-harms-chart/sunburst_fig.html')
 
 ```
@@ -184,7 +183,7 @@ There will eventually be a lot of information presented here, so I've hidden the
     -   Murch, WS, Kairouz, S, Dauphinais, S, Picard, E, Costes, J-M, French, M. Using machine learning to retrospectively predict self-reported gambling problems in Quebec. *Addiction*. 2023; 118( 8): 1569-- 1578. [https://doi.org/10.1111/add.16179](https://doi.org/10.1111/add.16179%20https://doi.org/10.1111/add.16179)
 :::
 
-::: {.callout-note appearance="minimal" icon="false"}
+::: {.callout-note collapse="true" appearance="minimal" icon="false"}
 ## Affordability checks
 
 I can't find any published research on this topic (let me know if you know of something!), but this letter from the UK Gambling Commission clarifies what affordability checks would look like in practice in the UK after they were recommended in the [2023 Gambling White Paper](https://www.gov.uk/government/publications/high-stakes-gambling-reform-for-the-digital-age):
