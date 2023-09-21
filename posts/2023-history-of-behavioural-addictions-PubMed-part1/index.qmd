@@ -1,13 +1,15 @@
 ---
 title: "The history of behavioural addictions research (according to PubMed): Part 1"
-description: ""
+description: "A deep delve into the weird world of behavioural addictions research"
 author:
   - name: Rob Heirene
-categories: [Gambling] 
+categories: [Addiction] 
 date: 2023-10-30
 image: total_year_gganimate.gif
 draft: true 
 ---
+
+### Background
 
 The phrase "behavioural addiction" starts to appear in academic articles in the late 80s and early 90s (). Soon after, Jaffe (1990) made the argument that "addiction" was was being used too liberally---it was being applied to too many non-drug-related behaviours and we were at risk of "*trivializing dependence*".
 
@@ -17,20 +19,22 @@ Fears that the term will lose all meaning remain heightened in academic and medi
 
 Such concerns are not unique to addiction. "Psychiatrization" and "concept creep" have been used to describe the seemingly ever-widening definitions mental health disorders, abuse, and trauma, as well as the "medicalisation" of these in the form of over-diagnosis and treatment (Haslam, 2016; Haslam et al., 2021).
 
-Whilst I'm aware of some bizzare publications on this topic (e.g., [this 2015 study](https://doi.org/10.1556/jba.4.2015.1.7) on fortune telling addiction), I've always been curious about the extent to which this is really occurring in the addictions field. **How many behaviours really are being labelled as "addictions" in the peer-reviewed literature? And how many studies are there on these "new" addictions?**
+Whilst I'm aware of some bizarre publications on this topic (like [this 2015 study](https://doi.org/10.1556/jba.4.2015.1.7) on fortune telling addiction), I've always been curious about the extent to which this is really occurring in the addictions field.
 
-These are some the questons I hope to answer in this series of posts.
+> **How many behaviours really are being labelled as "addictions" in the peer-reviewed literature? And how many studies are there on these "new" addictions?**
+
+These are some the questions I hope to answer in this series of posts.
 
 ### My approach
 
 Okay, so my goal here was to try and find every peer-reviewed paper that has ever discussed a behaviour (e.g., gaming, social media use etc.) as a form of addiction. Well, every paper published on the PubMed database. I chose PubMed for two reasons:
 
 1.  it indexes around 30,000 different journals/outlets, including most of the journals that I know publish research in this area
-2.  the search results and article data can be automatically downloaded using the `rentrez` R package (trying to manually download summary data for every study ever published on behavioural addictions would be unmanageably time consuming!).
+2.  the search results and article data can be automatically downloaded using the `rentrez` R package (trying to manually download summary data for every study ever published on behavioural addictions would be prohibitively time consuming!).
 
-So, I first developed and trialled a PubMed search string to try and identify relavent papers on each behavioural addiction (e.g., "social-network-use disorder" OR "social media addiction"). After trialling and refining each search string on the PubMed site, I used `rentrez` to pull the results from the search string for every "addiction" I could find, individually screening the results for duplicates or irrelevant articles (e.g., errata).
+So, I first developed and trialed a PubMed search string to try and identify relevant papers on each behavioural addiction (e.g., "social-network-use disorder" OR "social media addiction"). After trialing and refining each search string on the PubMed site, I used `rentrez` to pull the results from the search string for every "addiction" I could find, individually screening the results for duplicates or irrelevant articles (e.g., errata).
 
-I used a combination of personal knowledge of this area, results from PubMed searches for other addictions, and Google searches for phrases akin to "bizzare addictions" (a very systematic approach) to identify the different types of "addiction" to search for.
+I used a combination of personal knowledge of this area, results from PubMed searches for other addictions, and Google searches for phrases akin to "bizarre addictions" (a very systematic approach) to identify the different types of "addiction" to search for.
 
 The basic criteria for inclusion was
 
