@@ -72,7 +72,7 @@ data_table %>%
   ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#289998",
                 weight = "bold")
       ),
@@ -80,7 +80,7 @@ data_table %>%
     )  %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#9BA7B0")
       ),
     locations = cells_body(
@@ -88,7 +88,7 @@ data_table %>%
     ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0")
       ),
     locations = cells_body(
@@ -96,7 +96,7 @@ data_table %>%
     ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0")
       ),
     locations = cells_body(
@@ -104,7 +104,7 @@ data_table %>%
     ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0")
       ),
     locations = cells_body(
@@ -112,7 +112,7 @@ data_table %>%
     )  %>% 
      tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0")
       ),
     locations = cells_body(
@@ -120,7 +120,7 @@ data_table %>%
     )  %>% 
        tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0")
       ),
     locations = cells_body(
@@ -129,7 +129,7 @@ data_table %>%
   tab_style(
     style = cell_borders(
       sides = c("top", "bottom"),
-      color = "#002B36",
+      color = "#202B2A",
       weight = px(1.5),
       style = "solid"
     ),
@@ -165,10 +165,10 @@ data_table %>%
   tab_footnote(
     footnote = "") %>%
    tab_style(
-    style = list(cell_fill(color = "#002B36"), 
+    style = list(cell_fill(color = "#202B2A"), 
                  cell_text(color = "#9BA7B0", style = "italic"), 
                  cell_borders(sides = c("b"),
-                              color = "#002B36",
+                              color = "#202B2A",
                               weight = px(2))),
     locations = list(cells_footnotes(), cells_source_notes())) %>%
   tab_style(
@@ -237,7 +237,7 @@ For Gambling Disorder, the ICD's essential features include:
 The **DSM-5** requires a certain number of symptoms to be present to diagnose an individual with alcohol use disorder for gambling disorder and, depending on the number of symptoms, somebody can be classified as having a "mild", "moderate", or "severe" disorder (see the table below for more details).
 
 |                                             |                                                |                                                                                                              |                                                |                                                                                                                |
-|---------------|---------------|---------------|---------------|---------------|
+|---------------------------------------------|------------------------------------------------|--------------------------------------------------------------------------------------------------------------|------------------------------------------------|----------------------------------------------------------------------------------------------------------------|
 |                                             | **DSM-5 Alcohol use disorder**                 | **ICD-11 Alcohol dependence**                                                                                | **DSM-5 Gambling disorder**                    | **ICD-11 Gambling disorder**                                                                                   |
 | **No. of criteria required for diagnosis:** | Mild: 2-3 criteria. Moderate: 4-5. Severe: ≥6. | Essential criteria must be displayed for at least 12-months (or daily or almost daily for at least 3 months) | Mild: 4-5 criteria. Moderate: 6-7. Severe: 8-9 | Essential criteria must be displayed for at least 12-months (shorter duration possible if symptoms are severe) |
 
@@ -401,7 +401,7 @@ In [Part 2](https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt2) 
 ::: {.callout-tip collapse="true" appearance="simple" icon="false"}
 ## Expand to see the full reference list for part 1 & 2
 
--   Aarseth, E., Bean, A. M., Boonen, H., Colder Carras, M., Coulson, M., Das, D., Deleuze, J., Dunkels, E., Edman, J., Ferguson, C. J., Haagsma, M. C., Helmersson Bergmark, K., Hussain, Z., Jansz, J., Kardefelt-Winther, D., Kutner, L., Markey, P., Nielsen, R. K. L., Prause, N., ... Van Rooij, A. J. (2017). Scholars\' open debate paper on the World Health Organization ICD-11 Gaming Disorder proposal. *Journal of Behavioral Addictions*, *6*(3), 267--270. PubMed. <https://doi.org/10.1556/2006.5.2016.088>
+-   Aarseth, E., Bean, A. M., Boonen, H., Colder Carras, M., Coulson, M., Das, D., Deleuze, J., Dunkels, E., Edman, J., Ferguson, C. J., Haagsma, M. C., Helmersson Bergmark, K., Hussain, Z., Jansz, J., Kardefelt-Winther, D., Kutner, L., Markey, P., Nielsen, R. K. L., Prause, N., ... Van Rooij, A. J. (2017). Scholars' open debate paper on the World Health Organization ICD-11 Gaming Disorder proposal. *Journal of Behavioral Addictions*, *6*(3), 267--270. PubMed. <https://doi.org/10.1556/2006.5.2016.088>
 
 -   Bean, A. M., Nielsen, R. K. L., Van Rooij, A. J., & Ferguson, C. J. (2017). Video game addiction: The push to pathologize video games. *Professional Psychology: Research and Practice*, *48*(5), 378--389. <https://doi.org/10.1037/pro0000150>
 
@@ -411,17 +411,17 @@ In [Part 2](https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt2) 
 
 -   Borsboom, D. (2017). A network theory of mental disorders. *World Psychiatry*, *16*(1), 5--13. <https://doi.org/10.1002/wps.20375>
 
--   Brand, M., Rumpf, H., Demetrovics, Z., Müller, A., Stark, R., King, D. L., Goudriaan, A. E., Mann, K., Trotzke, P., Fineberg, N. A., Chamberlain, S. R., Kraus, S. W., Wegmann, E., Billieux, J., & Potenza, M. N. (2022). Which conditions should be considered as disorders in the International Classification of Diseases (ICD-11) designation of \"other specified disorders due to addictive behaviors\"?, *Journal of Behavioral Addictions*, *11*(2), 150-159. doi: <https://doi.org/10.1556/2006.2020.00035>
+-   Brand, M., Rumpf, H., Demetrovics, Z., Müller, A., Stark, R., King, D. L., Goudriaan, A. E., Mann, K., Trotzke, P., Fineberg, N. A., Chamberlain, S. R., Kraus, S. W., Wegmann, E., Billieux, J., & Potenza, M. N. (2022). Which conditions should be considered as disorders in the International Classification of Diseases (ICD-11) designation of "other specified disorders due to addictive behaviors"?, *Journal of Behavioral Addictions*, *11*(2), 150-159. doi: <https://doi.org/10.1556/2006.2020.00035>
 
 -   Fried, E. I., van Borkulo, C. D., Cramer, A. O. J., Boschloo, L., Schoevers, R. A., & Borsboom, D. (2017). Mental disorders as networks of problems: A review of recent insights. *Social Psychiatry and Psychiatric Epidemiology*, *52*(1), 1--10. PubMed. <https://doi.org/10.1007/s00127-016-1319-z>
 
 -   Grant, J. E., Potenza, M. N., Weinstein, A., & Gorelick, D. A. (2010). Introduction to Behavioral Addictions. *The American Journal of Drug and Alcohol Abuse*, *36*(5), 233--241. <https://doi.org/10.3109/00952990.2010.491884>
 
--   Griffiths, M. (2005). A \'components\' model of addiction within a biopsychosocial framework. *Journal of Substance Use*, *10*(4), 191--197. <https://doi.org/10.1080/14659890500114359>
+-   Griffiths, M. (2005). A 'components' model of addiction within a biopsychosocial framework. *Journal of Substance Use*, *10*(4), 191--197. <https://doi.org/10.1080/14659890500114359>
 
 -   Griffiths, M. D. (2017). Behavioural addiction and substance addiction should be defined by their similarities not their dissimilarities. *Addiction*, *112*(10), 1718--1720. <https://doi.org/10.1111/add.13828>
 
--   Griffiths, M. D. (2019). The evolution of the \'components model of addiction\' and the need for a confirmatory approach in conceptualizing behavioral addictions. *Dusunen Adam The Journal of Psychiatry and Neurological Sciences*, *32*, 179--184. <https://doi.org/10.14744/DAJPNS.2019.00027>
+-   Griffiths, M. D. (2019). The evolution of the 'components model of addiction' and the need for a confirmatory approach in conceptualizing behavioral addictions. *Dusunen Adam The Journal of Psychiatry and Neurological Sciences*, *32*, 179--184. <https://doi.org/10.14744/DAJPNS.2019.00027>
 
 -   Hammer, R. R., Dingel, M. J., Ostergren, J. E., Nowakowski, K. E., & Koenig, B. A. (2012). The experience of addiction as told by the addicted: incorporating biological understandings into self-story. *Culture, medicine and psychiatry*, *36*(4), 712--734. <https://doi.org/10.1007/s11013-012-9283-x>
 
@@ -447,4 +447,3 @@ In [Part 2](https://robheirene.netlify.app/posts/2020-what-is-an-addiction-pt2) 
 
 -   Zambon, A., Airoldi, C., Corrao, G., Cibin, M., Agostini, D., Aliotta, F., Movalli, M., Biondini, F., Bizzi, P., Zucchi, G., Cerizza, G., Dattola, A., Marmora, A., Vittadini, G., Girardi, F., Liberto, L., Hinnenthal, I. M., Sodano, A. J., Vizzuso, P., ... Giorgi, I. (2017). Prevalence of Polysubstance Abuse and Dual Diagnosis in Patients Admitted to Alcohol Rehabilitation Units for Alcohol-Related Problems in Italy: Changes in 15 Years. *Alcohol and Alcoholism*, *52*(6), 699--705. <https://doi.org/10.1093/alcalc/agx061>
 :::
-

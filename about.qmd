@@ -62,7 +62,7 @@ gttable1 <- career_data_table %>%
               img_source = "local",
               height = 25) %>%
   tab_options(table.font.color = "#289998",
-              table.background.color = "#002B36",
+              table.background.color = "#202B2A",
               table.border.bottom.color = "#289998",
               table_body.border.bottom.color = "#289998") %>%
   tab_style(
@@ -73,7 +73,7 @@ gttable1 <- career_data_table %>%
   ) %>%
   tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#289998", weight = "bold")
     ),
     locations = list(cells_column_labels())
@@ -84,7 +84,7 @@ for (column in body_columns) {
   gttable1 <- gttable1 %>%
     tab_style(
       style = list(
-        cell_fill(color = "#002B36"),
+        cell_fill(color = "#202B2A"),
         cell_text(color = "#F5F7F0")
       ),
       locations = cells_body(columns = column)
@@ -94,7 +94,7 @@ for (column in body_columns) {
 gttable1 <- gttable1 %>%
   tab_style(
     style = cell_borders(sides = c("top", "bottom"),
-                         color = "#002B36",
+                         color = "#202B2A",
                          weight = px(1.5),
                          style = "solid"),
     locations = cells_body()
@@ -222,7 +222,7 @@ Publication_record_table %>%
   ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#289998",
                 weight = "bold")
       ),
@@ -230,7 +230,7 @@ Publication_record_table %>%
     )  %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#9BA7B0",
                 weight = "bold")
       ),
@@ -239,7 +239,7 @@ Publication_record_table %>%
     ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0",
                 weight = "bold")
       ),
@@ -248,7 +248,7 @@ Publication_record_table %>%
     ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0",
                 weight = "bold")
       ),
@@ -257,7 +257,7 @@ Publication_record_table %>%
     ) %>% 
    tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0",
                 weight = "bold")
       ),
@@ -266,7 +266,7 @@ Publication_record_table %>%
     )  %>% 
      tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0",
                 weight = "bold")
       ),
@@ -275,7 +275,7 @@ Publication_record_table %>%
     )  %>% 
      tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#F5F7F0",
                 weight = "bold")
       ),
@@ -285,7 +285,7 @@ Publication_record_table %>%
   tab_style(
     style = cell_borders(
       sides = c("top", "bottom"),
-      color = "#002B36",
+      color = "#202B2A",
       weight = px(1.5),
       style = "solid"
     ),
@@ -321,10 +321,10 @@ Publication_record_table %>%
   tab_footnote(
     footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only. There is overlap between the gamblng & scientific reform categories in 2022 & 23 where one paper is counted in both.") %>%
    tab_style(
-    style = list(cell_fill(color = "#002B36"), 
+    style = list(cell_fill(color = "#202B2A"), 
                  cell_text(color = "#9BA7B0", style = "italic"), 
                  cell_borders(sides = c("b"),
-                              color = "#002B36",
+                              color = "#202B2A",
                               weight = px(2))),
     locations = list(cells_footnotes(), cells_source_notes())) %>%
   tab_style(
@@ -332,11 +332,11 @@ Publication_record_table %>%
                               color = "#289998",
                               weight = px(2)), 
                          locations = list(cells_footnotes(), cells_source_notes())) %>%
-  gt_color_rows(Extreme_sport, palette = c("#002B36", "#289998")) %>% 
-  gt_color_rows(Alcohol, palette = c("#002B36", "#289998")) %>% 
-  gt_color_rows(Gambling, palette = c("#002B36", "#289998")) %>% 
-  gt_color_rows(Science_reform, palette = c("#002B36", "#289998")) %>% 
-  gt_color_rows(Other, palette = c("#002B36", "#289998")) %>%
+  gt_color_rows(Extreme_sport, palette = c("#202B2A", "#289998")) %>% 
+  gt_color_rows(Alcohol, palette = c("#202B2A", "#289998")) %>% 
+  gt_color_rows(Gambling, palette = c("#202B2A", "#289998")) %>% 
+  gt_color_rows(Science_reform, palette = c("#202B2A", "#289998")) %>% 
+  gt_color_rows(Other, palette = c("#202B2A", "#289998")) %>%
     cols_label(
     Extreme_sport = "Extreme sports",
     Science_reform = "Scientific reform"

@@ -86,8 +86,8 @@ font_add_google("Reem Kufi", "Reem Kufi")
 showtext_auto(enable = TRUE) 
 
 
-plot_theme <-  theme(plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
-     panel.background = element_rect(fill = "#002B36"),
+plot_theme <-  theme(plot.background = element_rect(fill = "#202B2A",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
+     panel.background = element_rect(fill = "#202B2A"),
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
      axis.text = element_text(color = "#F5F7F0", size = 13),
      panel.grid = element_blank(),
@@ -187,18 +187,18 @@ data %>%
    # tab_header(
     # title = md("**Number of publications on PubMed**"),
     # subtitle = md("*Up to end of 2022*"))  %>%
-  gt_color_rows(n, palette = c("#002B36", "#289998"))  %>% # Make n column heatmap style
-   gt_color_rows(percent, palette = c("#002B36", "#289998"))  %>% # Make % column heatmap style
+  gt_color_rows(n, palette = c("#202B2A", "#289998"))  %>% # Make n column heatmap style
+   gt_color_rows(percent, palette = c("#202B2A", "#289998"))  %>% # Make % column heatmap style
    tab_style(
     style = cell_borders(sides = c("top", "bottom"),
-                         color = "#002B36",
+                         color = "#202B2A",
                          weight = px(1.8),
                          style = "solid"),
     locations = cells_body()
   ) %>%
   tab_options(data_row.padding = px(1.6)) %>% # decrease row height
   tab_options(table.font.color = "#289998",
-              table.background.color = "#002B36",
+              table.background.color = "#202B2A",
               table.border.bottom.color = "#289998",
               table_body.border.bottom.color = "#289998") %>%
     tab_style(
@@ -209,14 +209,14 @@ data %>%
   ) %>%
   tab_style(
     style = list(
-      cell_fill(color = "#002B36"),
+      cell_fill(color = "#202B2A"),
       cell_text(color = "#289998", weight = "bold")
     ),
     locations = list(cells_column_labels())
   ) %>%
   tab_style(
       style = list(
-        cell_fill(color = "#002B36"),
+        cell_fill(color = "#202B2A"),
         cell_text(color = "#F5F7F0")
       ),
       locations = cells_body(columns = Label)
@@ -300,14 +300,14 @@ total_year_gganimate <- data_total_per_year_pubs %>%
   # Add 2004 gaming addiction label
   geom_text(aes(x = 1994, y =150, label = first_gaming_2004_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
    # Add 2013 gambling label
-  geom_text(aes(x = 2002, y =260, label = gam_DSMV_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
+  geom_text(aes(x = 2002, y =290, label = gam_DSMV_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add final year label
-  geom_text(aes(x = 2014, y =670, label = final_year_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
+  geom_text(aes(x = 2013, y =770, label = final_year_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Define theme elements
   plot_theme +
    theme(
-     plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
-     panel.background = element_rect(fill = "#002B36"),
+     plot.background = element_rect(fill = "#202B2A",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
+     panel.background = element_rect(fill = "#202B2A"),
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
      axis.text = element_text(color = "#F5F7F0", size = 12),
      panel.grid = element_blank(),
@@ -316,10 +316,10 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      axis.title.x = element_text(margin = margin(t = 18), size = 14),
      plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 1.5),
      plot.subtitle = element_text(hjust = -0.02)
-     # panel.border = element_rect(color = "#002B36")
+     # panel.border = element_rect(color = "#202B2A")
    ) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = c(.01, 0)) +  # Define x-axis dates & Make the plot fill the available space better
-  scale_y_continuous(limits = c(0, 1000), breaks = seq(0, 750, by = 250)) +  # Define y-axis labels
+  scale_y_continuous(limits = c(0, 1250), breaks = seq(0, 1250, by = 250)) +  # Define y-axis labels
   # Add titles and labels
    labs(
      title = "Number of papers published on behavioural addictions per year on PubMed",  # Add header
@@ -346,7 +346,7 @@ total_year_gganimate <- data_total_per_year_pubs %>%
 
  # Animate plot in GIF format:
 animate(total_year_gganimate,
-        width = 700, height = 420,
+        width = 700, height = 450,
         end_pause = 30,
         type = "cairo",
         duration = 21)
@@ -354,7 +354,7 @@ animate(total_year_gganimate,
 
 ```{r include=FALSE}
 # Save GIF:
-anim_save("posts/2023-history-of-behavioural-addictions-PubMed/total_year_gganimate.gif", animation = last_animation())
+anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part1/total_year_gganimate.gif", animation = last_animation())
 ```
 
  
@@ -396,8 +396,8 @@ ggplot(aes(x = n, y = Label, fill = Label)) +
   scale_x_continuous(limits = c(0,3800), expand = c(.01, .01)) +
   scale_fill_manual(values = palette_colors, guide = FALSE) + 
  theme(
-     plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
-     panel.background = element_rect(fill = "#002B36"),
+     plot.background = element_rect(fill = "#202B2A",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
+     panel.background = element_rect(fill = "#202B2A"),
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
      axis.text = element_text(color = "#F5F7F0", size = 18),
      panel.grid = element_blank(),
@@ -493,8 +493,8 @@ bar_chart_race_pubs_year <-
     scale_fill_manual(values = palette_colors, guide = FALSE) +
   theme(legend.position = "none") +
  theme(
-     plot.background = element_rect(fill = "#002B36",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
-     panel.background = element_rect(fill = "#002B36"),
+     plot.background = element_rect(fill = "#202B2A",  color = NA), # ADDING THIS NA REMOVES BORDER AROUND PLOT ON WEBSITE
+     panel.background = element_rect(fill = "#202B2A"),
      text = element_text(family = "Reem Kufi", color = "#F5F7F0"),
      axis.text = element_text(color = "#F5F7F0", size = 12),
      panel.grid = element_blank(),
@@ -507,7 +507,7 @@ bar_chart_race_pubs_year <-
      plot.caption = element_text(color = "#50B5C8",  hjust = 1.06,
                                     vjust = 0.2)
      # axis.text.y = element_text(size = 12, hjust = 1)
-     # panel.border = element_rect(color = "#002B36")
+     # panel.border = element_rect(color = "#202B2A")
    ) +
   # Add titles and labels
    labs(
@@ -545,7 +545,7 @@ animate(bar_chart_race_pubs_year,
 
 ```{r include=FALSE}
 # Save GIF:
-anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part2/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
+anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part1/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
 ```
 
  
@@ -662,7 +662,7 @@ dumbbell_plot_first_last_ggplotly$dependencies <- c(
       head = reem_kufi_css)))
 
 # Display plot:
-saveWidget(dumbbell_plot_first_last_ggplotly, 'dumbbell_plot.html')
+saveWidget(dumbbell_plot_first_last_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part1/dumbbell_plot.html')
 ```
 
 ```{=html}

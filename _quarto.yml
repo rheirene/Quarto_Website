@@ -40,8 +40,8 @@ website:
     
 format:
   html:
-    theme: solar
-    # fontcolor: "#F5F7F0"
+    theme: [solar, theme_details.scss]
+    backgroundcolor: "#202B2A"
     css: styles.css
     toc: true #
 editor: visual
