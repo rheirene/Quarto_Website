@@ -668,7 +668,7 @@ Your goal is to find evidence that supports the view that people can indeed be a
 ### References
 
 ::: {.callout-tip collapse="true" appearance="simple" icon="false"}
-## Expand to see the list of references used in this post
+## Expand to see references 
 
 -   Alexander, B. K., & Schweighofer, A. R. F. (1988). Behavioural Addictions. *Canadian Journal of Psychology*, 29, 151-163.
 
@@ -680,31 +680,3 @@ Your goal is to find evidence that supports the view that people can indeed be a
 :::
 
 ------------------------------------------------------------------------
-
-::: {.callout-tip collapse="true" appearance="minimal" icon="false"}
-## Expand for session information
-
-```{r}
-#| code-fold: true
-#| code-summary: "Code: Get session info"
-
-session_info(pkgs = "attached")
-```
-:::
-
-```{=html}
-<script src="https://giscus.app/client.js"
-        data-repo="rheirene/Quarto_Website"
-        data-repo-id="R_kgDOJ0d4fA"
-        data-category-id="DIC_kwDOJ0d4fM4CXv7I"
-        data-mapping="pathname"
-        data-strict="0"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="dark_dimmed"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
-</script
-```
