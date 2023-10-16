@@ -1,44 +1,45 @@
 ---
-title: "The history of behavioural addictions research (according to PubMed): Part 1"
-description: "A deep delve into the weird world of behavioural addictions research"
+title: "PSYC704: Are we over-using the term 'addiction'"
+description: "Masters Seminar"
 author:
   - name: Rob Heirene
 categories: [Addiction] 
-date: 2023-10-30
+date: 2023-10-16
 image: total_year_gganimate.gif
-draft: true 
+draft: false
 ---
 
-### Background
+### Aim & Structure
 
-The phrase "behavioural addiction" starts to appear in academic articles in the late 80s and early 90s (). Soon after, Jaffe (1990) made the argument that "addiction" was was being used too liberally---it was being applied to too many non-drug-related behaviours and we were at risk of "*trivializing dependence*".
+Today we're going to talk about behavioural addictions and take a high-level look at the research that's been done in this field. We'll hopefully achieve the following this session:
+
+-   Part 1: We'll briefly chat about behavioural addictions as a group then you'll read the introductory text below.
+
+-   Part 2: We'll look at some outcomes from one of my ongoing review studies and discuss these as a group.
+
+-   Part 3: In groups of at least 2, you'll pick one of the addictions discussed in Part 2 and find some research on it. The goal of this activity is to find evidence that supports the view that people can indeed be addicted to the particular behaviour in question (e.g., gambling, gaming etc). What evidence do you find? Do you think that
+
+## Part 1
+
+The phrase "behavioural addiction" starts to appear in academic articles in the late 80s and early 90s. Soon after, Jaffe (1990) made the argument that "addiction" was was being used too liberally---it was being applied to too many non-drug-related behaviours and we were at risk of "*trivializing dependence*".
 
 As we'll see, these concerns didn't do much to stem the expansion of addiction's definition. Since the 1990s the net of addiction has been cast wider and wider, capturing more and more repetitive and/or compulsive behaviour patterns.
 
-Fears that the term will lose all meaning remain heightened in academic and medical circles (). And for good reason --- individuals who experience addictions to opioid-based drugs or alcohol can suffer serious, life-threatening harm and truly awful withdrawal episodes. Assigning the same label to describe their experience and someone who has a largely inconsequential difficulty controlling their spending or screen use could indeed trivialise the former's condition.
+Fears that the term will lose all meaning remain heightened in academic and medical circles. And for good reason --- individuals who experience addictions to opioid-based drugs or alcohol can suffer serious, life-threatening harm and truly awful withdrawal episodes. Assigning the same label to describe their experience and someone who has a largely inconsequential difficulty controlling their spending or screen use could indeed trivialise the former's condition.
 
 Such concerns are not unique to addiction. "Psychiatrization" and "concept creep" have been used to describe the seemingly ever-widening definitions mental health disorders, abuse, and trauma, as well as the "medicalisation" of these in the form of over-diagnosis and treatment (Haslam, 2016; Haslam et al., 2021).
 
-Whilst I'm aware of some bizarre publications on this topic (like [this 2015 study](https://doi.org/10.1556/jba.4.2015.1.7) on fortune telling addiction), I've always been curious about the extent to which this is really occurring in the addictions field. **How many behaviours really are being labelled as "addictions" in the peer-reviewed literature? And how many studies are there on these "new" addictions?**
+**But how many behaviours really are being labelled as "addictions" in the peer-reviewed literature? And how many studies are there on these "new" addictions?**
 
-These are some of the questions I hope to answer in this series of posts.
+These are some of the questions we will look at below in our part 2.
 
-### My approach
+## Part 2
 
-Okay, so my goal here was to try and find every peer-reviewed paper that has ever discussed a behaviour (e.g., gaming, social media use etc.) as a form of addiction. Well, every paper published on the PubMed database. I chose PubMed for two reasons:
+### Data gathering
 
-1.  it indexes around 30,000 different journals/outlets, including most of the journals that I know publish research in this area
-2.  the search results and article data can be automatically downloaded using the `rentrez` R package (trying to manually download summary data for every study ever published on behavioural addictions would be prohibitively time consuming!).
-
-So, I first developed and trialed a PubMed search string to try and identify relevant papers on each behavioural addiction (e.g., "social-network-use disorder" OR "social media addiction"). After trialing and refining each search string on the PubMed site, I used `rentrez` to pull the results from the search string for every "addiction" I could find, individually screening the results for duplicates or irrelevant articles (e.g., errata).
-
-I used a combination of personal knowledge of this area, results from PubMed searches for other addictions, and Google searches for phrases akin to "bizarre addictions" (a very systematic approach) to identify the different types of "addiction" to search for.
-
-The basic criteria for inclusion was
+For this study, I tried to find every peer-reviewed paper that has ever discussed a behaviour (e.g., gaming, social media use etc.) as a form of addiction. Well, every paper published on the PubMed database. I used some code to find and extract the articles, but that's not important for this seminar.
 
 ### Data & code set-up
-
-Okay, so let's get started with exploring the data. I'll first load all the required packages and fonts for figures.
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -93,8 +94,6 @@ plot_theme <-  theme(plot.background = element_rect(fill = "#202B2A",  color = N
      plot.subtitle = element_text(color = "#50B5C8"),
      plot.caption = element_text(color = "#50B5C8"))
 ```
-
-Now I'll load in the dataset and do a little cleaning. Of note, I'm going to remove all publications from 2023 so that we only have data for complete years (see comments in the code chunk below for any other exclusions).
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
 #| code-fold: true
@@ -155,15 +154,7 @@ data %>%
 
 ### All "addictions" found
 
- 
-
-::: {.callout-tip appearance="minimal" icon="false"}
-## Are these all "true" addictions?
-
-In no way do I endorse
-:::
-
-\
+So, here's an overview of all studies found by addiction type (N= number of studies):\
  
 
 ```{r warning=FALSE, message=FALSE}
@@ -239,6 +230,8 @@ data %>%
 
 ### Patterns over time
 
+Let's look at how these publications are spread out over time:
+
 ```{r  warning=FALSE, message=FALSE}
 #| code-fold: true
 #| code-summary: "Code: Bar chart of total pubs"
@@ -288,11 +281,11 @@ total_year_gganimate <- data_total_per_year_pubs %>%
    geom_point() + 
    geom_line(size = 1.5, color = "#50B5C8") + 
   # Add year counting label
-  geom_text(aes(x = 1984, y = 370, label = as.factor(Year)), hjust = 0, vjust = 0, col = "#50B5C8", size = 15, family = "Reem Kufi") +
+   geom_text(aes(x = 1984, y = 370, label = as.factor(Year)), hjust = 0, vjust = 0, col = "#50B5C8", size = 15, family = "Reem Kufi") +
   # Add 1961 first study label
-   geom_text(aes(x = 1961, y =90, label = first_study_1961_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
+  geom_text(aes(x = 1961, y =90, label = first_study_1961_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add 1980 gambling label
- geom_text(aes(x = 1970, y =100, label = gam_1980_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
+  geom_text(aes(x = 1970, y =100, label = gam_1980_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add 1994 behavioural addictions label
   geom_text(aes(x = 1984, y =110, label = behav_addic_1994_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add 2004 gaming addiction label
@@ -312,8 +305,8 @@ total_year_gganimate <- data_total_per_year_pubs %>%
      plot.margin = margin(20, 5, 20, 20),
      axis.title.y = element_blank(), 
      axis.title.x = element_text(margin = margin(t = 18), size = 14),
-     # plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 1.5),
-     # plot.subtitle = element_text(hjust = -0.02)
+     plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 1.5),
+     plot.subtitle = element_text(hjust = -0.02)
      # panel.border = element_rect(color = "#202B2A")
    ) +
   scale_x_continuous(breaks = seq(1960, 2020, by = 10), expand = c(.01, 0)) +  # Define x-axis dates & Make the plot fill the available space better
@@ -350,16 +343,9 @@ animate(total_year_gganimate,
         duration = 21)
 ```
 
-```{r include=FALSE}
-# Save GIF:
-anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part1/total_year_gganimate.gif", animation = last_animation())
-```
-
  
 
-How many in the last 10 years alone?
-
-Now let's start to look publication rates for each "addiction" in our dataset.
+Now let's look publication rates for each "addiction" over time:
 
 ```{r include = FALSE, warning=FALSE, message=FALSE}
 #| fig-align: center
@@ -541,14 +527,9 @@ animate(bar_chart_race_pubs_year,
 
 ```
 
-```{r include=FALSE}
-# Save GIF:
-anim_save("posts/2023-history-of-behavioural-addictions-PubMed-part1/bar_chart_pubs_year_gganimate.gif", animation = bar_chart_race_pubs_year)
-```
-
  
 
-Well that was fun, but it's actually quite difficult to see exactly what's going on at every year given how many different supposed addictions there are. Let's try another approach (this plot really doesn't play well with mobile, so it's best viewed on a PC/tablet):
+Let's try another approach to visualising this data (this plot really doesn't play well with mobile, so it's best viewed on a PC/tablet):
 
 ```{r warning=FALSE,  message=FALSE}
 #| fig-align: center
@@ -660,7 +641,7 @@ dumbbell_plot_first_last_ggplotly$dependencies <- c(
       head = reem_kufi_css)))
 
 # Display plot:
-saveWidget(dumbbell_plot_first_last_ggplotly, 'posts/2023-history-of-behavioural-addictions-PubMed-part1/dumbbell_plot.html')
+saveWidget(dumbbell_plot_first_last_ggplotly, 'dumbbell_plot.html')
 ```
 
 ```{=html}
@@ -670,13 +651,19 @@ saveWidget(dumbbell_plot_first_last_ggplotly, 'posts/2023-history-of-behavioural
 
 The size of the dots in the above plot correspond to the number of publications in that year for the addiction. After sorting the visuals with `ggplot2`, I used the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year.
 
-### Next up
+## Part 3
 
-Well, that's probably enough for this first post. If you have any thoughts on my analyses so far, or if you know of some strange addiction that I didn't find, then I'd love to hear from you -- you can use the comments section below or get in touch using any of the links in the navigation bar at the top of this page :)
+In groups of at least 2, pick one of the addictions displayed above and find some research on it.
 
-In the next post, I look at how this work is distributed geographically in terms of author locations, the journals these papers are published in, and the frequency of article types (review, meta-analysis, letters etc.). You can read it here.
+Your goal is to find evidence that supports the view that people can indeed be addicted to the particular behaviour you choose (e.g., gambling, gaming etc).
 
-Last updated:
+-   What evidence do you find? Is there actual empirical data collected or is this just a commentary paper?
+
+-   How do the authors study the "addiction" and what methods do they used to support the claim that the participants involved are addicted to their behaviour?
+
+-   Are there any limitations of the research that need to be considered in this context?
+
+-   Does the study make you more or less convinced that people can be addicted to this behaviour? Why/why not?
 
 ### References
 
