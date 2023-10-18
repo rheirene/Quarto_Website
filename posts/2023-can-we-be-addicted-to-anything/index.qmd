@@ -1,6 +1,6 @@
 ---
-title: "PSYC704: Are we over-using the term 'addiction'"
-description: "Masters Seminar"
+title: "PSYC601-608: Are we over-using the term 'addiction'"
+description: "Seminar"
 author:
   - name: Rob Heirene
 categories: [Addiction] 
@@ -91,8 +91,8 @@ plot_theme <-  theme(plot.background = element_rect(fill = "#202B2A",  color = N
      axis.text = element_text(color = "#F5F7F0", size = 13),
      panel.grid = element_blank(),
      plot.title = element_text(color = "#F5F7F0", size = 16),
-     plot.subtitle = element_text(color = "#50B5C8"),
-     plot.caption = element_text(color = "#50B5C8"))
+     plot.subtitle = element_text(color = "#289998"),
+     plot.caption = element_text(color = "#289998"))
 ```
 
 ```{r results=FALSE, warning=FALSE, message=FALSE}
@@ -279,9 +279,9 @@ data_total_per_year_pubs <- data %>%
 total_year_gganimate <- data_total_per_year_pubs %>%
    ggplot(aes(Year, n)) + 
    geom_point() + 
-   geom_line(size = 1.5, color = "#50B5C8") + 
+   geom_line(size = 1.5, color = "#289998") + 
   # Add year counting label
-   geom_text(aes(x = 1984, y = 370, label = as.factor(Year)), hjust = 0, vjust = 0, col = "#50B5C8", size = 15, family = "Reem Kufi") +
+   geom_text(aes(x = 1984, y = 370, label = as.factor(Year)), hjust = 0, vjust = 0, col = "#289998", size = 15, family = "Reem Kufi") +
   # Add 1961 first study label
   geom_text(aes(x = 1961, y =90, label = first_study_1961_label), hjust = 0, vjust = 0, alpha = 1, col = "#F5F7F0", size = 4, family = "Reem Kufi") +
   # Add 1980 gambling label
@@ -455,7 +455,7 @@ bar_chart_race_pubs_year <-
    geom_text(aes(y = 2400, x = -24, 
                  label = as.factor(Year)), 
              hjust = 0, vjust = 0, 
-             alpha = 0.6, col = "#50B5C8", # Alpha not working here for some unknown reason (send help!)
+             alpha = 0.6, col = "#289998", # Alpha not working here for some unknown reason (send help!)
              size = 14, family = "Reem Kufi",
              inherit.aes = FALSE) + # Adding this didn't fix the alpha issue
 
@@ -487,8 +487,8 @@ bar_chart_race_pubs_year <-
      axis.text.x = element_blank(),  # remove x-axis text
      axis.title = element_blank(),   # remove x-axis title
      plot.title = element_text(color = "#F5F7F0", size = 15, margin = margin(b = 10), hjust = 0.7),
-     plot.subtitle = element_text(color = "#50B5C8", margin = margin(b = 17), hjust = -0.4),
-     plot.caption = element_text(color = "#50B5C8",  hjust = 1.06,
+     plot.subtitle = element_text(color = "#289998", margin = margin(b = 17), hjust = -0.4),
+     plot.caption = element_text(color = "#289998",  hjust = 1.06,
                                     vjust = 0.2)
      # axis.text.y = element_text(size = 12, hjust = 1)
      # panel.border = element_rect(color = "#202B2A")
@@ -668,7 +668,7 @@ Your goal is to find evidence that supports the view that people can indeed be a
 ### References
 
 ::: {.callout-tip collapse="true" appearance="simple" icon="false"}
-## Expand to see references 
+## Expand to see references
 
 -   Alexander, B. K., & Schweighofer, A. R. F. (1988). Behavioural Addictions. *Canadian Journal of Psychology*, 29, 151-163.
 
