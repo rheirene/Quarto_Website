@@ -8,9 +8,9 @@ format:
 
 ### About me
 
-I'm a Lecturer in Psychology at the University of Plymouth, UK.
+I'm a Research Fellow at the University of Sydney, Australia.
 
-I've worked in academic posts in the UK and Australia since finishing my PhD in Psychology (topic: alcohol-related neurocognitive impairment) in 2019.
+I've bounced around the world in different academic posts in the UK and Australia since finishing my PhD in Psychology in 2019, but found a home in Sydney and I'm here to stay as of November 2023 (I need to update the map and table below!).
 
 I'm interested in the science of **addiction** with a passion for **data science and visualisation**.
 
@@ -353,5 +353,3 @@ Publication_record_table %>%
 I made this site and all the visualisations in it from scratch with [Quarto](https://quarto.org/), using mostly R and CSS code.
 
 I store the full texts for all of my **scientific publications [here](https://robheirene.netlify.app/publication.html)**.
-
-I recently started a little side project called **Sci-Software**--writing about all the great software and tools available to help students and academics with their careers \[*I'm currently migrating this from my old website -- check back soon!*\].

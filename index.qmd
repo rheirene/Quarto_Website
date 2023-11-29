@@ -8,7 +8,7 @@ format:
 ![](headshot.svg){fig-align="center" width="225"}
 
 ::: {.text .padding .fade-in}
-Hi 👋 I'm a Lecturer in Psychology and Addiction Researcher at the [University of Plymouth](https://www.plymouth.ac.uk/staff/rob-heirene), UK.
+Hi 👋 I'm a Research Fellow at the Gambling Treatment & Research Centre, University of Sydney, Australia.
 
 You can find out more about me [here](https://robheirene.netlify.app/about.html).
 :::
@@ -26,9 +26,13 @@ I recently contributed to a conceptual paper discussing the landscape of open sc
 
 ## What I'm working on
 
+[Moving accross the world (again)]{style="color: #289998; font-weight: bold;"}
+
+As of November 2023, Im leaving the University of Plymouth in the UK and heading back to the University of Sydney again to finally settle in a place that feels like home. Doing that with a family of six (four young children) is keeping me pretty busy right now...
+
 [Pondering + plotting]{style="color: #289998; font-weight: bold;"}
 
-I'm currently thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below chart of prevention strategies for problem gambling.
+I've also thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below chart of prevention strategies for problem gambling.
 
 [**Click on the bars to see more**]{style="color: #289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet (if you are on mobile, turn it to landscape mode).
 :::

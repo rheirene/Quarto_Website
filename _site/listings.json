@@ -1,15 +1,5 @@
 [
   {
-    "listing": "/posts.html",
-    "items": [
-      "/posts/2023-can-we-be-addicted-to-anything/index.html",
-      "/posts/2023-gambling-harms-chart/index.html",
-      "/posts/2020-alcohol-adult-brain/index.html",
-      "/posts/2020-what-is-an-addiction-pt2/index.html",
-      "/posts/2020-what-is-an-addiction-pt1/index.html"
-    ]
-  },
-  {
     "listing": "/publication.html",
     "items": [
       "/publication/2023-preregistration-evaluation-Heirene/index.html",
@@ -31,6 +21,15 @@
       "/publication/2016-extreme-sports-commentary-Heirene/index.html",
       "/publication/2016-SR-protocol-Heirene/index.html",
       "/publication/2016-extreme-sports-qual-Heirene/index.html"
+    ]
+  },
+  {
+    "listing": "/posts.html",
+    "items": [
+      "/posts/2023-gambling-harms-chart/index.html",
+      "/posts/2020-alcohol-adult-brain/index.html",
+      "/posts/2020-what-is-an-addiction-pt2/index.html",
+      "/posts/2020-what-is-an-addiction-pt1/index.html"
     ]
   }
 ]
