@@ -25,7 +25,7 @@ draft: false
 
 **Full text**
 
--   Access a pdf copy of the article [here](2021-replications-addiction-Heirene.pdf){style="color: #289998"}
+-   Access a pdf copy of the article [here](2020-self-report-accuracy-Heirene.pdf){style="color: #289998"}
 
 **APA citation**
 
@@ -34,5 +34,5 @@ draft: false
 **Transparency**
 
 | **Pre-registered** |    **Open materials**     |            **Open code**             |       **Open data**       |
-|:---------------:|:---------------:|:---------------------:|:---------------:|
+|:---------------:|:---------------:|:-------------------:|:---------------:|
 |        *NA*        | [✓](https://osf.io/m8rbd) | [✓](https://osf.io/8vjeh/wiki/home/) | [✓](https://osf.io/46uer) |
