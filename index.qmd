@@ -26,7 +26,7 @@ I recently contributed to a conceptual paper discussing the landscape of open sc
 
 ## What I'm working on
 
-[Moving accross the world (again)]{style="color: #289998; font-weight: bold;"}
+[Moving across the world (again)]{style="color: #289998; font-weight: bold;"}
 
 As of November 2023, I'm leaving the University of Plymouth in the UK and heading back to the University of Sydney again to finally settle in a place that feels like home. Doing that with a family of six (four young children) is keeping me pretty busy right now...
 

@@ -1,0 +1,34 @@
+---
+title: "‘No evidence of harm’ implies no evidence of safety: Framing the lack of causal evidence in gambling advertising research"
+description: ""
+author:
+- name: Philip Newall
+- name: ...
+- name: Rob Heirene
+categories: [Gambling]
+date: 2023-11-12
+image: featured.jpg
+draft: false
+---
+
+**Full author list:** Philip Newall, Youssef Allami, Maira Andrade, Peter Ayton, Rosalind Baker‐Frampton, Daniel Bennett, Matthew Browne, Christopher Bunn, Reece Bush‐Evans, Sonia Chen, Sharon Collard, Steffi De Jans, Jeffrey Derevensky, Nicki A Dowling, Simon Dymond, Andree Froude, Elizabeth Goyder, Robert M Heirene, Nerilee Hing, Liselot Hudders, Kate Hunt, Richard JE James, En Li, Elliot A Ludvig, Virve Marionneau, Ellen McGrane, Stephanie S Merkouris, Jim Orford, Alberto Parrado‐González, Robert Pryce, Matthew Rockloff, Ulla Romild, Raffaello Rossi, Alex MT Russell, Henrik Singmann, Trudy Smit Quosai, Sasha Stark, Aino Suomi, Thomas B Swanton, Niri Talberg, Volker Thoma, Jamie Torrance, Catherine Tulloch, Ruth J van Holst, Lukasz Walasek, Heather Wardle, Jane West, Jamie Wheaton, Leon Y Xiao, Matthew M Young, Maria E Bellringer, Steve Sharman, Amanda Roberts
+
+**Abstract**
+
+Gambling advertising is a common feature in international jurisdictions that have liberalized gambling. In the Anglosphere, countries such as Australia, New Zealand and the United Kingdom have experienced extensive gambling advertising during the past decade. This advertising is particularly prominent in relation to professional sports and lottery products. More recently, some Canadian provinces and US states have also witnessed a similar rise in gambling advertising. Several European governments, including Belgium, Italy, Netherlands and Spain, have more recently restricted gambling advertising and sponsorship in professional sports, but the UK government did not announce any action on gambling advertising and sponsorship in its 2023 White Paper. In September 2023, ...
+
+------------------------------------------------------------------------
+
+**Full text**
+
+-   Access a pdf copy of the article [here](2024-gambling-advertisements-harm-Newall-Heirene.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Newall, P., Allami, Y., Andrade, M., Ayton, P., Baker-Frampton, R., Bennett, D., Browne, M., Bunn, C., Bush-Evans, R., Chen, S., Collard, S., De Jans, S., Derevensky, J., Dowling, N.A., Dymond, S., Froude, A., Goyder, E., Heirene, R.M., Hing, N., Hudders, L., Hunt, K., James, R.J.E., Li, E., Ludvig, E.A., Marionneau, V., McGrane, E., Merkouris, S.S., Orford, J., Parrado-González, A., Pryce, R., Rockloff, M., Romild, U., Rossi, R., Russell, A.M.T., Singmann, H., Quosai, T.S., Stark, S., Suomi, A., Swanton, T.B., Talberg, N., Thoma, V., Torrance, J., Tulloch, C., van Holst, R.J., Walasek, L., Wardle, H., West, J., Wheaton, J., Xiao, L.Y., Young, M.M., Bellringer, M.E., Sharman, S. and Roberts, A. (2024), ‘No evidence of harm’ implies no evidence of safety: Framing the lack of causal evidence in gambling advertising research. *Addiction*, 119: 391-396. <https://doi.org/10.1111/add.16369>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|      *NA*      |      *NA*      |   *NA*    |   *NA*    |

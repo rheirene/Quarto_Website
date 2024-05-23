@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.3.433">
+<meta name="generator" content="quarto-1.4.553">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -24,7 +24,7 @@ ul.task-list li input[type="checkbox"] {
 }
 /* CSS for syntax highlighting */
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span { line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -81,7 +81,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   "collapse-after": 3,
   "panel-placement": "end",
   "type": "overlay",
-  "limit": 20,
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
   "language": {
     "search-no-results-text": "No results",
     "search-matching-documents-text": "matching documents",
@@ -90,6 +96,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-more-match-text": "more match in this document",
     "search-more-matches-text": "more matches in this document",
     "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
     "search-detached-cancel-button-title": "Cancel",
     "search-submit-button-title": "Submit",
     "search-label": "Search"
@@ -100,21 +107,21 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link rel="stylesheet" href="../../styles.css">
 <meta property="og:title" content="Rob Heirene - The history of behavioural addictions research (according to PubMed): Part 2">
 <meta property="og:description" content="">
-<meta property="og:image" content="filtered_publications_map.gif">
-<meta property="og:site-name" content="Rob Heirene">
+<meta property="og:image" content="headshot.svg">
+<meta property="og:site_name" content="Rob Heirene">
 <meta name="twitter:title" content="Rob Heirene - The history of behavioural addictions research (according to PubMed): Part 2">
 <meta name="twitter:description" content="">
-<meta name="twitter:image" content="filtered_publications_map.gif">
+<meta name="twitter:image" content="headshot.svg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
 <body class="nav-fixed">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
-      <div class="navbar-brand-container">
+      <div class="navbar-brand-container mx-auto">
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rob Heirene</span>
     </a>
@@ -126,27 +133,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../about.html" rel="" target="">
- <span class="menu-text">About</span></a>
+    <a class="nav-link" href="../../about.html"> 
+<span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../posts.html" rel="" target="">
- <span class="menu-text">Addiction Science Blog</span></a>
+    <a class="nav-link" href="../../posts.html"> 
+<span class="menu-text">Addiction Science Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../publication.html" rel="" target="">
- <span class="menu-text">Publications</span></a>
+    <a class="nav-link" href="../../publication.html"> 
+<span class="menu-text">Publications</span></a>
   </li>  
 </ul>
-            <div class="quarto-navbar-tools ms-auto tools-wide">
-    <a href="mailto:robheirene@gmail.com" rel="" title="" class="quarto-navigation-tool px-1" aria-label="email"><i class="bi bi-envelope-fill"></i></a>
-    <a href="https://github.com/rheirene" rel="" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
-    <a href="https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en" rel="" title="" class="quarto-navigation-tool px-1" aria-label="Scholar"><i class="bi bi-mortarboard-fill"></i></a>
-    <a href="https://osf.io/atwg5/" rel="" title="" class="quarto-navigation-tool px-1" aria-label="osf.io"><i class="bi bi-door-open"></i></a>
-    <a href="https://twitter.com/RHeirene" rel="" title="" class="quarto-navigation-tool px-1" aria-label="twitter"><i class="bi bi-twitter"></i></a>
-    <a href="https://www.linkedin.com/in/robert-heirene/" rel="" title="" class="quarto-navigation-tool px-1" aria-label="linkedin"><i class="bi bi-linkedin"></i></a>
-</div>
           </div> <!-- /navcollapse -->
+          <div class="quarto-navbar-tools tools-wide">
+    <a href="mailto:robheirene@gmail.com" title="" class="quarto-navigation-tool px-1" aria-label="email"><i class="bi bi-envelope-fill"></i></a>
+    <a href="https://github.com/rheirene" title="" class="quarto-navigation-tool px-1" aria-label=""><i class="bi bi-github"></i></a>
+    <a href="https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en" title="" class="quarto-navigation-tool px-1" aria-label="Scholar"><i class="bi bi-mortarboard-fill"></i></a>
+    <a href="https://osf.io/atwg5/" title="" class="quarto-navigation-tool px-1" aria-label="osf.io"><i class="bi bi-door-open"></i></a>
+    <a href="https://twitter.com/RHeirene" title="" class="quarto-navigation-tool px-1" aria-label="twitter"><i class="bi bi-twitter"></i></a>
+    <a href="https://www.linkedin.com/in/robert-heirene/" title="" class="quarto-navigation-tool px-1" aria-label="linkedin"><i class="bi bi-linkedin"></i></a>
+</div>
       </div> <!-- /container-fluid -->
     </nav>
 </header>
@@ -202,11 +209,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 
 
+
 <section id="data-code-set-up" class="level3">
 <h3 class="anchored" data-anchor-id="data-code-set-up">Data &amp; code set-up</h3>
 <p>Just like in Part 1, I’ll first load all the required packages and fonts for figures.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code: load packages</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install and load the groundhog package to ensure consistency of the package versions used here:</span></span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("groundhog") # Install</span></span>
@@ -242,7 +250,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </details>
 </div>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code: fonts &amp; themes</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load new font for figures/graphs</span></span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">font_add_google</span>(<span class="st">"Poppins"</span>, <span class="st">"Poppins"</span>)</span>
@@ -262,7 +270,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </div>
 <p>Now I’ll load in the dataset and do a little cleaning. Again,, I’m going to remove all publications from 2023 so that we only have data for complete years (see comments in the code chunk below for any other exclusions).</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code: load dataset</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>url_behav_addic_data_link <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/rheirene/pub-med-scape-behav-addictions/main/Data%20extraction/combined_results_clean.csv"</span></span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -292,7 +300,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h3 class="anchored" data-anchor-id="where-do-these-papers-come-from">Where do these papers come from?</h3>
 <p>I want to to visualise this information, but it’s going to be quite tricky as each paper has a variable number of authors and therefore institution addresses, all of which are listed in a single (often messy) string within one column in the dataset. I’ll have to separate out each author institution and then find a way to extract only the relevant information to be able to geo-locate them.</p>
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code: Extract location data for each paper</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ***********************The below code is almost all commented out on purpose as the process of extracting and matching city names from the author address column is so computationally taxing that it takes a long time to process.  I've left the code here so that anyone can see how I did it, but I saved the results as a .csv file and now load the data like that***********************</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1049,7 +1057,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <span id="cb7-497"><a href="#cb7-497" aria-hidden="true" tabindex="-1"></a> <span class="co"># Nottingham</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Code: Create interactive map of papers</summary>
 <div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load world map data but filter out Antarctica as we don't have any values/papers for this region and it just takes up space on the map:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>world_map <span class="ot">&lt;-</span> <span class="fu">map_data</span>(<span class="st">"world"</span>) <span class="sc">%&gt;%</span> </span>
@@ -1064,7 +1072,7 @@ Specify the column types or set `show_col_types = FALSE` to quiet this message.
 <div class="cell-output cell-output-stderr">
 <pre><code>Joining with `by = join_by(lat, long)`</code></pre>
 </div>
-<details>
+<details class="code-fold">
 <summary>Code: Create interactive map of papers</summary>
 <div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrangle data for plot:</span></span>
 <span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>data_locations_with_full_geo_location_WORLD_city_aggregate<span class="ot">&lt;-</span> data_locations_with_full_geo_location_WORLD <span class="sc">%&gt;%</span></span>
@@ -1177,7 +1185,7 @@ Spot an error in the map?
 </div>
 <p>L</p>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Code: Create animated map of papers</summary>
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># It takes quite a long time to produce the animated plot, so instead of waiting each time I run this script I'm just loading in the version I created earlier. Comment all of the code below to Cceate the plot.</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -1333,14 +1341,14 @@ Spot an error in the map?
 </div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="filtered_publications_map.gif" class="img-fluid figure-img"></p>
+<p><img src="filtered_publications_map.gif" class="img-fluid quarto-figure quarto-figure-center figure-img"></p>
 </figure>
 </div>
 </section>
 <section id="where-are-these-published" class="level3">
 <h3 class="anchored" data-anchor-id="where-are-these-published">Where are these published?</h3>
 <div class="cell" data-layout-align="center">
-<details>
+<details class="code-fold">
 <summary>Code: Create sankey plot of paper destinations</summary>
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Wrangle data for plot:</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>sankey_data<span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
@@ -1374,7 +1382,7 @@ Expand for session information
 <div id="callout-2" class="callout-2-contents callout-collapse collapse">
 <div class="callout-body-container callout-body">
 <div class="cell">
-<details>
+<details class="code-fold">
 <summary>Code: Get session info</summary>
 <div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">session_info</span>(<span class="at">pkgs =</span> <span class="st">"attached"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
@@ -1438,7 +1446,13 @@ Expand for session information
 <hr>
 <script src="https://giscus.app/client.js" data-repo="rheirene/Quarto_Website" data-repo-id="R_kgDOJ0d4fA" data-category-id="DIC_kwDOJ0d4fM4CXv7I" data-mapping="pathname" data-strict="0" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="dark_dimmed" data-lang="en" crossorigin="anonymous" async="">
 </script>
-<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Rob Heirene</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Rob Heirene</span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/about.html">/about.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Addiction Science Blog">Addiction Science Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/posts.html">/posts.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Publications">Publications</span> <span class="hidden" data-render-id="quarto-int-navbar:/publication.html">/publication.html</span> <span class="hidden" data-render-id="quarto-navbar-tools:mailto:robheirene@gmail.com">mailto:robheirene@gmail.com</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://github.com/rheirene">https://github.com/rheirene</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en">https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://osf.io/atwg5/">https://osf.io/atwg5/</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://twitter.com/RHeirene">https://twitter.com/RHeirene</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://www.linkedin.com/in/robert-heirene/">https://www.linkedin.com/in/robert-heirene/</span> <span class="hidden" data-render-id="footer-left">Copyright 2023, Rob Heirene (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</span> <span class="hidden" data-render-id="footer-right">View source code on <a href="https://github.com/rheirene/Quarto_Website">Github</a></span></p>
+<p><span class="hidden" data-render-id="quarto-int-sidebar-title">Rob Heirene</span> <span class="hidden" data-render-id="quarto-int-navbar-title">Rob Heirene</span> <span class="hidden" data-render-id="quarto-int-navbar:About">About</span> <span class="hidden" data-render-id="quarto-int-navbar:/about.html">/about.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Addiction Science Blog">Addiction Science Blog</span> <span class="hidden" data-render-id="quarto-int-navbar:/posts.html">/posts.html</span> <span class="hidden" data-render-id="quarto-int-navbar:Publications">Publications</span> <span class="hidden" data-render-id="quarto-int-navbar:/publication.html">/publication.html</span> <span class="hidden" data-render-id="quarto-navbar-tools:mailto:robheirene@gmail.com">mailto:robheirene@gmail.com</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://github.com/rheirene">https://github.com/rheirene</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en">https://scholar.google.co.uk/citations?user=2bz0qnsAAAAJ&amp;hl=en</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://osf.io/atwg5/">https://osf.io/atwg5/</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://twitter.com/RHeirene">https://twitter.com/RHeirene</span> <span class="hidden" data-render-id="quarto-navbar-tools:https://www.linkedin.com/in/robert-heirene/">https://www.linkedin.com/in/robert-heirene/</span></p>
+<div class="hidden" data-render-id="footer-left">
+<p>Copyright 2023, Rob Heirene (<a href="https://creativecommons.org/licenses/by-sa/4.0/">CC BY-SA 4.0</a>)</p>
+</div>
+<div class="hidden" data-render-id="footer-right">
+<p>View source code on <a href="https://github.com/rheirene/Quarto_Website">Github</a></p>
+</div>
 </section></main></div>
 
 
@@ -1523,10 +1537,27 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     // clear code selection
     e.clearSelection();
   });
-  function tippyHover(el, contentFn) {
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
     const config = {
       allowHTML: true,
-      content: contentFn,
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -1536,8 +1567,17 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
-      placement: 'bottom-start'
+      placement: 'bottom-start',
     };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -1549,7 +1589,130 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
-      return note.innerHTML;
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
     });
   }
       let selectedAnnoteEl;
@@ -1593,6 +1756,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+            div.style.left = 0;
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -1618,6 +1782,32 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -1691,6 +1881,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     </div>
   </div>
 </footer>
+
 
 
 

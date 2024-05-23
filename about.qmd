@@ -10,7 +10,7 @@ format:
 
 I'm a Research Fellow (Gambling) at the Brain & Mind Centre, University of Sydney, Australia.
 
-I've bounced around the world in different academic posts in the UK and Australia since finishing my PhD in Psychology in 2019, but found a home in Sydney and I'm here to stay as of November 2023 (I need to update the map and table below!).
+I've bounced around the world in different academic posts in the UK and Australia since finishing my PhD in Psychology in 2019, but found a home in Sydney and I'm here to stay as of November 2023.
 
 I'm interested in the science of **addiction** with a passion for **data science and visualisation**.
 
@@ -32,22 +32,26 @@ showtext_auto(enable = TRUE)
 table_images<- c("files/one.png",
             "files/two.png",
             "files/three.png",
-            "files/four.png")
+            "files/four.png",
+            "files/five.png")
 
 
-career_data<- data.frame(Map_position = c(1,2,3,4),
+career_data<- data.frame(Map_position = c(1,2,3,4,5),
                 Position = c("PhD Scholarship", 
             "Postdoctoral Researcher",
             "Psychology Lecturer",
-            "Psychology Lecturer"),
+            "Psychology Lecturer",
+            "Research Fellow"),
             Employer = c("University of South-Wales",
                "University of Sydney",
                "Charles Darwin University",
-               "University of Plymouth"),
+               "University of Plymouth",
+               "University of Sydney"),
             Dates = c("Apr 2016 → Jun 2019",
             "Jul 2019 → Jan 2022",
             "Feb 2022 → Feb 2023",
-            "Mar 2023 → ongoing")) %>%
+            "Mar 2023 → Nov 2023",
+            "Nov 2023 → Ongoing")) %>%
   as_tibble()
 
 
