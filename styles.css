@@ -322,3 +322,22 @@ ANIMATE SOME TEXT ON HOVER
 .output {max-height: 500px; 
 overflow-y: scroll; 
 }
+
+/*Gt table restrict width to specified parameters in code:*/
+.gt_table {
+    table-layout: fixed;
+    width: auto !important;
+}
+
+.custom-table-1 .gt_table {
+    table-layout: fixed;
+    width: auto !important;
+}
+
+.custom-table-1 .gt_col_heading, .custom-table-1 .gt_row {
+    width: 80px !important;
+}
+
+.custom-table-1 .gt_col_heading:nth-child(1), .custom-table-1 .gt_row:nth-child(1) {
+    width: 100px !important;
+}

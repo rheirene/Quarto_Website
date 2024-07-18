@@ -104,6 +104,7 @@ gttable1 <- gttable1 %>%
     locations = cells_body()
   ) %>%
   cols_align(align = "center", columns = Dates) %>%
+    cols_align(align = "center", columns = Map) %>%
   tab_style(
     style = cell_borders(sides = c("t"),
                          color = "#289998",
@@ -134,6 +135,8 @@ gttable1 %>%
       )
     }
   ) %>% 
+    cols_width(everything() ~ px(200)) %>%
+  cols_width(Map ~ px(60)) %>%
   tab_options(
     data_row.padding = px(7),
   )
@@ -154,6 +157,7 @@ I'm also an advocate for increasing **transparency and openness** in research an
 Here's a visual summary of my **peer-reviewed publications** by year and topic area:
 
 ```{r echo = FALSE, warning = FALSE}
+# Prepare data:
 Publication_record <- data.frame(Year = c("2016",
                                             "2017",
                                             "2018",
@@ -218,6 +222,8 @@ Publication_record_table<- Publication_record  %>%
                         Other))) %>%
   ungroup() 
 
+
+# Make table
 # This is so messy/ repetitive but I couldn't get it to select multiple columns very well!
 Publication_record_table %>%
     select(-row_sum) %>% 
@@ -325,9 +331,6 @@ Publication_record_table %>%
   align = "center",
   columns = Other
 ) %>% 
-  tab_options(
-    data_row.padding = px(10),
-  ) %>%
   tab_footnote(
     footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only.") %>%
    tab_style(
@@ -351,11 +354,11 @@ Publication_record_table %>%
     Extreme_sport = "Extreme sports",
     Science_reform = "Scientific reform"
   ) %>%
-  cols_width(everything() ~ px(80)) %>%
-    cols_width(Year ~ px(100)) %>%
-    tab_options(data_row.padding = px(4.5)) %>% # decrease row height
-  opt_table_font(
-    font = google_font("Reem Kufi"))
+    opt_table_font(
+    font = google_font("Reem Kufi")) %>%
+  cols_width(everything() ~ px(100)) %>%
+    tab_options(data_row.padding = px(4.5)) # decrease row height
+
 ```
 
 ### About this site
