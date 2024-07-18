@@ -10,12 +10,10 @@ author:
 - name: Anastasia Serafimovska
 - name: Sally Gainsbury
 categories: [Gambling, Scientific reform]
-date: 2023-06-01
+date: 2024-07-02
 image: featured.jpg
 draft: false
 ---
-
-**Note:** This study is due to be published in *Meta Psychology in 2023*, pending a reproducibility check.
 
 **Abstract**
 
@@ -23,11 +21,11 @@ Study preregistration is one of several "open science" practices (e.g., open dat
 
 **Full text**
 
--   Access the pre-printed article [here](https://doi.org/10.31234/osf.io/nj4es){style="color: #289998"}
+-   Access the full article [here](https://doi.org/10.15626/MP.2021.2909){style="color: #289998"}
 
 **APA citation**
 
--   Heirene, R., LaPlante, D., Louderback, E. R., Keen, B., Bakker, M., Serafimovska, A., & Gainsbury, S. M. (2021). Preregistration specificity & adherence: A review of preregistered gambling studies & cross-disciplinary comparison. *PsyArXiv/Meta-Psychology.* https://doi.org/10.31234/osf.io/nj4es
+-   Heirene, R., LaPlante, D., Louderback, E., Keen, B., Bakker, M., Serafimovska, A., & Gainsbury, S. (2024). Preregistration specificity and adherence: A review of preregistered gambling studies and cross-disciplinary comparison. *Meta-Psychology, 8*(1). <https://doi.org/10.15626/MP.2021.2909>
 
 **Transparency**
 

@@ -161,7 +161,8 @@ Publication_record <- data.frame(Year = c("2016",
                                             "2020",
                                             "2021",
                                             "2022",
-                                            "2023"),
+                                            "2023",
+                                            "2024"),
                                    Extreme_sport = c(2,
                                                         0,
                                                         1,
@@ -169,7 +170,8 @@ Publication_record <- data.frame(Year = c("2016",
                                                         0,
                                                         0,
                                                         0,
-                                                        0),
+                                                        0,
+                                                       1),
                                  Alcohol = c(1,
                                                         0,
                                                         1,
@@ -177,15 +179,17 @@ Publication_record <- data.frame(Year = c("2016",
                                                         1,
                                                         2,
                                                         1,
-                                                        1),
+                                                        1,
+                                                       0),
                                  Gambling = c(0,
                                                         0,
                                                         0,
                                                         0,
                                                         0,
-                                                        2,
-                                                        2,
-                                                        1),
+                                                        3,
+                                                        0,
+                                                        1,
+                                                        0),
                                  Science_reform = c(0,
                                                         0,
                                                         0,
@@ -193,7 +197,8 @@ Publication_record <- data.frame(Year = c("2016",
                                                         1,
                                                         0,
                                                         1,
-                                                        2),
+                                                        1,
+                                                        1),
                                  Other= c(0,
                                                         0,
                                                         0,
@@ -201,7 +206,8 @@ Publication_record <- data.frame(Year = c("2016",
                                                         1,
                                                         0,
                                                         0,
-                                                        0))
+                                                        0,
+                                                       0))
 
 Publication_record_table<- Publication_record  %>%
     rowwise() %>%
@@ -323,7 +329,7 @@ Publication_record_table %>%
     data_row.padding = px(10),
   ) %>%
   tab_footnote(
-    footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only. There is overlap between the gamblng & scientific reform categories in 2022 & 23 where one paper is counted in both.") %>%
+    footnote = "Note: I do not believe that the number of papers someone publishes per year is an indicator of ability or impact. This table is meant to illustate patterns in my publishing history only.") %>%
    tab_style(
     style = list(cell_fill(color = "#202B2A"), 
                  cell_text(color = "#9BA7B0", style = "italic"), 
@@ -336,11 +342,11 @@ Publication_record_table %>%
                               color = "#289998",
                               weight = px(2)), 
                          locations = list(cells_footnotes(), cells_source_notes())) %>%
-  gt_color_rows(Extreme_sport, palette = c("#202B2A", "#289998")) %>% 
-  gt_color_rows(Alcohol, palette = c("#202B2A", "#289998")) %>% 
-  gt_color_rows(Gambling, palette = c("#202B2A", "#289998")) %>% 
-  gt_color_rows(Science_reform, palette = c("#202B2A", "#289998")) %>% 
-  gt_color_rows(Other, palette = c("#202B2A", "#289998")) %>%
+  gt_color_rows(Extreme_sport, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
+  gt_color_rows(Alcohol, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
+  gt_color_rows(Gambling, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
+  gt_color_rows(Science_reform, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
+  gt_color_rows(Other, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
     cols_label(
     Extreme_sport = "Extreme sports",
     Science_reform = "Scientific reform"

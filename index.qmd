@@ -20,15 +20,15 @@ You can find out more about me [here](https://robheirene.netlify.app/about.html)
 ::: fade-in
 ## Latest research findings
 
-[The state of the open science in the behavioural addictions field]{style="color: #289998; font-weight: bold;"}
+[Evaluating gambling study pre-registrations]{style="color: #289998; font-weight: bold;"}
 
-I recently contributed to a conceptual paper discussing the landscape of open science in behavioural addictions research---find out more [here](https://robheirene.netlify.app/publication/2023-open-science-landscape-eben-heirene/). The paper was led by [Dr Charlotte Eben](https://twitter.com/CharlotteEben), who is doing some great work in this space!
+Our meta-scientific review of pre-registrations for gambling studies is finally published in *Meta-Psychology*. This journal has one of the highest TOP (Transparency and Openness Promotion) scores of any field and so I'm excited to have our work published there. The manuscript we submitted was computationally produced from R code and all data and materials are publicly available---find out more [here](https://robheirene.netlify.app/publication/2024-preregistration-evaluation-Heirene/). 
 
 ## What I'm working on
 
-[Moving across the world (again)]{style="color: #289998; font-weight: bold;"}
+[Lots to do with online gambling in Australia]{style="color: #289998; font-weight: bold;"}
 
-As of November 2023, I'm leaving the University of Plymouth in the UK and heading back to the University of Sydney again to finally settle in a place that feels like home. Doing that with a family of six (four young children) is keeping me pretty busy right now...
+My colleagues and I are working on a large project that fuses people's survey responses with their online gambling account data to answer lots of interesting research questions... more soon!
 
 [Pondering + plotting]{style="color: #289998; font-weight: bold;"}
 

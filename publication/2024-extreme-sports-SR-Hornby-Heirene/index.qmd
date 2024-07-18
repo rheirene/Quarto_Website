@@ -1,0 +1,44 @@
+---
+title: "What factors explain extreme sport participation? A systematic review"
+description: ""
+author:
+- name: Odette Hornby
+- name: Gareth Roderique-Davies
+- name: Rob Heirene
+- name: Elin Thorkildsen
+- name: Sophie Bradbury
+- name: Iwan Rowlands
+- name: Egan Goodison
+- name: Jodie Gill
+- name: David Shearer
+categories: [Extreme sport]
+date: 2024-07-16
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+**Objective:** Extreme sport participation is growing, yet it is still not clear exactly what motivates individuals to participate in sports where accidents can lead to serious injury or death. The purpose of this systematic review was to review and assess current research and identify the factors that explain engagement in extreme sport participation.
+
+**Methods:** A systematic review of PsycInfo, ProQuest, PsychArticles, SportDiscus and Google Scholar was performed according to PRISMA guidelines. Eligibility criteria were defined to identify studies exploring the factors that explain or are associated with taking part in extreme sports. Articles published in English in peer-reviewed journals were retrieved.
+
+**Results:** A total of 35 studies met the eligibility criteria. The sample comprised 17 qualitative studies, 12 quantitative studies, 5 case studies and 1 mixed method study. Findings were categorised into five key themes; “*existential and external*” (external reasons for participation, e.g., being in nature), “*personality*” (i.e., stable traits that predicted participation e.g., sensation seeking), “*motivation characteristics*” (i.e., one's capability and confidence whilst participating, e.g., self-determination theory), “*managing risk*” (i.e., explanation centred around the desire to take risks e.g., experiential vs. analytical) and “*analogies with addiction and withdrawal*” (i.e., the behavioural response experienced whilst abstaining from/unable to take part in the sport e.g., craving).
+
+**Conclusion:** There are multiple reasons why individuals participate in extreme sports despite their inherent danger. This review highlights how individuals differing perceptions of risk can impact motivations and therefore the complexity in this area. Potential links between themes and suggestions for future research are also discussed.
+
+**Systematic Review Registration:** [**https://osf.io/mvk2j**](https://osf.io/mvk2j).
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.3389/fspor.2024.1403499){style="color: #289998"}
+
+**APA citation**
+
+-   Hornby, O., Roderique-Davies, G., Heirene, R., Thorkildsen, E., Bradbury, S., Rowlands, I., Goodison, E., Gill, J., & Shearer, D. (2024). What factors explain extreme sport participation? A systematic review. Frontiers in Sports and Active Living, 6. <https://doi.org/10.3389/fspor.2024.1403499>
+
+**Transparency**
+
+|    **Pre-registered**     | **Open materials** | **Open code** |                                                           **Open data**                                                            |
+|:-------------------------:|:------------------:|:-------------:|:----------------------------------------------------------------------------------------------------------------------------------:|
+| [✓](https://osf.io/mvk2j) |        *NA*        |     *NA*      | [✓](https://www.frontiersin.org/journals/sports-and-active-living/articles/10.3389/fspor.2024.1403499/full#supplementary-material) |
