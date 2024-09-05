@@ -20,6 +20,12 @@ You can find out more about me [here](https://robheirene.netlify.app/about.html)
 ::: fade-in
 ## Latest research findings
 
+[Collaborative commentary: The UK's gambling affordability checks]{style="color: #289998; font-weight: bold;"}
+
+I recently read Philip Newall and David Zendle's excellent [article](https://doi.org/10.1111/add.16571) in which they used banking data to examine the relationship between gambling expenditure and harm. After reading their conclusion regarding the potential impact of an 'affordability check' policy, I wrote to them with some comments about how they could adapt their analyses to more directly evaluate the policy. 
+
+This led to a very cordial discussion and to [my comments being published in *Addiction*](https://doi.org/10.1111/add.16635) alongside their article. The authors then re-analysed their outcomes in line with my suggestions and published a great [response](https://doi.org/10.1111/add.16657). 
+
 [Evaluating gambling study pre-registrations]{style="color: #289998; font-weight: bold;"}
 
 Our meta-scientific review of pre-registrations for gambling studies is finally published in *Meta-Psychology*. This journal has one of the highest TOP (Transparency and Openness Promotion) scores of any field and so I'm excited to have our work published there. The manuscript we submitted was computationally produced from R code and all data and materials are publicly available---find out more [here](https://robheirene.netlify.app/publication/2024-preregistration-evaluation-Heirene/). 
@@ -30,41 +36,4 @@ Our meta-scientific review of pre-registrations for gambling studies is finally 
 
 My colleagues and I are working on a large project that fuses people's survey responses with their online gambling account data to answer lots of interesting research questions... more soon!
 
-[Pondering + plotting]{style="color: #289998; font-weight: bold;"}
-
-I've also thinking about how to progress gambling harm prevention in my research and enjoying learning how to make interactive charts using the `plotly` R package. I'm marrying these interests by making the below chart of prevention strategies for problem gambling.
-
-[**Click on the bars to see more**]{style="color: #289998; font-weight: bold;"}. It's best viewed on a pc/mac or tablet (if you are on mobile, turn it to landscape mode).
-:::
-
-```{r echo =FALSE, results=FALSE, warning=FALSE, message=FALSE}
-# I keep this in just in case I want to run any code locally
-# Install and load the groundhog package to ensure consistency of the package versions used here:
-# install.packages("groundhog") # Install
-
-# library(groundhog) # Load
-
-# packages <- c('tidyverse', # Clean, organise, and visualise data
-              # 'plotly', # Add interactive elements to figures
-              # 'sysfonts', # Special fonts for figures
-              # 'showtext', # Special fonts for figures
-              # 'htmlwidgets') # Make plotly plots HTML format for rendering in Quarto
-              
-# Load desired package with versions specific to project start date:
-# groundhog.library(packages, "2023-06-05") # Set Slightly earlier than start date as some of the plotly dependency packages wouldn't load properly with date as 07/07/2023
-
-# Load new font for figures/graphs
-# font_add_google("Poppins")
-# showtext_auto()
-```
-
-```{r echo =FALSE,warning=FALSE, message=FALSE}
-
-```
-
-```{=html}
-<iframe src="posts/2023-gambling-harms-chart/sunburst_fig.html" class="fade-inhtml" width="100%" height="750" style="border:none;"></iframe>
-```
-::: fade-in
-It's very much a work in progress (*I still need to add many strategies and labels for those I have*), but you can find out more about my plans for this [here](https://robheirene.netlify.app/posts/2023-gambling-harms-chart).
-:::
+::: 

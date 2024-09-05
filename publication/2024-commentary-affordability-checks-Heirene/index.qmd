@@ -1,0 +1,28 @@
+---
+title: "Commentary on Zendle and Newall: The need for direct evaluation of the UK's gambling affordability checks policy"
+description: ""
+author:
+- name: Rob Heirene
+categories: [Gambling]
+date: 2024-08-05
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+*Zendle & Newall use novel methods to provide strong evidence for understanding the link between gambling spending and harm. However, their analyticalstrategy must be altered to directly evaluate the UK government's proposed affordability checks policy and support their conclusion that it is unlikely to affect people not experiencing harm*.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1111/add.16635)
+
+**APA citation**
+
+-   Heirene, R. M. (2024). Commentary on Zendle and Newall: The need for direct evaluation of the UK's gambling affordability checks policy. *Addiction*. <https://doi.org/10.1111/add.16635>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|      *NA*      |      *NA*      |   *NA*    |   *NA*    |
