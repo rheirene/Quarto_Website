@@ -1,0 +1,34 @@
+---
+title: "CONSORT adherence among randomised control trials in the behavioural addiction literature: A systematic review"
+description: ""
+author:
+- name: Su Jeong Cho
+- name: Sally Gainsbury
+- name: Debi LaPlante
+- name: Eric Louderback
+- name: Sarah Nguyen
+- name: Michael D'Souza
+- name: Rob Heirene
+categories: [Gambling, Scientific reform]
+date: 2024-10-23
+image: featured.jpg
+draft: false
+---
+
+**Abstract**
+
+*Background:** Randomised controlled trials (RCTs) are the gold-standard method of evaluating interventions. We aimed to determine the extent to which articles reporting RCTs of behavioural addiction interventions adhere to CONSORT (CONsolidated Standards Of Reporting Trials) standards. **Methods:** We searched the PubMed database and Journal of Gambling Issues for articles reporting RCTs of interventions for Gambling or Gaming Disorder published between 2010 and 2023. We coded articles according to the number and percentage of relevant CONSORT items reported in their abstract and main text. *Results:** Sixty-three articles met inclusion criteria. Of these, 52 (82.5%) concerned Gambling Disorder and 11 (17.5%) Gaming Disorder. The mean percentage of items reported in abstracts and main texts was 34.5% and 58.6%, respectively. Rates of reporting were higher in our sample of behavioural addiction RCTs (Mdn = 57.6%) than in a sample of previously-scored substance addiction RCTs (Mdn = 54.1%) evaluated by Vasser et al. (2019), *U* = 14622, *p* = 0.023, Mdn~𝑑𝑖𝑓𝑓~ = 5.15 [95% CIs: 0.76, 9.46]. *Conclusions:** We identified commonly omitted CONSORT items, including details relating to abstracts, changes to trial methods and outcomes, trial designs, harms/unintended consequences of interventions, and effect sizes and their precision. Through this review, we have developed specific recommendations for improving CONSORT compliance (e.g., alternative ways of reporting adherence checklists, evidence-based education programs, and normalising reporting information that could be perceived as study shortfalls) which will boost the interpretability of the published behavioural addictions literature. The review preregistration, materials, data, and analysis code can be accessed on the Open Science Framework: https://osf.io/8yskr.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.31234/osf.io/h5xaj){style="color: #289998"}
+
+**APA citation**
+
+-   Cho, S. J., Gainsbury, S. M., LaPlante, D., Louderback, E., Nguyen, S., D’Souza, M., & Heirene, R. (2024). CONSORT adherence among randomised control trials in the behavioural addiction literature: A systematic review. *PsyArXiv*. <https://osf.io/preprints/psyarxiv/h5xaj_v1> 
+
+**Transparency**
+
+|            Pre-registered             |            Open materials             |                                               Open code                                               |               Open data               |
+|:-------------------------------------:|:-------------------------------------:|:-----------------------------------------------------------------------------------------------------:|:-------------------------------------:|
+| [✓](https://osf.io/fnv2j) | [✓](https://osf.io/8yskr) | [✓](https://github.com/rheirene/behav_addic_consort_adherence_outcome_switch) | [✓](https://github.com/rheirene/behav_addic_consort_adherence_outcome_switch/tree/main/Data) |
