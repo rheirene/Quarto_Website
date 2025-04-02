@@ -1,0 +1,44 @@
+---
+title: "Use and impact of government-mandated activity statements for online gambling in Australia"
+description: ""
+author:
+- name: Sally Gainsbury
+- name: Dilushi Chandrakumar
+- name: Rob Heirene
+categories: [Gambling]
+date: 2025-03-31
+image: false 
+draft: false
+---
+
+**Abstract**
+
+### Background
+
+Since July 2022, the Australian government has required online wagering operators to send all active customers activity statements as part of the National Consumer Protection Framework in an effort to reduce gambling harms. Having access to clear and accurate gambling expenditure data is intended to facilitate awareness and reflection and enhance consumer self-awareness for their spending, which can consequently enable informed and considered decisions regarding future gambling spend. This study aimed to explore Australian wagering customers’ use of activity statements and their impact on gambling behaviour.
+
+### Methods
+
+Data was gathered through surveys distributed via two online gambling operators to assess problem gambling severity, self-reported use and impact of activity statements, and ability to recall gambling spend. The operators provided matched customer account data for each participant, which was de-identified but enabled gambling behaviour to be objectively assessed and the accuracy of self-reported spending to be determined. The final sample comprised 1647 participants (85% male) with a mean age of 44 years.
+
+### Results
+
+Our results suggest that 57.2% of participants opened their statements at least “sometimes”, indicating consumer interest in activity statements. Of the customers who opened statements, 17.6% reported that the statements decreased their gambling, and a very small proportion (0.8%) reported a subsequent increase in their gambling. There was some evidence of a dose-dependent relationship whereby the more people engaged with statements, the more effective they were perceived to be. Reading statements more often and more recently was not associated with improved recall of recent gambling spend or net outcome. There were no significant changes in gambling behaviour (betting frequency and deposit amount) observed around the time when statements were sent.
+
+### Conclusions
+
+A notable proportion of online wagering customers are using activity statements and many feel these are useful in tracking their gambling spending and may help them to reduce their gambling. Importantly, there was minimal evidence of negative unintended consequences observed in self-report and objective behavioural data. Efforts to enhance engagement with activity statements would likely result in further benefits. These findings contribute to the evaluation of a national policy regarding consumer protection tools designed to reduce gambling harm.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1186/s12954-025-01192-1)
+
+**APA citation**
+
+-   Gainsbury, S.M., Chandrakumar, D. & Heirene, R.M. (2025). Use and impact of government-mandated activity statements for online gambling in Australia. *Harm Reduct J* **22**, 44. <https://doi.org/10.1186/s12954-025-01192-1>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:-------------:|:-------------:|:---------------------------:|:-------------:|
+| [✓](https://doi.org/10.17605/OSF.IO/VDSMW) | [✓](https://doi.org/10.17605/OSF.IO/VDSMW) | [✓](https://robheirene.quarto.pub/analysis-of-activity-statement-data/) | NA |
