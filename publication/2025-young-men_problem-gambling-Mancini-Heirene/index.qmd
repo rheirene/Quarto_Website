@@ -1,0 +1,34 @@
+---
+title: "Predicting Problem Gambling in Young Men: The Impact of Sports Gambling Frequency and Internalizing Symptoms"
+description: ""
+author:
+
+- name: Vincent Mancini
+- name: Jack D. Brett
+- name: Rob Heirene
+- name: Krista Fisher
+- name: Thom P. Nevill
+- name: Francis Mitrou
+categories: [Gambling]
+date: 2025-06-11
+image: false 
+draft: false
+---
+
+**Abstract**
+
+Young men aged 18–25 years are at disproportionately increased risk for gambling problems compared to their older or female counterparts. The unique mechanisms that precipitate these problems in this group remain unclear. Data from the largest longitudinal cohort study on Australian men’s health (the *Ten to Men* Study) were used to identify the psychosocial, health-related, and gambling-related behavioral predictors of problem gambling severity in 265 young men aged 18–25 years. Hierarchical multiple ordinal logistic regression analyses found these predictors to explain a moderate proportion of variance in problem gambling severity. Four of the 17 predictors included accounted for unique variance. Specifically, higher levels of problem gambling severity were explained by lower levels of anxiety, higher levels of depression, and a higher frequency of prior engagement in *sports* gambling and *fantasy sports* gambling. Other psychosocial factors (e.g., masculine norm adherence), health-related behaviors (e.g., problem alcohol use), and gambling-related behaviors (e.g., casino or electronic gaming machines) did not explain any further variance. These findings are the first to longitudinally examine the risk factors for problem gambling severity in Australian men aged 18–25 years. The findings highlight unique developmental and sociocultural factors that may increase young men’s vulnerability to problem gambling. Whilst mental health difficulties are a known risk factor for gambling pathology, the identification of sports and fantasy sports gambling frequency as the greatest risks for later gambling problems emphasizes a need for initiatives that can identify and support young men susceptible to this form of gambling.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1007/s10899-025-10403-0)
+
+**APA citation**
+
+-   Mancini, V. O. Brett, J. D. Heirene, R. M. *et al.* (2025). Predicting Problem Gambling in Young Men: The Impact of Sports Gambling Frequency and Internalizing Symptoms. *Journal of Gambling Studies* <https://doi.org/10.1007/s10899-025-10403-0>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:---------------:|:---------------:|:-------------------:|:---------------:|
+| ✘ | ✘ | [**✓**](https://osf.io/djqc6/files/osfstorage?view_only=a6e4ba2fd61c471bbaaef05e1122f9be) | ✘ |

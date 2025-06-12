@@ -666,6 +666,7 @@ saveWidget(dumbbell_plot_first_last_ggplotly, 'posts/2023-history-of-behavioural
 ```{=html}
 <iframe src="dumbbell_plot.html" class="fade-inhtml" width="100%" height="800" style="border:none;"></iframe>
 ```
+
  
 
 The size of the dots in the above plot correspond to the number of publications in that year for the addiction. After sorting the visuals with `ggplot2`, I used the great `ggplotly` package to make it interactive---hover over any of the dots to see more information about what was going on that year.

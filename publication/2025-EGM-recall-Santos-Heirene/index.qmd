@@ -1,0 +1,33 @@
+---
+title: "Electronic Gaming Machine Consumers’ Understanding of Past & Future Spending: Associations with Risk, Impulsivity, Self-Control, & Problematic Gambling"
+description: ""
+author:
+
+- name: Teejay Santos
+- name: Rob Heirene
+- name: Deborah Cobb-Clark
+- name: Agnieszka Tymula
+- name: Sally Gainsbury
+categories: [Gambling]
+date: 2025-06-09
+image: false 
+draft: false
+---
+
+**Abstract**
+
+An individual’s ability to make informed decisions about future gambling expenditure requires an awareness of affordability and likely return, and hence an accurate understanding of their past outcomes. Electronic gaming machines (EGMs) have been criticised for having structural characteristics that erode informed decision-making (e.g., loses disguised as wins, display of credits vs. currency). Here we investigate individual’s understanding of their recent and future  EGM spending. Survey responses for 187 Australian EGM customers (age range:18–81, 57% female) were linked to their account data held by a gambling venue. Few customers accurately recalled and predicted their past/future 30-day expenditure to within a 10% margin of error, including net outcome (i.e., accurate recall \[5.5%\] or prediction \[17.4%\] of total amount won or lost); win (10.5%; 32.9%), and total spend (2.6%; 12.8%). The ability to accurately report gambling expenditure was almost exclusively limited to those who did not gamble during the period reported. Participants with greater impulsivity and more willingness to take risks were less accurate in their prediction of net outcome and spend, respectively. Across recall and prediction, participants commonly overestimated their net result, yet underestimated the amount they won, suggesting that winnings are re-gambled without considering them as their own funds. Our findings demonstrate EGM customers do not understand their gambling expenditure and changes are needed to the product and environment to facilitate informed choice.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1007/s10899-025-10405-y)
+
+**APA citation**
+
+-   Santos, T. Heirene, R. M. Cobb-Clark, D. *et al.* (2025). Electronic Gaming Machine Consumers’ Understanding of Past & Future Spending: Associations with Risk, Impulsivity, Self-Control, & Problematic Gambling. *Journal of Gambling Studies* <https://doi.org/10.1007/s10899-025-10405-y>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:---------------:|:---------------:|:---------------------:|:---------------:|
+| [**✓**](https://osf.io/pr35d) | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://osf.io/bzutv/files/osfstorage) | [**✓**](https://osf.io/bzutv/files/osfstorage) |

@@ -1,0 +1,53 @@
+---
+title: "Resilience-Focused Approaches for School-Age Australian First Nations Populations: A Systematic Review of Influential Factors"
+description: ""
+author:
+
+- name: Sara Parsafar
+- name: Lydia Brodie
+- name: Rob Heirene
+categories: [Other]
+date: 2025-05-06
+image: false 
+draft: false
+---
+
+**Abstract**
+
+### Introduction
+
+Building resilience has been identified as a key way to improve the wellbeing of children. However, there are currently no reviews of the evidence that explore factors influencing resilience in Australian First Nations School-age youth.
+
+### Objective
+
+We aimed to review the literature on factors influencing resilience in school-age (5–19 years) Australian First Nations populations. We also explored how resilience is defined and operationalised, how factors identified mapped onto the Social and Emotional Wellbeing (SEWB) model and whether there were differences in factors depending on age and residential localities.
+
+### Design
+
+We conducted a systematic review of published peer-reviewed articles that included the identification or review of factors influencing resilience in our target population. We searched key databases and performed a narrative synthesis.
+
+### Findings
+
+Of the 1093 articles identified, 13 were found to meet inclusion criteria. Fifty-one different factors influencing resilience were identified across individual, interpersonal and community socio-ecological levels.
+
+### Discussion
+
+The 51 factors mapped cohesively onto the SEWB domains. There was inconclusive data to determine if factors were dependent on the participants' age and location. Key limitations of the literature on this topic included the limited number of available studies and the lack of definitions and consistent operationalisation of resilience within the few existing studies.
+
+### Conclusion
+
+Our findings show the wide variety of factors that influence resilience in this population and demonstrate the importance of incorporating SEWB domains into wellbeing and resilience-focused programmes in Australian schools for First Nations populations.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1111/ajr.70051)
+
+**APA citation**
+
+-   Parsafar, S., Brodie, L., & Heirene, R. (2025). *Resilience-focused approaches for school-age Australian First Nations populations: A systematic review of influential factors*. *The Australian Journal of Rural Health*. <https://doi.org/10.1111/ajr.70051>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:---------------:|:---------------:|:------------------:|:---------------:|
+| [**✓**](https://www.crd.york.ac.uk/PROSPERO/view/369883) | NA | NA | NA |
