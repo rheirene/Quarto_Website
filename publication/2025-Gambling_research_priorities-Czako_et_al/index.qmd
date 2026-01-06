@@ -1,0 +1,46 @@
+---
+title: "Research priorities in gambling: Findings of a large-scale expert study"
+description: ""
+author:
+- name: Andrea Czakó
+- name: Mark Potenza
+- name: ...
+- name: Gambling Research Priority Setting Consortium [includes myself and other contributors]
+- name: Zsolt Demetrovics
+categories: [Gambling]
+date: 2025-09-30
+image: false 
+draft: false
+---
+
+**Abstract**
+
+### Objective
+
+While gambling is a growing public health concern, research resources are limited, and no guidance is available to prioritise research. This study aimed to identify priorities for gambling research on a global scale using a systematic, transparent, and democratic methodology to inform researchers and other stakeholders.
+
+### Methods
+
+Leading gambling researchers were invited to list gambling-related research questions that can contribute to strengthening evidence-based policy, prevention, and effective early intervention and treatment of problem gambling. Suggestions were consolidated into research options and evaluated against six criteria (Answerability, Feasibility, Effectiveness, Impact on equity and an additional two based on the category of research options: Novelty and Relevance for description-type, Potential for burden reduction and Deliverability for intervention-related options). Stakeholders (*n* = 14) assigned relative weights to each criterion, and options were ranked according to their weighted research priority scores.
+
+### Results
+
+With input from 46.9% of eligible researchers (*n* = 307) from 35 countries, 1,361 questions were consolidated into 102 options. Evaluations showed strong agreement between experts, and the top 25 priorities were identified. The results highlight the need for further knowledge about the epidemiology, etiology, and consequences of problem gambling. Top-priority topics indicate the importance of focusing on vulnerable and minority groups, youth, significant others, technological innovations, advertisements, the convergence of gaming and gambling, and co-occurring conditions. Evaluating and tailoring existing measures were prioritised more highly than new interventions, and identifying factors underlying treatment seeking, drop-out and relapse was also considered a priority.
+
+### Conclusions
+
+This initiative successfully involved the global research community in identifying gambling research priorities. The results provide information for researchers and other stakeholders for future projects and funding.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1556/2006.2025.00072)
+
+**APA citation**
+
+-   Czakó, A., Potenza, M. N., Hodgins, D. C., Yu, S. M., Wu, A. M. S., Jiménez-Murcia, S., Bowden-Jones, H., King, D., Billieux, J., Bőthe, B., Stein, D. J., Gambling Research Priority Setting Consortium, & Demetrovics, Z. (2025). Research priorities in gambling: Findings of a large-scale expert study. *Journal of Behavioral Addictions*, *14*(3), 1222-1249. <https://doi.org/10.1556/2006.2025.00072>
+
+**Transparency**
+
+|        Pre-registered         | Open materials | Open code | Open data |
+|:-----------------------------:|:--------------:|:---------:|:---------:|
+| [**✓**](https://osf.io/abn3e) |       ✘        |     ✘     |     ✘     |

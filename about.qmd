@@ -196,8 +196,8 @@ Publication_record <- data.frame(Year = c("2016",
                                                         0,
                                                         1,
                                                         1,
-                                                        2,
-                                                        0),
+                                                        1,
+                                                        1),
                                  Other= c(0,
                                                         0,
                                                         0,
@@ -217,7 +217,7 @@ Publication_record <- data.frame(Year = c("2016",
                                                         0,
                                                         1,
                                                         1,
-                                                        3))
+                                                        6))
 
 Publication_record_table<- Publication_record  %>%
     rowwise() %>%
@@ -351,19 +351,20 @@ Publication_record_table %>%
                               color = "#289998",
                               weight = px(2)), 
                          locations = list(cells_footnotes(), cells_source_notes())) %>%
-  gt_color_rows(Extreme_sport, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
-  gt_color_rows(Alcohol, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
-  gt_color_rows(Gambling, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
-  gt_color_rows(Science_reform, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
-  gt_color_rows(Other, palette = c("#202B2A", "#289998"), domain = c(0,3)) %>% 
+  gt_color_rows(Extreme_sport, palette = c("#202B2A", "#289998"), domain = c(0,6)) %>% 
+  gt_color_rows(Alcohol, palette = c("#202B2A", "#289998"), domain = c(0,6)) %>% 
+  gt_color_rows(Gambling, palette = c("#202B2A", "#289998"), domain = c(0,6)) %>% 
+  gt_color_rows(Science_reform, palette = c("#202B2A", "#289998"), domain = c(0,6)) %>% 
+  gt_color_rows(Other, palette = c("#202B2A", "#289998"), domain = c(0,6)) %>% 
     cols_label(
     Extreme_sport = "Extreme sports",
     Science_reform = "Scientific reform"
   ) %>%
     opt_table_font(
     font = google_font("Reem Kufi")) %>%
-  cols_width(everything() ~ px(100)) %>%
-    tab_options(data_row.padding = px(4.5)) # decrease row height
+  cols_width(everything() ~ px(99)) %>%
+    tab_options(data_row.padding = px(4.5))
+  # decrease row height
 
 ```
 

@@ -20,20 +20,32 @@ You can find out more about me [here](https://robheirene.netlify.app/about.html)
 ::: fade-in
 ## Latest research findings
 
-[Collaborative commentary: The UK's gambling affordability checks]{style="color: #289998; font-weight: bold;"}
+[Gambling research priority setting]{style="color: #289998; font-weight: bold;"}
 
-I recently read Philip Newall and David Zendle's excellent [article](https://doi.org/10.1111/add.16571) in which they used banking data to examine the relationship between gambling expenditure and harm. After reading their conclusion regarding the potential impact of an 'affordability check' policy, I wrote to them with some comments about how they could adapt their analyses to more directly evaluate the policy. 
+I contributed to a Delphi study on the most important research topics to address in the field as part of the Gambling Research Priority Setting Consortium. The article was published in the *Journal of Behavioural Addictions* and is available openly [here](https://doi.org/10.1556/2006.2025.00072).
 
-This led to a very cordial discussion and to [my comments being published in *Addiction*](https://doi.org/10.1111/add.16635) alongside their article. The authors then re-analysed their outcomes in line with my suggestions and published a great [response](https://doi.org/10.1111/add.16657). 
 
-[Evaluating gambling study pre-registrations]{style="color: #289998; font-weight: bold;"}
+[How many people should we expect to set voluntary time or monetary limits?]{style="color: #289998; font-weight: bold;"}
 
-Our meta-scientific review of pre-registrations for gambling studies is finally published in *Meta-Psychology*. This journal has one of the highest TOP (Transparency and Openness Promotion) scores of any field and so I'm excited to have our work published there. The manuscript we submitted was computationally produced from R code and all data and materials are publicly available---find out more [here](https://robheirene.netlify.app/publication/2024-preregistration-evaluation-Heirene/). 
+I co-wrote a letter to the editor with [Professor Michael Wohl](https://www.linkedin.com/in/michael-wohl-7833a430/) arguing that the field needs to establish realistic benchmarks when it comes to rates of  voluntarily limit setting---read it [here]().
 
 ## What I'm working on
 
-[Lots to do with online gambling in Australia]{style="color: #289998; font-weight: bold;"}
+[A new fellowship!]{style="color: #289998; font-weight: bold;"}
 
-My colleagues and I are working on a large project that fuses people's survey responses with their online gambling account data to answer lots of interesting research questions... more soon!
+In July 2025 I was awarded a three-year postdoctoral fellowship from the New South Wales Office of Responsible Gambling to evaluate harm minimisation policies for casinos in the state that have been implemented in recent years. 
 
-::: 
+Using extensive tracking data from multiple casino venues across two states, I'll be using natural experimental designs to study the impact of several regulatory changes (you can read more [here](https://www.gambleaware.nsw.gov.au/resources-and-education/funding-to-prevent-gambling-harm/gambling-research-capacity-grants)).
+
+[Lots to do with online sports and race betting]{style="color: #289998; font-weight: bold;"}
+
+My colleagues and I have been working on a large project that fuses people's survey responses with their online gambling account data. So far, we've used this dataset to explore:
+
+-   People's use of government mandated activity statements in [this paper](https://robheirene.netlify.app/publication/2025-activity-statements-gainsbury-heirene/)
+
+-   The impact of non-response bias on our survey sample's representativeness in [this paper](https://robheirene.netlify.app/publication/2025-Non-Response-Bias-Heirene_et_al/)
+
+-   Developing lower-risk limits specifically for online sports/race betting in Australia (to be published early in 2026)
+
+-   The value of machine learning in identifying customers reporting problematic gambling in [this pre-print](https://osf.io/preprints/psyarxiv/zs9af_v1)
+:::

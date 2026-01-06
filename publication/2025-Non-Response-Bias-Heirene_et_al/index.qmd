@@ -1,0 +1,33 @@
+---
+title: "Non-response bias in gambling surveys"
+description: ""
+author:
+
+- name: Rob Heirene
+- name: Deborah Cobb-Clark
+- name: Agnieszka Tymula
+- name: Teejay Santos
+- name: Sally Gainsbury
+categories: [Gambling]
+date: 2025-08-10
+image: false 
+draft: false
+---
+
+**Abstract**
+
+The representativeness of study samples is a perennial concern in survey research. Here we examined how gambling survey responders differed from non-responders. Australian customers of an electronic gaming machine venue (Study 1; *n* = 4,301) and two online wagering sites (Study 2; *n* = 24,829) were invited to participate in a survey about their gambling. We accessed account data for all invitees and compared responders’ and non-responders’ characteristics and gambling behaviors. In Study 1, differences between the 183 responders (4.25%) and non-responders were minimal (*d* = −0.23 to 0.21). In Study 2, the 1,956 responders (7.88%) were older, gambled more frequently and more recently (*d* = −0.51–0.58), and were more likely to be flagged by the site’s risk detection system (OR = 1.91). Subsample analyses restricted to those who had gambled in the past 30 days (*n* = 12,799) found smaller differences (*d* = −0.35–0.31, OR = 1.34), demonstrating how eligibility criteria affect sample representativeness. The ability to predict survey uptake via logistic regression models was poor in Studies 1 (Nagelkerke’s *R*2 = 4.6%) and 2 (8.5%). While gambling survey samples are broadly representative, responders – particularly in online studies – tend to be more involved in gambling, highlighting the need for caution when generalizing findings.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1080/14459795.2025.2530106)
+
+**APA citation**
+
+-   Heirene, R. M., Cobb-Clark, D., Tymula, A., Santos, T., & Gainsbury, S. M. (2025). Non-response bias in gambling surveys. *International Gambling Studies*, *25*(3), 448–471. <https://doi.org/10.1080/14459795.2025.2530106>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:---------------:|:---------------:|:-------------------:|:---------------:|
+| [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://robheirene.quarto.pub/analysis-document-response-bias-in-gambling-research) | ✘ |

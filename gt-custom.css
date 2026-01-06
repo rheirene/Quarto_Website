@@ -1,0 +1,10 @@
+custom-gt-table .gt_table {
+  table-layout: fixed;
+  width: 100% !important;
+}
+
+.custom-gt-table .gt_col_heading,
+.custom-gt-table .gt_row {
+  white-space: normal;
+  word-wrap: break-word;
+}

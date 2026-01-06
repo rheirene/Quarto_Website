@@ -1,0 +1,29 @@
+---
+title: "Setting limits on expectations: Rethinking who should be using responsible gambling tools and why?"
+description: ""
+author:
+- name: Rob Heirene
+- name: Michael Wohl
+categories: [Gambling]
+date: 2025-09-20
+image: false 
+draft: false
+---
+
+**Abstract**
+
+Voluntary uptake of responsible gambling tools, such as time and spend limits, typically ranges from 1% to 17%. These rates are often framed as disappointingly low, but what proportion of players should we reasonably expect to use these tools? Should targets vary by product, risk profile, or gambling intensity? These foundational questions are rarely asked, yet they are critical to interpreting adoption rates and evaluating intervention success. Mandatory global limits are likely to be most effective in preventing gambling harms, yet these are rarely implemented. In the absence of such systemic measures, we must define what constitutes an acceptable level of voluntary uptake. Although a target of 100% uptake is a worthy aspiration, it is unlikely to be achieved without systemic reform and may obscure more thoughtful, context-sensitive evaluations. We urge researchers, regulators, and industry stakeholders to move beyond vague critiques of “low” rates of tool use, and to start articulating clear, empirically informed benchmarks. The question is not simply whether uptake is low—but low compared to what, and for whom?
+
+**Full text**
+
+-   Access the full article [here](Heirene_Wohl_(2025)_Limit_Setting_Editorial.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Heirene, R. M., & Wohl, M. J. A. (2025). Setting limits on expectations: Rethinking who should be using responsible gambling tools and why? *International Gambling Studies*, 1–8. <https://doi.org/10.1080/14459795.2025.2564402>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|       NA       |       NA       |    NA     |    NA     |
