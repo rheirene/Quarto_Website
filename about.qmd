@@ -362,9 +362,10 @@ Publication_record_table %>%
   ) %>%
     opt_table_font(
     font = google_font("Reem Kufi")) %>%
-  cols_width(everything() ~ px(99)) %>%
-    tab_options(data_row.padding = px(4.5))
-  # decrease row height
+  cols_width(everything() ~ px(99)) %>% # fix col width
+    tab_options(data_row.padding = px(4.5), # decrease row height :)
+                row.striping.include_table_body = FALSE) # Doesn't work..
+  # opt_row_striping(row_striping = FALSE) # Doesn't work...
 
 ```
 

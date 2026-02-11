@@ -13,7 +13,7 @@ Hi 👋 I'm a Research Fellow at the Brain & Mind Centre, University of Sydney, 
 You can find out more about me [here](https://robheirene.netlify.app/about.html).
 :::
 
-------------------------------------------------------------------------
+<!-- ------------------------------------------------------------------------ -->
 
 <br>
 

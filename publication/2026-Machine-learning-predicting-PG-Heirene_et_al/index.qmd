@@ -1,0 +1,39 @@
+---
+title: "PRE-PRINT - Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data"
+description: ""
+author:
+- name: Rob Heirene
+- name: Eden Zhang
+- name: Darya Vanichkina
+- name: Charles de Leau
+- name: Eunice Huynh
+- name: Sally Gainsbury
+categories: [Gambling]
+date: 2025-12-12
+image: false 
+draft: false
+---
+
+**Abstract**
+
+**Background and aims:** Online gambling operators collect detailed behavioural data that can be used to identify customers at risk of harmful gambling. This study examined the value of machine learning in this context. We compared models trained on 30 days versus six months of behavioural data and explored whether incorporating self-reported survey responses enhanced performance.
+
+**Methods:** Customers from two Australian sports and race betting sites (N=1,470) completed a survey including the Problem Gambling Severity Index (PGSI) and measures of employment, income, gambling satisfaction, number of gambling accounts, and estimated past-30-day expenditure. Survey responses were matched to participants’ account data provided by operators. We built a series of machine learning models to classify participants into risk groups (PGSI 1-7 \[no-to-moderate-risk\] vs. PGSI ≥8 \[high-risk\]), comparing performance across data windows (30 days vs. six months), and with or without survey variables.
+
+**Results:** Models using only behavioural data achieved adequate classification accuracy (Area Under the Receiver Operating Characteristic curve \[AUROC\]=0.74–0.75), with similar performance across 30-day and six-month data windows. The most predictive account-based variables were age, deposit intensity (deposits per active day), average stake size, and days since last bet. Combining behavioural data with self-reported variables substantially enhanced performance (AUROC=0.76–0.85). Two self-reported variables—number of gambling accounts held and gambling satisfaction—were primarily responsible for improvements.
+
+**Conclusions:** Machine learning models can effectively detect at-risk customers on online sports and race betting sites using only 30 days of behavioural data. Performance can be improved by adding minimal, non-intrusive self-report measures.
+
+**Full text**
+
+-   Access the full pre-printed, pre-peer-review article [here](https://doi.org/10.31234/osf.io/zs9af_v1)
+
+**APA citation**
+
+-   Heirene, R., Zhang, E., Vanichkina, D., de Leau, C., Huynh, E., & Gainsbury, S. M. (2025, December 12). Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data. <https://doi.org/10.31234/osf.io/zs9af_v1>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:----------------:|:----------------:|:------------------:|:----------------:|
+| [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://github.com/Sydney-Informatics-Hub/Wagering-2025/) | ✘ |
