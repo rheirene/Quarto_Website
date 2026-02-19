@@ -1,0 +1,35 @@
+---
+title: "The Need for Benchmarks to Advance AI-Enabled Player Risk Detection in Gambling"
+description: ""
+author:
+- name: Kasra Ghaharian 
+- name: Simo Dragicevic
+- name: Chris Percy
+- name: Sarah Nelson
+- name: Spencer Murch
+- name: Rob Heirene
+- name: Kahlil Simeon-Rose
+- name: Tracy Schrans
+categories: [Gambling]
+date: 2026-02-18
+image: false 
+draft: false
+---
+
+**Abstract**
+
+Artificial intelligence-based systems for player risk detection have become central to harm prevention efforts in the gambling industry. However, growing concerns around transparency and effectiveness have highlighted the absence of standardized methods for evaluating the quality and impact of these tools. This makes it impossible to gauge true progress; even as new systems are developed, their comparative effectiveness remains unknown. We argue the critical next innovation is developing a framework to measure these systems. This paper proposes a conceptual benchmarking framework to support the systematic evaluation of player risk detection systems. Benchmarking, in this context, refers to the structured and repeatable assessment of artificial intelligence models using standardized datasets, clearly defined tasks, and agreed-upon performance metrics. The goal is to enable objective, comparable, and longitudinal evaluation of player risk detection systems. We present a domain-specific framework for benchmarking that addresses the unique challenges of player risk detection in gambling and supports key stakeholders, including researchers, operators, vendors, and regulators. By enhancing transparency and improving system effectiveness, this framework aims to advance innovation and promote responsible artificial intelligence adoption in gambling harm prevention.
+
+**Full text**
+
+-   Access a full text for this article [here](The%20Need%20for%20Benchmarks%20to%20Advance%20AI-Enabled%20Player%20Risk%20Detection%20in%20Gambling.pdf){style="color: #289998"}
+
+**APA citation**
+
+-   Ghaharian, K., Dragicevic, S., Percy, C. et al. The Need for Benchmarks to Advance AI-Enabled Player Risk Detection in Gambling. J Gambl Stud (2026). https://doi.org/10.1007/s10899-026-10483-6
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:--------------:|:--------------:|:---------:|:---------:|
+|      *NA*      |      *NA*      |   *NA*    |   *NA*    |
