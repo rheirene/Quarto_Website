@@ -1,0 +1,56 @@
+---
+title: "Open science practices in behavioral addictions: An exploratory survey"
+description: ""
+author:
+- name: Charlotte Eben
+- name: Rob Heirene
+- name: Lucas Palmer
+- name: Joel Billieux
+- name: Beáta Bőthe
+- name: Damien Brevers
+- name: Zhang Chen
+- name: Joshua Grubbs
+- name: Anja Kräplin
+- name: Karol Lewczuk
+- name: Philip Newall
+- name: José Perales
+- name: Jan Peters
+- name: Ruth van Holst
+- name: Luke Clark
+categories: [Gambling]
+date: 2026-03-19
+image: false 
+draft: false
+---
+
+**Abstract**
+
+### Background
+
+The field of behavioral addictions (BA) research addresses activity domains such as excessive gaming, gambling, and other online behaviors that influence public health policies. A failure to embrace open science practices may lead to concerns about the trustworthiness and reliability of its research outputs. This study explored the current use of open science practices among BA researchers, focusing on the adoption, underlying motivations, concerns, and support needs across seven specific open science practices.
+
+### Methods
+
+We distributed an exploratory survey through professional networks, conferences, and social media and received 83 eligible responses (early career researcher \[ECRs\]: *N* = 41). The survey covered six domains: general use, frequency, importance, engagement, concerns, and support needs related to open science practices.
+
+### Results
+
+Most respondents reported positive attitudes toward open science, with preregistration (75% of total N) and data sharing (65% of total N) as the most commonly used practices. Descriptively, ECRs placed greater importance on these practices than their established counterparts, suggesting a potential generational shift. ECRs primarily reported concerns about insufficient knowledge and fear of errors, while established researchers emphasized workload and a lack of incentives. Both groups highlighted the need for increased time, resources, institutional support, and training.
+
+### Discussion
+
+Although our findings are descriptive and limited by self-selection and sample bias, they offer initial insights into how open science is perceived and practised in the field. Sustained progress requires coordinated action from individuals, institutions, and professional societies in terms of knowledge transfer and incentives to ensure inclusive and equitable adoption of open science practices.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1556/2006.2025.00398).
+
+**APA citation**
+
+-   Eben, C., Heirene, R. M., Palmer, L., Billieux, J., Bőthe, B., Brevers, D., Chen, Z., Grubbs, J. B., Kräplin, A., Lewczuk, K., Newall, P., Perales, J. C., Peters, J., van Holst, R. J., & Clark, L. (2026). Open science practices in behavioral addictions: An exploratory survey. Journal of Behavioral Addictions, 2006.2025.00398, Article 2006.2025.00398. <https://doi.org/10.1556/2006.2025.00398>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:----------------:|:----------------:|:----------------:|:----------------:|
+| ✘ | [**✓**](https://osf.io/8v7ep/files/ue93a) | [**✓**](https://osf.io/8v7ep/overview) | [**✓**](https://osf.io/8v7ep/overview) |
