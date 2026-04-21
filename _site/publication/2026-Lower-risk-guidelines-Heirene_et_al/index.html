@@ -6,8 +6,14 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
+<meta name="author" content="Rob Heirene">
+<meta name="author" content="Dilushi Chandrakumar">
+<meta name="author" content="Gary Fahey">
+<meta name="author" content="Eunice Huynh">
+<meta name="author" content="Sally Gainsbury">
+<meta name="dcterms.date" content="2026-02-13">
 
-<title>Addiction Science Blog – Rob Heirene</title>
+<title>Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data – Rob Heirene</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -23,26 +29,24 @@ ul.task-list li input[type="checkbox"] {
 </style>
 
 
-<script src="site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="site_libs/clipboard/clipboard.min.js"></script>
-<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="site_libs/quarto-search/fuse.min.js"></script>
-<script src="site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="./">
-<link href="./files/logo.svg" rel="icon" type="image/svg+xml">
-<script src="site_libs/quarto-listing/list.min.js"></script>
-<script src="site_libs/quarto-listing/quarto-listing.js"></script>
-<script src="site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
-<script src="site_libs/quarto-html/popper.min.js"></script>
-<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="site_libs/quarto-html/anchor.min.js"></script>
-<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-5cbbf71e609080c2bdaccfde4fd9127b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../files/logo.svg" rel="icon" type="image/svg+xml">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-5cbbf71e609080c2bdaccfde4fd9127b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -70,85 +74,27 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
-<script>
 
-  window.document.addEventListener("DOMContentLoaded", function (_event) {
-    const listingTargetEl = window.document.querySelector('#listing-listing .list');
-    if (!listingTargetEl) {
-      // No listing discovered, do not attach.
-      return; 
-    }
 
-    const options = {
-      valueNames: ['listing-title','listing-author','listing-date','listing-image','listing-description','listing-categories',{ data: ['index'] },{ data: ['categories'] },{ data: ['listing-date-sort'] },{ data: ['listing-file-modified-sort'] }],
-      
-      searchColumns: ["listing-title","listing-author","listing-date","listing-image","listing-description","listing-categories"],
-    };
-
-    window['quarto-listings'] = window['quarto-listings'] || {};
-    window['quarto-listings']['listing-listing'] = new List('listing-listing', options);
-
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  });
-
-  window.addEventListener('hashchange',() => {
-    if (window['quarto-listing-loaded']) {
-      window['quarto-listing-loaded']();
-    }
-  })
-  </script>
-
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
-
-<link rel="stylesheet" href="styles.css">
-<meta property="og:title" content="Addiction Science Blog – Rob Heirene">
-<meta property="og:image" content="./posts/2020-what-is-an-addiction-pt2/featured-image-pt-two.png">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data – Rob Heirene">
+<meta property="og:description" content="">
 <meta property="og:site_name" content="Rob Heirene">
-<meta name="twitter:title" content="Addiction Science Blog – Rob Heirene">
-<meta name="twitter:image" content="./posts/2020-what-is-an-addiction-pt2/featured-image-pt-two.png">
-<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data – Rob Heirene">
+<meta name="twitter:description" content="">
+<meta name="twitter:card" content="summary">
 </head>
 
 <body class="nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
-  <header id="quarto-header" class="headroom fixed-top">
+  <header id="quarto-header" class="headroom fixed-top quarto-banner">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
     </a>
-    <a class="navbar-brand" href="./index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rob Heirene</span>
     </a>
   </div>
@@ -159,15 +105,15 @@ window.Quarto = {
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="./about.html"> 
+    <a class="nav-link" href="../../about.html"> 
 <span class="menu-text">About</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link active" href="./posts.html" aria-current="page"> 
+    <a class="nav-link" href="../../posts.html"> 
 <span class="menu-text">Addiction Science Blog</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="./publication.html"> 
+    <a class="nav-link" href="../../publication.html"> 
 <span class="menu-text">Publications</span></a>
   </li>  
 </ul>
@@ -184,159 +130,111 @@ window.Quarto = {
     </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title">Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data</h1>
+                                <div class="quarto-categories">
+                <div class="quarto-category">Gambling</div>
+              </div>
+                  </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      <div>
+      <div class="quarto-title-meta-heading">Authors</div>
+      <div class="quarto-title-meta-contents">
+               <p>Rob Heirene </p>
+               <p>Dilushi Chandrakumar </p>
+               <p>Gary Fahey </p>
+               <p>Eunice Huynh </p>
+               <p>Sally Gainsbury </p>
+            </div>
+    </div>
+      
+      <div>
+      <div class="quarto-title-meta-heading">Published</div>
+      <div class="quarto-title-meta-contents">
+        <p class="date">February 13, 2026</p>
+      </div>
+    </div>
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        
-    <h5 class="quarto-listing-category-title">Categories</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">All <span class="quarto-category-count">(4)</span></div><div class="category" data-category="QWRkaWN0aW9u">Addiction <span class="quarto-category-count">(2)</span></div><div class="category" data-category="QWxjb2hvbA==">Alcohol <span class="quarto-category-count">(1)</span></div><div class="category" data-category="R2FtYmxpbmc=">Gambling <span class="quarto-category-count">(1)</span></div></div></div>
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#background" id="toc-background" class="nav-link active" data-scroll-target="#background"><strong>Background</strong></a></li>
+  <li><a href="#methods" id="toc-methods" class="nav-link" data-scroll-target="#methods"><strong>Methods</strong></a></li>
+  <li><a href="#results" id="toc-results" class="nav-link" data-scroll-target="#results"><strong>Results</strong></a></li>
+  <li><a href="#conclusions" id="toc-conclusions" class="nav-link" data-scroll-target="#conclusions"><strong>Conclusions</strong></a></li>
+  </ul>
+</nav>
+    </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Addiction Science Blog</h1>
-</div>
-
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
 
 
+<p><strong>Abstract</strong></p>
+<section id="background" class="level3">
+<h3 class="anchored" data-anchor-id="background"><strong>Background</strong></h3>
+<p>Lower risk gambling guidelines provide clear, actionable advice for reducing the risk associated with gambling by specifying behaviour associated with non-harmful use. Here we aimed to develop lower-risk guidelines specific to online sports and race betting in Australia that [1] captured behaviours unique to this activity associated with high risk of experiencing gambling harms (e.g., depositing frequency, number of sports &amp; races bet on) and [2] were based on objective behavioural data from a gambling operator not subject to self-report inaccuracies.</p>
+</section>
+<section id="methods" class="level3">
+<h3 class="anchored" data-anchor-id="methods"><strong>Methods</strong></h3>
+<p>Customers from two large online wagering sites in Australia owned by the same parent company were invited to take part in a survey including the Problem Gambling Severity Index (PGSI) and the Gambling Harm Measure (GHM). Survey responses were matched to customer’s account data provided by the operator, including all bets and transactions placed six months before and after the survey. The final sample consisted of 1,647 participants (84.6% male; mean age = 44.1).</p>
+</section>
+<section id="results" class="level3">
+<h3 class="anchored" data-anchor-id="results"><strong>Results</strong></h3>
+<p>Receiver Operating Characteristic curve analyses were used to identify optimal threshold values for PGSI and GHM harm separately across eight behavioural indicators: frequency, spend, percentage of household income spent, number of different sports/races bet on, deposit frequency, deposit amount, percentage of household income deposited, and number of active wagering accounts (self-reported). All indicators had acceptable Area Under the Curve values (AUC; ≥0.6) except gambling frequency. Optimal threshold values were higher for GHM than PGSI harm, and higher than those established in studies using self-report data (e.g., ≤6% vs.&nbsp;≤1% of monthly income spent) irrespective of the measure of harm. A dose-response relationship was observed, whereby surpassing more limits was generally associated with greater odds of reporting harm.</p>
+</section>
+<section id="conclusions" class="level3">
+<h3 class="anchored" data-anchor-id="conclusions"><strong>Conclusions</strong></h3>
+<p>Our findings provide preliminary support for the following Lower-Risk Guidelines for Online Sports and Race Betting in Australia: [1] make no more than four deposits per month, [2] deposit no more than 2% of your pre-tax household income per month, [3] bet with no more than two different sites or apps, and [4] stick to betting on four or fewer different types of sports or races. We strongly encourage further evaluation and testing of these guidelines to confirm their value across samples and over time.</p>
+<p><strong>Full text</strong></p>
+<ul>
+<li>Access the full article <a href="https://doi.org/10.1186/s12954-026-01402-4">here</a></li>
+</ul>
+<p><strong>APA citation</strong></p>
+<ul>
+<li>Heirene, R. M., Chandrakumar, D., Fahey, G., Huynh, E. L. Y., &amp; Gainsbury, S. M. (2026). Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data.&nbsp;Harm reduction journal,&nbsp;23(1), 42. <a href="https://doi.org/10.1186/s12954-026-01402-4" class="uri">https://doi.org/10.1186/s12954-026-01402-4</a></li>
+</ul>
+<p><strong>Transparency</strong></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Pre-registered</th>
+<th style="text-align: center;">Open materials</th>
+<th style="text-align: center;">Open code</th>
+<th style="text-align: center;">Open data</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><a href="https://doi.org/10.17605/OSF.IO/BX43K"><strong>✓</strong></a></td>
+<td style="text-align: center;"><a href="https://doi.org/10.17605/OSF.IO/VDSMW"><strong>✓</strong></a></td>
+<td style="text-align: center;"><a href="https://robheirene.quarto.pub/lower-risk-guidelines-for-online-wagering-analysis-document/"><strong>✓</strong></a></td>
+<td style="text-align: center;">✘</td>
+</tr>
+</tbody>
+</table>
 
-<div class="quarto-listing quarto-listing-container-grid" id="listing-listing">
-<div class="list grid quarto-listing-cols-3">
-<div class="g-col-1" data-index="0" data-categories="R2FtYmxpbmc=" data-listing-date-sort="1694959200000" data-listing-file-modified-sort="1770808971000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3471">
-<a href="./posts/2023-gambling-harms-chart/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2023-gambling-harms-chart/sunburst.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-How can we prevent gambling harms?
-</h5>
-<div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('R2FtYmxpbmc='); return false;">Gambling</div>
+</section>
 
-</div>
-<div class="card-text listing-description delink">
-<p>An interactive chart of strategies to prevent gambling harms</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rob Heirene
-</div>
-<div class="listing-date">
-Sep 18, 2023
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="1" data-categories="QWxjb2hvbA==" data-listing-date-sort="1593266400000" data-listing-file-modified-sort="1716435284000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="19" data-listing-word-count-sort="3660">
-<a href="./posts/2020-alcohol-adult-brain/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2020-alcohol-adult-brain/Cover.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-Alcohol &amp; the adult brain: How much is too much?
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWxjb2hvbA=='); return false;">Alcohol</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>What level of alcohol consumption, if any, is safe for our brain?</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rob Heirene
-</div>
-<div class="listing-date">
-Jun 28, 2020
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="2" data-categories="QWRkaWN0aW9u" data-listing-date-sort="1586872800000" data-listing-file-modified-sort="1701218599000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="18" data-listing-word-count-sort="3402">
-<a href="./posts/2020-what-is-an-addiction-pt2/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2020-what-is-an-addiction-pt2/featured-image-pt-two.png" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What does it mean to be “addicted?” (Part 2)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWRkaWN0aW9u'); return false;">Addiction</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>The second in a two-part post on the definition of addiction</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rob Heirene
-</div>
-<div class="listing-date">
-Apr 15, 2020
-</div>
-</div>
-</div>
-</div></a>
-</div>
-<div class="g-col-1" data-index="3" data-categories="QWRkaWN0aW9u" data-listing-date-sort="1586786400000" data-listing-file-modified-sort="1701218599000" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="29" data-listing-word-count-sort="5712">
-<a href="./posts/2020-what-is-an-addiction-pt1/index.html" class="quarto-grid-link">
-<div class="quarto-grid-item card h-100 card-left">
-<p class="card-img-top">
-<img loading="lazy" src="./posts/2020-what-is-an-addiction-pt1/cover.jpg" class="thumbnail-image card-img" style="height: 150px;">
-</p>
-<div class="card-body post-contents">
-<h5 class="no-anchor card-title listing-title">
-What does it mean to be “addicted?” (Part 1)
-</h5>
-<div class="listing-categories">
-
-<div class="listing-category" onclick="window.quartoListingCategory('QWRkaWN0aW9u'); return false;">Addiction</div>
-
-</div>
-<div class="card-text listing-description delink">
-<p>A delve into the various ways in which we define addiction</p>
-</div>
-<div class="card-attribution card-text-small justify">
-<div class="listing-author">
-Rob Heirene
-</div>
-<div class="listing-date">
-Apr 14, 2020
-</div>
-</div>
-</div>
-</div></a>
-</div>
-</div>
-<div class="listing-no-matching d-none">No matching items</div>
-</div></main> <!-- /main -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

@@ -1,0 +1,46 @@
+---
+title: "Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data"
+description: ""
+author:
+- name: Rob Heirene
+- name: Dilushi Chandrakumar
+- name: Gary Fahey
+- name: Eunice Huynh
+- name: Sally Gainsbury
+categories: [Gambling]
+date: 2026-02-13
+image: false 
+draft: false
+---
+
+**Abstract**
+
+### **Background**
+
+Lower risk gambling guidelines provide clear, actionable advice for reducing the risk associated with gambling by specifying behaviour associated with non-harmful use. Here we aimed to develop lower-risk guidelines specific to online sports and race betting in Australia that \[1\] captured behaviours unique to this activity associated with high risk of experiencing gambling harms (e.g., depositing frequency, number of sports & races bet on) and \[2\] were based on objective behavioural data from a gambling operator not subject to self-report inaccuracies.
+
+### **Methods**
+
+Customers from two large online wagering sites in Australia owned by the same parent company were invited to take part in a survey including the Problem Gambling Severity Index (PGSI) and the Gambling Harm Measure (GHM). Survey responses were matched to customer’s account data provided by the operator, including all bets and transactions placed six months before and after the survey. The final sample consisted of 1,647 participants (84.6% male; mean age = 44.1).
+
+### **Results**
+
+Receiver Operating Characteristic curve analyses were used to identify optimal threshold values for PGSI and GHM harm separately across eight behavioural indicators: frequency, spend, percentage of household income spent, number of different sports/races bet on, deposit frequency, deposit amount, percentage of household income deposited, and number of active wagering accounts (self-reported). All indicators had acceptable Area Under the Curve values (AUC; ≥0.6) except gambling frequency. Optimal threshold values were higher for GHM than PGSI harm, and higher than those established in studies using self-report data (e.g., ≤6% vs. ≤1% of monthly income spent) irrespective of the measure of harm. A dose-response relationship was observed, whereby surpassing more limits was generally associated with greater odds of reporting harm.
+
+### **Conclusions**
+
+Our findings provide preliminary support for the following Lower-Risk Guidelines for Online Sports and Race Betting in Australia: \[1\] make no more than four deposits per month, \[2\] deposit no more than 2% of your pre-tax household income per month, \[3\] bet with no more than two different sites or apps, and \[4\] stick to betting on four or fewer different types of sports or races. We strongly encourage further evaluation and testing of these guidelines to confirm their value across samples and over time.
+
+**Full text**
+
+-   Access the full article [here](https://doi.org/10.1186/s12954-026-01402-4)
+
+**APA citation**
+
+-   Heirene, R. M., Chandrakumar, D., Fahey, G., Huynh, E. L. Y., & Gainsbury, S. M. (2026). Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data. Harm reduction journal, 23(1), 42. <https://doi.org/10.1186/s12954-026-01402-4>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:----------------:|:----------------:|:----------------:|:----------------:|
+| [**✓**](https://doi.org/10.17605/OSF.IO/BX43K) | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://robheirene.quarto.pub/lower-risk-guidelines-for-online-wagering-analysis-document/) | ✘ |
