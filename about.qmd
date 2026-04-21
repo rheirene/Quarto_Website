@@ -14,7 +14,7 @@ I've bounced around the world in different academic posts in the UK and Australi
 
 I'm interested in the science of **addiction** with a passion for **data science and visualisation**.
 
-I also work as an Associate Editor for the scientific journal, Addiction, and as a Director for the [National Association for Gambling Studies](https://www.nags.org.au/) (NAGS), which runs Australia's largest conference focused on gambling harm minimisation.
+I also work as an Associate Editor for the scientific journal *Addiction*, and as a Director for the [National Association for Gambling Studies](https://www.nags.org.au/) (NAGS), which runs Australia's largest conference focused on gambling harm minimisation.
 
 ```{r echo = FALSE, warning = FALSE, results = FALSE, include = FALSE}
 
