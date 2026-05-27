@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.8.25">
+<meta name="generator" content="quarto-1.9.37">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 <meta name="author" content="Charles de Leau">
 <meta name="author" content="Eunice Huynh">
 <meta name="author" content="Sally Gainsbury">
-<meta name="dcterms.date" content="2025-12-12">
+<meta name="dcterms.date" content="2026-05-22">
 
-<title>PRE-PRINT - Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data – Rob Heirene</title>
+<title>Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data – Rob Heirene</title>
 <style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
 div.columns{display: flex; gap: min(4vw, 1.5em);}
@@ -39,15 +42,14 @@ ul.task-list li input[type="checkbox"] {
 <link href="../../files/logo.svg" rel="icon" type="image/svg+xml">
 <script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="../../site_libs/quarto-html/popper.min.js"></script>
 <script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-dark-d0ae9245876894da5ac7e18953ecc5cc.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-5cbbf71e609080c2bdaccfde4fd9127b.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
+<link href="../../site_libs/bootstrap/bootstrap-d3fe632c9870d13e295a32b8a5569eb7.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -78,10 +80,10 @@ ul.task-list li input[type="checkbox"] {
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="PRE-PRINT - Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data – Rob Heirene">
+<meta property="og:title" content="Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data – Rob Heirene">
 <meta property="og:description" content="">
 <meta property="og:site_name" content="Rob Heirene">
-<meta name="twitter:title" content="PRE-PRINT - Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data – Rob Heirene">
+<meta name="twitter:title" content="Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data – Rob Heirene">
 <meta name="twitter:description" content="">
 <meta name="twitter:card" content="summary">
 </head>
@@ -93,8 +95,6 @@ ul.task-list li input[type="checkbox"] {
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a href="../../index.html" class="navbar-brand navbar-brand-logo">
-    </a>
     <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rob Heirene</span>
     </a>
@@ -134,7 +134,7 @@ ul.task-list li input[type="checkbox"] {
 <header id="title-block-header" class="quarto-title-block default page-columns page-full">
   <div class="quarto-title-banner page-columns page-full">
     <div class="quarto-title column-body">
-      <h1 class="title">PRE-PRINT - Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data</h1>
+      <h1 class="title">Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data</h1>
                                 <div class="quarto-categories">
                 <div class="quarto-category">Gambling</div>
               </div>
@@ -159,7 +159,7 @@ ul.task-list li input[type="checkbox"] {
       <div>
       <div class="quarto-title-meta-heading">Published</div>
       <div class="quarto-title-meta-contents">
-        <p class="date">December 12, 2025</p>
+        <p class="date">May 22, 2026</p>
       </div>
     </div>
     
@@ -181,17 +181,17 @@ ul.task-list li input[type="checkbox"] {
 
 
 <p><strong>Abstract</strong></p>
-<p><strong>Background and aims:</strong> Online gambling operators collect detailed behavioural data that can be used to identify customers at risk of harmful gambling. This study examined the value of machine learning in this context. We compared models trained on 30 days versus six months of behavioural data and explored whether incorporating self-reported survey responses enhanced performance.</p>
-<p><strong>Methods:</strong> Customers from two Australian sports and race betting sites (N=1,470) completed a survey including the Problem Gambling Severity Index (PGSI) and measures of employment, income, gambling satisfaction, number of gambling accounts, and estimated past-30-day expenditure. Survey responses were matched to participants’ account data provided by operators. We built a series of machine learning models to classify participants into risk groups (PGSI 1-7 [no-to-moderate-risk] vs.&nbsp;PGSI ≥8 [high-risk]), comparing performance across data windows (30 days vs.&nbsp;six months), and with or without survey variables.</p>
-<p><strong>Results:</strong> Models using only behavioural data achieved adequate classification accuracy (Area Under the Receiver Operating Characteristic curve [AUROC]=0.74–0.75), with similar performance across 30-day and six-month data windows. The most predictive account-based variables were age, deposit intensity (deposits per active day), average stake size, and days since last bet. Combining behavioural data with self-reported variables substantially enhanced performance (AUROC=0.76–0.85). Two self-reported variables—number of gambling accounts held and gambling satisfaction—were primarily responsible for improvements.</p>
-<p><strong>Conclusions:</strong> Machine learning models can effectively detect at-risk customers on online sports and race betting sites using only 30 days of behavioural data. Performance can be improved by adding minimal, non-intrusive self-report measures.</p>
+<p><strong><em>Background and aims:</em></strong> Online gambling operators collect detailed behavioural data that can identify customers at risk of harmful gambling. However, there is limited clarity on how to optimally achieve this in practice, including which variables are most useful and whether short-term data windows are sufficient for risk detection. These details are increasingly important as regulatory frameworks emphasise timely intervention. We examined the value of machine learning in this context by comparing models trained on 30 days versus six months of behavioural data and exploring whether incorporating survey responses enhanced performance.</p>
+<p><strong><em>Methods:</em></strong> Customers from two Australian sports and race betting sites (N = 1,470) completed a survey including the Problem Gambling Severity Index (PGSI) and measures of employment, income, gambling satisfaction, and number of gambling accounts. We built machine learning models to classify participants into risk groups (PGSI 1-7 [no-to-moderate-risk] vs.&nbsp;PGSI ≥ 8 [high-risk]), comparing performance across data windows (30 days vs.&nbsp;six months), and with or without survey variables.</p>
+<p><strong><em>Results:</em></strong> Models using only behavioural data achieved adequate classification accuracy (AUROC = 0.74–0.75), with similar performance across 30-day and six-month windows. The most predictive account-based variables were age, deposits per active day, average stake, and days since betting. Combining behavioural data with self-reported variables enhanced performance (AUROC = 0.76–0.85). Two self-reported variables—number of gambling accounts held and gambling satisfaction—were primarily responsible for these improvements.</p>
+<p><strong><em>Conclusions:</em></strong> Machine learning models can detect at-risk customers on online sports and race betting sites using only 30 days of behavioural data. Performance can be improved by adding minimal, non-intrusive self-report measures.</p>
 <p><strong>Full text</strong></p>
 <ul>
-<li>Access the full pre-printed, pre-peer-review article <a href="https://doi.org/10.31234/osf.io/zs9af_v1">here</a></li>
+<li>Access the full pre-printed, pre-peer-review article <a href="https://doi.org/10.31234/osf.io/zs9af_v1">here</a> <em>[the typeset, journal version is currently in press].</em></li>
 </ul>
 <p><strong>APA citation</strong></p>
 <ul>
-<li>Heirene, R., Zhang, E., Vanichkina, D., de Leau, C., Huynh, E., &amp; Gainsbury, S. M. (2025, December 12). Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data. <a href="https://doi.org/10.31234/osf.io/zs9af_v1" class="uri">https://doi.org/10.31234/osf.io/zs9af_v1</a></li>
+<li>Heirene, R. M., Zhang, E., Vanichkina, D., de Leau, C., Huynh, E., &amp; Gainsbury, S. M. (2026. Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data. <em>Journal of Behavioral Addictions [in press]</em>. pre-print: <a href="https://doi.org/10.31234/osf.io/zs9af_v1" class="uri">https://doi.org/10.31234/osf.io/zs9af_v1</a></li>
 </ul>
 <p><strong>Transparency</strong></p>
 <table class="caption-top table">

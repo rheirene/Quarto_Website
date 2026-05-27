@@ -24,16 +24,15 @@ You can find out more about me [here](https://robheirene.netlify.app/about.html)
 
 I contributed to a Delphi study on the most important research topics to address in the field as part of the Gambling Research Priority Setting Consortium. The article was published in the *Journal of Behavioural Addictions* and is available openly [here](https://doi.org/10.1556/2006.2025.00072).
 
-
 [How many people should we expect to set voluntary time or monetary limits?]{style="color: #289998; font-weight: bold;"}
 
-I co-wrote a letter to the editor with [Professor Michael Wohl](https://www.linkedin.com/in/michael-wohl-7833a430/) arguing that the field needs to establish realistic benchmarks when it comes to rates of  voluntarily limit setting---read it [here]().
+I co-wrote a letter to the editor with [Professor Michael Wohl](https://www.linkedin.com/in/michael-wohl-7833a430/) arguing that the field needs to establish realistic benchmarks when it comes to rates of voluntarily limit setting---read it [here]().
 
 ## What I'm working on
 
 [A new fellowship!]{style="color: #289998; font-weight: bold;"}
 
-In July 2025 I was awarded a three-year postdoctoral fellowship from the New South Wales Office of Responsible Gambling to evaluate harm minimisation policies for casinos in the state that have been implemented in recent years. 
+In July 2025 I was awarded a three-year postdoctoral fellowship from the New South Wales Office of Responsible Gambling to evaluate harm minimisation policies for casinos in the state that have been implemented in recent years.
 
 Using extensive tracking data from multiple casino venues across two states, I'll be using natural experimental designs to study the impact of several regulatory changes (you can read more [here](https://www.gambleaware.nsw.gov.au/resources-and-education/funding-to-prevent-gambling-harm/gambling-research-capacity-grants)).
 
@@ -41,11 +40,11 @@ Using extensive tracking data from multiple casino venues across two states, I'l
 
 My colleagues and I have been working on a large project that fuses people's survey responses with their online gambling account data. So far, we've used this dataset to explore:
 
--   People's use of government mandated activity statements in [this paper](https://robheirene.netlify.app/publication/2025-activity-statements-gainsbury-heirene/)
+- People's use of government mandated activity statements in [this paper](https://robheirene.netlify.app/publication/2025-activity-statements-gainsbury-heirene/)
 
--   The impact of non-response bias on our survey sample's representativeness in [this paper](https://robheirene.netlify.app/publication/2025-Non-Response-Bias-Heirene_et_al/)
+- The impact of non-response bias on our survey sample's representativeness in [this paper](https://robheirene.netlify.app/publication/2025-Non-Response-Bias-Heirene_et_al/)
 
--   Developing lower-risk limits specifically for online sports/race betting in Australia (to be published early in 2026)
+- Developing lower-risk limits specifically for online sports/race betting in Australia [in this paper](https://robheirene.netlify.app/publication/2026-lower-risk-guidelines-heirene_et_al/)
 
--   The value of machine learning in identifying customers reporting problematic gambling in [this pre-print](https://osf.io/preprints/psyarxiv/zs9af_v1)
+- The value of machine learning in identifying customers reporting problematic gambling in [this pre-print](https://osf.io/preprints/psyarxiv/zs9af_v1)
 :::
