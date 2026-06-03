@@ -9,7 +9,7 @@ author:
 - name: Eunice Huynh
 - name: Sally Gainsbury
 categories: [Gambling]
-date: 2026-05-22
+date: 2026-06-02
 image: false 
 draft: false
 ---
@@ -26,14 +26,15 @@ draft: false
 
 **Full text**
 
-- Access the full pre-printed, pre-peer-review article [here](https://doi.org/10.31234/osf.io/zs9af_v1) *\[the typeset, journal version is currently in press\].*
+- Access the full article [here](https://doi.org/10.1556/2006.2025.00525)
+- The pre-printed, pre-peer-review version can be found [here](https://doi.org/10.31234/osf.io/zs9af_v1)
 
 **APA citation**
 
-- Heirene, R. M., Zhang, E., Vanichkina, D., de Leau, C., Huynh, E., & Gainsbury, S. M. (2026. Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data. *Journal of Behavioral Addictions \[in press\]*. pre-print: <https://doi.org/10.31234/osf.io/zs9af_v1>
+- Heirene, R. M., Zhang, E., Vanichkina, D., de Leau, C., Huynh, E., & Gainsbury, S. M. (2026. Predicting problem gambling among online sports and race bettors: Assessing the value of Machine Learning using behavioural and self-reported data. *Journal of Behavioral Addictions.* <https://doi.org/10.1556/2006.2025.00525>.
 
 **Transparency**
 
 | Pre-registered | Open materials | Open code | Open data |
-|:--:|:--:|:--:|:--:|
+|:----------------:|:----------------:|:----------------:|:----------------:|
 | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://github.com/Sydney-Informatics-Hub/Wagering-2025/) | ✘ |

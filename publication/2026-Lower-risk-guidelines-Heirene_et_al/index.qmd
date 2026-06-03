@@ -37,7 +37,7 @@ Our findings provide preliminary support for the following Lower-Risk Guidelines
 
 **APA citation**
 
--   Heirene, R. M., Chandrakumar, D., Fahey, G., Huynh, E. L. Y., & Gainsbury, S. M. (2026). Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data. Harm reduction journal, 23(1), 42. <https://doi.org/10.1186/s12954-026-01402-4>
+-   Heirene, R. M., Chandrakumar, D., Fahey, G., Huynh, E. L. Y., & Gainsbury, S. M. (2026). Development of lower-risk guidelines for online sports and race betting in Australia using objective behavioural data. *Harm Reduction Journal*, 23(1), 42. <https://doi.org/10.1186/s12954-026-01402-4>
 
 **Transparency**
 
