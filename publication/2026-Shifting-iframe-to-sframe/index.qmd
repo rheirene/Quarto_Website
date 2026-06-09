@@ -1,0 +1,38 @@
+---
+title: "Preventing lower-level gambling harms: Shifting from individual- to system-frame approaches"
+description: ""
+author:
+- name: Rob Heirene
+categories: [Gambling]
+date: 2026-05-07
+image: false 
+draft: false
+---
+
+**Abstract**
+
+##### Background
+
+Gambling-related harm is not concentrated solely among individuals meeting criteria for problematic or disordered gambling. Tackling harm at a population level is essential to reducing the total burden of harm and preventing escalation to more severe harms. The public health approach to gambling recognises this and the need to address both individual and systemic factors that shape people's risk of harm. Despite this, research and policy in the field remain largely focused on interventions that target individual responsibility, such as educational messages, warnings, and voluntary tools.
+
+##### Argument
+
+Chater and Loewenstein's i-frame (individual-frame) and s-frame (system-frame) distinction provides a compelling basis for reorienting gambling harm prevention efforts. I-frame interventions target individual decision-making and self-regulation, while s-frame interventions seek systemic changes through restrictions and structural reforms. This paper argues that s-frame approaches are better suited to preventing gambling harms, particularly lower-level harms at the population level, because they \[1\] do not rely on individuals to recognise and effectively navigate the complex mathematical properties and potentially misleading features inherent in many gambling products, \[2\] apply universally without requiring individual engagement, and \[3\] can counter commercial interests without depending on consumer self-restraint. Reframing gambling harm prevention through the i−/s-frame lens offers conceptual clarity, highlights the opportunity costs of an overreliance on individual-focused interventions, and exposes incentives that perpetuate the status quo. This paper explains why i-frame approaches have dominated to date and how we can make the shift towards the s-frame.
+
+##### Conclusions
+
+Rather than abandoning i-frame approaches, research priorities should be rebalanced toward understanding, implementing, and evaluating systemic solutions. While i-frame interventions remain valuable for individuals seeking help, preventing population-level harms requires proportionate investment in structural solutions that make gambling products safer by design.
+
+**Full text**
+
+- Read the full article [here](https://doi.org/10.1111/add.70467)
+
+**APA citation**
+
+- Heirene, R. M. (2026). Preventing lower-level gambling harms: Shifting from individual- to system-frame approaches. <https://doi.org/10.1111/add.70467>
+
+**Transparency**
+
+| Pre-registered | Open materials | Open code | Open data |
+|:----------------:|:----------------:|:----------------:|:----------------:|
+| ***NA*** | ***NA*** | ***NA*** | [**✓**](https://osf.io/ybzvs/overview) |

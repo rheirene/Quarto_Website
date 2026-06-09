@@ -44,7 +44,7 @@ My colleagues and I have been working on a large project that fuses people's sur
 
 - The impact of non-response bias on our survey sample's representativeness in [this paper](https://robheirene.netlify.app/publication/2025-Non-Response-Bias-Heirene_et_al/)
 
-- Developing lower-risk limits specifically for online sports/race betting in Australia [in this paper](https://robheirene.netlify.app/publication/2026-lower-risk-guidelines-heirene_et_al/)
+- Developing lower-risk limits specifically for online sports/race betting in Australia in [this paper](https://robheirene.netlify.app/publication/2026-lower-risk-guidelines-heirene_et_al/)
 
-- The value of machine learning in identifying customers reporting problematic gambling in [this pre-print](https://osf.io/preprints/psyarxiv/zs9af_v1)
+- The value of machine learning in identifying customers reporting problematic gambling in [this paper](https://robheirene.netlify.app/publication/2026-machine-learning-predicting-pg-heirene_et_al/)
 :::
