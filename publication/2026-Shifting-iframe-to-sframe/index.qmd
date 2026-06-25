@@ -34,5 +34,5 @@ Rather than abandoning i-frame approaches, research priorities should be rebalan
 **Transparency**
 
 | Pre-registered | Open materials | Open code | Open data |
-|:----------------:|:----------------:|:----------------:|:----------------:|
+|:--:|:--:|:--:|:--:|
 | ***NA*** | ***NA*** | ***NA*** | [**✓**](https://osf.io/ybzvs/overview) |

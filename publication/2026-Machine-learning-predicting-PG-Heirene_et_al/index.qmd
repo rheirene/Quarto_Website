@@ -36,5 +36,5 @@ draft: false
 **Transparency**
 
 | Pre-registered | Open materials | Open code | Open data |
-|:----------------:|:----------------:|:----------------:|:----------------:|
+|:--:|:--:|:--:|:--:|
 | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://doi.org/10.17605/OSF.IO/VDSMW) | [**✓**](https://github.com/Sydney-Informatics-Hub/Wagering-2025/) | ✘ |

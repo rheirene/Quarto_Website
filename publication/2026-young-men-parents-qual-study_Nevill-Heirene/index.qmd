@@ -10,24 +10,23 @@ author:
 - name: Vincent Mancini
 
 categories: [Gambling]
-date: 2026-05-30
+date: 2026-06-24
 image: false 
 draft: false
 ---
 
-**Abstract**
-Online sports betting has become a profitable segment of the global gambling industry, with young men identified as the demographic most likely to engage in online sports betting and at risk of gambling problems. Despite its prominence, limited qualitative research has explored young men’s experiences with online sports betting, and even less has examined parents' perspectives, who may influence their child’s betting. We interviewed 16 young men (aged 18–24) and 11 parents to investigate attitudes toward sports betting, factors influencing engagement, parental strategies for addressing betting, and suggestions for support and reform. Thematic analysis revealed mixed attitudes: parents largely emphasised the risks, while young men acknowledged the appeal and potential harms. Key influences on engagement included peer dynamics, marketing, and the accessibility of betting apps. The role of family gambling history was complex, having protective and risk-enhancing effects. Open communication with children and highlighting the risks of betting were common parental strategies. Participants recommended reforms to advertising, spending limits, and targeted educational content. Integrating perspectives from young men and parents of young men, this study highlights the multiple factors shaping young men’s sports betting behaviours and underscores the need for targeted, evidence-based support for young men and their families.
+**Abstract** Online sports betting has become a profitable segment of the global gambling industry, with young men identified as the demographic most likely to engage in online sports betting and at risk of gambling problems. Despite its prominence, limited qualitative research has explored young men’s experiences with online sports betting, and even less has examined parents' perspectives, who may influence their child’s betting. We interviewed 16 young men (aged 18–24) and 11 parents to investigate attitudes toward sports betting, factors influencing engagement, parental strategies for addressing betting, and suggestions for support and reform. Thematic analysis revealed mixed attitudes: parents largely emphasised the risks, while young men acknowledged the appeal and potential harms. Key influences on engagement included peer dynamics, marketing, and the accessibility of betting apps. The role of family gambling history was complex, having protective and risk-enhancing effects. Open communication with children and highlighting the risks of betting were common parental strategies. Participants recommended reforms to advertising, spending limits, and targeted educational content. Integrating perspectives from young men and parents of young men, this study highlights the multiple factors shaping young men’s sports betting behaviours and underscores the need for targeted, evidence-based support for young men and their families.
 
 **Full text**
 
--   Access the full article [here](https://doi.org/10.1080/14459795.2026.2682460) [*when it's published!*]
+- Access the full article [here](The_odds_of_harm_young_men.pdf)
 
 **APA citation**
 
--   Nevill, T., Brett, J. D., McQueen, M. C., Heirene, R. M., & Mancini, V. O. (2025). The Odds of Harm: Young Men’s and Parents’ Views on Online Sports Betting. *International Gambling Studies* [*in press*] <https://doi.org/10.1080/14459795.2026.2682460>
+- Nevill, T., Brett, J. D., McQueen, M. C., Heirene, R. M., & Mancini, V. O. (2025). The Odds of Harm: Young Men’s and Parents’ Views on Online Sports Betting. *International Gambling Studies*. <https://doi.org/10.1080/14459795.2026.2682460>
 
 **Transparency**
 
 | Pre-registered | Open materials | Open code | Open data |
-|:---------------:|:---------------:|:-------------------:|:---------------:|
-| ✘ | ✘ | ✘ | ✘ | 
+|:--------------:|:--------------:|:---------:|:---------:|
+|       ✘        |       ✘        |     ✘     |     ✘     |
